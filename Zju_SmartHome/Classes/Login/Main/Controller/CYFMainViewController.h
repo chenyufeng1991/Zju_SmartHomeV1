@@ -10,4 +10,6 @@
 
 @interface CYFMainViewController : UIViewController
 
+@property(nonatomic,copy) NSString* cityName;
+
 @end
