@@ -25,6 +25,7 @@
 		9D6568751BEC4005006D9507 /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6568711BEC4005006D9507 /* MBProgressHUD+MJ.m */; settings = {ASSET_TAGS = (); }; };
 		9D6568761BEC4005006D9507 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9D6568721BEC4005006D9507 /* MBProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
 		9D6568771BEC4005006D9507 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6568741BEC4005006D9507 /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		9D65695A1BEE1505006D9507 /* CYFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6569591BEE1505006D9507 /* CYFMainViewController.m */; settings = {ASSET_TAGS = (); }; };
 		9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A501BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld */; };
 		9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A531BE472D300E1E1EF /* Assets.xcassets */; };
 		9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A551BE472D300E1E1EF /* LaunchScreen.storyboard */; };
@@ -91,6 +92,8 @@
 		9D6568721BEC4005006D9507 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		9D6568731BEC4005006D9507 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		9D6568741BEC4005006D9507 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		9D6569581BEE1505006D9507 /* CYFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFMainViewController.h; sourceTree = "<group>"; };
+		9D6569591BEE1505006D9507 /* CYFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFMainViewController.m; sourceTree = "<group>"; };
 		9D7D5A411BE472D300E1E1EF /* Zju_SmartHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Zju_SmartHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D7D5A511BE472D300E1E1EF /* Zju_SmartHome.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Zju_SmartHome.xcdatamodel; sourceTree = "<group>"; };
 		9D7D5A531BE472D300E1E1EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +193,8 @@
 			children = (
 				9D65686C1BEBA078006D9507 /* JYMainViewController.h */,
 				9D65686D1BEBA078006D9507 /* JYMainViewController.m */,
+				9D6569581BEE1505006D9507 /* CYFMainViewController.h */,
+				9D6569591BEE1505006D9507 /* CYFMainViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -482,6 +487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D6568611BEB7262006D9507 /* AFURLSessionManager.m in Sources */,
+				9D65695A1BEE1505006D9507 /* CYFMainViewController.m in Sources */,
 				9D65685E1BEB7262006D9507 /* AFURLConnectionOperation.m in Sources */,
 				9D6568591BEB7262006D9507 /* AFHTTPRequestOperation.m in Sources */,
 				9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */,
