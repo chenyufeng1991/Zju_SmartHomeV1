@@ -1,4 +1,6 @@
 .DS_Store
+*.xcworkspace/
+
 
 build/
 DerivedData
@@ -17,8 +19,6 @@ xcuserdata
 *.moved-aside
 *.xcuserstate
 
-
-#OSX
 
 .AppleDouble
 .LSOverride
