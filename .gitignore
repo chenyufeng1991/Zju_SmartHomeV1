@@ -1,5 +1,6 @@
 .DS_Store
-*.xcworkspace/
+*.xcuserstate
+*.xcscheme
 
 
 build/
@@ -17,7 +18,7 @@ xcuserdata
 
 *.xccheckout
 *.moved-aside
-*.xcuserstate
+
 
 
 .AppleDouble
