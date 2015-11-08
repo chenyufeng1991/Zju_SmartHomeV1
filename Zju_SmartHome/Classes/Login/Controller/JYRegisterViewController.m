@@ -34,7 +34,7 @@
 {
     //显示一个蒙板
     [MBProgressHUD showMessage:@"正在登录中..."];
-    
+  
     //1.创建请求管理对象
     AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
     
@@ -57,12 +57,14 @@
              //移除遮盖
              [MBProgressHUD hideHUD];
              [MBProgressHUD showSuccess:@"注册成功"];
+           
          }
          else if ([responseObject[@"code"]isEqualToString:@"308"])
          {
              //移除遮盖
              [MBProgressHUD hideHUD];
              [MBProgressHUD showError:@"用户名或者邮箱重复"];
+         
          }
          
          

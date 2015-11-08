@@ -13,8 +13,8 @@
 #import "AFNetworking.h"
 #import "JYLoginStatus.h"
 #import "JYUserData.h"
-#import "JYMainViewController.h"
 #import "MBProgressHUD+MJ.h"
+#import "CYFMainPageViewController.h"
 
 @interface JYLoginViewController ()<LoginXibDelegate,UITextFieldDelegate>
 
@@ -37,6 +37,7 @@
     
     
 }
+
 
 //UITextField监听事件
 -(void)textFieldDidBeginEditing:(UITextField *)textField
@@ -62,7 +63,7 @@
     
     //显示一个蒙板
     [MBProgressHUD showMessage:@"正在登录中..."];
-    
+  
     //1.创建请求管理对象
     AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
     
@@ -93,7 +94,7 @@
         {
             //移除遮盖
             [MBProgressHUD hideHUD];
-            self.view.window.rootViewController=[[JYMainViewController alloc]init];
+            self.view.window.rootViewController=[[CYFMainPageViewController alloc]init];
         }
         else if([status.code isEqualToString:@"330"])
         {
@@ -104,18 +105,18 @@
         {
             [MBProgressHUD hideHUD];
             [MBProgressHUD showError:@"用户名活着邮箱重复"];
-
+          
         }
         else if([status.code isEqualToString:@"300"])
         {
             [MBProgressHUD hideHUD];
-
             [MBProgressHUD showError:@"没有登录"];
         }
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
         [MBProgressHUD showError:@"登录请求失败"];
+
     }];
 }
 //代理注册方法

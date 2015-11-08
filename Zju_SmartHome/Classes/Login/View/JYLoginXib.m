@@ -59,6 +59,9 @@
     {
         [self.delegate loginGoGoGo:self.username.text and:self.password.text];
     }
+  
+  [self.username resignFirstResponder];
+  [self.password resignFirstResponder];
 }
 
 //注册
@@ -68,6 +71,12 @@
     {
         [self.delegate registerGoGoGo];
     }
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+  [self.username resignFirstResponder];
+  [self.password resignFirstResponder];
 }
 
 
