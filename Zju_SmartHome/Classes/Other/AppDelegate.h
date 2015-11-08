@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
+#define DeviceWidth ([UIScreen mainScreen].bounds.size.width)
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
