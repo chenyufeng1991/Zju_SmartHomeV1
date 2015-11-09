@@ -14,6 +14,7 @@
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; settings = {ASSET_TAGS = (); }; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
+		9D3726BB1BF07BDA0093F2EF /* JYFurnitureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3726BA1BF07BDA0093F2EF /* JYFurnitureController.m */; settings = {ASSET_TAGS = (); }; };
 		9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */; settings = {ASSET_TAGS = (); }; };
 		9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */; settings = {ASSET_TAGS = (); }; };
 		9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5B31BEA2C2E004371E5 /* JYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
@@ -55,8 +56,8 @@
 		712A99C41BEF80EB00FE90FE /* CYFMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CYFMainPageViewController.h; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFMainPageViewController.h; sourceTree = SOURCE_ROOT; };
 		712A99C51BEF80EB00FE90FE /* CYFMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CYFMainPageViewController.m; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFMainPageViewController.m; sourceTree = SOURCE_ROOT; };
 		712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CYFMainPageViewController.xib; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFMainPageViewController.xib; sourceTree = SOURCE_ROOT; };
-		712A99F61BEF83EE00FE90FE /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
-		712A99F71BEF83EE00FE90FE /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		712A99F61BEF83EE00FE90FE /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = ../Controller/CollectionViewCell.h; sourceTree = "<group>"; };
+		712A99F71BEF83EE00FE90FE /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = ../Controller/CollectionViewCell.m; sourceTree = "<group>"; };
 		712A99F91BEF849E00FE90FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7174E39E1BEFAEC500170AAA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
@@ -64,6 +65,8 @@
 		7174E3A11BEFAEC500170AAA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		88554DE0CE3743A8B110C726 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D3726B91BF07BDA0093F2EF /* JYFurnitureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureController.h; sourceTree = "<group>"; };
+		9D3726BA1BF07BDA0093F2EF /* JYFurnitureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureController.m; sourceTree = "<group>"; };
 		9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYRegister.xib; sourceTree = "<group>"; };
 		9D5FF5AC1BE9942A004371E5 /* JYRegisterXib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYRegisterXib.h; sourceTree = "<group>"; };
 		9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRegisterXib.m; sourceTree = "<group>"; };
@@ -168,8 +171,8 @@
 			children = (
 				712A99C41BEF80EB00FE90FE /* CYFMainPageViewController.h */,
 				712A99C51BEF80EB00FE90FE /* CYFMainPageViewController.m */,
-				712A99F61BEF83EE00FE90FE /* CollectionViewCell.h */,
-				712A99F71BEF83EE00FE90FE /* CollectionViewCell.m */,
+				9D3726B91BF07BDA0093F2EF /* JYFurnitureController.h */,
+				9D3726BA1BF07BDA0093F2EF /* JYFurnitureController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -184,6 +187,8 @@
 		9D65686B1BEBA04B006D9507 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				712A99F61BEF83EE00FE90FE /* CollectionViewCell.h */,
+				712A99F71BEF83EE00FE90FE /* CollectionViewCell.m */,
 				712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */,
 			);
 			path = View;
@@ -525,6 +530,7 @@
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
 				9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */,
 				9D6568671BEB8861006D9507 /* JYUserData.m in Sources */,
+				9D3726BB1BF07BDA0093F2EF /* JYFurnitureController.m in Sources */,
 				712A99F81BEF83EE00FE90FE /* CollectionViewCell.m in Sources */,
 				9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */,
 				7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */,
