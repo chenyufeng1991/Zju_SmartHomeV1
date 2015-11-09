@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "JYLoginViewController.h"
-#import "JYMainViewController.h"
+#import "CYFMainPageViewController.h"
 #import "JYUserData.h"
 
 @interface AppDelegate ()
@@ -29,7 +29,7 @@
     
     if(data)//已经登录过
     {
-        self.window.rootViewController=[[JYMainViewController alloc]init];
+        self.window.rootViewController=[[CYFMainPageViewController alloc]init];
     }
     else//还未登录过
     {
