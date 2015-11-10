@@ -7,30 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		712A99C71BEF80EB00FE90FE /* CYFMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A99C51BEF80EB00FE90FE /* CYFMainPageViewController.m */; settings = {ASSET_TAGS = (); }; };
-		712A99C81BEF80EB00FE90FE /* CYFMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		712A99F81BEF83EE00FE90FE /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 712A99F71BEF83EE00FE90FE /* CollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		440D4D101BF1C70400447F8E /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D081BF1C70400447F8E /* CollectionViewCell.m */; };
+		440D4D111BF1C70400447F8E /* CYFMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D0A1BF1C70400447F8E /* CYFMainPageViewController.m */; };
+		440D4D121BF1C70400447F8E /* CYFMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440D4D0B1BF1C70400447F8E /* CYFMainPageViewController.xib */; };
+		440D4D131BF1C70400447F8E /* DLLeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D0D1BF1C70400447F8E /* DLLeftSlideViewController.m */; };
+		440D4D141BF1C70400447F8E /* JYFurnitureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D0F1BF1C70400447F8E /* JYFurnitureController.m */; };
+		712A99C81BEF80EB00FE90FE /* CYFMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */; };
 		712A99FA1BEF849E00FE90FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A99F91BEF849E00FE90FE /* CoreLocation.framework */; };
-		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; settings = {ASSET_TAGS = (); }; };
-		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; settings = {ASSET_TAGS = (); }; };
-		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; settings = {ASSET_TAGS = (); }; };
-		9D3726BB1BF07BDA0093F2EF /* JYFurnitureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D3726BA1BF07BDA0093F2EF /* JYFurnitureController.m */; settings = {ASSET_TAGS = (); }; };
-		9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */; settings = {ASSET_TAGS = (); }; };
-		9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */; settings = {ASSET_TAGS = (); }; };
-		9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5B31BEA2C2E004371E5 /* JYNavigationController.m */; settings = {ASSET_TAGS = (); }; };
-		9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6568631BEB846F006D9507 /* JYLoginStatus.m */; settings = {ASSET_TAGS = (); }; };
-		9D6568671BEB8861006D9507 /* JYUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6568661BEB8861006D9507 /* JYUserData.m */; settings = {ASSET_TAGS = (); }; };
+		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
+		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
+		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
+		9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */; };
+		9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */; };
+		9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5B31BEA2C2E004371E5 /* JYNavigationController.m */; };
+		9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6568631BEB846F006D9507 /* JYLoginStatus.m */; };
+		9D6568671BEB8861006D9507 /* JYUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D6568661BEB8861006D9507 /* JYUserData.m */; };
 		9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A501BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld */; };
 		9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A531BE472D300E1E1EF /* Assets.xcassets */; };
 		9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A551BE472D300E1E1EF /* LaunchScreen.storyboard */; };
 		9D7D5A621BE472D300E1E1EF /* Zju_SmartHomeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A611BE472D300E1E1EF /* Zju_SmartHomeTests.m */; };
 		9D7D5A6D1BE472D300E1E1EF /* Zju_SmartHomeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A6C1BE472D300E1E1EF /* Zju_SmartHomeUITests.m */; };
-		9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A831BE4740100E1E1EF /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		9D7D5A871BE4740100E1E1EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A841BE4740100E1E1EF /* main.m */; settings = {ASSET_TAGS = (); }; };
-		9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A891BE4744000E1E1EF /* JYLoginViewController.m */; settings = {ASSET_TAGS = (); }; };
-		9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8B1BE4748200E1E1EF /* loginXib.xib */; settings = {ASSET_TAGS = (); }; };
-		9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8E1BE474BD00E1E1EF /* JYLoginXib.m */; settings = {ASSET_TAGS = (); }; };
-		9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */; settings = {ASSET_TAGS = (); }; };
+		9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A831BE4740100E1E1EF /* AppDelegate.m */; };
+		9D7D5A871BE4740100E1E1EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A841BE4740100E1E1EF /* main.m */; };
+		9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A891BE4744000E1E1EF /* JYLoginViewController.m */; };
+		9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8B1BE4748200E1E1EF /* loginXib.xib */; };
+		9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8E1BE474BD00E1E1EF /* JYLoginXib.m */; };
+		9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */; };
 		EF249F846089741C690DEED3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88554DE0CE3743A8B110C726 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,12 +54,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		440D4D071BF1C70400447F8E /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		440D4D081BF1C70400447F8E /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		440D4D091BF1C70400447F8E /* CYFMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFMainPageViewController.h; sourceTree = "<group>"; };
+		440D4D0A1BF1C70400447F8E /* CYFMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFMainPageViewController.m; sourceTree = "<group>"; };
+		440D4D0B1BF1C70400447F8E /* CYFMainPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYFMainPageViewController.xib; sourceTree = "<group>"; };
+		440D4D0C1BF1C70400447F8E /* DLLeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftSlideViewController.h; sourceTree = "<group>"; };
+		440D4D0D1BF1C70400447F8E /* DLLeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftSlideViewController.m; sourceTree = "<group>"; };
+		440D4D0E1BF1C70400447F8E /* JYFurnitureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureController.h; sourceTree = "<group>"; };
+		440D4D0F1BF1C70400447F8E /* JYFurnitureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureController.m; sourceTree = "<group>"; };
 		5C2168D92BC3D6A7F5365A43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		712A99C41BEF80EB00FE90FE /* CYFMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CYFMainPageViewController.h; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFMainPageViewController.h; sourceTree = SOURCE_ROOT; };
-		712A99C51BEF80EB00FE90FE /* CYFMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CYFMainPageViewController.m; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFMainPageViewController.m; sourceTree = SOURCE_ROOT; };
 		712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CYFMainPageViewController.xib; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFMainPageViewController.xib; sourceTree = SOURCE_ROOT; };
-		712A99F61BEF83EE00FE90FE /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = ../Controller/CollectionViewCell.h; sourceTree = "<group>"; };
-		712A99F71BEF83EE00FE90FE /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = ../Controller/CollectionViewCell.m; sourceTree = "<group>"; };
 		712A99F91BEF849E00FE90FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7174E39E1BEFAEC500170AAA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
@@ -65,8 +72,6 @@
 		7174E3A11BEFAEC500170AAA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		88554DE0CE3743A8B110C726 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D3726B91BF07BDA0093F2EF /* JYFurnitureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureController.h; sourceTree = "<group>"; };
-		9D3726BA1BF07BDA0093F2EF /* JYFurnitureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureController.m; sourceTree = "<group>"; };
 		9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYRegister.xib; sourceTree = "<group>"; };
 		9D5FF5AC1BE9942A004371E5 /* JYRegisterXib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYRegisterXib.h; sourceTree = "<group>"; };
 		9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRegisterXib.m; sourceTree = "<group>"; };
@@ -136,6 +141,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		440D4D061BF1C70400447F8E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				440D4D071BF1C70400447F8E /* CollectionViewCell.h */,
+				440D4D081BF1C70400447F8E /* CollectionViewCell.m */,
+				440D4D091BF1C70400447F8E /* CYFMainPageViewController.h */,
+				440D4D0A1BF1C70400447F8E /* CYFMainPageViewController.m */,
+				440D4D0B1BF1C70400447F8E /* CYFMainPageViewController.xib */,
+				440D4D0C1BF1C70400447F8E /* DLLeftSlideViewController.h */,
+				440D4D0D1BF1C70400447F8E /* DLLeftSlideViewController.m */,
+				440D4D0E1BF1C70400447F8E /* JYFurnitureController.h */,
+				440D4D0F1BF1C70400447F8E /* JYFurnitureController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		7174E39D1BEFAEC500170AAA /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,23 +179,12 @@
 		9D6568681BEBA04B006D9507 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				9D6568691BEBA04B006D9507 /* Controller */,
+				440D4D061BF1C70400447F8E /* Controller */,
 				9D65686A1BEBA04B006D9507 /* Model */,
 				9D65686B1BEBA04B006D9507 /* View */,
 			);
 			name = Main;
 			path = Login/Main;
-			sourceTree = "<group>";
-		};
-		9D6568691BEBA04B006D9507 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				712A99C41BEF80EB00FE90FE /* CYFMainPageViewController.h */,
-				712A99C51BEF80EB00FE90FE /* CYFMainPageViewController.m */,
-				9D3726B91BF07BDA0093F2EF /* JYFurnitureController.h */,
-				9D3726BA1BF07BDA0093F2EF /* JYFurnitureController.m */,
-			);
-			path = Controller;
 			sourceTree = "<group>";
 		};
 		9D65686A1BEBA04B006D9507 /* Model */ = {
@@ -187,8 +197,6 @@
 		9D65686B1BEBA04B006D9507 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				712A99F61BEF83EE00FE90FE /* CollectionViewCell.h */,
-				712A99F71BEF83EE00FE90FE /* CollectionViewCell.m */,
 				712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */,
 			);
 			path = View;
@@ -443,6 +451,7 @@
 			files = (
 				9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */,
 				9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */,
+				440D4D121BF1C70400447F8E /* CYFMainPageViewController.xib in Resources */,
 				712A99C81BEF80EB00FE90FE /* CYFMainPageViewController.xib in Resources */,
 				9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */,
 				9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */,
@@ -519,20 +528,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				712A99C71BEF80EB00FE90FE /* CYFMainPageViewController.m in Sources */,
 				9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */,
 				9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */,
 				9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */,
+				440D4D111BF1C70400447F8E /* CYFMainPageViewController.m in Sources */,
 				9D7D5A871BE4740100E1E1EF /* main.m in Sources */,
 				7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */,
 				9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */,
+				440D4D131BF1C70400447F8E /* DLLeftSlideViewController.m in Sources */,
 				9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */,
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
 				9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */,
 				9D6568671BEB8861006D9507 /* JYUserData.m in Sources */,
-				9D3726BB1BF07BDA0093F2EF /* JYFurnitureController.m in Sources */,
-				712A99F81BEF83EE00FE90FE /* CollectionViewCell.m in Sources */,
 				9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */,
+				440D4D141BF1C70400447F8E /* JYFurnitureController.m in Sources */,
+				440D4D101BF1C70400447F8E /* CollectionViewCell.m in Sources */,
 				7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

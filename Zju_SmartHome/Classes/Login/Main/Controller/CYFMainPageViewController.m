@@ -11,6 +11,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CollectionViewCell.h"
 #import "AppDelegate.h"
+#import "DLLeftSlideViewController.h"
+
+#define MAX_CENTER_X 420
+#define BOUND_X 280
 
 @interface CYFMainPageViewController ()<CLLocationManagerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 
@@ -33,7 +37,9 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  
+  CGRect screen = [[UIScreen mainScreen] bounds];
+  centerX = screen.size.width / 2;
+  centerY = screen.size.height / 2;
   [self loadTopBackgroundImage];
   [self laodCityBackgroundImage];
   [self.avatarImageView setImage:[UIImage imageNamed:@"avatar"]];
@@ -46,19 +52,53 @@
   
   [self setCityName];
   
-  
-  
-  
-  UITapGestureRecognizer *avatarTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickAvatarImage)];
-  [self.avatarImageView addGestureRecognizer:avatarTap];
-  
-  
+    UIButton *userPhotoBtn = [[UIButton alloc] init];
+    userPhotoBtn.frame = self.avatarImageView.frame;
+    [userPhotoBtn addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:userPhotoBtn];
+    
+    UIPanGestureRecognizer *avatarTap = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)];
+    [self.view addGestureRecognizer:avatarTap];
+
   //注意下面这句话很重要，需要把cell注册到collectionView中；
   [self.collectionView registerClass:[CollectionViewCell class] forCellWithReuseIdentifier:@"myCollectionCell"];
   [self setUpCollection];
   
 }
 
+-(void) handlePan:(UIPanGestureRecognizer *)recognizer
+{
+    CGPoint translation = [recognizer translationInView:self.view];
+    float x = self.view.center.x + translation.x;
+    if (x < centerX) {
+        x = centerX;
+    }
+    self.view.center = CGPointMake(x, centerY);
+    
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        
+        [UIView animateWithDuration:0.2 animations:^(void){
+            
+            if (x > BOUND_X) {
+                self.view.center = CGPointMake(MAX_CENTER_X, centerY);
+            }else{
+                self.view.center = CGPointMake(centerX, centerY);
+            }
+        }];
+    }
+    [recognizer setTranslation:CGPointZero inView:self.view];
+}
+
+- (void)buttonPressed:(UIButton *)button
+{
+    [UIView animateWithDuration:0.2 animations:^(void){
+        if (self.view.center.x == centerX) {
+            self.view.center = CGPointMake(MAX_CENTER_X, centerY);
+        }else if (self.view.center.x == MAX_CENTER_X){
+            self.view.center = CGPointMake(centerX, centerY);
+        }
+    }];
+}
 
 -(void)setUpCollection{
   self.dataMArr = [NSMutableArray array];
