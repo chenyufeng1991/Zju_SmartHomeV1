@@ -15,7 +15,7 @@
 #import "JYUserData.h"
 #import "MBProgressHUD+MJ.h"
 #import "CYFMainPageViewController.h"
-
+#import "DLLeftSlideViewController.h"
 @interface JYLoginViewController ()<LoginXibDelegate,UITextFieldDelegate>
 
 
@@ -94,6 +94,12 @@
         {
             //移除遮盖
             [MBProgressHUD hideHUD];
+            CGRect screen = [[UIScreen mainScreen] bounds];
+            CGFloat width = screen.size.width;
+            CGFloat height = screen.size.height;
+            DLLeftSlideViewController *leftView = [[DLLeftSlideViewController alloc] init];
+            leftView.frame = CGRectMake(0, 0, width, height);
+            [self.view addSubview:leftView];
             self.view.window.rootViewController=[[CYFMainPageViewController alloc]init];
         }
         else if([status.code isEqualToString:@"330"])
