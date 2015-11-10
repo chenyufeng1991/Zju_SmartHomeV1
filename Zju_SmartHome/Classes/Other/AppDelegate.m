@@ -10,9 +10,10 @@
 #import "JYLoginViewController.h"
 #import "CYFMainPageViewController.h"
 #import "JYUserData.h"
-#import "DLLeftSlideViewController.h"
-@interface AppDelegate ()
+#import "DLLeftSlideView.h"
 
+@interface AppDelegate ()
+@property (nonatomic, strong) DLLeftSlideView *leftView;
 @end
 
 @implementation AppDelegate
@@ -27,14 +28,16 @@
     NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
     JYUserData *data=[NSKeyedUnarchiver unarchiveObjectWithFile:file];
     
+    CGRect screen = [[UIScreen mainScreen] bounds];
+    CGFloat width = screen.size.width;
+    CGFloat height = screen.size.height;
+    DLLeftSlideView *leftView = [[DLLeftSlideView alloc] init];
+    leftView.frame = CGRectMake(0, 0, width, height);
+    [self.window addSubview:leftView];
+    self.leftView = leftView;
+    
     if(data)//已经登录过
     {
-        CGRect screen = [[UIScreen mainScreen] bounds];
-        CGFloat width = screen.size.width;
-        CGFloat height = screen.size.height;
-        DLLeftSlideViewController *leftView = [[DLLeftSlideViewController alloc] init];
-        leftView.frame = CGRectMake(0, 0, width, height);
-        [self.window addSubview:leftView];
         self.window.rootViewController=[[CYFMainPageViewController alloc]init];
     }
     else//还未登录过

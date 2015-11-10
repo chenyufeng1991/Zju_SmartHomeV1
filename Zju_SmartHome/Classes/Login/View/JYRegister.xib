@@ -22,14 +22,14 @@
                 <view alpha="0.59999999999999998" contentMode="scaleToFill" id="cc2-kf-7eB">
                     <rect key="frame" x="50" y="90" width="220" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_Profile" id="4Hv-9n-4A1">
                     <rect key="frame" x="60" y="102" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入用户名" textAlignment="natural" minimumFontSize="17" id="xa4-5M-pGd">
-                    <rect key="frame" x="86" y="104" width="174" height="12"/>
+                    <rect key="frame" x="86" y="103" width="174" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" red="0.47493645940000001" green="0.88774463380000002" blue="0.70210510999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,7 +46,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入密码" textAlignment="natural" minimumFontSize="17" id="i9l-7T-naV">
-                    <rect key="frame" x="86" y="154" width="152" height="12"/>
+                    <rect key="frame" x="86" y="153" width="152" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" red="0.47493645940000001" green="0.88774463380000002" blue="0.70210510999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,14 +64,14 @@
                 <view alpha="0.59999999999999998" contentMode="scaleToFill" id="irj-ke-xXG">
                     <rect key="frame" x="50" y="190" width="220" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_Mail" id="DSf-yy-tsP">
                     <rect key="frame" x="60" y="202" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="请输入邮箱" textAlignment="natural" minimumFontSize="17" id="RMk-q0-qJZ">
-                    <rect key="frame" x="86" y="204" width="174" height="12"/>
+                    <rect key="frame" x="86" y="203" width="174" height="14"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" red="0.47493645940000001" green="0.88774463380000002" blue="0.70210510999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

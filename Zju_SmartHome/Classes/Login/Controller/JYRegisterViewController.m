@@ -12,7 +12,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 @interface JYRegisterViewController ()<RegisterXibDelegate,UITextFieldDelegate>
-
+@property(nonatomic,strong)JYRegisterXib *registerXib;
 @end
 
 @implementation JYRegisterViewController
@@ -28,6 +28,7 @@
     registerXib.username.delegate=self;
     registerXib.password.delegate=self;
     registerXib.email.delegate=self;
+    self.registerXib=registerXib;
     self.view=registerXib;
 }
 -(void)registerXib:(NSString *)username and:(NSString *)password and:(NSString *)email
@@ -83,6 +84,7 @@
     }
     else if([textField.text isEqualToString:@"请输入密码"])
     {
+        self.registerXib.eyePicture.hidden=NO;
         [textField setText:@""];
         textField.secureTextEntry=YES;
     }

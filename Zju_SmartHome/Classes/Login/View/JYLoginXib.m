@@ -15,7 +15,7 @@
 //@property (weak, nonatomic) IBOutlet UITextField *password;
 //密码明文
 - (IBAction)eyeSeePwd:(id)sender;
-@property (weak, nonatomic) IBOutlet UIButton *eyePicture;
+//@property (weak, nonatomic) IBOutlet UIButton *eyePicture;
 //登录
 - (IBAction)loginGo:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -29,6 +29,7 @@
 +(instancetype)loginXib
 {
     JYLoginXib *loginXib=[[[NSBundle mainBundle]loadNibNamed:@"loginXib" owner:nil options:nil]lastObject];
+    loginXib.eyePicture.hidden=YES;
     return loginXib;
 }
 
@@ -40,13 +41,13 @@
     if(self.password.secureTextEntry)
     {
         self.password.secureTextEntry=NO;
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
+        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
         
     }
     else
     {
         self.password.secureTextEntry=YES;
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
+        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
     }
 }
 

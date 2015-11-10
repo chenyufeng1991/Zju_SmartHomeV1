@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *username;
 //密码
 @property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet UIButton *eyePicture;
 
 @property(nonatomic,weak)id<LoginXibDelegate>delegate;
 @end

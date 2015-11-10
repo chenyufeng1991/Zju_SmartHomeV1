@@ -1,10 +1,11 @@
 //
-//  CollectionViewCell.h
+//  CYFCollectionViewCell.h
 //  Zju_SmartHome
 //
-//  Created by chenyufeng on 15/11/8.
+//  Created by 123 on 15/11/10.
 //  Copyright © 2015年 GJY. All rights reserved.
 //
+
 
 #import <UIKit/UIKit.h>
 

@@ -15,7 +15,7 @@
 //密码明文
 - (IBAction)eyeSeePwd:(id)sender;
 //眼睛图片
-@property (weak, nonatomic) IBOutlet UIButton *eyePicture;
+//@property (weak, nonatomic) IBOutlet UIButton *eyePicture;
 
 - (IBAction)backClick:(id)sender;
 
@@ -26,12 +26,12 @@
 +(instancetype)registerXib
 {
     JYRegisterXib *registerXib=[[[NSBundle mainBundle]loadNibNamed:@"JYRegister" owner:nil options:nil]lastObject];
+    registerXib.eyePicture.hidden=YES;
     return registerXib;
 }
 
 - (IBAction)registerGo:(id)sender
 {
-    NSLog(@"registerGoGoGo");
     if([self.delegate respondsToSelector:@selector(registerXib:and:and:)])
     {
         [self.delegate registerXib:self.username.text and:self.password.text and:self.email.text];
@@ -42,13 +42,13 @@
 {
     if(self.password.secureTextEntry)
     {
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
-        self.password.secureTextEntry=NO;
         
+        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
+        self.password.secureTextEntry=NO;
     }
     else
     {
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
+        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
         self.password.secureTextEntry=YES;
     }
 }
@@ -58,5 +58,12 @@
     {
         [self.delegate backClick];
     }
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    [self.username resignFirstResponder];
+    [self.password resignFirstResponder];
+    [self.email resignFirstResponder];
 }
 @end

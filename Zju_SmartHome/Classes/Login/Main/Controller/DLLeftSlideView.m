@@ -1,18 +1,20 @@
 //
-//  DLLeftSlideViewController.m
-//  SlideView
+//  DLLeftSlideView.m
+//  Zju_SmartHome
 //
-//  Created by TooWalker on 11/9/15.
-//  Copyright © 2015 yunzhisheng. All rights reserved.
+//  Created by 123 on 15/11/10.
+//  Copyright © 2015年 GJY. All rights reserved.
 //
 
-#import "DLLeftSlideViewController.h"
+#import "DLLeftSlideView.h"
+#import "MBProgressHUD+MJ.h"
+#import "JYLoginViewController.h"
 
 #define MAX_CENTER_X 420
 #define BOUND_X 280
 #define LINE_COLOR [UIColor colorWithRed:0.892 green:0.623 blue:0.473 alpha:0.5]
 
-@implementation DLLeftSlideViewController
+@implementation DLLeftSlideView
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -131,27 +133,54 @@
 
 
 - (void)btnChangePhotoClick{
-    UIAlertView *alertViewHelp = [[UIAlertView alloc] initWithTitle:@"提示" message:@"点击了更改头像按钮" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alertViewHelp show];
+    
 }
 
 - (void)btnCompleteProfileClick{
-    UIAlertView *alertViewHelp = [[UIAlertView alloc] initWithTitle:@"提示" message:@"点击了完善资料按钮" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alertViewHelp show];
+    
 }
 
 - (void)btnModifyPassWordClick{
-    UIAlertView *alertViewHelp = [[UIAlertView alloc] initWithTitle:@"提示" message:@"点击了修改密码按钮" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alertViewHelp show];
+    
 }
 
 - (void)btnModifyEmailClick{
-    UIAlertView *alertViewHelp = [[UIAlertView alloc] initWithTitle:@"提示" message:@"点击了修改邮箱按钮" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alertViewHelp show];
+    
 }
 
-- (void)btnAccountLogoutClick{
-    UIAlertView *alertViewHelp = [[UIAlertView alloc] initWithTitle:@"提示" message:@"点击了账号注销按钮" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alertViewHelp show];
+- (void)btnAccountLogoutClick
+{
+    
+    //创建UIAlertView控件
+    UIAlertView *logoutAlert=[[UIAlertView alloc]
+                              initWithTitle:@"注销当前账号"//指定标题
+                              message:@"注销当前账号需要重新登录"//指定消息
+                              delegate:self//指定委托对象
+                              cancelButtonTitle:@"取消"//为底部的取消按钮设置标题
+                              otherButtonTitles:@"确定", nil];
+    [logoutAlert show];
+    
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    
+    if(buttonIndex==1)
+    {
+        //沙盒路径
+        NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+        NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
+        
+        //清空沙盒内容
+        NSFileManager * fileManager = [[NSFileManager alloc]init];
+        [fileManager removeItemAtPath:file error:nil];
+        
+        self.window.rootViewController=[[JYLoginViewController alloc]init];
+    }
+    else
+    {
+        
+    }
 }
 @end

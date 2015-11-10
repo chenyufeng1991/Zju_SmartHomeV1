@@ -9,9 +9,10 @@
 #import "CYFMainPageViewController.h"
 #import "UIImageView+WebCache.h"
 #import <CoreLocation/CoreLocation.h>
-#import "CollectionViewCell.h"
+#import "CYFCollectionViewCell.h"
 #import "AppDelegate.h"
-#import "DLLeftSlideViewController.h"
+#import "DLLeftSlideView.h"
+#import "JYFurnitureController.h"
 
 #define MAX_CENTER_X 420
 #define BOUND_X 280
@@ -34,7 +35,8 @@
 
 @implementation CYFMainPageViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
   [super viewDidLoad];
   
   CGRect screen = [[UIScreen mainScreen] bounds];
@@ -100,9 +102,11 @@
     }];
 }
 
--(void)setUpCollection{
+-(void)setUpCollection
+{
   self.dataMArr = [NSMutableArray array];
-  for(NSInteger index = 0;index<4; index++){
+  for(NSInteger index = 0;index<4; index++)
+  {
     UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"%ld",(long)index+1]];
     NSDictionary *dic = @{@"image": image};
     [self.dataMArr addObject:dic];
@@ -122,7 +126,6 @@
     //点击了确定按钮后的响应事件；
     NSLog(@"您点击了确定按钮");
   }];
-  
 }
 
 - (void)clickAvatarImage{
@@ -301,9 +304,13 @@
 
 
 #pragma mark - UICollectionViewDelegate
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
   
   NSLog(@"当前点击的是：%ld",(long)indexPath.row);
+ JYFurnitureController *furniture=[[JYFurnitureController alloc]init];
+    self.view.window.rootViewController=furniture;
+  
 }
 
 

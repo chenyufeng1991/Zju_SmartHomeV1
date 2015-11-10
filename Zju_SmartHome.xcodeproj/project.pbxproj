@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440D4D101BF1C70400447F8E /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D081BF1C70400447F8E /* CollectionViewCell.m */; };
 		440D4D111BF1C70400447F8E /* CYFMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D0A1BF1C70400447F8E /* CYFMainPageViewController.m */; };
-		440D4D121BF1C70400447F8E /* CYFMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 440D4D0B1BF1C70400447F8E /* CYFMainPageViewController.xib */; };
-		440D4D131BF1C70400447F8E /* DLLeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D0D1BF1C70400447F8E /* DLLeftSlideViewController.m */; };
 		440D4D141BF1C70400447F8E /* JYFurnitureController.m in Sources */ = {isa = PBXBuildFile; fileRef = 440D4D0F1BF1C70400447F8E /* JYFurnitureController.m */; };
 		712A99C81BEF80EB00FE90FE /* CYFMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */; };
 		712A99FA1BEF849E00FE90FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A99F91BEF849E00FE90FE /* CoreLocation.framework */; };
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
+		9D121BD31BF22ABD007697B2 /* CYFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D121BD21BF22ABD007697B2 /* CYFCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		9D121BD61BF22B92007697B2 /* DLLeftSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D121BD51BF22B92007697B2 /* DLLeftSlideView.m */; settings = {ASSET_TAGS = (); }; };
+		9D121BDA1BF234BB007697B2 /* CYFMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D121BD91BF234BB007697B2 /* CYFMainPageViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */; };
 		9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */; };
 		9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5B31BEA2C2E004371E5 /* JYNavigationController.m */; };
@@ -54,13 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		440D4D071BF1C70400447F8E /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
-		440D4D081BF1C70400447F8E /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
 		440D4D091BF1C70400447F8E /* CYFMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFMainPageViewController.h; sourceTree = "<group>"; };
 		440D4D0A1BF1C70400447F8E /* CYFMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFMainPageViewController.m; sourceTree = "<group>"; };
-		440D4D0B1BF1C70400447F8E /* CYFMainPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYFMainPageViewController.xib; sourceTree = "<group>"; };
-		440D4D0C1BF1C70400447F8E /* DLLeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftSlideViewController.h; sourceTree = "<group>"; };
-		440D4D0D1BF1C70400447F8E /* DLLeftSlideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftSlideViewController.m; sourceTree = "<group>"; };
 		440D4D0E1BF1C70400447F8E /* JYFurnitureController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureController.h; sourceTree = "<group>"; };
 		440D4D0F1BF1C70400447F8E /* JYFurnitureController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureController.m; sourceTree = "<group>"; };
 		5C2168D92BC3D6A7F5365A43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +67,11 @@
 		7174E3A11BEFAEC500170AAA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		88554DE0CE3743A8B110C726 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D121BD11BF22ABD007697B2 /* CYFCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CYFCollectionViewCell.h; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFCollectionViewCell.h; sourceTree = SOURCE_ROOT; };
+		9D121BD21BF22ABD007697B2 /* CYFCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CYFCollectionViewCell.m; path = Zju_SmartHome/Classes/Login/Main/Controller/CYFCollectionViewCell.m; sourceTree = SOURCE_ROOT; };
+		9D121BD41BF22B92007697B2 /* DLLeftSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLLeftSlideView.h; path = Zju_SmartHome/Classes/Login/Main/Controller/DLLeftSlideView.h; sourceTree = SOURCE_ROOT; };
+		9D121BD51BF22B92007697B2 /* DLLeftSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLLeftSlideView.m; path = Zju_SmartHome/Classes/Login/Main/Controller/DLLeftSlideView.m; sourceTree = SOURCE_ROOT; };
+		9D121BD91BF234BB007697B2 /* CYFMainPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYFMainPageViewController.xib; sourceTree = "<group>"; };
 		9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYRegister.xib; sourceTree = "<group>"; };
 		9D5FF5AC1BE9942A004371E5 /* JYRegisterXib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYRegisterXib.h; sourceTree = "<group>"; };
 		9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRegisterXib.m; sourceTree = "<group>"; };
@@ -144,13 +144,9 @@
 		440D4D061BF1C70400447F8E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				440D4D071BF1C70400447F8E /* CollectionViewCell.h */,
-				440D4D081BF1C70400447F8E /* CollectionViewCell.m */,
+				9D121BD91BF234BB007697B2 /* CYFMainPageViewController.xib */,
 				440D4D091BF1C70400447F8E /* CYFMainPageViewController.h */,
 				440D4D0A1BF1C70400447F8E /* CYFMainPageViewController.m */,
-				440D4D0B1BF1C70400447F8E /* CYFMainPageViewController.xib */,
-				440D4D0C1BF1C70400447F8E /* DLLeftSlideViewController.h */,
-				440D4D0D1BF1C70400447F8E /* DLLeftSlideViewController.m */,
 				440D4D0E1BF1C70400447F8E /* JYFurnitureController.h */,
 				440D4D0F1BF1C70400447F8E /* JYFurnitureController.m */,
 			);
@@ -198,6 +194,10 @@
 			isa = PBXGroup;
 			children = (
 				712A99C61BEF80EB00FE90FE /* CYFMainPageViewController.xib */,
+				9D121BD11BF22ABD007697B2 /* CYFCollectionViewCell.h */,
+				9D121BD21BF22ABD007697B2 /* CYFCollectionViewCell.m */,
+				9D121BD41BF22B92007697B2 /* DLLeftSlideView.h */,
+				9D121BD51BF22B92007697B2 /* DLLeftSlideView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,8 +450,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */,
+				9D121BDA1BF234BB007697B2 /* CYFMainPageViewController.xib in Resources */,
 				9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */,
-				440D4D121BF1C70400447F8E /* CYFMainPageViewController.xib in Resources */,
 				712A99C81BEF80EB00FE90FE /* CYFMainPageViewController.xib in Resources */,
 				9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */,
 				9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */,
@@ -535,14 +535,14 @@
 				9D7D5A871BE4740100E1E1EF /* main.m in Sources */,
 				7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */,
 				9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */,
-				440D4D131BF1C70400447F8E /* DLLeftSlideViewController.m in Sources */,
 				9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */,
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
+				9D121BD31BF22ABD007697B2 /* CYFCollectionViewCell.m in Sources */,
 				9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */,
 				9D6568671BEB8861006D9507 /* JYUserData.m in Sources */,
+				9D121BD61BF22B92007697B2 /* DLLeftSlideView.m in Sources */,
 				9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */,
 				440D4D141BF1C70400447F8E /* JYFurnitureController.m in Sources */,
-				440D4D101BF1C70400447F8E /* CollectionViewCell.m in Sources */,
 				7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,10 +15,10 @@
 #import "JYUserData.h"
 #import "MBProgressHUD+MJ.h"
 #import "CYFMainPageViewController.h"
-#import "DLLeftSlideViewController.h"
+#import "DLLeftSlideView.h"
 @interface JYLoginViewController ()<LoginXibDelegate,UITextFieldDelegate>
 
-
+@property(nonatomic,strong)JYLoginXib *loginXib;
 @end
 
 @implementation JYLoginViewController
@@ -30,6 +30,7 @@
     JYLoginXib *loginXib=[JYLoginXib loginXib];
     //设置代理
     loginXib.delegate=self;
+    self.loginXib=loginXib;
     //设置文本输入框的代理
     loginXib.password.delegate=self;
     loginXib.username.delegate=self;
@@ -48,7 +49,9 @@
     }
     else if([textField.text isEqualToString:@"请输入密码"])
     {
+        self.loginXib.eyePicture.hidden=NO;
         [textField setText:@""];
+        textField.font=[UIFont systemFontOfSize:10];
         textField.secureTextEntry=YES;
     }
 }
@@ -97,7 +100,7 @@
             CGRect screen = [[UIScreen mainScreen] bounds];
             CGFloat width = screen.size.width;
             CGFloat height = screen.size.height;
-            DLLeftSlideViewController *leftView = [[DLLeftSlideViewController alloc] init];
+            DLLeftSlideView *leftView = [[DLLeftSlideView alloc] init];
             leftView.frame = CGRectMake(0, 0, width, height);
             [self.view addSubview:leftView];
             self.view.window.rootViewController=[[CYFMainPageViewController alloc]init];
