@@ -90,6 +90,7 @@
   [self showPromptDialog:@"提示" andMessage:@"这里会弹出侧拉菜单" andButton:@"确定" andAction:^(UIAlertAction *action) {
     //点击了确定按钮后的响应事件；
     NSLog(@"您点击了头像按钮");
+      NSLog(@"继续添加");
   }];
 }
 
