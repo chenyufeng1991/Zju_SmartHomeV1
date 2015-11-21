@@ -14,8 +14,9 @@
 #import "JYLoginStatus.h"
 #import "JYUserData.h"
 #import "MBProgressHUD+MJ.h"
-#import "CYFMainPageViewController.h"
+#import "CYFMainViewController.h"
 #import "DLLeftSlideView.h"
+#import "JYNavigationController.h"
 @interface JYLoginViewController ()<LoginXibDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong)JYLoginXib *loginXib;
@@ -97,13 +98,11 @@
         {
             //移除遮盖
             [MBProgressHUD hideHUD];
-            CGRect screen = [[UIScreen mainScreen] bounds];
-            CGFloat width = screen.size.width;
-            CGFloat height = screen.size.height;
-            DLLeftSlideView *leftView = [[DLLeftSlideView alloc] init];
-            leftView.frame = CGRectMake(0, 0, width, height);
-            [self.view addSubview:leftView];
-            self.view.window.rootViewController=[[CYFMainPageViewController alloc]init];
+            
+            CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
+            JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
+            self.view.window.rootViewController=navVc;
+
         }
         else if([status.code isEqualToString:@"330"])
         {
@@ -131,10 +130,7 @@
 //代理注册方法
 -(void)registerGoGoGo
 {
-    NSLog(@"注册GOGOGO");
     JYRegisterViewController *registerVc=[[JYRegisterViewController alloc]init];
-    //JYNavigationController *navC=[[JYNavigationController alloc]initWithRootViewController:registerVc];
-   // [self.navigationController pushViewController:navC animated:YES];
     self.view.window.rootViewController=registerVc;
 }
 @end

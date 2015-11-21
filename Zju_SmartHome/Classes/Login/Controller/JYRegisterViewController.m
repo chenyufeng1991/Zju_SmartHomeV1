@@ -87,6 +87,7 @@
         self.registerXib.eyePicture.hidden=NO;
         [textField setText:@""];
         textField.secureTextEntry=YES;
+        textField.font=[UIFont systemFontOfSize:10];
     }
     else if([textField.text isEqualToString:@"请输入邮箱"])
     {

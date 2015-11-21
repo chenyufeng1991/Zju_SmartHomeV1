@@ -17,11 +17,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   
+     
+
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    
+    for(UIView *view in self.navigationBar.subviews)
+    {
+        if([view isKindOfClass:NSClassFromString(@"_UINavigationBarBackground")])
+        {
+            //[view removeFromSuperview];
+            view.alpha=0.8;
+        }
+    }
 }
 //一个类只会调用一次
 +(void)initialize
 {
+    
     //1.设置导航栏的主题
     [self setupNavBarTheme];
     
@@ -30,23 +44,30 @@
     
 }
 
+
 //设置导航栏的主题
 +(void)setupNavBarTheme
 {
     //1.去除apperance对象
     UINavigationBar *navBar=[UINavigationBar appearance];
-    
-    //设置背景
-    //[navBar setBackgroundImage:[UIImage imageNamed:@"btn_login_for6"] forBarMetrics:UIBarMetricsDefault];
-    //[navBar setBackgroundColor:[UIColor blackColor]];
-    
+    navBar.tintColor = [UIColor whiteColor];
+    [navBar setBarTintColor:[UIColor blackColor]];
+    navBar.translucent = YES;
+   
+
     //2.设置标题属性
+    //设置标题属性
     NSMutableDictionary *textAttrs=[NSMutableDictionary dictionary];
-    textAttrs[UITextAttributeTextColor]=[UIColor whiteColor];
+    textAttrs[NSForegroundColorAttributeName]=[UIColor whiteColor];
+    textAttrs[NSFontAttributeName]=[UIFont systemFontOfSize:18];
     textAttrs[UITextAttributeTextShadowOffset]=[NSValue valueWithUIOffset:UIOffsetZero];
-    textAttrs[UITextAttributeFont]=[UIFont boldSystemFontOfSize:18];
-    
+    textAttrs[UITextAttributeFont]=[UIFont boldSystemFontOfSize:20];
     [navBar setTitleTextAttributes:textAttrs];
+    
+    
+    //去掉导航栏但会按钮自带的文字
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+forBarMetrics:UIBarMetricsDefault];
 }
 
 //设置导航栏按钮主题
@@ -58,10 +79,15 @@
     NSMutableDictionary *textAttrs=[NSMutableDictionary dictionary];
     textAttrs[UITextAttributeTextColor]=[UIColor whiteColor];
     textAttrs[UITextAttributeTextShadowOffset]=[NSValue valueWithUIOffset:UIOffsetZero];
-    textAttrs[UITextAttributeFont]=[UIFont systemFontOfSize:18];
+    textAttrs[UITextAttributeFont]=[UIFont systemFontOfSize:16];
     
     [item setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
     [item setTitleTextAttributes:textAttrs forState:UIControlStateHighlighted];
 
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 @end
