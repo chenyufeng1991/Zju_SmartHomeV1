@@ -7,20 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		446AF3011C001F060081C798 /* SMS_SDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 446AF2FC1C001F060081C798 /* SMS_SDKLocalizable.strings */; };
+		446AF3021C001F060081C798 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF2FE1C001F060081C798 /* MOBFoundation.framework */; };
+		446AF3031C001F070081C798 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF2FF1C001F060081C798 /* SMS_SDK.framework */; };
+		446AF3051C001FF30081C798 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF3041C001FF30081C798 /* libz.tbd */; };
+		446AF3071C001FFC0081C798 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF3061C001FFC0081C798 /* MessageUI.framework */; };
+		446AF3091C0020060081C798 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF3081C0020060081C798 /* JavaScriptCore.framework */; };
+		446AF30B1C0020120081C798 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF30A1C0020120081C798 /* libstdc++.tbd */; };
+		446AF30D1C00206D0081C798 /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF30C1C00206D0081C798 /* libicucore.A.dylib */; };
+		446AF3111C0024AB0081C798 /* RegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3101C0024AB0081C798 /* RegViewController.m */; };
+		446AF3141C00250A0081C798 /* VerifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3131C00250A0081C798 /* VerifyViewController.m */; };
+		446AF31E1C0025330081C798 /* NSDictionary-DeepMutableCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3171C0025330081C798 /* NSDictionary-DeepMutableCopy.m */; };
+		446AF31F1C0025330081C798 /* SMS_HYZBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3191C0025330081C798 /* SMS_HYZBadgeView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		446AF3201C0025330081C798 /* SMS_MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF31B1C0025330081C798 /* SMS_MBProgressHUD+Add.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		446AF3211C0025330081C798 /* SMS_MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF31D1C0025330081C798 /* SMS_MBProgressHUD.m */; };
+		446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3231C0025C90081C798 /* SectionsViewController.m */; };
+		446AF3291C002FB70081C798 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 446AF32B1C002FB70081C798 /* Localizable.strings */; };
+		446AF3321C003FB10081C798 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 446AF3341C003FB10081C798 /* country.plist */; };
+		446AF3461C005BF10081C798 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3411C005BF10081C798 /* RECommonFunctions.m */; };
+		446AF3471C005BF10081C798 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3431C005BF10081C798 /* RESideMenu.m */; };
+		446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */; };
+		446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */; };
 		712A99FA1BEF849E00FE90FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A99F91BEF849E00FE90FE /* CoreLocation.framework */; };
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
-		9D121BD61BF22B92007697B2 /* DLLeftSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D121BD51BF22B92007697B2 /* DLLeftSlideView.m */; settings = {ASSET_TAGS = (); }; };
-		9D564D4F1BFEAB840062700D /* CYFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564D4E1BFEAB840062700D /* CYFMainViewController.m */; settings = {ASSET_TAGS = (); }; };
-		9D564D581BFEAD220062700D /* JYMainXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D564D571BFEAD220062700D /* JYMainXib.xib */; settings = {ASSET_TAGS = (); }; };
-		9D564D5B1BFEAD630062700D /* JYMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564D5A1BFEAD630062700D /* JYMainView.m */; settings = {ASSET_TAGS = (); }; };
-		9D564DB71BFF688A0062700D /* CYFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DB61BFF688A0062700D /* CYFCollectionViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		9D564DBA1BFF68DD0062700D /* CYFCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DB91BFF68DD0062700D /* CYFCollectionReusableView.m */; settings = {ASSET_TAGS = (); }; };
-		9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DBC1BFF69A10062700D /* CYFFurnitureViewController.m */; settings = {ASSET_TAGS = (); }; };
-		9D564DBF1BFF69A10062700D /* CYFFurnitureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D564DBD1BFF69A10062700D /* CYFFurnitureViewController.xib */; settings = {ASSET_TAGS = (); }; };
-		9D564DC21BFFF6E50062700D /* JYElectricalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DC11BFFF6E50062700D /* JYElectricalController.m */; settings = {ASSET_TAGS = (); }; };
-		9D564DC51C0007290062700D /* JYFurniture.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DC41C0007290062700D /* JYFurniture.m */; settings = {ASSET_TAGS = (); }; };
+		9D564D4F1BFEAB840062700D /* CYFMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564D4E1BFEAB840062700D /* CYFMainViewController.m */; };
+		9D564D581BFEAD220062700D /* JYMainXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D564D571BFEAD220062700D /* JYMainXib.xib */; };
+		9D564D5B1BFEAD630062700D /* JYMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564D5A1BFEAD630062700D /* JYMainView.m */; };
+		9D564DB71BFF688A0062700D /* CYFCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DB61BFF688A0062700D /* CYFCollectionViewCell.m */; };
+		9D564DBA1BFF68DD0062700D /* CYFCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DB91BFF68DD0062700D /* CYFCollectionReusableView.m */; };
+		9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DBC1BFF69A10062700D /* CYFFurnitureViewController.m */; };
+		9D564DBF1BFF69A10062700D /* CYFFurnitureViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D564DBD1BFF69A10062700D /* CYFFurnitureViewController.xib */; };
+		9D564DC21BFFF6E50062700D /* JYElectricalController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DC11BFFF6E50062700D /* JYElectricalController.m */; };
+		9D564DC51C0007290062700D /* JYFurniture.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D564DC41C0007290062700D /* JYFurniture.m */; };
 		9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AA1BE9930B004371E5 /* JYRegister.xib */; };
 		9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5AD1BE9942A004371E5 /* JYRegisterXib.m */; };
 		9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D5FF5B31BEA2C2E004371E5 /* JYNavigationController.m */; };
@@ -58,6 +78,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		446AF2FD1C001F060081C798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SMS_SDKLocalizable.strings; sourceTree = "<group>"; };
+		446AF2FE1C001F060081C798 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
+		446AF2FF1C001F060081C798 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
+		446AF3001C001F060081C798 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/SMS_SDKLocalizable.strings"; sourceTree = "<group>"; };
+		446AF3041C001FF30081C798 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		446AF3061C001FFC0081C798 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		446AF3081C0020060081C798 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		446AF30A1C0020120081C798 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		446AF30C1C00206D0081C798 /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = ../../../../usr/lib/libicucore.A.dylib; sourceTree = "<group>"; };
+		446AF30F1C0024AB0081C798 /* RegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegViewController.h; sourceTree = "<group>"; };
+		446AF3101C0024AB0081C798 /* RegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegViewController.m; sourceTree = "<group>"; };
+		446AF3121C00250A0081C798 /* VerifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifyViewController.h; sourceTree = "<group>"; };
+		446AF3131C00250A0081C798 /* VerifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifyViewController.m; sourceTree = "<group>"; };
+		446AF3161C0025330081C798 /* NSDictionary-DeepMutableCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary-DeepMutableCopy.h"; sourceTree = "<group>"; };
+		446AF3171C0025330081C798 /* NSDictionary-DeepMutableCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary-DeepMutableCopy.m"; sourceTree = "<group>"; };
+		446AF3181C0025330081C798 /* SMS_HYZBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMS_HYZBadgeView.h; sourceTree = "<group>"; };
+		446AF3191C0025330081C798 /* SMS_HYZBadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMS_HYZBadgeView.m; sourceTree = "<group>"; };
+		446AF31A1C0025330081C798 /* SMS_MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SMS_MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		446AF31B1C0025330081C798 /* SMS_MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SMS_MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		446AF31C1C0025330081C798 /* SMS_MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMS_MBProgressHUD.h; sourceTree = "<group>"; };
+		446AF31D1C0025330081C798 /* SMS_MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMS_MBProgressHUD.m; sourceTree = "<group>"; };
+		446AF3221C0025C90081C798 /* SectionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionsViewController.h; sourceTree = "<group>"; };
+		446AF3231C0025C90081C798 /* SectionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionsViewController.m; sourceTree = "<group>"; };
+		446AF32A1C002FB70081C798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		446AF32C1C002FBB0081C798 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		446AF3331C003FB10081C798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/country.plist; sourceTree = "<group>"; };
+		446AF3351C003FB30081C798 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/country.plist"; sourceTree = "<group>"; };
+		446AF3401C005BF10081C798 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		446AF3411C005BF10081C798 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		446AF3421C005BF10081C798 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		446AF3431C005BF10081C798 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		446AF3441C005BF10081C798 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		446AF3491C005F180081C798 /* DLLeftSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftSlideMenuViewController.h; sourceTree = "<group>"; };
+		446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftSlideMenuViewController.m; sourceTree = "<group>"; };
 		5C2168D92BC3D6A7F5365A43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		712A99F91BEF849E00FE90FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7174E39E1BEFAEC500170AAA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
@@ -66,8 +121,6 @@
 		7174E3A11BEFAEC500170AAA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		88554DE0CE3743A8B110C726 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D121BD41BF22B92007697B2 /* DLLeftSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLLeftSlideView.h; path = Zju_SmartHome/Classes/Login/Main/Controller/DLLeftSlideView.h; sourceTree = SOURCE_ROOT; };
-		9D121BD51BF22B92007697B2 /* DLLeftSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLLeftSlideView.m; path = Zju_SmartHome/Classes/Login/Main/Controller/DLLeftSlideView.m; sourceTree = SOURCE_ROOT; };
 		9D564D4D1BFEAB840062700D /* CYFMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFMainViewController.h; sourceTree = "<group>"; };
 		9D564D4E1BFEAB840062700D /* CYFMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFMainViewController.m; sourceTree = "<group>"; };
 		9D564D571BFEAD220062700D /* JYMainXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYMainXib.xib; sourceTree = "<group>"; };
@@ -122,6 +175,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446AF30D1C00206D0081C798 /* libicucore.A.dylib in Frameworks */,
+				446AF30B1C0020120081C798 /* libstdc++.tbd in Frameworks */,
+				446AF3091C0020060081C798 /* JavaScriptCore.framework in Frameworks */,
+				446AF3071C001FFC0081C798 /* MessageUI.framework in Frameworks */,
+				446AF3051C001FF30081C798 /* libz.tbd in Frameworks */,
+				446AF3021C001F060081C798 /* MOBFoundation.framework in Frameworks */,
+				446AF3031C001F070081C798 /* SMS_SDK.framework in Frameworks */,
 				712A99FA1BEF849E00FE90FE /* CoreLocation.framework in Frameworks */,
 				EF249F846089741C690DEED3 /* libPods.a in Frameworks */,
 			);
@@ -162,6 +222,91 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		446AF2FB1C001F060081C798 /* SMS_SDK */ = {
+			isa = PBXGroup;
+			children = (
+				446AF2FC1C001F060081C798 /* SMS_SDKLocalizable.strings */,
+				446AF2FE1C001F060081C798 /* MOBFoundation.framework */,
+				446AF2FF1C001F060081C798 /* SMS_SDK.framework */,
+			);
+			name = SMS_SDK;
+			path = ../../../SMS_SDK;
+			sourceTree = "<group>";
+		};
+		446AF30E1C00245A0081C798 /* FindPasswordBySMS */ = {
+			isa = PBXGroup;
+			children = (
+				446AF30F1C0024AB0081C798 /* RegViewController.h */,
+				446AF3101C0024AB0081C798 /* RegViewController.m */,
+				446AF3121C00250A0081C798 /* VerifyViewController.h */,
+				446AF3131C00250A0081C798 /* VerifyViewController.m */,
+				446AF3221C0025C90081C798 /* SectionsViewController.h */,
+				446AF3231C0025C90081C798 /* SectionsViewController.m */,
+			);
+			name = FindPasswordBySMS;
+			sourceTree = "<group>";
+		};
+		446AF3151C0025330081C798 /* SMS_UILib */ = {
+			isa = PBXGroup;
+			children = (
+				446AF3161C0025330081C798 /* NSDictionary-DeepMutableCopy.h */,
+				446AF3171C0025330081C798 /* NSDictionary-DeepMutableCopy.m */,
+				446AF3181C0025330081C798 /* SMS_HYZBadgeView.h */,
+				446AF3191C0025330081C798 /* SMS_HYZBadgeView.m */,
+				446AF31A1C0025330081C798 /* SMS_MBProgressHUD+Add.h */,
+				446AF31B1C0025330081C798 /* SMS_MBProgressHUD+Add.m */,
+				446AF31C1C0025330081C798 /* SMS_MBProgressHUD.h */,
+				446AF31D1C0025330081C798 /* SMS_MBProgressHUD.m */,
+			);
+			path = SMS_UILib;
+			sourceTree = "<group>";
+		};
+		446AF3361C0055BB0081C798 /* LeftSlideView */ = {
+			isa = PBXGroup;
+			children = (
+				446AF3391C0056340081C798 /* Model */,
+				446AF3381C00562A0081C798 /* Controller */,
+				446AF3371C0056120081C798 /* View */,
+			);
+			name = LeftSlideView;
+			sourceTree = "<group>";
+		};
+		446AF3371C0056120081C798 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		446AF3381C00562A0081C798 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				446AF3491C005F180081C798 /* DLLeftSlideMenuViewController.h */,
+				446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		446AF3391C0056340081C798 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		446AF33F1C005BF10081C798 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				446AF3401C005BF10081C798 /* RECommonFunctions.h */,
+				446AF3411C005BF10081C798 /* RECommonFunctions.m */,
+				446AF3421C005BF10081C798 /* RESideMenu.h */,
+				446AF3431C005BF10081C798 /* RESideMenu.m */,
+				446AF3441C005BF10081C798 /* UIViewController+RESideMenu.h */,
+				446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
 		7174E39D1BEFAEC500170AAA /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,14 +316,13 @@
 				7174E3A11BEFAEC500170AAA /* MBProgressHUD.h */,
 				7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */,
 			);
-			path = MBProgressHUD;
+			name = MBProgressHUD;
+			path = ../MBProgressHUD;
 			sourceTree = "<group>";
 		};
 		9D564D561BFEAD050062700D /* VIew */ = {
 			isa = PBXGroup;
 			children = (
-				9D121BD41BF22B92007697B2 /* DLLeftSlideView.h */,
-				9D121BD51BF22B92007697B2 /* DLLeftSlideView.m */,
 				9D564D571BFEAD220062700D /* JYMainXib.xib */,
 			);
 			name = VIew;
@@ -229,6 +373,10 @@
 		9D6568441BEB7244006D9507 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				7174E39D1BEFAEC500170AAA /* MBProgressHUD */,
+				446AF33F1C005BF10081C798 /* RESideMenu */,
+				446AF3151C0025330081C798 /* SMS_UILib */,
+				446AF2FB1C001F060081C798 /* SMS_SDK */,
 			);
 			path = Libs;
 			sourceTree = "<group>";
@@ -291,6 +439,8 @@
 				9D7D5A551BE472D300E1E1EF /* LaunchScreen.storyboard */,
 				9D7D5A581BE472D300E1E1EF /* Info.plist */,
 				9D7D5A501BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld */,
+				446AF32B1C002FB70081C798 /* Localizable.strings */,
+				446AF3341C003FB10081C798 /* country.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -316,11 +466,11 @@
 		9D7D5A7A1BE4740100E1E1EF /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7174E39D1BEFAEC500170AAA /* MBProgressHUD */,
 				9D6568441BEB7244006D9507 /* Libs */,
 				9D7D5A811BE4740100E1E1EF /* Other */,
 				9D7D5A7B1BE4740100E1E1EF /* Login */,
 				9D6568681BEBA04B006D9507 /* Main */,
+				446AF3361C0055BB0081C798 /* LeftSlideView */,
 				9D564DAB1BFF67140062700D /* Furniture */,
 			);
 			path = Classes;
@@ -343,6 +493,7 @@
 				9D7D5A891BE4744000E1E1EF /* JYLoginViewController.m */,
 				9DB7CC921BE8FD7C0044AA75 /* JYRegisterViewController.h */,
 				9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */,
+				446AF30E1C00245A0081C798 /* FindPasswordBySMS */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -386,6 +537,11 @@
 		AA1C67C6D1B3A41B26503294 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				446AF30C1C00206D0081C798 /* libicucore.A.dylib */,
+				446AF30A1C0020120081C798 /* libstdc++.tbd */,
+				446AF3081C0020060081C798 /* JavaScriptCore.framework */,
+				446AF3061C001FFC0081C798 /* MessageUI.framework */,
+				446AF3041C001FF30081C798 /* libz.tbd */,
 				712A99F91BEF849E00FE90FE /* CoreLocation.framework */,
 				88554DE0CE3743A8B110C726 /* libPods.a */,
 			);
@@ -462,7 +618,7 @@
 				TargetAttributes = {
 					9D7D5A401BE472D300E1E1EF = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 66F9B76GET;
+						DevelopmentTeam = 43A9SS627E;
 					};
 					9D7D5A5C1BE472D300E1E1EF = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -483,6 +639,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 9D7D5A381BE472D300E1E1EF;
 			productRefGroup = 9D7D5A421BE472D300E1E1EF /* Products */;
@@ -501,10 +658,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446AF3011C001F060081C798 /* SMS_SDKLocalizable.strings in Resources */,
 				9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */,
 				9D564D581BFEAD220062700D /* JYMainXib.xib in Resources */,
 				9D564DBF1BFF69A10062700D /* CYFFurnitureViewController.xib in Resources */,
 				9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */,
+				446AF3321C003FB10081C798 /* country.plist in Resources */,
+				446AF3291C002FB70081C798 /* Localizable.strings in Resources */,
 				9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */,
 				9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */,
 				7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */,
@@ -580,26 +740,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				446AF3471C005BF10081C798 /* RESideMenu.m in Sources */,
 				9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */,
 				9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */,
 				9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */,
+				446AF3211C0025330081C798 /* SMS_MBProgressHUD.m in Sources */,
 				9D7D5A871BE4740100E1E1EF /* main.m in Sources */,
 				7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */,
 				9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */,
 				9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */,
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
+				446AF31F1C0025330081C798 /* SMS_HYZBadgeView.m in Sources */,
+				446AF3111C0024AB0081C798 /* RegViewController.m in Sources */,
+				446AF31E1C0025330081C798 /* NSDictionary-DeepMutableCopy.m in Sources */,
 				9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */,
 				9D6568671BEB8861006D9507 /* JYUserData.m in Sources */,
+				446AF3201C0025330081C798 /* SMS_MBProgressHUD+Add.m in Sources */,
 				9D564DBA1BFF68DD0062700D /* CYFCollectionReusableView.m in Sources */,
+				446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */,
 				9D564D5B1BFEAD630062700D /* JYMainView.m in Sources */,
+				446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */,
+				446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */,
 				9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */,
-				9D121BD61BF22B92007697B2 /* DLLeftSlideView.m in Sources */,
 				9D564DB71BFF688A0062700D /* CYFCollectionViewCell.m in Sources */,
 				9D564DC51C0007290062700D /* JYFurniture.m in Sources */,
 				9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */,
 				9D564DC21BFFF6E50062700D /* JYElectricalController.m in Sources */,
+				446AF3141C00250A0081C798 /* VerifyViewController.m in Sources */,
 				9D564D4F1BFEAB840062700D /* CYFMainViewController.m in Sources */,
 				7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */,
+				446AF3461C005BF10081C798 /* RECommonFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +805,33 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		446AF2FC1C001F060081C798 /* SMS_SDKLocalizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				446AF2FD1C001F060081C798 /* en */,
+				446AF3001C001F060081C798 /* zh-Hans */,
+			);
+			name = SMS_SDKLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		446AF32B1C002FB70081C798 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				446AF32A1C002FB70081C798 /* en */,
+				446AF32C1C002FBB0081C798 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		446AF3341C003FB10081C798 /* country.plist */ = {
+			isa = PBXVariantGroup;
+			children = (
+				446AF3331C003FB10081C798 /* en */,
+				446AF3351C003FB30081C798 /* zh-Hans */,
+			);
+			name = country.plist;
+			sourceTree = "<group>";
+		};
 		9D7D5A551BE472D300E1E1EF /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -733,10 +930,17 @@
 			baseConfigurationReference = 5C2168D92BC3D6A7F5365A43 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SMS_SDK",
+				);
 				INFOPLIST_FILE = Zju_SmartHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FK.GJY.Zju-SmartHome";
+				PRODUCT_BUNDLE_IDENTIFIER = TooWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -745,10 +949,17 @@
 			baseConfigurationReference = FFC4EA9F1F216133F840AA56 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SMS_SDK",
+				);
 				INFOPLIST_FILE = Zju_SmartHome/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.FK.GJY.Zju-SmartHome";
+				PRODUCT_BUNDLE_IDENTIFIER = TooWalker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

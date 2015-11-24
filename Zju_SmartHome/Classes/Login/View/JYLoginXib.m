@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
 
 
+- (IBAction)forgetPassword;
 - (IBAction)register;
 
 @end
@@ -65,6 +66,14 @@
   [self.password resignFirstResponder];
 }
 
+//忘记密码
+- (IBAction)forgetPassword {
+    if([self.delegate respondsToSelector:@selector(forgetPasswordGO)])
+    {
+        [self.delegate forgetPasswordGO];
+    }
+}
+
 //注册
 - (IBAction)register
 {
@@ -79,6 +88,7 @@
   [self.username resignFirstResponder];
   [self.password resignFirstResponder];
 }
+
 
 
 @end

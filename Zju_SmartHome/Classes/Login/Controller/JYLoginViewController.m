@@ -15,8 +15,10 @@
 #import "JYUserData.h"
 #import "MBProgressHUD+MJ.h"
 #import "CYFMainViewController.h"
-#import "DLLeftSlideView.h"
 #import "JYNavigationController.h"
+#import "RegViewController.h"
+#import "RESideMenu.h"
+#import "DLLeftSlideMenuViewController.h"
 @interface JYLoginViewController ()<LoginXibDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong)JYLoginXib *loginXib;
@@ -98,10 +100,13 @@
         {
             //移除遮盖
             [MBProgressHUD hideHUD];
-            
+            DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
             CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
             JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
-            self.view.window.rootViewController=navVc;
+            RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navVc
+                                                                            leftMenuViewController:leftSlideMenuViewController
+                                                                           rightMenuViewController:nil];
+            self.view.window.rootViewController=sideMenuViewController;
 
         }
         else if([status.code isEqualToString:@"330"])
@@ -127,6 +132,15 @@
 
     }];
 }
+
+//代理忘记密码方法
+- (void)forgetPasswordGO{
+    RegViewController* reg = [[RegViewController alloc] init];
+    [self presentViewController:reg animated:YES completion:^{
+        
+    }];
+}
+
 //代理注册方法
 -(void)registerGoGoGo
 {

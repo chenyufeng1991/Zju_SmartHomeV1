@@ -13,8 +13,13 @@
 @optional
 //登录
 -(void)loginGoGoGo:(NSString *)username and:(NSString *)password;
+
+//忘记密码
+- (void)forgetPasswordGO;
+
 //注册
 -(void)registerGoGoGo;
+
 @end
 
 

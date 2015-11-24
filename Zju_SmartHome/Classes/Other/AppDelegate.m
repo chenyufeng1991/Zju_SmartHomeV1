@@ -10,10 +10,14 @@
 #import "JYLoginViewController.h"
 #import "CYFMainViewController.h"
 #import "JYUserData.h"
-#import "DLLeftSlideView.h"
 #import "JYNavigationController.h"
+#import <SMS_SDK/SMSSDK.h>
+#import "DLLeftSlideMenuViewController.h"
+#import "RESideMenu.h"
+#define appKey @"c879b326344c"
+#define appSecret @"82810facbfba262d63c14ed5dcc5998c"
 @interface AppDelegate ()
-@property (nonatomic, strong) DLLeftSlideView *leftView;
+
 @end
 
 @implementation AppDelegate
@@ -23,6 +27,10 @@
 {
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
+    //初始化应用，appKey和appSecret从后台申请得到
+    [SMSSDK registerApp:appKey withSecret:appSecret];
+    
+    
     //1.先判断有无存储账号信息
     NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
     NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
@@ -30,9 +38,19 @@
     
     if(data)//已经登录过
     {
+        
+        DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
         CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
         JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
-        self.window.rootViewController=navVc;
+        RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navVc
+                                                                        leftMenuViewController:leftSlideMenuViewController
+                                                                       rightMenuViewController:nil];
+        self.window.rootViewController=sideMenuViewController;
+        
+        
+//        CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
+//        JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
+//        self.window.rootViewController=navVc;
     }
     else//还未登录过
     {

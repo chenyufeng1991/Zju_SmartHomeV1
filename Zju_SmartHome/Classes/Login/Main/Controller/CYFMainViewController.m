@@ -9,6 +9,7 @@
 #import "CYFMainViewController.h"
 #import "JYMainView.h"
 #import "CYFFurnitureViewController.h"
+#import "RESideMenu.h"
 @interface CYFMainViewController ()<JYMainViewDelegate>
 
 @end
@@ -43,7 +44,7 @@
     UIButton *leftBtn=[[UIButton alloc]init];
     [leftBtn setBackgroundImage:[UIImage imageNamed:@"UserPhoto"] forState:UIControlStateNormal];
     leftBtn.frame=CGRectMake(0, 0, 28, 28);
-    [leftBtn addTarget:self action:@selector(leftPortraitClick) forControlEvents:UIControlEventTouchUpInside];
+    [leftBtn addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem=leftItem;
 }
@@ -51,7 +52,7 @@
 //左边头像点击事件
 -(void)leftPortraitClick
 {
-    NSLog(@"左边头像被点击了哦");
+    
 }
 
 //代理方法
