@@ -8,31 +8,24 @@
 
 #import "CYFCollectionReusableView.h"
 
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+
 @implementation CYFCollectionReusableView
--(instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self=[super initWithFrame:frame];
-    if(self)
-    {
-        self.title=[[UILabel alloc]init];
-        self.title.textColor=[UIColor blackColor];
-        self.title.textAlignment=NSTextAlignmentCenter;
-        self.title.backgroundColor=[UIColor grayColor];
-        
-        UIView *view=[[UIView alloc]init];
-        self.view=view;
-        self.view.backgroundColor=[UIColor greenColor];
-        [self.view addSubview:self.title];
-        
-        [self addSubview:self.view];
-    }
-    return self;
-}
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.title.frame=CGRectMake(0, 5, self.window.frame.size.width, 20);
-    self.view.frame=CGRectMake(0, 5, self.window.frame.size.width, 30);
+  self = [super initWithFrame:frame];
+  if (self) {
+    
+    self.title = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT / 20, SCREEN_WIDTH, SCREEN_HEIGHT / 20)];
+    self.title.textColor = [UIColor blackColor];
+    self.title.textAlignment = NSTextAlignmentCenter;
+    
+    [self addSubview:self.title];
+    
+    
+  }
+  return self;
 }
 
 @end

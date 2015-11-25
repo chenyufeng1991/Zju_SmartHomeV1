@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface CYFCollectionViewCell : UICollectionViewCell
-//cell具体显示的view
-@property(nonatomic,strong)UIView *view;
-//电器图片
-@property(nonatomic,strong)UIButton *imageBtn;
-//电器描述文字
-@property(nonatomic,strong)UILabel *descLabel;
+
+
+
+//每一个cell就是一个UIView,一个cell里面包含了一个图片和文本；
+//@property(nonatomic,strong)UIView *cellView;
+
+@property(strong,nonatomic) UIButton *imageButton;
+@property(strong,nonatomic) UILabel *descLabel;
 @end
