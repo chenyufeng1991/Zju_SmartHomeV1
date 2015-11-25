@@ -10,53 +10,61 @@
 #import "CYFCollectionViewCell.h"
 #import "CYFCollectionReusableView.h"
 #import "JYElectricalController.h"
+#import "JYFurniture.h"
+#import "JYFurnitureSection.h"
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 - (IBAction)add;
 
-//存放图片的数组
-@property (nonatomic, strong)NSMutableArray *imageArray;
-//存放图片描述文字的数组
-@property(nonatomic,strong)NSMutableArray *descArray;
-//下面数组用来存放头部标题；
-@property(strong,nonatomic) NSMutableArray *headerArray;
 
+//智能区域数组
+@property(nonatomic,strong)NSMutableArray *furnitureSecArray;
+//电器数组
+@property(nonatomic,strong)NSMutableArray *furnitureArray;
 @end
 
 @implementation CYFFurnitureViewController
-- (NSMutableArray *)imageArray
+
+-(NSMutableArray *)furnitureSecArray
 {
-    if (!_imageArray)
+    if(!_furnitureSecArray)
     {
-        NSMutableArray *firstRow = [[NSMutableArray alloc] initWithObjects:@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",nil];
-        NSMutableArray *secondRow = [[NSMutableArray alloc] initWithObjects:@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",nil];
-        
-        self.imageArray = [[NSMutableArray alloc] initWithObjects:firstRow,secondRow, nil];
+        _furnitureSecArray=[[NSMutableArray alloc]init];
+        //默认有两个智能区域
+        for(int i=0;i<2;i++)
+        {
+            _furnitureArray=[[NSMutableArray alloc]init];
+            //每个区域默认有5个电器和一个添加电器图片
+            for(int i=0;i<6;i++)
+            {
+                //初始化一个电器
+                JYFurniture *furniture=[[JYFurniture alloc]init];
+                //设置电器图片
+                furniture.imageStr=@"home_icon_yw_on";
+                //设置电器描述文字
+                furniture.descLabel=@"YW灯";
+                //设置电器是否注册过
+                furniture.registed=NO;
+                
+                //将电器添加到电器数组中
+                [_furnitureArray addObject:furniture];
+            }
+            
+            //初始化一个智能区域
+            JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
+            //设置智能区域的名称
+            furnitureSection.sectionName=@"客厅";
+            //设置智能区域的电器数组
+            furnitureSection.furnitureArray=_furnitureArray;
+            
+            
+            //将智能区域添加到智能区域数组中
+            [_furnitureSecArray addObject:furnitureSection];
+        }
     }
-    return _imageArray;
-}
--(NSMutableArray *)descArray
-{
-    if(!_descArray)
-    {
-        NSMutableArray *firstRow = [[NSMutableArray alloc] initWithObjects:@"YW灯",@"RGB灯",@"home_icon_yw_on",@"冰箱",@"音响",@"电视机",nil];
-        NSMutableArray *secondRow = [[NSMutableArray alloc] initWithObjects:@"0",@"1",@"2",@"3",@"4",@"5",nil];
-        
-        self.descArray = [[NSMutableArray alloc] initWithObjects:firstRow,secondRow, nil];
-        
-    }
-    return _descArray;
-}
-//这里标题的添加也使用懒加载；
-- (NSMutableArray *)headerArray
-{
-    if (!_headerArray)
-    {
-        self.headerArray = [[NSMutableArray alloc] initWithObjects:@"客厅",@"卧室", nil];
-    }
-    return _headerArray;
+    return _furnitureSecArray;
 }
 
 - (void)viewDidLoad
@@ -75,21 +83,24 @@
     //右侧滚动条隐藏
     self.collectionView.showsVerticalScrollIndicator=false;
     
-
+    
 }
 
 //有多少个section；
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
     //有多少个一维数组；
-    return self.imageArray.count;
+    return self.furnitureSecArray.count;
 }
 
 //加载头部标题；
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     CYFCollectionReusableView *view = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"Header" forIndexPath:indexPath];
-    view.title.text = [self.headerArray objectAtIndex:indexPath.section];
+    
+    JYFurnitureSection *furnitureSection=[self.furnitureSecArray objectAtIndex:indexPath.section];
+    
+    view.title.text=furnitureSection.sectionName;
     
     return view;
 }
@@ -97,17 +108,21 @@
 //每一部分有多少个item
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return [[self.imageArray objectAtIndex:section] count];
+    JYFurnitureSection *furnitureSction=[self.furnitureSecArray objectAtIndex:section];
+    return furnitureSction.furnitureArray.count;
 }
 
 //每一个item具体显示
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     CYFCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionCell" forIndexPath:indexPath];
-    //    cell.imageView.image = [UIImage imageNamed:[[self.imageArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row]];
-    NSString *string=[[self.imageArray objectAtIndex:indexPath.section]objectAtIndex:indexPath.row];
-    [cell.imageBtn setBackgroundImage:[UIImage imageNamed:string]forState:UIControlStateNormal];
-    cell.descLabel.text=@"顾金跃";
+    
+    JYFurnitureSection *furnitureSection=[self.furnitureSecArray objectAtIndex:indexPath.section];
+    
+    JYFurniture *furniture=[furnitureSection.furnitureArray objectAtIndex:indexPath.row];
+    
+    [cell.imageBtn setBackgroundImage:[UIImage imageNamed:furniture.imageStr] forState:UIControlStateNormal];
+    cell.descLabel.text=furniture.descLabel;
     
     return cell;
     
@@ -129,7 +144,7 @@
 //设置section的header高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
 {
-    return CGSizeMake(self.collectionView.frame.size.width, 40);
+    return CGSizeMake(self.collectionView.frame.size.width, 45);
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section{
@@ -145,16 +160,23 @@
 //item点击触发事件
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.row == ([[self.imageArray objectAtIndex:indexPath.section] count] - 1)))
+    JYFurnitureSection *furnitureSection=[self.furnitureSecArray objectAtIndex:indexPath.section];
+    
+    if(indexPath.row==furnitureSection.furnitureArray.count-1)
     {
-        NSString *tempImageName = @"1";
-        
         //这里需要在最后一个位置增加设备；
+        //初始化一个电器
+        JYFurniture *furniture=[[JYFurniture alloc]init];
+        //设置电器图片
+        furniture.imageStr=@"home_icon_yw_on";
+        //设置电器描述文字
+        furniture.descLabel=@"YW灯";
+        //设置电器是否注册过
+        furniture.registed=NO;
         
-        [[self.imageArray objectAtIndex:indexPath.section] insertObject:tempImageName atIndex:[[self.imageArray objectAtIndex:indexPath.section] count]-1];
+        [furnitureSection.furnitureArray addObject:furniture];
         
         [self.collectionView reloadData];
-        
     }
     else
     {
@@ -167,34 +189,56 @@
 
 - (IBAction)add
 {
-     NSMutableArray *addRow = [[NSMutableArray alloc] initWithObjects:@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",@"home_icon_yw_on",nil];
     
-    [self.imageArray insertObject:addRow atIndex:[self.imageArray count]];
+    self.furnitureArray=[[NSMutableArray alloc]init];
+    //每个区域默认有5个电器和一个添加电器图片
+    for(int i=0;i<6;i++)
+    {
+        //初始化一个电器
+        JYFurniture *furniture=[[JYFurniture alloc]init];
+        //设置电器图片
+        furniture.imageStr=@"home_icon_yw_on";
+        //设置电器描述文字
+        furniture.descLabel=@"YW灯";
+        //设置电器是否注册过
+        furniture.registed=NO;
+        
+        //将电器添加到电器数组中
+        [self.furnitureArray addObject:furniture];
+    }
     
     [self popEnvirnmentNameDialog];
 }
 
-- (void)popEnvirnmentNameDialog{
+- (void)popEnvirnmentNameDialog
+{
+    //初始化一个智能区域
+    JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
     
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入Section名称" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入智能区域名称" preferredStyle:UIAlertControllerStyleAlert];
+    
     //以下方法就可以实现在提示框中输入文本；
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        UITextField *envirnmentNameTextField = alertController.textFields.firstObject;
-        
-        //插入到headerArray数组中
-        [self.headerArray insertObject:envirnmentNameTextField.text atIndex:self.headerArray.count];
-        
-        //此时更新界面；
-        [self.collectionView reloadData];
-        
-        NSLog(@"你输入的文本%@",envirnmentNameTextField.text);
-        
-    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                                {
+                                    UITextField *envirnmentNameTextField = alertController.textFields.firstObject;
+                                    
+                                    //设置智能区域的名称
+                                    furnitureSection.sectionName=envirnmentNameTextField.text;
+                                    //设置智能区域的电器数组
+                                    furnitureSection.furnitureArray=self.furnitureArray;
+                                    //将智能区域添加到智能区域数组中
+                                    [self.furnitureSecArray addObject:furnitureSection];
+                                    
+                                    //此时更新界面；
+                                    [self.collectionView reloadData];
+                                    
+                                    
+                                }]];
     
     [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         
-        textField.placeholder = @"请输入Section名称";
+        textField.placeholder = @"请输入智能区域名称";
     }];
     [self presentViewController:alertController animated:true completion:nil];
     

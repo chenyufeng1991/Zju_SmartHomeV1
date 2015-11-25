@@ -57,6 +57,7 @@
 		9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8B1BE4748200E1E1EF /* loginXib.xib */; };
 		9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8E1BE474BD00E1E1EF /* JYLoginXib.m */; };
 		9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */; };
+		9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */; settings = {ASSET_TAGS = (); }; };
 		EF249F846089741C690DEED3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88554DE0CE3743A8B110C726 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +168,8 @@
 		9D7D5A8E1BE474BD00E1E1EF /* JYLoginXib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYLoginXib.m; sourceTree = "<group>"; };
 		9DB7CC921BE8FD7C0044AA75 /* JYRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYRegisterViewController.h; sourceTree = "<group>"; };
 		9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRegisterViewController.m; sourceTree = "<group>"; };
+		9DFCF3951C05A208004F7124 /* JYFurnitureSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureSection.h; sourceTree = "<group>"; };
+		9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureSection.m; sourceTree = "<group>"; };
 		FFC4EA9F1F216133F840AA56 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -341,6 +344,8 @@
 		9D564DAC1BFF672E0062700D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				9DFCF3951C05A208004F7124 /* JYFurnitureSection.h */,
+				9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */,
 				9D564DC31C0007290062700D /* JYFurniture.h */,
 				9D564DC41C0007290062700D /* JYFurniture.m */,
 			);
@@ -768,6 +773,7 @@
 				9D564DC21BFFF6E50062700D /* JYElectricalController.m in Sources */,
 				446AF3141C00250A0081C798 /* VerifyViewController.m in Sources */,
 				9D564D4F1BFEAB840062700D /* CYFMainViewController.m in Sources */,
+				9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */,
 				7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */,
 				446AF3461C005BF10081C798 /* RECommonFunctions.m in Sources */,
 			);
