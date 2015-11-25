@@ -7,41 +7,32 @@
 //
 
 #import "CYFCollectionViewCell.h"
-#define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
 
 @implementation CYFCollectionViewCell
--(instancetype)initWithFrame:(CGRect)frame
+- (instancetype)initWithFrame:(CGRect)frame
 {
-    self=[super initWithFrame:frame];
-    if(self)
-    {
-        //这里需要初始化imageView
-        self.imageBtn=[[UIButton alloc]init];
-        self.descLabel=[[UILabel alloc]init];
-        self.descLabel.font=[UIFont systemFontOfSize:10];
-        
-        UIView *view=[[UIView alloc]init];
-        //view.backgroundColor=[UIColor grayColor];
-        view.layer.borderColor = [UIColor grayColor].CGColor;
-        view.layer.borderWidth = 0.5;
-        self.view=view;
-        
-        [view addSubview:self.imageBtn];
-        [view addSubview:self.descLabel];
-        [self addSubview:self.view];
-        
-    }
-    return self;
-}
-
-//这个方法里调整控件frame是最准确的
--(void)layoutSubviews
-{
-    [super layoutSubviews];
+  self = [super initWithFrame:frame];
+  if (self) {
     
-    self.view.frame=CGRectMake(0, 0, UISCREEN_WIDTH/ 3+0.5, UISCREEN_WIDTH/ 3+0.5);
-    self.imageBtn.frame=CGRectMake((self.view.frame.size.width-32)/2, self.view.frame.size.height-82, 32, 32);
-    self.descLabel.frame=CGRectMake((UISCREEN_WIDTH/ 3-40)/2+5, (UISCREEN_WIDTH/ 3-40)/2+32, 32, 10);
+    
+    //这里需要初始化ImageView；
+    self.imageButton = [[UIButton alloc] initWithFrame:CGRectMake((self.bounds.size.width - 32) / 2, (self.bounds.size.width - 32) / 2, 32, 32)];
+    self.imageButton.tag = 100;
+    
+    
+    self.descLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.bounds.size.width - 100) / 2, (self.bounds.size.width - 32) / 2 + 30, 100, 20)];
+    self.descLabel.textAlignment = NSTextAlignmentCenter;
+    self.descLabel.font=[UIFont systemFontOfSize:10];
+    self.descLabel.tag = 101;
+    
+    [self.contentView addSubview:self.imageButton];
+    [self.contentView addSubview:self.descLabel];
+    
+    
+  }
+  return self;
 }
 
 @end
