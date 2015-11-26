@@ -42,21 +42,25 @@
     mainViewXib.office.layer.masksToBounds=YES;
     mainViewXib.officeView.layer.cornerRadius=3;
     mainViewXib.officeView.layer.masksToBounds=YES;
+    [mainViewXib.office setAdjustsImageWhenHighlighted:YES];
     
     mainViewXib.furniture.layer.cornerRadius=3;
     mainViewXib.furniture.layer.masksToBounds=YES;
     mainViewXib.furnitureView.layer.cornerRadius=3;
     mainViewXib.furnitureView.layer.masksToBounds=YES;
+    [mainViewXib.furniture setAdjustsImageWhenHighlighted:YES];
     
     mainViewXib.product.layer.cornerRadius=3;
     mainViewXib.product.layer.masksToBounds=YES;
     mainViewXib.productVIew.layer.cornerRadius=3;
     mainViewXib.productVIew.layer.masksToBounds=YES;
+    [mainViewXib.product setAdjustsImageWhenHighlighted:YES];
     
     mainViewXib.custom.layer.cornerRadius=3;
     mainViewXib.custom.layer.masksToBounds=YES;
     mainViewXib.customView.layer.cornerRadius=3;
     mainViewXib.customView.layer.masksToBounds=YES;
+    [mainViewXib.custom setAdjustsImageWhenHighlighted:YES];
     
     return mainViewXib;
 }

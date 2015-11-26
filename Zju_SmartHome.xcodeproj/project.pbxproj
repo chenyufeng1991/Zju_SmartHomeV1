@@ -28,48 +28,6 @@
 		446AF3471C005BF10081C798 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3431C005BF10081C798 /* RESideMenu.m */; };
 		446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */; };
 		446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */; };
-		711DFD571C060304006A9754 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 711DFCE31C060304006A9754 /* .gitignore */; settings = {ASSET_TAGS = (); }; };
-		711DFD581C060304006A9754 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 711DFCE41C060304006A9754 /* Podfile */; settings = {ASSET_TAGS = (); }; };
-		711DFD591C060304006A9754 /* Podfile.lock in Resources */ = {isa = PBXBuildFile; fileRef = 711DFCE51C060304006A9754 /* Podfile.lock */; settings = {ASSET_TAGS = (); }; };
-		711DFD5A1C060304006A9754 /* Manifest.lock in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD091C060304006A9754 /* Manifest.lock */; settings = {ASSET_TAGS = (); }; };
-		711DFD5B1C060304006A9754 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD0B1C060304006A9754 /* LICENSE */; settings = {ASSET_TAGS = (); }; };
-		711DFD5C1C060304006A9754 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD0E1C060304006A9754 /* MASCompositeConstraint.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD5D1C060304006A9754 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD111C060304006A9754 /* MASConstraint.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD5E1C060304006A9754 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD131C060304006A9754 /* MASConstraintMaker.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD5F1C060304006A9754 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD151C060304006A9754 /* MASLayoutConstraint.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD601C060304006A9754 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD191C060304006A9754 /* MASViewAttribute.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD611C060304006A9754 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD1B1C060304006A9754 /* MASViewConstraint.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD621C060304006A9754 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD1D1C060304006A9754 /* NSArray+MASAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD631C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD201C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD641C060304006A9754 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD221C060304006A9754 /* View+MASAdditions.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD651C060304006A9754 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD241C060304006A9754 /* README.md */; settings = {ASSET_TAGS = (); }; };
-		711DFD661C060304006A9754 /* Masonry-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD2A1C060304006A9754 /* Masonry-dummy.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD671C060304006A9754 /* Masonry.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD2C1C060304006A9754 /* Masonry.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		711DFD681C060304006A9754 /* Pods-acknowledgements.markdown in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD2E1C060304006A9754 /* Pods-acknowledgements.markdown */; settings = {ASSET_TAGS = (); }; };
-		711DFD691C060304006A9754 /* Pods-acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD2F1C060304006A9754 /* Pods-acknowledgements.plist */; settings = {ASSET_TAGS = (); }; };
-		711DFD6A1C060304006A9754 /* Pods-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD301C060304006A9754 /* Pods-dummy.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD6B1C060304006A9754 /* Pods-frameworks.sh in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD311C060304006A9754 /* Pods-frameworks.sh */; settings = {ASSET_TAGS = (); }; };
-		711DFD6C1C060304006A9754 /* Pods-resources.sh in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD321C060304006A9754 /* Pods-resources.sh */; settings = {ASSET_TAGS = (); }; };
-		711DFD6D1C060304006A9754 /* Pods.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD331C060304006A9754 /* Pods.debug.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		711DFD6E1C060304006A9754 /* Pods.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD341C060304006A9754 /* Pods.release.xcconfig */; settings = {ASSET_TAGS = (); }; };
-		711DFD6F1C060304006A9754 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD371C060304006A9754 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD701C060304006A9754 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD381C060304006A9754 /* LaunchScreen.xib */; settings = {ASSET_TAGS = (); }; };
-		711DFD711C060304006A9754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD3A1C060304006A9754 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		711DFD721C060304006A9754 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD3C1C060304006A9754 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
-		711DFD731C060304006A9754 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD3D1C060304006A9754 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		711DFD741C060304006A9754 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD3E1C060304006A9754 /* main.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD751C060304006A9754 /* NSObject+Macro.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD401C060304006A9754 /* NSObject+Macro.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD761C060304006A9754 /* NSString+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD421C060304006A9754 /* NSString+Tools.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD771C060304006A9754 /* QR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD431C060304006A9754 /* QR.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		711DFD781C060304006A9754 /* QRCatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD461C060304006A9754 /* QRCatchViewController.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD791C060304006A9754 /* QRTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD481C060304006A9754 /* QRTabBar.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD7A1C060304006A9754 /* QRURLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD4A1C060304006A9754 /* QRURLTableViewCell.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD7B1C060304006A9754 /* QRURLViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD4C1C060304006A9754 /* QRURLViewController.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD7C1C060304006A9754 /* URLEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD4E1C060304006A9754 /* URLEntity.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD7D1C060304006A9754 /* QRCatcher.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD521C060304006A9754 /* QRCatcher.xcworkspace */; settings = {ASSET_TAGS = (); }; };
-		711DFD7E1C060304006A9754 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 711DFD541C060304006A9754 /* Info.plist */; settings = {ASSET_TAGS = (); }; };
-		711DFD7F1C060304006A9754 /* QRCatcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD551C060304006A9754 /* QRCatcherTests.m */; settings = {ASSET_TAGS = (); }; };
-		711DFD801C060304006A9754 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 711DFD561C060304006A9754 /* README.md */; settings = {ASSET_TAGS = (); }; };
 		712A99FA1BEF849E00FE90FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A99F91BEF849E00FE90FE /* CoreLocation.framework */; };
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
@@ -104,34 +62,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		711DFD831C060304006A9754 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 711DFD251C060304006A9754 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 600C398081D4671023871909772EE7DF;
-			remoteInfo = Masonry;
-		};
-		711DFD851C060304006A9754 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 711DFD251C060304006A9754 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 47EB7BD6B10AC5169967CC9D690E0E3F;
-			remoteInfo = Pods;
-		};
-		711DFD891C060304006A9754 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 711DFD4F1C060304006A9754 /* QRCatcher.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBF3397D1ACC0D3800759534;
-			remoteInfo = QRCatcher;
-		};
-		711DFD8B1C060304006A9754 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 711DFD4F1C060304006A9754 /* QRCatcher.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = DBF339961ACC0D3800759534;
-			remoteInfo = QRCatcherTests;
-		};
 		9D7D5A5E1BE472D300E1E1EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9D7D5A391BE472D300E1E1EF /* Project object */;
@@ -185,101 +115,6 @@
 		446AF3491C005F180081C798 /* DLLeftSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftSlideMenuViewController.h; sourceTree = "<group>"; };
 		446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftSlideMenuViewController.m; sourceTree = "<group>"; };
 		5C2168D92BC3D6A7F5365A43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		711DFCE31C060304006A9754 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		711DFCE41C060304006A9754 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		711DFCE51C060304006A9754 /* Podfile.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile.lock; sourceTree = "<group>"; };
-		711DFCEA1C060304006A9754 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		711DFCEB1C060304006A9754 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		711DFCEC1C060304006A9754 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		711DFCED1C060304006A9754 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		711DFCEE1C060304006A9754 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		711DFCEF1C060304006A9754 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		711DFCF01C060304006A9754 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		711DFCF11C060304006A9754 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		711DFCF21C060304006A9754 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		711DFCF31C060304006A9754 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		711DFCF41C060304006A9754 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		711DFCF51C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		711DFCF61C060304006A9754 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		711DFCF71C060304006A9754 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		711DFCFA1C060304006A9754 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		711DFCFB1C060304006A9754 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		711DFCFC1C060304006A9754 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		711DFCFD1C060304006A9754 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		711DFCFE1C060304006A9754 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		711DFCFF1C060304006A9754 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		711DFD001C060304006A9754 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		711DFD011C060304006A9754 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		711DFD021C060304006A9754 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		711DFD031C060304006A9754 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		711DFD041C060304006A9754 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		711DFD051C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		711DFD061C060304006A9754 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		711DFD071C060304006A9754 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		711DFD091C060304006A9754 /* Manifest.lock */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Manifest.lock; sourceTree = "<group>"; };
-		711DFD0B1C060304006A9754 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		711DFD0D1C060304006A9754 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		711DFD0E1C060304006A9754 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
-		711DFD0F1C060304006A9754 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		711DFD101C060304006A9754 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		711DFD111C060304006A9754 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
-		711DFD121C060304006A9754 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		711DFD131C060304006A9754 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
-		711DFD141C060304006A9754 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		711DFD151C060304006A9754 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
-		711DFD161C060304006A9754 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		711DFD171C060304006A9754 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		711DFD181C060304006A9754 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		711DFD191C060304006A9754 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
-		711DFD1A1C060304006A9754 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		711DFD1B1C060304006A9754 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
-		711DFD1C1C060304006A9754 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		711DFD1D1C060304006A9754 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		711DFD1E1C060304006A9754 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		711DFD1F1C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		711DFD201C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		711DFD211C060304006A9754 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		711DFD221C060304006A9754 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
-		711DFD231C060304006A9754 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		711DFD241C060304006A9754 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		711DFD251C060304006A9754 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = Pods.xcodeproj; sourceTree = "<group>"; };
-		711DFD2A1C060304006A9754 /* Masonry-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Masonry-dummy.m"; sourceTree = "<group>"; };
-		711DFD2B1C060304006A9754 /* Masonry-prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Masonry-prefix.pch"; sourceTree = "<group>"; };
-		711DFD2C1C060304006A9754 /* Masonry.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Masonry.xcconfig; sourceTree = "<group>"; };
-		711DFD2E1C060304006A9754 /* Pods-acknowledgements.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "Pods-acknowledgements.markdown"; sourceTree = "<group>"; };
-		711DFD2F1C060304006A9754 /* Pods-acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Pods-acknowledgements.plist"; sourceTree = "<group>"; };
-		711DFD301C060304006A9754 /* Pods-dummy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Pods-dummy.m"; sourceTree = "<group>"; };
-		711DFD311C060304006A9754 /* Pods-frameworks.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Pods-frameworks.sh"; sourceTree = "<group>"; };
-		711DFD321C060304006A9754 /* Pods-resources.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "Pods-resources.sh"; sourceTree = "<group>"; };
-		711DFD331C060304006A9754 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Pods.debug.xcconfig; sourceTree = "<group>"; };
-		711DFD341C060304006A9754 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Pods.release.xcconfig; sourceTree = "<group>"; };
-		711DFD361C060304006A9754 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		711DFD371C060304006A9754 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		711DFD391C060304006A9754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		711DFD3B1C060304006A9754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		711DFD3C1C060304006A9754 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		711DFD3D1C060304006A9754 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		711DFD3E1C060304006A9754 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		711DFD3F1C060304006A9754 /* NSObject+Macro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Macro.h"; sourceTree = "<group>"; };
-		711DFD401C060304006A9754 /* NSObject+Macro.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Macro.m"; sourceTree = "<group>"; };
-		711DFD411C060304006A9754 /* NSString+Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Tools.h"; sourceTree = "<group>"; };
-		711DFD421C060304006A9754 /* NSString+Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Tools.m"; sourceTree = "<group>"; };
-		711DFD441C060304006A9754 /* QR.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QR.xcdatamodel; sourceTree = "<group>"; };
-		711DFD451C060304006A9754 /* QRCatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCatchViewController.h; sourceTree = "<group>"; };
-		711DFD461C060304006A9754 /* QRCatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCatchViewController.m; sourceTree = "<group>"; };
-		711DFD471C060304006A9754 /* QRTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRTabBar.h; sourceTree = "<group>"; };
-		711DFD481C060304006A9754 /* QRTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRTabBar.m; sourceTree = "<group>"; };
-		711DFD491C060304006A9754 /* QRURLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRURLTableViewCell.h; sourceTree = "<group>"; };
-		711DFD4A1C060304006A9754 /* QRURLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRURLTableViewCell.m; sourceTree = "<group>"; };
-		711DFD4B1C060304006A9754 /* QRURLViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRURLViewController.h; sourceTree = "<group>"; };
-		711DFD4C1C060304006A9754 /* QRURLViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRURLViewController.m; sourceTree = "<group>"; };
-		711DFD4D1C060304006A9754 /* URLEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLEntity.h; sourceTree = "<group>"; };
-		711DFD4E1C060304006A9754 /* URLEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLEntity.m; sourceTree = "<group>"; };
-		711DFD4F1C060304006A9754 /* QRCatcher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = QRCatcher.xcodeproj; sourceTree = "<group>"; };
-		711DFD521C060304006A9754 /* QRCatcher.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = QRCatcher.xcworkspace; sourceTree = "<group>"; };
-		711DFD541C060304006A9754 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		711DFD551C060304006A9754 /* QRCatcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCatcherTests.m; sourceTree = "<group>"; };
-		711DFD561C060304006A9754 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		712A99F91BEF849E00FE90FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7174E39E1BEFAEC500170AAA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
@@ -475,246 +310,6 @@
 			path = RESideMenu;
 			sourceTree = "<group>";
 		};
-		711DFCE11C0602C5006A9754 /* 扫码 */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCE21C060304006A9754 /* QRCatcher-master */,
-			);
-			name = "扫码";
-			sourceTree = "<group>";
-		};
-		711DFCE21C060304006A9754 /* QRCatcher-master */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCE31C060304006A9754 /* .gitignore */,
-				711DFCE41C060304006A9754 /* Podfile */,
-				711DFCE51C060304006A9754 /* Podfile.lock */,
-				711DFCE61C060304006A9754 /* Pods */,
-				711DFD351C060304006A9754 /* QRCatcher */,
-				711DFD4F1C060304006A9754 /* QRCatcher.xcodeproj */,
-				711DFD521C060304006A9754 /* QRCatcher.xcworkspace */,
-				711DFD531C060304006A9754 /* QRCatcherTests */,
-				711DFD561C060304006A9754 /* README.md */,
-			);
-			path = "QRCatcher-master";
-			sourceTree = "<group>";
-		};
-		711DFCE61C060304006A9754 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCE71C060304006A9754 /* Headers */,
-				711DFD081C060304006A9754 /* Local Podspecs */,
-				711DFD091C060304006A9754 /* Manifest.lock */,
-				711DFD0A1C060304006A9754 /* Masonry */,
-				711DFD251C060304006A9754 /* Pods.xcodeproj */,
-				711DFD281C060304006A9754 /* Target Support Files */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		711DFCE71C060304006A9754 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCE81C060304006A9754 /* Private */,
-				711DFCF81C060304006A9754 /* Public */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		711DFCE81C060304006A9754 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCE91C060304006A9754 /* Masonry */,
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
-		711DFCE91C060304006A9754 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCEA1C060304006A9754 /* MASCompositeConstraint.h */,
-				711DFCEB1C060304006A9754 /* MASConstraint+Private.h */,
-				711DFCEC1C060304006A9754 /* MASConstraint.h */,
-				711DFCED1C060304006A9754 /* MASConstraintMaker.h */,
-				711DFCEE1C060304006A9754 /* MASLayoutConstraint.h */,
-				711DFCEF1C060304006A9754 /* Masonry.h */,
-				711DFCF01C060304006A9754 /* MASUtilities.h */,
-				711DFCF11C060304006A9754 /* MASViewAttribute.h */,
-				711DFCF21C060304006A9754 /* MASViewConstraint.h */,
-				711DFCF31C060304006A9754 /* NSArray+MASAdditions.h */,
-				711DFCF41C060304006A9754 /* NSArray+MASShorthandAdditions.h */,
-				711DFCF51C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				711DFCF61C060304006A9754 /* View+MASAdditions.h */,
-				711DFCF71C060304006A9754 /* View+MASShorthandAdditions.h */,
-			);
-			path = Masonry;
-			sourceTree = "<group>";
-		};
-		711DFCF81C060304006A9754 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCF91C060304006A9754 /* Masonry */,
-			);
-			path = Public;
-			sourceTree = "<group>";
-		};
-		711DFCF91C060304006A9754 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				711DFCFA1C060304006A9754 /* MASCompositeConstraint.h */,
-				711DFCFB1C060304006A9754 /* MASConstraint+Private.h */,
-				711DFCFC1C060304006A9754 /* MASConstraint.h */,
-				711DFCFD1C060304006A9754 /* MASConstraintMaker.h */,
-				711DFCFE1C060304006A9754 /* MASLayoutConstraint.h */,
-				711DFCFF1C060304006A9754 /* Masonry.h */,
-				711DFD001C060304006A9754 /* MASUtilities.h */,
-				711DFD011C060304006A9754 /* MASViewAttribute.h */,
-				711DFD021C060304006A9754 /* MASViewConstraint.h */,
-				711DFD031C060304006A9754 /* NSArray+MASAdditions.h */,
-				711DFD041C060304006A9754 /* NSArray+MASShorthandAdditions.h */,
-				711DFD051C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				711DFD061C060304006A9754 /* View+MASAdditions.h */,
-				711DFD071C060304006A9754 /* View+MASShorthandAdditions.h */,
-			);
-			path = Masonry;
-			sourceTree = "<group>";
-		};
-		711DFD081C060304006A9754 /* Local Podspecs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Local Podspecs";
-			sourceTree = "<group>";
-		};
-		711DFD0A1C060304006A9754 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD0B1C060304006A9754 /* LICENSE */,
-				711DFD0C1C060304006A9754 /* Masonry */,
-				711DFD241C060304006A9754 /* README.md */,
-			);
-			path = Masonry;
-			sourceTree = "<group>";
-		};
-		711DFD0C1C060304006A9754 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD0D1C060304006A9754 /* MASCompositeConstraint.h */,
-				711DFD0E1C060304006A9754 /* MASCompositeConstraint.m */,
-				711DFD0F1C060304006A9754 /* MASConstraint+Private.h */,
-				711DFD101C060304006A9754 /* MASConstraint.h */,
-				711DFD111C060304006A9754 /* MASConstraint.m */,
-				711DFD121C060304006A9754 /* MASConstraintMaker.h */,
-				711DFD131C060304006A9754 /* MASConstraintMaker.m */,
-				711DFD141C060304006A9754 /* MASLayoutConstraint.h */,
-				711DFD151C060304006A9754 /* MASLayoutConstraint.m */,
-				711DFD161C060304006A9754 /* Masonry.h */,
-				711DFD171C060304006A9754 /* MASUtilities.h */,
-				711DFD181C060304006A9754 /* MASViewAttribute.h */,
-				711DFD191C060304006A9754 /* MASViewAttribute.m */,
-				711DFD1A1C060304006A9754 /* MASViewConstraint.h */,
-				711DFD1B1C060304006A9754 /* MASViewConstraint.m */,
-				711DFD1C1C060304006A9754 /* NSArray+MASAdditions.h */,
-				711DFD1D1C060304006A9754 /* NSArray+MASAdditions.m */,
-				711DFD1E1C060304006A9754 /* NSArray+MASShorthandAdditions.h */,
-				711DFD1F1C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				711DFD201C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.m */,
-				711DFD211C060304006A9754 /* View+MASAdditions.h */,
-				711DFD221C060304006A9754 /* View+MASAdditions.m */,
-				711DFD231C060304006A9754 /* View+MASShorthandAdditions.h */,
-			);
-			path = Masonry;
-			sourceTree = "<group>";
-		};
-		711DFD261C060304006A9754 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD841C060304006A9754 /* libMasonry.a */,
-				711DFD861C060304006A9754 /* libPods.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		711DFD281C060304006A9754 /* Target Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD291C060304006A9754 /* Masonry */,
-				711DFD2D1C060304006A9754 /* Pods */,
-			);
-			path = "Target Support Files";
-			sourceTree = "<group>";
-		};
-		711DFD291C060304006A9754 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD2A1C060304006A9754 /* Masonry-dummy.m */,
-				711DFD2B1C060304006A9754 /* Masonry-prefix.pch */,
-				711DFD2C1C060304006A9754 /* Masonry.xcconfig */,
-			);
-			path = Masonry;
-			sourceTree = "<group>";
-		};
-		711DFD2D1C060304006A9754 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD2E1C060304006A9754 /* Pods-acknowledgements.markdown */,
-				711DFD2F1C060304006A9754 /* Pods-acknowledgements.plist */,
-				711DFD301C060304006A9754 /* Pods-dummy.m */,
-				711DFD311C060304006A9754 /* Pods-frameworks.sh */,
-				711DFD321C060304006A9754 /* Pods-resources.sh */,
-				711DFD331C060304006A9754 /* Pods.debug.xcconfig */,
-				711DFD341C060304006A9754 /* Pods.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		711DFD351C060304006A9754 /* QRCatcher */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD361C060304006A9754 /* AppDelegate.h */,
-				711DFD371C060304006A9754 /* AppDelegate.m */,
-				711DFD381C060304006A9754 /* LaunchScreen.xib */,
-				711DFD3A1C060304006A9754 /* Main.storyboard */,
-				711DFD3C1C060304006A9754 /* Images.xcassets */,
-				711DFD3D1C060304006A9754 /* Info.plist */,
-				711DFD3E1C060304006A9754 /* main.m */,
-				711DFD3F1C060304006A9754 /* NSObject+Macro.h */,
-				711DFD401C060304006A9754 /* NSObject+Macro.m */,
-				711DFD411C060304006A9754 /* NSString+Tools.h */,
-				711DFD421C060304006A9754 /* NSString+Tools.m */,
-				711DFD431C060304006A9754 /* QR.xcdatamodeld */,
-				711DFD451C060304006A9754 /* QRCatchViewController.h */,
-				711DFD461C060304006A9754 /* QRCatchViewController.m */,
-				711DFD471C060304006A9754 /* QRTabBar.h */,
-				711DFD481C060304006A9754 /* QRTabBar.m */,
-				711DFD491C060304006A9754 /* QRURLTableViewCell.h */,
-				711DFD4A1C060304006A9754 /* QRURLTableViewCell.m */,
-				711DFD4B1C060304006A9754 /* QRURLViewController.h */,
-				711DFD4C1C060304006A9754 /* QRURLViewController.m */,
-				711DFD4D1C060304006A9754 /* URLEntity.h */,
-				711DFD4E1C060304006A9754 /* URLEntity.m */,
-			);
-			path = QRCatcher;
-			sourceTree = "<group>";
-		};
-		711DFD501C060304006A9754 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD8A1C060304006A9754 /* QRCatcher.app */,
-				711DFD8C1C060304006A9754 /* QRCatcherTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		711DFD531C060304006A9754 /* QRCatcherTests */ = {
-			isa = PBXGroup;
-			children = (
-				711DFD541C060304006A9754 /* Info.plist */,
-				711DFD551C060304006A9754 /* QRCatcherTests.m */,
-			);
-			path = QRCatcherTests;
-			sourceTree = "<group>";
-		};
 		7174E39D1BEFAEC500170AAA /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,7 +366,6 @@
 		9D564DAE1BFF673E0062700D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				711DFCE11C0602C5006A9754 /* 扫码 */,
 				9D564DBB1BFF69A10062700D /* CYFFurnitureViewController.h */,
 				9D564DBC1BFF69A10062700D /* CYFFurnitureViewController.m */,
 				9D564DBD1BFF69A10062700D /* CYFFurnitureViewController.xib */,
@@ -1055,16 +649,6 @@
 			mainGroup = 9D7D5A381BE472D300E1E1EF;
 			productRefGroup = 9D7D5A421BE472D300E1E1EF /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 711DFD261C060304006A9754 /* Products */;
-					ProjectRef = 711DFD251C060304006A9754 /* Pods.xcodeproj */;
-				},
-				{
-					ProductGroup = 711DFD501C060304006A9754 /* Products */;
-					ProjectRef = 711DFD4F1C060304006A9754 /* QRCatcher.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				9D7D5A401BE472D300E1E1EF /* Zju_SmartHome */,
@@ -1074,68 +658,20 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		711DFD841C060304006A9754 /* libMasonry.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMasonry.a;
-			remoteRef = 711DFD831C060304006A9754 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		711DFD861C060304006A9754 /* libPods.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPods.a;
-			remoteRef = 711DFD851C060304006A9754 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		711DFD8A1C060304006A9754 /* QRCatcher.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = QRCatcher.app;
-			remoteRef = 711DFD891C060304006A9754 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		711DFD8C1C060304006A9754 /* QRCatcherTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = QRCatcherTests.xctest;
-			remoteRef = 711DFD8B1C060304006A9754 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		9D7D5A3F1BE472D300E1E1EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				446AF3011C001F060081C798 /* SMS_SDKLocalizable.strings in Resources */,
-				711DFD6B1C060304006A9754 /* Pods-frameworks.sh in Resources */,
-				711DFD691C060304006A9754 /* Pods-acknowledgements.plist in Resources */,
 				9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */,
-				711DFD591C060304006A9754 /* Podfile.lock in Resources */,
 				9D564D581BFEAD220062700D /* JYMainXib.xib in Resources */,
-				711DFD6C1C060304006A9754 /* Pods-resources.sh in Resources */,
 				9D564DBF1BFF69A10062700D /* CYFFurnitureViewController.xib in Resources */,
-				711DFD571C060304006A9754 /* .gitignore in Resources */,
-				711DFD721C060304006A9754 /* Images.xcassets in Resources */,
 				9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */,
-				711DFD581C060304006A9754 /* Podfile in Resources */,
-				711DFD671C060304006A9754 /* Masonry.xcconfig in Resources */,
-				711DFD711C060304006A9754 /* Main.storyboard in Resources */,
 				446AF3321C003FB10081C798 /* country.plist in Resources */,
-				711DFD5B1C060304006A9754 /* LICENSE in Resources */,
-				711DFD7D1C060304006A9754 /* QRCatcher.xcworkspace in Resources */,
 				446AF3291C002FB70081C798 /* Localizable.strings in Resources */,
-				711DFD6E1C060304006A9754 /* Pods.release.xcconfig in Resources */,
 				9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */,
-				711DFD7E1C060304006A9754 /* Info.plist in Resources */,
-				711DFD5A1C060304006A9754 /* Manifest.lock in Resources */,
-				711DFD6D1C060304006A9754 /* Pods.debug.xcconfig in Resources */,
 				9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */,
-				711DFD701C060304006A9754 /* LaunchScreen.xib in Resources */,
-				711DFD731C060304006A9754 /* Info.plist in Resources */,
 				7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1214,57 +750,32 @@
 				9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */,
 				9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */,
 				446AF3211C0025330081C798 /* SMS_MBProgressHUD.m in Sources */,
-				711DFD601C060304006A9754 /* MASViewAttribute.m in Sources */,
-				711DFD5D1C060304006A9754 /* MASConstraint.m in Sources */,
 				9D7D5A871BE4740100E1E1EF /* main.m in Sources */,
-				711DFD611C060304006A9754 /* MASViewConstraint.m in Sources */,
-				711DFD681C060304006A9754 /* Pods-acknowledgements.markdown in Sources */,
-				711DFD741C060304006A9754 /* main.m in Sources */,
-				711DFD5E1C060304006A9754 /* MASConstraintMaker.m in Sources */,
 				7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */,
 				9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */,
 				9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */,
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
 				446AF31F1C0025330081C798 /* SMS_HYZBadgeView.m in Sources */,
 				446AF3111C0024AB0081C798 /* RegViewController.m in Sources */,
-				711DFD5C1C060304006A9754 /* MASCompositeConstraint.m in Sources */,
-				711DFD6A1C060304006A9754 /* Pods-dummy.m in Sources */,
-				711DFD7A1C060304006A9754 /* QRURLTableViewCell.m in Sources */,
 				446AF31E1C0025330081C798 /* NSDictionary-DeepMutableCopy.m in Sources */,
-				711DFD791C060304006A9754 /* QRTabBar.m in Sources */,
 				9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */,
-				711DFD5F1C060304006A9754 /* MASLayoutConstraint.m in Sources */,
-				711DFD621C060304006A9754 /* NSArray+MASAdditions.m in Sources */,
 				9D6568671BEB8861006D9507 /* JYUserData.m in Sources */,
 				446AF3201C0025330081C798 /* SMS_MBProgressHUD+Add.m in Sources */,
 				9D564DBA1BFF68DD0062700D /* CYFCollectionReusableView.m in Sources */,
 				446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */,
 				9D564D5B1BFEAD630062700D /* JYMainView.m in Sources */,
-				711DFD631C060304006A9754 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
-				711DFD7C1C060304006A9754 /* URLEntity.m in Sources */,
-				711DFD771C060304006A9754 /* QR.xcdatamodeld in Sources */,
-				711DFD6F1C060304006A9754 /* AppDelegate.m in Sources */,
-				711DFD761C060304006A9754 /* NSString+Tools.m in Sources */,
 				446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */,
-				711DFD641C060304006A9754 /* View+MASAdditions.m in Sources */,
-				711DFD801C060304006A9754 /* README.md in Sources */,
 				446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */,
 				9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */,
-				711DFD7F1C060304006A9754 /* QRCatcherTests.m in Sources */,
 				9D564DB71BFF688A0062700D /* CYFCollectionViewCell.m in Sources */,
 				9D564DC51C0007290062700D /* JYFurniture.m in Sources */,
-				711DFD751C060304006A9754 /* NSObject+Macro.m in Sources */,
 				9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */,
 				9D564DC21BFFF6E50062700D /* JYElectricalController.m in Sources */,
 				446AF3141C00250A0081C798 /* VerifyViewController.m in Sources */,
-				711DFD661C060304006A9754 /* Masonry-dummy.m in Sources */,
 				9D564D4F1BFEAB840062700D /* CYFMainViewController.m in Sources */,
-				711DFD781C060304006A9754 /* QRCatchViewController.m in Sources */,
 				9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */,
 				7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */,
-				711DFD651C060304006A9754 /* README.md in Sources */,
 				446AF3461C005BF10081C798 /* RECommonFunctions.m in Sources */,
-				711DFD7B1C060304006A9754 /* QRURLViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,22 +836,6 @@
 				446AF3351C003FB30081C798 /* zh-Hans */,
 			);
 			name = country.plist;
-			sourceTree = "<group>";
-		};
-		711DFD381C060304006A9754 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				711DFD391C060304006A9754 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-		711DFD3A1C060304006A9754 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				711DFD3B1C060304006A9754 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		9D7D5A551BE472D300E1E1EF /* LaunchScreen.storyboard */ = {
@@ -1564,16 +1059,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		711DFD431C060304006A9754 /* QR.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				711DFD441C060304006A9754 /* QR.xcdatamodel */,
-			);
-			currentVersion = 711DFD441C060304006A9754 /* QR.xcdatamodel */;
-			path = QR.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		9D7D5A501BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
