@@ -87,7 +87,8 @@
     _animationDuration = 0.25f;
     _interactivePopGestureRecognizerEnabled = YES;
   
-    _menuViewControllerTransformation = CGAffineTransformMakeScale(1.5f, 1.5f);
+//    _menuViewControllerTransformation = CGAffineTransformMakeScale(1.5f, 1.5f);
+    _menuViewControllerTransformation = CGAffineTransformMakeScale(1.0f, 1.0f); /**< 这样使侧拉时侧窗口出现时不缩放 */
     
     _scaleContentView = YES;
     _scaleBackgroundImageView = YES;
@@ -100,7 +101,7 @@
     _parallaxContentMinimumRelativeValue = -25;
     _parallaxContentMaximumRelativeValue = 25;
     
-    _bouncesHorizontally = YES;
+    _bouncesHorizontally = NO; /**< 侧拉到底的弹跳效果 */
     
     _panGestureEnabled = YES;
     _panFromEdge = YES;
@@ -111,9 +112,9 @@
     _contentViewShadowOffset = CGSizeZero;
     _contentViewShadowOpacity = 0.4f;
     _contentViewShadowRadius = 8.0f;
-    _contentViewFadeOutAlpha = 1.0f;
-    _contentViewInLandscapeOffsetCenterX = 30.f;
-    _contentViewInPortraitOffsetCenterX  = 30.f;
+    _contentViewFadeOutAlpha = 1.0f; /**< 侧拉时透明效果 */
+    _contentViewInLandscapeOffsetCenterX = 30.f; /**< 可以让侧拉的时候主窗口偏移量更大一点（横屏） */
+    _contentViewInPortraitOffsetCenterX  = 30.f; /**< 可以让侧拉的时候主窗口偏移量更大一点（竖屏） */
     _contentViewScaleValue = 0.7f;
 }
 
@@ -283,6 +284,8 @@
     [self resetContentViewScale];
     
     [UIView animateWithDuration:self.animationDuration animations:^{
+        
+//把下面的判断语句注释掉，在侧拉的时候住窗口就只是平移而不会变小了
 //        if (self.scaleContentView) {
 //            self.contentViewContainer.transform = CGAffineTransformMakeScale(self.contentViewScaleValue, self.contentViewScaleValue);
 //        } else {
@@ -290,9 +293,16 @@
 //        }
         
         if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_7_1) {
-            self.contentViewContainer.center = CGPointMake((UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? self.contentViewInLandscapeOffsetCenterX + CGRectGetWidth(self.view.frame) : self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame)), self.contentViewContainer.center.y);
+            self.contentViewContainer.center = CGPointMake(
+                                                           (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? self.contentViewInLandscapeOffsetCenterX + CGRectGetWidth(self.view.frame) : self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame)),
+                                                           self.contentViewContainer.center.y
+                                                           );
+            NSLog(@"%@", NSStringFromCGPoint(self.contentViewContainer.center));
         } else {
-            self.contentViewContainer.center = CGPointMake((UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame) : self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame)), self.contentViewContainer.center.y);
+            self.contentViewContainer.center = CGPointMake(
+                                                           (UIInterfaceOrientationIsLandscape([[UIApplication sharedApplication] statusBarOrientation]) ? self.contentViewInLandscapeOffsetCenterX + CGRectGetHeight(self.view.frame) : self.contentViewInPortraitOffsetCenterX + CGRectGetWidth(self.view.frame)),
+                                                           self.contentViewContainer.center.y
+                                                           );
         }
 
         self.menuViewContainer.alpha = !self.fadeMenuView ?: 1.0f;
@@ -300,7 +310,7 @@
         self.menuViewContainer.transform = CGAffineTransformIdentity;
         if (self.scaleBackgroundImageView)
             self.backgroundImageView.transform = CGAffineTransformIdentity;
-            
+        
     } completion:^(BOOL finished) {
         [self addContentViewControllerMotionEffects];
         [self.leftMenuViewController endAppearanceTransition];
@@ -610,7 +620,8 @@
         }
         
         if (self.scaleMenuView) {
-            self.menuViewContainer.transform = CGAffineTransformMakeScale(menuViewScale, menuViewScale);
+            //注释了这句
+//            self.menuViewContainer.transform = CGAffineTransformMakeScale(menuViewScale, menuViewScale);
         }
         
         if (self.scaleBackgroundImageView) {
