@@ -18,12 +18,15 @@
 //model
 
 
+#define MY_SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+
 @interface QRCatchViewController ()<AVCaptureMetadataOutputObjectsDelegate>
-@property (weak, nonatomic) IBOutlet UILabel *stringLabel;
 @property (weak, nonatomic) IBOutlet UIView *preview;
 @property (weak, nonatomic) IBOutlet UIVisualEffectView *blurView;
 @property (weak, nonatomic) IBOutlet UIImageView *catcherIndicator;
 @property (weak, nonatomic) IBOutlet UIView *borderView;
+@property (weak, nonatomic) IBOutlet UILabel *stringLabel;
+
 @property (strong,nonatomic) CAShapeLayer *mask;
 
 //AVFoundation
@@ -50,6 +53,8 @@
   
 }
 
+
+
 //使用Autolayout布局,我们在viewDidLayoutSubviews才能获取布局后的正确frame
 - (void)viewDidLayoutSubviews
 {
@@ -59,14 +64,14 @@
   self.previewLayer.bounds = self.preview.bounds;
   self.previewLayer.position = CGPointMake(CGRectGetMidX(self.preview.bounds), CGRectGetMidY(self.preview.bounds));
   
-  //configure blur view mask layer
+  
   self.mask.frame = self.blurView.bounds;
   
   UIBezierPath *outRectangle = [UIBezierPath bezierPathWithRect:self.blurView.bounds];
   CGRect inRect;
   
   
-  inRect = [self.catcherIndicator convertRect:CGRectMake(-5, 50, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.width) toView:self.blurView];
+  inRect = [self.catcherIndicator convertRect:CGRectMake(20, 50, MY_SCREEN_WIDTH-40, MY_SCREEN_WIDTH-40) toView:self.blurView];
   
   
   UIBezierPath *inRectangle = [UIBezierPath bezierPathWithRect:inRect];
@@ -159,7 +164,6 @@
       if ([metadata.stringValue isURL])
       {
         [[UIApplication sharedApplication] openURL:[NSString HTTPURLFromString:metadata.stringValue]];
-        //                [self insertURLEntityWithURL:metadata.stringValue];
         self.stringLabel.text = metadata.stringValue;
       }
       else

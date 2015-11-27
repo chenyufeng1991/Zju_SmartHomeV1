@@ -55,7 +55,7 @@
                     <blurEffect style="light"/>
                 </visualEffectView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="MFX-jh-DCg">
-                    <rect key="frame" x="5" y="103" width="307" height="307"/>
+                    <rect key="frame" x="0.0" y="103" width="320" height="307"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                 </imageView>
