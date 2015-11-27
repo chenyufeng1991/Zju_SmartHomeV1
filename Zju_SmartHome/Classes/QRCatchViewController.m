@@ -64,24 +64,16 @@
   
   UIBezierPath *outRectangle = [UIBezierPath bezierPathWithRect:self.blurView.bounds];
   CGRect inRect;
-  if (IS_IPHONE_6P)
-  {
-    inRect = [self.catcherIndicator convertRect:CGRectMake(72, 72, 272, 272) toView:self.blurView];
-  }
-  else
-  {
-    inRect = [self.catcherIndicator convertRect:CGRectMake(52, 52, 272, 272) toView:self.blurView];
-  }
+  
+  
+  inRect = [self.catcherIndicator convertRect:CGRectMake(-5, 50, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.width) toView:self.blurView];
+  
+  
   UIBezierPath *inRectangle = [UIBezierPath bezierPathWithRect:inRect];
   
   [outRectangle appendPath:inRectangle];
   outRectangle.usesEvenOddFillRule = YES;
   self.mask.path = outRectangle.CGPath;
-}
-
-- (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning];
-  // Dispose of any resources that can be recreated.
 }
 
 #pragma mark -  view did load setup
