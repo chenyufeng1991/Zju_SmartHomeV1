@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		442E7EB41C07402300E3C84C /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 442E7EB31C07402300E3C84C /* RESideMenu.m */; };
+		444C746E1C082EA100DF398C /* DLAddDeviceManually.xib in Resources */ = {isa = PBXBuildFile; fileRef = 444C746D1C082EA100DF398C /* DLAddDeviceManually.xib */; };
+		444C74711C0837F300DF398C /* DLAddDeviceManuallyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 444C74701C0837F300DF398C /* DLAddDeviceManuallyViewController.m */; };
+		444C74741C08384400DF398C /* DLAddDeviceManually.m in Sources */ = {isa = PBXBuildFile; fileRef = 444C74731C08384400DF398C /* DLAddDeviceManually.m */; };
 		446AF3011C001F060081C798 /* SMS_SDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 446AF2FC1C001F060081C798 /* SMS_SDKLocalizable.strings */; };
 		446AF3021C001F060081C798 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF2FE1C001F060081C798 /* MOBFoundation.framework */; };
 		446AF3031C001F070081C798 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF2FF1C001F060081C798 /* SMS_SDK.framework */; };
@@ -58,8 +61,8 @@
 		9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8E1BE474BD00E1E1EF /* JYLoginXib.m */; };
 		9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */; };
 		9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */; };
-		9DFF735E1C07E4B00061EFBF /* JYFurnitureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF735D1C07E4B00061EFBF /* JYFurnitureView.m */; settings = {ASSET_TAGS = (); }; };
-		9DFF73601C07E4C80061EFBF /* JYFurnitureViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFF735F1C07E4C80061EFBF /* JYFurnitureViewXib.xib */; settings = {ASSET_TAGS = (); }; };
+		9DFF735E1C07E4B00061EFBF /* JYFurnitureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF735D1C07E4B00061EFBF /* JYFurnitureView.m */; };
+		9DFF73601C07E4C80061EFBF /* JYFurnitureViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFF735F1C07E4C80061EFBF /* JYFurnitureViewXib.xib */; };
 		EF249F846089741C690DEED3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88554DE0CE3743A8B110C726 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +86,11 @@
 /* Begin PBXFileReference section */
 		442E7EB21C07402300E3C84C /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
 		442E7EB31C07402300E3C84C /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		444C746D1C082EA100DF398C /* DLAddDeviceManually.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLAddDeviceManually.xib; sourceTree = "<group>"; };
+		444C746F1C0837F300DF398C /* DLAddDeviceManuallyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAddDeviceManuallyViewController.h; sourceTree = "<group>"; };
+		444C74701C0837F300DF398C /* DLAddDeviceManuallyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAddDeviceManuallyViewController.m; sourceTree = "<group>"; };
+		444C74721C08384400DF398C /* DLAddDeviceManually.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAddDeviceManually.h; sourceTree = "<group>"; };
+		444C74731C08384400DF398C /* DLAddDeviceManually.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAddDeviceManually.m; sourceTree = "<group>"; };
 		446AF2FD1C001F060081C798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SMS_SDKLocalizable.strings; sourceTree = "<group>"; };
 		446AF2FE1C001F060081C798 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		446AF2FF1C001F060081C798 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
@@ -543,6 +551,11 @@
 				9D7D5A831BE4740100E1E1EF /* AppDelegate.m */,
 				9D5FF5B21BEA2C2E004371E5 /* JYNavigationController.h */,
 				9D5FF5B31BEA2C2E004371E5 /* JYNavigationController.m */,
+				444C746D1C082EA100DF398C /* DLAddDeviceManually.xib */,
+				444C74721C08384400DF398C /* DLAddDeviceManually.h */,
+				444C74731C08384400DF398C /* DLAddDeviceManually.m */,
+				444C746F1C0837F300DF398C /* DLAddDeviceManuallyViewController.h */,
+				444C74701C0837F300DF398C /* DLAddDeviceManuallyViewController.m */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -671,6 +684,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				444C746E1C082EA100DF398C /* DLAddDeviceManually.xib in Resources */,
 				446AF3011C001F060081C798 /* SMS_SDKLocalizable.strings in Resources */,
 				9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */,
 				9D564D581BFEAD220062700D /* JYMainXib.xib in Resources */,
@@ -774,10 +788,12 @@
 				9D564DBA1BFF68DD0062700D /* CYFCollectionReusableView.m in Sources */,
 				446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */,
 				9D564D5B1BFEAD630062700D /* JYMainView.m in Sources */,
+				444C74741C08384400DF398C /* DLAddDeviceManually.m in Sources */,
 				446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */,
 				446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */,
 				9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */,
 				9D564DB71BFF688A0062700D /* CYFCollectionViewCell.m in Sources */,
+				444C74711C0837F300DF398C /* DLAddDeviceManuallyViewController.m in Sources */,
 				9D564DC51C0007290062700D /* JYFurniture.m in Sources */,
 				9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */,
 				9D564DC21BFFF6E50062700D /* JYElectricalController.m in Sources */,
