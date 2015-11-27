@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		442E7EB41C07402300E3C84C /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 442E7EB31C07402300E3C84C /* RESideMenu.m */; };
 		446AF3011C001F060081C798 /* SMS_SDKLocalizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 446AF2FC1C001F060081C798 /* SMS_SDKLocalizable.strings */; };
 		446AF3021C001F060081C798 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF2FE1C001F060081C798 /* MOBFoundation.framework */; };
 		446AF3031C001F070081C798 /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 446AF2FF1C001F060081C798 /* SMS_SDK.framework */; };
@@ -25,7 +26,6 @@
 		446AF3291C002FB70081C798 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 446AF32B1C002FB70081C798 /* Localizable.strings */; };
 		446AF3321C003FB10081C798 /* country.plist in Resources */ = {isa = PBXBuildFile; fileRef = 446AF3341C003FB10081C798 /* country.plist */; };
 		446AF3461C005BF10081C798 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3411C005BF10081C798 /* RECommonFunctions.m */; };
-		446AF3471C005BF10081C798 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3431C005BF10081C798 /* RESideMenu.m */; };
 		446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */; };
 		446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */; };
 		712A99FA1BEF849E00FE90FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 712A99F91BEF849E00FE90FE /* CoreLocation.framework */; };
@@ -57,7 +57,7 @@
 		9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8B1BE4748200E1E1EF /* loginXib.xib */; };
 		9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8E1BE474BD00E1E1EF /* JYLoginXib.m */; };
 		9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */; };
-		9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */; settings = {ASSET_TAGS = (); }; };
+		9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */; };
 		EF249F846089741C690DEED3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88554DE0CE3743A8B110C726 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +79,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		442E7EB21C07402300E3C84C /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		442E7EB31C07402300E3C84C /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		446AF2FD1C001F060081C798 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/SMS_SDKLocalizable.strings; sourceTree = "<group>"; };
 		446AF2FE1C001F060081C798 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		446AF2FF1C001F060081C798 /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
@@ -108,8 +110,6 @@
 		446AF3351C003FB30081C798 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "zh-Hans"; path = "zh-Hans.lproj/country.plist"; sourceTree = "<group>"; };
 		446AF3401C005BF10081C798 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		446AF3411C005BF10081C798 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
-		446AF3421C005BF10081C798 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
-		446AF3431C005BF10081C798 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
 		446AF3441C005BF10081C798 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
 		446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
 		446AF3491C005F180081C798 /* DLLeftSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftSlideMenuViewController.h; sourceTree = "<group>"; };
@@ -302,8 +302,8 @@
 			children = (
 				446AF3401C005BF10081C798 /* RECommonFunctions.h */,
 				446AF3411C005BF10081C798 /* RECommonFunctions.m */,
-				446AF3421C005BF10081C798 /* RESideMenu.h */,
-				446AF3431C005BF10081C798 /* RESideMenu.m */,
+				442E7EB21C07402300E3C84C /* RESideMenu.h */,
+				442E7EB31C07402300E3C84C /* RESideMenu.m */,
 				446AF3441C005BF10081C798 /* UIViewController+RESideMenu.h */,
 				446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */,
 			);
@@ -745,7 +745,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				446AF3471C005BF10081C798 /* RESideMenu.m in Sources */,
 				9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */,
 				9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */,
 				9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */,
@@ -753,6 +752,7 @@
 				9D7D5A871BE4740100E1E1EF /* main.m in Sources */,
 				7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */,
 				9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */,
+				442E7EB41C07402300E3C84C /* RESideMenu.m in Sources */,
 				9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */,
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
 				446AF31F1C0025330081C798 /* SMS_HYZBadgeView.m in Sources */,
