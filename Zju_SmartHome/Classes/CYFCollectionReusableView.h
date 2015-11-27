@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CYFCollectionReusableView : UICollectionReusableView
-@property(strong,nonatomic)UILabel *title;
+//头部显示的view
+@property(nonatomic,strong)UIView *view;
+//头部文字
+@property(nonatomic,strong)UILabel *title;
+
+@property(nonatomic,strong)UIView *topView;
 @end

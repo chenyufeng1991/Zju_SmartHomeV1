@@ -17,15 +17,33 @@
   self = [super initWithFrame:frame];
   if (self) {
     
-    self.title = [[UILabel alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT / 20, SCREEN_WIDTH, SCREEN_HEIGHT / 20)];
-    self.title.textColor = [UIColor blackColor];
-    self.title.textAlignment = NSTextAlignmentCenter;
-    
-    [self addSubview:self.title];
-    
+      self.title=[[UILabel alloc]init];
+      self.title.textColor=[UIColor blackColor];
+      self.title.textAlignment=NSTextAlignmentCenter;
+
+      UIView *topView=[[UIView alloc]init];
+      topView.backgroundColor=[UIColor grayColor];
+      self.topView=topView;
+      
+      
+      UIView *view=[[UIView alloc]init];
+      self.view=view;
+
+      [self.view addSubview:self.title];
+      [self.view addSubview:self.topView];
+      
+      [self addSubview:self.view];
+      
     
   }
   return self;
+}
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.topView.frame=CGRectMake(0, 44, self.window.frame.size.width, 1);
+    self.title.frame=CGRectMake(0, 15, self.window.frame.size.width, 15);
+    self.view.frame=CGRectMake(0,0, self.window.frame.size.width, 45);
 }
 
 @end

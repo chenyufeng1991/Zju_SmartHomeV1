@@ -7,32 +7,41 @@
 //
 
 #import "CYFCollectionViewCell.h"
-#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
-#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#import "JYFurnitureView.h"
+#define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define UISCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+
+@interface CYFCollectionViewCell()
+@property(nonatomic,strong)JYFurnitureView *furnitureView;
+@end
 
 @implementation CYFCollectionViewCell
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
-  if (self) {
-    
-    
-    //这里需要初始化ImageView；
-    self.imageButton = [[UIButton alloc] initWithFrame:CGRectMake((self.bounds.size.width - 32) / 2, (self.bounds.size.width - 32) / 2, 32, 32)];
-    self.imageButton.tag = 100;
-    
-    
-    self.descLabel = [[UILabel alloc] initWithFrame:CGRectMake((self.bounds.size.width - 100) / 2, (self.bounds.size.width - 32) / 2 + 30, 100, 20)];
-    self.descLabel.textAlignment = NSTextAlignmentCenter;
-    self.descLabel.font=[UIFont systemFontOfSize:10];
-    self.descLabel.tag = 101;
-    
-    [self.contentView addSubview:self.imageButton];
-    [self.contentView addSubview:self.descLabel];
-    
-    
+  if (self)
+  {
+      JYFurnitureView *furnitureView=[JYFurnitureView furnitureViewXib];
+      self.furnitureView=furnitureView;
+      [self addSubview:self.furnitureView];
+
+      self.imageButton=furnitureView.imageBtn;
+      self.descLabel=furnitureView.descLabel;
+      self.bottomX=furnitureView.bottomX;
+      self.rightX=furnitureView.rightX;
+      self.topX=furnitureView.topX;
+      
+
   }
   return self;
 }
 
+//这个方法里调整控件frame是最准确的
+-(void)layoutSubviews
+{
+    [super layoutSubviews];
+    
+    self.furnitureView.frame=CGRectMake(0, 0, UISCREEN_WIDTH/ 3, UISCREEN_WIDTH/ 3);
+}
 @end

@@ -6,10 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CYFFurnitureViewController">
             <connections>
-                <outlet property="addButtonPressed" destination="gZL-qr-1XX" id="YZm-b6-CUs"/>
-                <outlet property="collectionView" destination="JRb-F7-DIF" id="l3G-aI-V1X"/>
-                <outlet property="image" destination="j7B-cG-OcQ" id="nXF-hF-PC3"/>
-                <outlet property="scrollView" destination="j7B-cG-OcQ" id="pQX-Um-yYq"/>
+                <outlet property="collectionView" destination="qGv-Ad-PnH" id="naF-CJ-JCz"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,45 +15,27 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="j7B-cG-OcQ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gZL-qr-1XX">
+                    <rect key="frame" x="0.0" y="528" width="320" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gZL-qr-1XX">
-                            <rect key="frame" x="0.0" y="534" width="320" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <state key="normal" title="增加一个Section"/>
-                            <connections>
-                                <action selector="addEnvirnmentClick:" destination="-1" eventType="touchUpInside" id="neZ-sk-qH9"/>
-                            </connections>
-                        </button>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="none" id="JRb-F7-DIF">
-                            <rect key="frame" x="0.0" y="154" width="320" height="370"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8bP-0o-fOm">
-                                <size key="itemSize" width="50" height="50"/>
-                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            </collectionViewFlowLayout>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="gAL-A6-AEH"/>
-                                <outlet property="delegate" destination="-1" id="5NH-2A-QpJ"/>
-                            </connections>
-                        </collectionView>
-                        <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="家居" id="8Xr-u2-3lx">
-                            <rect key="frame" x="0.0" y="-64" width="320" height="198"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                        </imageView>
-                    </subviews>
                     <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="添加智能区域" backgroundImage="圆角矩形-4"/>
+                    <state key="selected" backgroundImage="圆角矩形-2@3x(1)"/>
                     <connections>
-                        <outlet property="delegate" destination="i5M-Pr-FkT" id="b9M-vr-gF8"/>
+                        <action selector="add:" destination="-1" eventType="touchUpInside" id="AtM-jP-noB"/>
                     </connections>
-                </scrollView>
+                </button>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" id="qGv-Ad-PnH">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yOJ-S7-7em">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -64,6 +43,7 @@
         </view>
     </objects>
     <resources>
-        <image name="家居" width="280" height="300"/>
+        <image name="圆角矩形-2@3x(1)" width="870" height="120"/>
+        <image name="圆角矩形-4" width="290" height="40"/>
     </resources>
 </document>

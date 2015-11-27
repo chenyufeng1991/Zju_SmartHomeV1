@@ -92,9 +92,9 @@
         
         //5.存储模型数据
         //归档
-        NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-        NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
-        [NSKeyedArchiver archiveRootObject:data toFile:file];
+//        NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+//        NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
+//        [NSKeyedArchiver archiveRootObject:data toFile:file];
         
         if([status.code isEqualToString:@"0"])
         {

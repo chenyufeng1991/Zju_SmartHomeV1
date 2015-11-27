@@ -32,30 +32,26 @@
     
     
     //1.先判断有无存储账号信息
-    NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-    NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
-    JYUserData *data=[NSKeyedUnarchiver unarchiveObjectWithFile:file];
-    
-    if(data)//已经登录过
-    {
-        
-        DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
-        CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
-        JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
-        RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navVc
-                                                                        leftMenuViewController:leftSlideMenuViewController
-                                                                       rightMenuViewController:nil];
-        self.window.rootViewController=sideMenuViewController;
-        
-        
+//    NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+//    NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
+//    JYUserData *data=[NSKeyedUnarchiver unarchiveObjectWithFile:file];
+   
+//    if(data)//已经登录过
+//    {
+//        
+//        DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
 //        CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
 //        JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
-//        self.window.rootViewController=navVc;
-    }
-    else//还未登录过
-    {
+//        RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navVc
+//                                                                        leftMenuViewController:leftSlideMenuViewController
+//                                                                       rightMenuViewController:nil];
+//        self.window.rootViewController=sideMenuViewController;
+//        
+//    }
+//    else//还未登录过
+    //{
         self.window.rootViewController=[[JYLoginViewController alloc]init];
-    }
+    //}
     application.statusBarStyle=UIStatusBarStyleLightContent;
     [self.window makeKeyAndVisible];
     

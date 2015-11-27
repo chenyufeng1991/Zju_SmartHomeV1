@@ -17,4 +17,7 @@
 
 @property(strong,nonatomic) UIButton *imageButton;
 @property(strong,nonatomic) UILabel *descLabel;
+@property(nonatomic,strong)UIView *bottomX;
+@property(nonatomic,strong)UIView *rightX;
+@property(nonatomic,strong)UIView *topX;
 @end

@@ -34,7 +34,7 @@
 -(void)registerXib:(NSString *)username and:(NSString *)password and:(NSString *)email
 {
     //显示一个蒙板
-    [MBProgressHUD showMessage:@"正在登录中..."];
+    [MBProgressHUD showMessage:@"正在注册中..."];
   
     //1.创建请求管理对象
     AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];

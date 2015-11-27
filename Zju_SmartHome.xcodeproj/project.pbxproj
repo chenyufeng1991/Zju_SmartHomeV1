@@ -58,6 +58,8 @@
 		9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D5A8E1BE474BD00E1E1EF /* JYLoginXib.m */; };
 		9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */; };
 		9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */; };
+		9DFF735E1C07E4B00061EFBF /* JYFurnitureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF735D1C07E4B00061EFBF /* JYFurnitureView.m */; settings = {ASSET_TAGS = (); }; };
+		9DFF73601C07E4C80061EFBF /* JYFurnitureViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFF735F1C07E4C80061EFBF /* JYFurnitureViewXib.xib */; settings = {ASSET_TAGS = (); }; };
 		EF249F846089741C690DEED3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88554DE0CE3743A8B110C726 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +172,9 @@
 		9DB7CC931BE8FD7C0044AA75 /* JYRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYRegisterViewController.m; sourceTree = "<group>"; };
 		9DFCF3951C05A208004F7124 /* JYFurnitureSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureSection.h; sourceTree = "<group>"; };
 		9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureSection.m; sourceTree = "<group>"; };
+		9DFF735C1C07E4B00061EFBF /* JYFurnitureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureView.h; sourceTree = "<group>"; };
+		9DFF735D1C07E4B00061EFBF /* JYFurnitureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureView.m; sourceTree = "<group>"; };
+		9DFF735F1C07E4C80061EFBF /* JYFurnitureViewXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYFurnitureViewXib.xib; sourceTree = "<group>"; };
 		FFC4EA9F1F216133F840AA56 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -359,6 +364,9 @@
 				9D564DB61BFF688A0062700D /* CYFCollectionViewCell.m */,
 				9D564DB81BFF68DD0062700D /* CYFCollectionReusableView.h */,
 				9D564DB91BFF68DD0062700D /* CYFCollectionReusableView.m */,
+				9DFF735C1C07E4B00061EFBF /* JYFurnitureView.h */,
+				9DFF735D1C07E4B00061EFBF /* JYFurnitureView.m */,
+				9DFF735F1C07E4C80061EFBF /* JYFurnitureViewXib.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -670,6 +678,7 @@
 				9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */,
 				446AF3321C003FB10081C798 /* country.plist in Resources */,
 				446AF3291C002FB70081C798 /* Localizable.strings in Resources */,
+				9DFF73601C07E4C80061EFBF /* JYFurnitureViewXib.xib in Resources */,
 				9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */,
 				9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */,
 				7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */,
@@ -759,6 +768,7 @@
 				446AF3111C0024AB0081C798 /* RegViewController.m in Sources */,
 				446AF31E1C0025330081C798 /* NSDictionary-DeepMutableCopy.m in Sources */,
 				9D5FF5AE1BE9942A004371E5 /* JYRegisterXib.m in Sources */,
+				9DFF735E1C07E4B00061EFBF /* JYFurnitureView.m in Sources */,
 				9D6568671BEB8861006D9507 /* JYUserData.m in Sources */,
 				446AF3201C0025330081C798 /* SMS_MBProgressHUD+Add.m in Sources */,
 				9D564DBA1BFF68DD0062700D /* CYFCollectionReusableView.m in Sources */,
