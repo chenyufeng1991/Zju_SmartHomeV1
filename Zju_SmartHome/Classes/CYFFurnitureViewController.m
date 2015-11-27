@@ -18,6 +18,10 @@
 #import "JYElectricalController.h"
 #import "JYFurniture.h"
 #import "JYFurnitureSection.h"
+
+#import "QRCatchViewController.h"
+
+
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
@@ -261,5 +265,7 @@
 -(void)addNewFurniture
 {
     NSLog(@"真正开始添加电器了");
+  QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
+  [self.navigationController pushViewController:qrCatcherVC animated:YES];
 }
 @end
