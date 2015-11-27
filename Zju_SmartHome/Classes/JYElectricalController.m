@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
-    [self test2];
+    [self test];
 }
 -(void)test2
 {
@@ -35,7 +35,7 @@
     params[@"is_app"]=@"1";
     
     //4.发送请求
-    [mgr POST:@"http://60.12.220.16:8888/paladin/Phymapping/find" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
+    [mgr POST:@"http://60.12.220.16:8888/paladin/Equipment/find" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          NSLog(@"看看返回的数据是啥呢？%@",responseObject);
          
@@ -67,11 +67,11 @@
     
     NSString *str = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
     "<root>"
-    "<command_id>10001</command_id>"
+    "<command_id></command_id>"
     "<command_type>execute</command_type>"
     "<id>145</id>"
     "<action>open</action>"
-    "<value>00D01D2300158D00</value>"
+    "<value>005D8CFF00158D00</value>"
     "</root>";
     
     NSDictionary *parameters = @{@"test" : str};

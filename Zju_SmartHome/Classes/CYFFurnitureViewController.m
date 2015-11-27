@@ -20,11 +20,11 @@
 #import "JYFurnitureSection.h"
 
 #import "QRCatchViewController.h"
-
+#import "DLAddDeviceView.h"
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
-@interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout>
+@interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DLAddDeviceViewDelegate>
 
 //collectionView属性
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -35,10 +35,35 @@
 @property(nonatomic,strong)NSMutableArray *furnitureSecArray;
 //某一区域电器数组
 @property(nonatomic,strong)NSMutableArray *furnitureArray;
+
+//添加电器View
+@property(nonatomic,strong)DLAddDeviceView *addDeviceView;
+@property(nonatomic,copy)NSString *area;
+
+//默认图片数组
+@property(nonatomic,copy)NSMutableArray *imageArray;
+//默认文字描述
+@property(nonatomic,copy)NSMutableArray *descArray;
 @end
 
 @implementation CYFFurnitureViewController
 
+-(NSMutableArray *)imageArray
+{
+    if(!_imageArray)
+    {
+        _imageArray=[[NSMutableArray alloc]initWithObjects:@"aircondition_off",@"fridge_off",@"tv_off",@"rgb_light_off",@"yw_light_off",@"equipment_add" ,nil];
+    }
+    return _imageArray;
+}
+-(NSMutableArray *)descArray
+{
+    if(!_descArray)
+    {
+        _descArray=[[NSMutableArray alloc]initWithObjects:@"空调",@"冰箱",@"电视",@"RGB灯",@"YW灯",@"添加", nil];
+    }
+    return _descArray;
+}
 -(NSMutableArray *)furnitureSecArray
 {
     if(!_furnitureSecArray)
@@ -49,14 +74,14 @@
         {
             _furnitureArray=[[NSMutableArray alloc]init];
             //每个区域默认有5个电器和一个添加电器图片
-            for(int i=0;i<6;i++)
+            for(int j=0;j<6;j++)
             {
                 //初始化一个电器
                 JYFurniture *furniture=[[JYFurniture alloc]init];
                 //设置电器图片
-                furniture.imageStr=@"home_icon_yw_on";
+                furniture.imageStr=self.imageArray[j];
                 //设置电器描述文字
-                furniture.descLabel=@"YW灯";
+                furniture.descLabel=self.descArray[j];
                 //设置电器是否注册过
                 furniture.registed=NO;
                 
@@ -180,19 +205,7 @@
     
     if(indexPath.row==furnitureSection.furnitureArray.count-1)
     {
-//        //这里需要在最后一个位置增加设备；
-//        //初始化一个电器
-//        JYFurniture *furniture=[[JYFurniture alloc]init];
-//        //设置电器图片
-//        furniture.imageStr=@"home_icon_yw_on";
-//        //设置电器描述文字
-//        furniture.descLabel=@"YW灯";
-//        //设置电器是否注册过
-//        furniture.registed=NO;
-//        
-//        [furnitureSection.furnitureArray addObject:furniture];
-//        
-//        [self.collectionView reloadData];
+        self.area=furnitureSection.sectionName;
         [self addNewFurniture];
     }
     else
@@ -214,9 +227,9 @@
         //初始化一个电器
         JYFurniture *furniture=[[JYFurniture alloc]init];
         //设置电器图片
-        furniture.imageStr=@"home_icon_yw_on";
+        furniture.imageStr=self.imageArray[i];
         //设置电器描述文字
-        furniture.descLabel=@"YW灯";
+        furniture.descLabel=self.descArray[i];
         //设置电器是否注册过
         furniture.registed=NO;
         
@@ -265,7 +278,29 @@
 -(void)addNewFurniture
 {
     NSLog(@"真正开始添加电器了");
-  QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
-  [self.navigationController pushViewController:qrCatcherVC animated:YES];
+//  QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
+//  [self.navigationController pushViewController:qrCatcherVC animated:YES];
+    
+    DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+    addDeviceView.delegate=self;
+    self.addDeviceView=addDeviceView;
+    addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:addDeviceView];
+    self.navigationItem.hidesBackButton=YES;
+}
+
+//取消添加设备
+-(void)cancelAddDevice
+{
+    [self.addDeviceView removeFromSuperview];
+    self.navigationItem.hidesBackButton=NO;
+}
+
+//添加设备
+-(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
+{
+    NSLog(@"我看看值传递过来没有:%@,%@",deviceName,deviceMac);
+    NSLog(@"我看看sectionName%@",self.area);
+    
 }
 @end

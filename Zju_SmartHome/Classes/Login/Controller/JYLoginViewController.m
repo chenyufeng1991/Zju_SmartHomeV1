@@ -67,12 +67,15 @@
 -(void)loginGoGoGo:(NSString *)username and:(NSString *)password
 {
     
-    //显示一个蒙板
+//    //显示一个蒙板
     [MBProgressHUD showMessage:@"正在登录中..."];
   
+    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+    [securityPolicy setAllowInvalidCertificates:YES];
+    
     //1.创建请求管理对象
     AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
-    
+    [mgr setSecurityPolicy:securityPolicy];
     //2.说明服务器返回的是json参数
     mgr.responseSerializer=[AFJSONResponseSerializer serializer];
     
@@ -100,6 +103,7 @@
         {
             //移除遮盖
             [MBProgressHUD hideHUD];
+            NSLog(@"我看看登录成功返回的数据:%@",responseObject);
             DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
             CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
             JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
@@ -131,6 +135,8 @@
         [MBProgressHUD showError:@"登录请求失败"];
 
     }];
+    
+   
 }
 
 //代理忘记密码方法
