@@ -66,6 +66,8 @@
 		9DFF73601C07E4C80061EFBF /* JYFurnitureViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFF735F1C07E4C80061EFBF /* JYFurnitureViewXib.xib */; };
 		9DFF73721C08781C0061EFBF /* DLAddDeviceViewXib.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFF73711C08781C0061EFBF /* DLAddDeviceViewXib.xib */; settings = {ASSET_TAGS = (); }; };
 		9DFF73751C087AA20061EFBF /* DLAddDeviceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF73741C087AA20061EFBF /* DLAddDeviceView.m */; settings = {ASSET_TAGS = (); }; };
+		9DFF73781C0932F80061EFBF /* JYFurnitureBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF73771C0932F80061EFBF /* JYFurnitureBack.m */; settings = {ASSET_TAGS = (); }; };
+		9DFF737B1C0936C40061EFBF /* JYFurnitureBackStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF737A1C0936C40061EFBF /* JYFurnitureBackStatus.m */; settings = {ASSET_TAGS = (); }; };
 		EF249F846089741C690DEED3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88554DE0CE3743A8B110C726 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -191,6 +193,10 @@
 		9DFF73711C08781C0061EFBF /* DLAddDeviceViewXib.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLAddDeviceViewXib.xib; sourceTree = "<group>"; };
 		9DFF73731C087AA20061EFBF /* DLAddDeviceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAddDeviceView.h; sourceTree = "<group>"; };
 		9DFF73741C087AA20061EFBF /* DLAddDeviceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLAddDeviceView.m; sourceTree = "<group>"; };
+		9DFF73761C0932F80061EFBF /* JYFurnitureBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureBack.h; sourceTree = "<group>"; };
+		9DFF73771C0932F80061EFBF /* JYFurnitureBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureBack.m; sourceTree = "<group>"; };
+		9DFF73791C0936C40061EFBF /* JYFurnitureBackStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureBackStatus.h; sourceTree = "<group>"; };
+		9DFF737A1C0936C40061EFBF /* JYFurnitureBackStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureBackStatus.m; sourceTree = "<group>"; };
 		FFC4EA9F1F216133F840AA56 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -407,6 +413,10 @@
 				9DFCF3961C05A208004F7124 /* JYFurnitureSection.m */,
 				9D564DC31C0007290062700D /* JYFurniture.h */,
 				9D564DC41C0007290062700D /* JYFurniture.m */,
+				9DFF73791C0936C40061EFBF /* JYFurnitureBackStatus.h */,
+				9DFF737A1C0936C40061EFBF /* JYFurnitureBackStatus.m */,
+				9DFF73761C0932F80061EFBF /* JYFurnitureBack.h */,
+				9DFF73771C0932F80061EFBF /* JYFurnitureBack.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -845,8 +855,10 @@
 				446AF3211C0025330081C798 /* SMS_MBProgressHUD.m in Sources */,
 				9D7D5A871BE4740100E1E1EF /* main.m in Sources */,
 				7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */,
+				9DFF737B1C0936C40061EFBF /* JYFurnitureBackStatus.m in Sources */,
 				9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */,
 				442E7EB41C07402300E3C84C /* RESideMenu.m in Sources */,
+				9DFF73781C0932F80061EFBF /* JYFurnitureBack.m in Sources */,
 				9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */,
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
 				712C52431C08323B0014F9CB /* NSObject+Macro.m in Sources */,

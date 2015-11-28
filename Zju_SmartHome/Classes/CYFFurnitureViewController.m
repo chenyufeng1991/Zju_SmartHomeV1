@@ -18,9 +18,11 @@
 #import "JYElectricalController.h"
 #import "JYFurniture.h"
 #import "JYFurnitureSection.h"
-
 #import "QRCatchViewController.h"
 #import "DLAddDeviceView.h"
+#import "JYFurnitureBack.h"
+#import "AFNetworking.h"
+#import "JYFurnitureBackStatus.h"
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -33,6 +35,7 @@
 
 //智能区域数组
 @property(nonatomic,strong)NSMutableArray *furnitureSecArray;
+//@property(nonatomic,strong)NSMutableArray *furnitureSecArrayCopy;
 //某一区域电器数组
 @property(nonatomic,strong)NSMutableArray *furnitureArray;
 
@@ -40,14 +43,30 @@
 @property(nonatomic,strong)DLAddDeviceView *addDeviceView;
 @property(nonatomic,copy)NSString *area;
 
+
+//头部数组
+@property(nonatomic,strong)NSMutableArray *headerArray;
 //默认图片数组
-@property(nonatomic,copy)NSMutableArray *imageArray;
+@property(nonatomic,strong)NSMutableArray *imageArray;
+@property(nonatomic,strong)NSMutableArray *imageHighArray;
 //默认文字描述
-@property(nonatomic,copy)NSMutableArray *descArray;
+@property(nonatomic,strong)NSMutableArray *descArray;
+
+@property(nonatomic,strong)JYFurnitureBackStatus *furnitureBackStatus;
+
+@property(nonatomic,strong)JYFurnitureSection *section;
 @end
 
 @implementation CYFFurnitureViewController
 
+-(NSMutableArray *)headerArray
+{
+    if(!_headerArray)
+    {
+        _headerArray=[[NSMutableArray alloc]initWithObjects:@"大厅",@"卧室", nil];
+    }
+    return _headerArray;
+}
 -(NSMutableArray *)imageArray
 {
     if(!_imageArray)
@@ -55,6 +74,14 @@
         _imageArray=[[NSMutableArray alloc]initWithObjects:@"aircondition_off",@"fridge_off",@"tv_off",@"rgb_light_off",@"yw_light_off",@"equipment_add" ,nil];
     }
     return _imageArray;
+}
+-(NSMutableArray *)imageHighArray
+{
+    if(!_imageHighArray)
+    {
+        _imageHighArray=[[NSMutableArray alloc]initWithObjects:@"aircondition_on",@"fridge_on",@"tv_on",@"rgb_light_on",@"yw_light_on",@"equipment_add" ,nil];
+    }
+    return _imageHighArray;
 }
 -(NSMutableArray *)descArray
 {
@@ -83,7 +110,7 @@
                 //设置电器描述文字
                 furniture.descLabel=self.descArray[j];
                 //设置电器是否注册过
-                furniture.registed=NO;
+                //furniture.registed=NO;
                 
                 //将电器添加到电器数组中
                 [_furnitureArray addObject:furniture];
@@ -92,7 +119,7 @@
             //初始化一个智能区域
             JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
             //设置智能区域的名称
-            furnitureSection.sectionName=@"客厅";
+            furnitureSection.sectionName=self.headerArray[i];
             //设置智能区域的电器数组
             furnitureSection.furnitureArray=_furnitureArray;
             
@@ -101,12 +128,15 @@
             [_furnitureSecArray addObject:furnitureSection];
         }
     }
+//    _furnitureSecArrayCopy=[[NSMutableArray alloc]init];
+//    _furnitureSecArrayCopy=_furnitureSecArray;
     return _furnitureSecArray;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     
     //进行CollectionView和Cell的绑定
     [self.collectionView registerClass:[CYFCollectionViewCell class]  forCellWithReuseIdentifier:@"CollectionCell"];
@@ -120,6 +150,7 @@
     //右侧滚动条隐藏
     self.collectionView.showsVerticalScrollIndicator=false;
     
+    [self getDataFromReote];
     
 }
 
@@ -159,8 +190,8 @@
     JYFurniture *furniture=[furnitureSection.furnitureArray objectAtIndex:indexPath.row];
     
     [cell.imageButton setBackgroundImage:[UIImage imageNamed:furniture.imageStr] forState:UIControlStateNormal];
-    cell.descLabel.text=furniture.descLabel;
     
+    cell.descLabel.text=furniture.descLabel;
     cell.topX.hidden=YES;
   
     return cell;
@@ -206,11 +237,15 @@
     if(indexPath.row==furnitureSection.furnitureArray.count-1)
     {
         self.area=furnitureSection.sectionName;
+       
+        JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
+        self.section=section;
         [self addNewFurniture];
     }
     else
     {
         NSLog(@"第%ld个section,点击图片%ld",indexPath.section,indexPath.row);
+        
         JYElectricalController *jyVc=[[JYElectricalController alloc]init];
         [self.navigationController pushViewController:jyVc animated:YES];
     }
@@ -231,7 +266,7 @@
         //设置电器描述文字
         furniture.descLabel=self.descArray[i];
         //设置电器是否注册过
-        furniture.registed=NO;
+        //furniture.registed=NO;
         
         //将电器添加到电器数组中
         [self.furnitureArray addObject:furniture];
@@ -277,7 +312,6 @@
 
 -(void)addNewFurniture
 {
-    NSLog(@"真正开始添加电器了");
 //  QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
 //  [self.navigationController pushViewController:qrCatcherVC animated:YES];
     
@@ -299,8 +333,186 @@
 //添加设备
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
 {
-    NSLog(@"我看看值传递过来没有:%@,%@",deviceName,deviceMac);
-    NSLog(@"我看看sectionName%@",self.area);
+    //1.创建请求管理对象
+    AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
     
+    //2.说明服务器返回的是json参数
+    mgr.responseSerializer=[AFJSONResponseSerializer serializer];
+    
+    //3.封装请求参数
+    NSMutableDictionary *params=[NSMutableDictionary dictionary];
+    params[@"is_app"]=@"1";
+    params[@"equipment.name"]=deviceName;
+    params[@"equipment.logic_id"]=@"1234567890";
+    params[@"equipment.scene_name"]=self.area;
+
+    //4.发送请求
+    [mgr POST:@"http://60.12.220.16:8888/paladin/Equipment/create" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         [self.addDeviceView removeFromSuperview];
+         
+         JYFurniture *furniture=[[JYFurniture alloc]init];
+         furniture.imageStr=@"家居";
+         furniture.descLabel=deviceName;
+         
+         JYFurniture *temp=[self.section.furnitureArray lastObject];
+         [self.section.furnitureArray removeLastObject];
+         [self.section.furnitureArray addObject:furniture];
+         [self.section.furnitureArray addObject:temp];
+         
+         [self.collectionView reloadData];
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"返回失败了吧：%@",error);
+     }];
+    
+}
+
+-(void)getDataFromReote
+{
+    //1.创建请求管理对象
+    AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
+    
+    //2.说明服务器返回的是json参数
+    mgr.responseSerializer=[AFJSONResponseSerializer serializer];
+    
+    //3.封装请求参数
+    NSMutableDictionary *params=[NSMutableDictionary dictionary];
+    params[@"is_app"]=@"1";
+    
+    //4.发送请求
+    [mgr POST:@"http://60.12.220.16:8888/paladin/Equipment/find" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         //请求成功
+         JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
+         self.furnitureBackStatus=furnitureBackStatus;
+         
+         [self judge];
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"返回失败了吧：%@",error);
+     }];
+}
+
+-(void)judge
+{
+    //遍历从服务器返回的电器的所属区域
+    for(int i=0;i<self.furnitureBackStatus.furnitureArray.count;i++)
+    {
+        //按顺序取出从服务器返回的电器
+        JYFurnitureBack *furnitureBack=self.furnitureBackStatus.furnitureArray[i];
+        //遍历头部区域数组
+        int j=0;
+        for(j=0;j<self.headerArray.count;j++)
+        {
+            //如果电器的所属区域已存在于头部区域数组
+            if ([furnitureBack.scene_name isEqualToString:self.headerArray[j]])
+            {
+                int k=0;
+                //遍历电器描述文字
+                for(k=0;k<self.descArray.count;k++)
+                {
+                    //如果从服务器返回的电器与已有电器描述一致
+                    if([furnitureBack.name isEqualToString:self.descArray[k]])
+                    {
+                        //那就从self.furnitureSecArray中找到它
+                        JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
+                        JYFurniture *furniture=[section.furnitureArray objectAtIndex:k];
+                        //并将该电器的显示图片改为高亮
+                        furniture.imageStr=self.imageHighArray[k];
+                        break;
+                    }
+                }
+                if(k>=self.descArray.count)
+                {
+                    //那就说明该电器不在默认电器里面，创建它
+                    JYFurniture *furniture=[[JYFurniture alloc]init];
+                    furniture.imageStr=@"办公室";
+                    furniture.descLabel=furnitureBack.name;
+                    //furniture.registed=YES;
+                    
+                    JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
+                    
+                    JYFurniture *temp=[[JYFurniture alloc]init];
+                    temp=[section.furnitureArray lastObject];
+                    [section.furnitureArray removeLastObject];
+        
+                    //将创建的加入
+                    [section.furnitureArray addObject:furniture];
+                    //将添加按钮加入
+                    [section.furnitureArray addObject:temp];
+                }
+                break;
+            }
+            else
+            {
+                
+            }
+        }
+        //电器的所属区域不存在于已有头部电器数组
+        if(j>=self.headerArray.count)
+        {
+            //创建新区域
+            self.furnitureArray=[[NSMutableArray alloc]init];
+            //每个区域默认有5个电器和一个添加电器图片
+            for(int i=0;i<6;i++)
+            {
+                //初始化一个电器
+                JYFurniture *furniture=[[JYFurniture alloc]init];
+                //设置电器图片
+                furniture.imageStr=self.imageArray[i];
+                //设置电器描述文字
+                furniture.descLabel=self.descArray[i];
+                //设置电器是否注册过
+                //furniture.registed=NO;
+                
+                //将电器添加到电器数组中
+                [self.furnitureArray addObject:furniture];
+            }
+            JYFurniture *furniture=[[JYFurniture alloc]init];
+            furniture.imageStr=@"单品";
+            furniture.descLabel=furnitureBack.name;
+            //furniture.registed=YES;
+            
+            JYFurniture *temp=[[JYFurniture alloc]init];
+            temp=[self.furnitureArray lastObject];
+            [self.furnitureArray removeLastObject];
+            
+            [self.furnitureArray addObject:furniture];
+            [self.furnitureArray addObject:temp];
+            
+            //初始化一个智能区域
+            JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
+            //设置智能区域的名称
+            furnitureSection.sectionName=furnitureBack.scene_name;
+            //设置智能区域的电器数组
+            furnitureSection.furnitureArray=self.furnitureArray;
+            //将智能区域添加到智能区域数组中
+            [self.furnitureSecArray addObject:furnitureSection];
+            [self.headerArray addObject:furnitureBack.scene_name];
+        
+            
+            //这里判断是否有注册的电器是默认图片的
+            int k=0;
+            //遍历电器描述文字
+            for(k=0;k<self.descArray.count;k++)
+            {
+                //如果从服务器返回的电器与已有电器描述一致
+                if([furnitureBack.name isEqualToString:self.descArray[k]])
+                {
+                    //那就从self.furnitureSecArray中找到它
+                    JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
+                    JYFurniture *furniture=[section.furnitureArray objectAtIndex:k];
+                    //并将该电器的显示图片改为高亮
+                    furniture.imageStr=self.imageHighArray[k];
+                    break;
+                }
+            }
+        }
+        
+    }
+    [self.collectionView reloadData];
 }
 @end

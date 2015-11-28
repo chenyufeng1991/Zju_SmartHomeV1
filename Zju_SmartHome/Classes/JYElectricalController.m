@@ -20,7 +20,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor=[UIColor whiteColor];
-    [self test];
+    [self test2];
 }
 -(void)test2
 {

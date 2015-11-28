@@ -42,7 +42,7 @@
 {
     [super layoutSubviews];
     self.topView.frame=CGRectMake(0, 44, self.window.frame.size.width, 1);
-    self.title.frame=CGRectMake(0, 15, self.window.frame.size.width, 15);
+    self.title.frame=CGRectMake(0, 10, self.window.frame.size.width, 25);
     self.view.frame=CGRectMake(0,0, self.window.frame.size.width, 45);
 }
 
