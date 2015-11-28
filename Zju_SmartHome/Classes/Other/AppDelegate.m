@@ -14,6 +14,7 @@
 #import <SMS_SDK/SMSSDK.h>
 #import "DLLeftSlideMenuViewController.h"
 #import "RESideMenu.h"
+#import "DLLampControlDinnerModeViewController.h"
 #define appKey @"c879b326344c"
 #define appSecret @"82810facbfba262d63c14ed5dcc5998c"
 @interface AppDelegate ()

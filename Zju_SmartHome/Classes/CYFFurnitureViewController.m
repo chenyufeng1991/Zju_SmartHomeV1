@@ -23,6 +23,7 @@
 #import "JYFurnitureBack.h"
 #import "AFNetworking.h"
 #import "JYFurnitureBackStatus.h"
+#import "DLLampControlDinnerModeViewController.h"
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -246,8 +247,10 @@
     {
         NSLog(@"第%ld个section,点击图片%ld",indexPath.section,indexPath.row);
         
-        JYElectricalController *jyVc=[[JYElectricalController alloc]init];
-        [self.navigationController pushViewController:jyVc animated:YES];
+//        JYElectricalController *jyVc=[[JYElectricalController alloc]init];
+//        [self.navigationController pushViewController:jyVc animated:YES];
+        DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
+        [self.navigationController pushViewController:dlVc animated:YES];
     }
     
 }
