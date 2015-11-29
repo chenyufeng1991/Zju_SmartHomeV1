@@ -28,32 +28,67 @@
     
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
-    imgView.image = [UIImage imageNamed:@"circle"];
-    imgView.frame = CGRectMake(35.0f, 35.0f, imgView.image.size.width, imgView.image.size.height);
-//    NSLog(@"image.size.width = %f, image.size.height = %f", imgView.image.size.width, imgView.image.size.height);
-    imgView.userInteractionEnabled = YES;
-    _imgView = imgView;
-    [self.panelView addSubview:imgView];
-    
-    
     UIView *viewColorPickerPositionIndicator = [[UIView alloc]init];
     viewColorPickerPositionIndicator.tag = 10087;
-    viewColorPickerPositionIndicator.frame = CGRectMake(75, 75, 20, 20);
-//    viewColorPickerPositionIndicator.backgroundColor =
-//    [self getPixelColorAtLocation:viewColorPickerPositionIndicator.center];
-    viewColorPickerPositionIndicator.backgroundColor = [UIColor colorWithRed:0.678 green:0.169 blue:0.710 alpha:1.000];
-    viewColorPickerPositionIndicator.layer.cornerRadius = 10;
-    viewColorPickerPositionIndicator.layer.borderWidth = 2;
-    
-    [self.panelView addSubview:viewColorPickerPositionIndicator];
-    
     UIButton *btnPlay = [[UIButton alloc] init];
+    
+    
+    
+    if (fabsf(([[UIScreen mainScreen] bounds].size.height - 480)) < 1) {
+        // 4 & 4s
+        //        imgView.image = [UIImage imageNamed:@"circle_5"];
+        //        viewColorPickerPositionIndicator.frame = CGRectMake(70, 70, 16, 16);
+        //        viewColorPickerPositionIndicator.layer.cornerRadius = 8;
+        //        viewColorPickerPositionIndicator.layer.borderWidth = 2;
+        //        btnPlay.frame = CGRectMake(111, 111, 60, 60);
+    }
+    if (fabsf(([[UIScreen mainScreen] bounds].size.height - 568)) < 1){
+        // 5 & 5s & 5c
+        imgView.image = [UIImage imageNamed:@"circle_5"];
+        viewColorPickerPositionIndicator.frame = CGRectMake(70, 70, 16, 16);
+        viewColorPickerPositionIndicator.layer.cornerRadius = 8;
+        viewColorPickerPositionIndicator.layer.borderWidth = 2;
+        btnPlay.frame = CGRectMake(111, 111, 60, 60);
+        
+    }else if (fabsf(([[UIScreen mainScreen] bounds].size.height - 667)) < 1) {
+        // 6 & 6s
+        imgView.image = [UIImage imageNamed:@"circle_6"];
+        viewColorPickerPositionIndicator.frame = CGRectMake(75, 75, 20, 20);
+        viewColorPickerPositionIndicator.layer.cornerRadius = 10;
+        viewColorPickerPositionIndicator.layer.borderWidth = 2;
+        btnPlay.frame = CGRectMake(135, 135, 60, 60);
+        
+    }else if (fabsf(([[UIScreen mainScreen] bounds].size.height - 736)) < 1){
+        // 6p & 6sp
+        imgView.image = [UIImage imageNamed:@"circle_6p"];
+        viewColorPickerPositionIndicator.frame = CGRectMake(80, 80, 24, 24);
+        viewColorPickerPositionIndicator.layer.cornerRadius = 12;
+        viewColorPickerPositionIndicator.layer.borderWidth = 2;
+        btnPlay.frame = CGRectMake(150, 150, 60, 60);
+        
+    }
+    
+    if (fabsf(([[UIScreen mainScreen] bounds].size.height - 480)) < 1) {
+        //4 & 4s 的时候特判
+        //        imgView.frame = CGRectMake(30.0f, 30.0f, imgView.image.size.width, imgView.image.size.height);
+    }else {
+        imgView.frame = CGRectMake(35.0f, 35.0f, imgView.image.size.width, imgView.image.size.height);
+    }
+    
+    imgView.userInteractionEnabled = YES;
+    _imgView = imgView;
+    
+    viewColorPickerPositionIndicator.backgroundColor = [UIColor colorWithRed:0.678 green:0.169 blue:0.710 alpha:1.000];
+    
     [btnPlay setBackgroundImage:[UIImage imageNamed:@"ct_icon_buttonbreak-off"] forState:UIControlStateNormal];
-    btnPlay.frame = CGRectMake(135, 135, 60, 60);
+    
+    [self.panelView addSubview:imgView];
+    [self.panelView addSubview:viewColorPickerPositionIndicator];
     [self.panelView addSubview:btnPlay];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     
 }

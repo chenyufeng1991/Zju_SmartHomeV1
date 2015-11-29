@@ -121,7 +121,7 @@
         //设置电器描述文字
         furniture.descLabel=self.descArray[j];
         //设置电器是否注册过
-        //furniture.registed=NO;
+        furniture.registed=NO;
         
         //将电器添加到电器数组中
         [_furnitureArray addObject:furniture];
@@ -139,8 +139,6 @@
       [_furnitureSecArray addObject:furnitureSection];
     }
   }
-  //    _furnitureSecArrayCopy=[[NSMutableArray alloc]init];
-  //    _furnitureSecArrayCopy=_furnitureSecArray;
   return _furnitureSecArray;
 }
 
@@ -263,12 +261,28 @@
   }
   else
   {
-    NSLog(@"第%ld个section,点击图片%ld",indexPath.section,indexPath.row);
     
     //        JYElectricalController *jyVc=[[JYElectricalController alloc]init];
     //        [self.navigationController pushViewController:jyVc animated:YES];
-    DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
-    [self.navigationController pushViewController:dlVc animated:YES];
+      JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
+      JYFurniture *furniture=section.furnitureArray[indexPath.row];
+      if(furniture.registed==YES)
+      {
+          DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
+          [self.navigationController pushViewController:dlVc animated:YES];
+      }
+      else
+      {
+          UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请您先注册电器" preferredStyle:UIAlertControllerStyleAlert];
+          [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+              
+          }]];
+          [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+          
+          [self presentViewController:alertController animated:true completion:nil];
+
+      }
+    
   }
   
 }
@@ -303,7 +317,8 @@
   JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
   
   UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入智能区域名称" preferredStyle:UIAlertControllerStyleAlert];
-  
+    
+  [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
   //以下方法就可以实现在提示框中输入文本；
   [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                               {
@@ -322,7 +337,6 @@
                                 
                               }]];
   
-  [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
   [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
     
     textField.placeholder = @"请输入智能区域名称";
@@ -375,6 +389,7 @@
      JYFurniture *furniture=[[JYFurniture alloc]init];
      furniture.imageStr=@"家居";
      furniture.descLabel=deviceName;
+     furniture.registed=YES;
      
      JYFurniture *temp=[self.section.furnitureArray lastObject];
      [self.section.furnitureArray removeLastObject];
@@ -443,6 +458,7 @@
             JYFurniture *furniture=[section.furnitureArray objectAtIndex:k];
             //并将该电器的显示图片改为高亮
             furniture.imageStr=self.imageHighArray[k];
+            furniture.registed=YES;
             break;
           }
         }
@@ -452,7 +468,7 @@
           JYFurniture *furniture=[[JYFurniture alloc]init];
           furniture.imageStr=@"办公室";
           furniture.descLabel=furnitureBack.name;
-          //furniture.registed=YES;
+          furniture.registed=YES;
           
           JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
           
@@ -487,7 +503,7 @@
         //设置电器描述文字
         furniture.descLabel=self.descArray[i];
         //设置电器是否注册过
-        //furniture.registed=NO;
+        furniture.registed=NO;
         
         //将电器添加到电器数组中
         [self.furnitureArray addObject:furniture];
@@ -495,7 +511,7 @@
       JYFurniture *furniture=[[JYFurniture alloc]init];
       furniture.imageStr=@"单品";
       furniture.descLabel=furnitureBack.name;
-      //furniture.registed=YES;
+      furniture.registed=YES;
       
       JYFurniture *temp=[[JYFurniture alloc]init];
       temp=[self.furnitureArray lastObject];
@@ -528,6 +544,7 @@
           JYFurniture *furniture=[section.furnitureArray objectAtIndex:k];
           //并将该电器的显示图片改为高亮
           furniture.imageStr=self.imageHighArray[k];
+          furniture.registed=YES;
           break;
         }
       }

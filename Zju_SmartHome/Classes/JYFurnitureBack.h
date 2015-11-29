@@ -16,6 +16,7 @@
 //设备名称
 @property(nonatomic,copy)NSString *name;
 
+
 +(instancetype)dataWithDict:(NSDictionary *)dict;
 -(instancetype)initWithDict:(NSDictionary *)dict;
 @end
