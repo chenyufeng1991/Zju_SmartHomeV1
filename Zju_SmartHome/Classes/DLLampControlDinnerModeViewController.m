@@ -7,6 +7,7 @@
 //
 
 #import "DLLampControlDinnerModeViewController.h"
+#import "AFNetworking.h"
 
 @interface DLLampControlDinnerModeViewController ()
 @property (weak, nonatomic) IBOutlet UIView *panelView;
@@ -25,6 +26,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"00000 %@",self.logic_id);
     
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
@@ -92,37 +95,6 @@
     [super didReceiveMemoryWarning];
     
 }
-
-
-
-
-
-//****************************************开始
-/**
- *  初始化MyscrollView里面的一些子控件
- *  包括一个UIImageView（里面放待取颜色的图片一张）   注意:UIImageView的大小只能跟图片一样大.要不然取色不对
- *  还有一个取色位置的指示器UIView *viewColorPickerPositionIndicator
- */
-//- (void)initSubviews{
-//    
-//    UIImageView *imgView = [[UIImageView alloc]init];
-//    imgView.tag = 10086;
-//    imgView.image = [UIImage imageNamed:@"circle"];
-//    
-//    imgView.frame = CGRectMake(0.0f, 0.0f, imgView.image.size.width, imgView.image.size.height);
-//    [self addSubview:imgView];
-//    
-//    
-//    UIView *viewColorPickerPositionIndicator = [[UIView alloc]init];
-//    viewColorPickerPositionIndicator.tag = 10087;
-//    viewColorPickerPositionIndicator.frame = CGRectMake(33, 33, 20, 20);
-//    viewColorPickerPositionIndicator.backgroundColor =
-//    [self getPixelColorAtLocation:viewColorPickerPositionIndicator.center];
-//    viewColorPickerPositionIndicator.layer.cornerRadius = 10;
-//    viewColorPickerPositionIndicator.layer.borderWidth = 2;
-//    
-//    [self addSubview:viewColorPickerPositionIndicator];
-//}
 
 
 /**
@@ -197,8 +169,39 @@
 /**
  *  手指在屏幕上移动的方法
  */
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
     [self touchesBegan:touches withEvent:event];
+    
+    //增加这几行代码；
+    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+    [securityPolicy setAllowInvalidCertificates:YES];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setSecurityPolicy:securityPolicy];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                     "<root>"
+                     "<command_id></command_id>"
+                     "<command_type>execute</command_type>"
+                     "<id>%@</id>"
+                     "<action>change_color</action>"
+                     "<value>%@,%@,%@</value>"
+                     "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+    
+    NSDictionary *parameters = @{@"test" : str};
+    
+    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation,id responseObject){
+              NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+              NSLog(@"成功: %@", string);
+          }
+          failure:^(AFHTTPRequestOperation *operation,NSError *error){
+              NSLog(@"失败: %@", error);
+          }];
+    
 }
 
 

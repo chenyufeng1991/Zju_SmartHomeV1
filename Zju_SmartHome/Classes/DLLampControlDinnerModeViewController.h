@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface DLLampControlDinnerModeViewController : UIViewController
-
+@property(nonatomic,copy)NSString *logic_id;
 @end

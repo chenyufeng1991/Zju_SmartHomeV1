@@ -25,6 +25,10 @@
 #import "JYFurnitureBackStatus.h"
 #import "DLLampControlDinnerModeViewController.h"
 
+#import "HttpRequest.h"
+#import "Constants.h"
+#import "LogicIdXMLParser.h"
+
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 @interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DLAddDeviceViewDelegate>
@@ -269,6 +273,8 @@
       if(furniture.registed==YES)
       {
           DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
+          
+          dlVc.logic_id=furniture.logic_id;
           [self.navigationController pushViewController:dlVc animated:YES];
       }
       else
@@ -368,68 +374,76 @@
 //添加设备
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
 {
-  //1.创建请求管理对象
-  AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
-  
-  //2.说明服务器返回的是json参数
-  mgr.responseSerializer=[AFJSONResponseSerializer serializer];
-  
-  //3.封装请求参数
-  NSMutableDictionary *params=[NSMutableDictionary dictionary];
-  params[@"is_app"]=@"1";
-  params[@"equipment.name"]=deviceName;
-  params[@"equipment.logic_id"]=@"1234567890";
-  params[@"equipment.scene_name"]=self.area;
-  
-  //4.发送请求
-  [mgr POST:@"http://60.12.220.16:8888/paladin/Equipment/create" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
-   {
-     [self.addDeviceView removeFromSuperview];
-     
-     JYFurniture *furniture=[[JYFurniture alloc]init];
-     furniture.imageStr=@"家居";
-     furniture.descLabel=deviceName;
-     furniture.registed=YES;
-     
-     JYFurniture *temp=[self.section.furnitureArray lastObject];
-     [self.section.furnitureArray removeLastObject];
-     [self.section.furnitureArray addObject:furniture];
-     [self.section.furnitureArray addObject:temp];
-     
-     [self.collectionView reloadData];
-     
-   } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-   {
-     NSLog(@"返回失败了吧：%@",error);
-   }];
-  
+
+    [HttpRequest getLogicIdfromMac:deviceMac success:^(AFHTTPRequestOperation *operation, id responseObject)
+    {
+        
+        //表示从网关返回逻辑ID成功；需要解析这个逻辑ID，并发送到服务器；
+        NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        
+        //这里需要进行XML解析；
+        LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
+        
+        //成功接收；
+        NSLog(@"返回的逻辑ID：%@",logicIdXMLParser.logicId);
+        NSLog(@"返回的设备类型：%@",logicIdXMLParser.deviceType);
+        
+        if([logicIdXMLParser.result isEqualToString:@"fail"])
+        {
+            NSLog(@"注册电器失败");
+        }
+        else
+        {
+            //开始向服务器注册该电器；
+            [HttpRequest registerDeviceToServer:logicIdXMLParser.logicId deviceName:deviceName sectionName:self.area success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//                NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                
+                
+                [self.addDeviceView removeFromSuperview];
+                
+                JYFurniture *furniture=[[JYFurniture alloc]init];
+                furniture.imageStr=@"家居";
+                furniture.descLabel=deviceName;
+                furniture.registed=YES;
+                furniture.logic_id=logicIdXMLParser.logicId;
+                
+                JYFurniture *temp=[self.section.furnitureArray lastObject];
+                [self.section.furnitureArray removeLastObject];
+                [self.section.furnitureArray addObject:furniture];
+                [self.section.furnitureArray addObject:temp];
+                
+                [self.collectionView reloadData];
+                
+            } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+             {
+                 NSLog(@"设备注册到服务器失败:%@",error);
+             }];
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        
+        //从网关返回逻辑ID失败；
+        NSLog(@"从网关获取逻辑ID失败：%@",error);
+    }];
 }
 
 -(void)getDataFromReote
 {
-  //1.创建请求管理对象
-  AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
-  
-  //2.说明服务器返回的是json参数
-  mgr.responseSerializer=[AFJSONResponseSerializer serializer];
-  
-  //3.封装请求参数
-  NSMutableDictionary *params=[NSMutableDictionary dictionary];
-  params[@"is_app"]=@"1";
-  
-  //4.发送请求
-  [mgr POST:@"http://60.12.220.16:8888/paladin/Equipment/find" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
-   {
-     //请求成功
-     JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
-     self.furnitureBackStatus=furnitureBackStatus;
-     
-     [self judge];
-     
-   } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-   {
-     NSLog(@"返回失败了吧：%@",error);
-   }];
+    [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //成功的回调；
+        //请求成功
+        JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
+        self.furnitureBackStatus=furnitureBackStatus;
+        
+        [self judge];
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        //失败的回调；
+        NSLog(@"服务器寻找设备失败：%@",error);
+    }];
+
 }
 
 -(void)judge
@@ -459,6 +473,7 @@
             //并将该电器的显示图片改为高亮
             furniture.imageStr=self.imageHighArray[k];
             furniture.registed=YES;
+            furniture.logic_id=furnitureBack.logic_id;
             break;
           }
         }
@@ -469,6 +484,7 @@
           furniture.imageStr=@"办公室";
           furniture.descLabel=furnitureBack.name;
           furniture.registed=YES;
+          furniture.logic_id=furnitureBack.logic_id;
           
           JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
           
@@ -512,6 +528,7 @@
       furniture.imageStr=@"单品";
       furniture.descLabel=furnitureBack.name;
       furniture.registed=YES;
+      furniture.logic_id=furnitureBack.logic_id;
       
       JYFurniture *temp=[[JYFurniture alloc]init];
       temp=[self.furnitureArray lastObject];
@@ -545,6 +562,7 @@
           //并将该电器的显示图片改为高亮
           furniture.imageStr=self.imageHighArray[k];
           furniture.registed=YES;
+          furniture.logic_id=furnitureBack.logic_id;
           break;
         }
       }

@@ -17,6 +17,7 @@
 @property(nonatomic,copy)NSString *descLabel;
 //是否注册过(注册过电器图片高亮)
 @property(nonatomic,assign)BOOL registed;
+@property(nonatomic,copy)NSString *logic_id;
 
 //点击后进入的controller
 @property(nonatomic,weak)UIViewController *controller;
