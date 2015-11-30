@@ -165,8 +165,6 @@
   
   [self getDataFromReote];
   
-  NSLog(@"collectionView高度1：%f",self.collectionView.contentSize.height);
-  
 }
 
 //有多少个section；
@@ -204,12 +202,13 @@
   
   JYFurniture *furniture=[furnitureSection.furnitureArray objectAtIndex:indexPath.row];
   
-  [cell.imageButton setBackgroundImage:[UIImage imageNamed:furniture.imageStr] forState:UIControlStateNormal];
+//  [cell.imageButton setBackgroundImage:[UIImage imageNamed:furniture.imageStr] forState:UIControlStateNormal];
+  
+  cell.imageButton.image = [UIImage imageNamed:furniture.imageStr];
   
   cell.descLabel.text=furniture.descLabel;
   cell.topX.hidden=YES;
   
-  NSLog(@"collectionView高度2：%f",self.collectionView.contentSize.height);
   //在这里设置ScrollView的高度；
   self.mainScrollView.contentSize = CGSizeMake(UISCREEN_WIDTH, self.mainImageView.frame.size.height+self.collectionView.contentSize.height+self.addFurnitureButton.frame.size.height-64);
   self.collectionView.frame = CGRectMake(0, self.mainImageView.frame.size.height-64, UISCREEN_WIDTH, self.collectionView.contentSize.height);
@@ -283,7 +282,17 @@
           [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
               
           }]];
-          [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+        //跳出填写MAC值的对话框；
+          
+          DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+          addDeviceView.delegate=self;
+          self.addDeviceView=addDeviceView;
+          addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+          [self.view addSubview:addDeviceView];
+          self.navigationItem.hidesBackButton=YES;
+          
+        }]];
           
           [self presentViewController:alertController animated:true completion:nil];
 
