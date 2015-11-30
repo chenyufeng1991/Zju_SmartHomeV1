@@ -33,6 +33,7 @@
 		712C52441C08323B0014F9CB /* NSString+Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C52421C08323B0014F9CB /* NSString+Tools.m */; settings = {ASSET_TAGS = (); }; };
 		712C524C1C0832900014F9CB /* QRCatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C524A1C0832900014F9CB /* QRCatchViewController.m */; settings = {ASSET_TAGS = (); }; };
 		712C524D1C0832900014F9CB /* QRCatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712C524B1C0832900014F9CB /* QRCatchViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		712C52601C0C29450014F9CB /* InternalGateIPXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C525F1C0C29450014F9CB /* InternalGateIPXMLParser.m */; settings = {ASSET_TAGS = (); }; };
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
@@ -138,6 +139,8 @@
 		712C52491C0832900014F9CB /* QRCatchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCatchViewController.h; sourceTree = "<group>"; };
 		712C524A1C0832900014F9CB /* QRCatchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCatchViewController.m; sourceTree = "<group>"; };
 		712C524B1C0832900014F9CB /* QRCatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCatchViewController.xib; sourceTree = "<group>"; };
+		712C525E1C0C29450014F9CB /* InternalGateIPXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternalGateIPXMLParser.h; sourceTree = "<group>"; };
+		712C525F1C0C29450014F9CB /* InternalGateIPXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternalGateIPXMLParser.m; sourceTree = "<group>"; };
 		7174E39E1BEFAEC500170AAA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -407,6 +410,8 @@
 			children = (
 				9D1CB9D61C0B0F8600725A63 /* LogicIdXMLParser.h */,
 				9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */,
+				712C525E1C0C29450014F9CB /* InternalGateIPXMLParser.h */,
+				712C525F1C0C29450014F9CB /* InternalGateIPXMLParser.m */,
 			);
 			name = XMLParser;
 			sourceTree = "<group>";
@@ -897,6 +902,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				712C52601C0C29450014F9CB /* InternalGateIPXMLParser.m in Sources */,
 				9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */,
 				9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */,
 				9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */,

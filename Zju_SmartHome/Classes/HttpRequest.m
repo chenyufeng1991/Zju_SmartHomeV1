@@ -10,9 +10,12 @@
 #import "AFNetworking.h"
 
 
+#import "InternalGateIPXMLParser.h"
+
+
 @implementation HttpRequest
 
-+ (void)getLogicIdfromMac:(NSString*)macValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
++ (void)getLogicIdfromMac:(NSString*)macValue  isInternalIP:(NSString*)isInternalIP success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
   //增加这几行代码；
   AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
@@ -34,10 +37,21 @@
   
   NSDictionary *parameters = @{@"test" : str};
   
-  [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/getLogicIdfromMac.php"
-     parameters:parameters
-        success:success
-        failure:failure];
+  if (isInternalIP) {
+    //是内网；
+    
+    //    NSString IP =
+    
+    
+  }else{
+    //是外网；
+    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/getLogicIdfromMac.php"
+       parameters:parameters
+          success:success
+          failure:failure];
+  }
+  
+  
 }
 
 
@@ -89,9 +103,39 @@
   
   //4.发送请求
   [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/find"
- parameters:params
-    success:success
-    failure:failure];
+     parameters:params
+        success:success
+        failure:failure];
+  
+}
+
+
++ (void)getInternalNetworkGateIP:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
+  
+  //增加这几行代码；
+  AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+  [securityPolicy setAllowInvalidCertificates:YES];
+  
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  [manager setSecurityPolicy:securityPolicy];
+  manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+  
+  NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<root>"
+                   "<command_id>10001</command_id>"
+                   "<command_type>get</command_type>"
+                   "<id>123</id>"
+                   "<action>get_gateway_ip</action>"
+                   "<value>100</value>"
+                   "</root>"];
+  
+  NSDictionary *params = @{@"test" : str};
+  
+  //是外网；
+  [manager POST:@"http://test.ngrok.joyingtec.com:8000/ip.php"
+     parameters:params
+        success:success
+        failure:failure];
   
 }
 
