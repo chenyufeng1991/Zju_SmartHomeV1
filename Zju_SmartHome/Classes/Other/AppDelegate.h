@@ -18,6 +18,14 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+//全局变量；判断是否是内网IP；
+@property(nonatomic,assign)BOOL isInternalNetworkGate;
+
+//内网IP地址前缀；
+@property(nonatomic,copy)NSString *globalInternalIP;
+//外网IP地址前缀；
+//@property(nonatomic,copy)NSString *externalIP;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
