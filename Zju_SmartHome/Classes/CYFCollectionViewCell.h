@@ -20,4 +20,7 @@
 @property(nonatomic,strong)UIView *bottomX;
 @property(nonatomic,strong)UIView *rightX;
 @property(nonatomic,strong)UIView *topX;
+
+
+@property(nonatomic,strong)UIButton *closeButton;
 @end

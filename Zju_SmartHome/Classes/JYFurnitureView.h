@@ -19,5 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIView *rightX;
 //顶部的线
 @property (weak, nonatomic) IBOutlet UIView *topX;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+
 +(instancetype)furnitureViewXib;
 @end
