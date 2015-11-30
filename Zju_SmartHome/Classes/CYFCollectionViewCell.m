@@ -23,16 +23,17 @@
   if (self)
   {
       JYFurnitureView *furnitureView=[JYFurnitureView furnitureViewXib];
-      self.furnitureView=furnitureView;
+      self.furnitureView = furnitureView;
       [self addSubview:self.furnitureView];
 
-      self.imageButton=furnitureView.imageBtn;
-      [self.imageButton setAdjustsImageWhenHighlighted:NO];
-      self.descLabel=furnitureView.descLabel;
-      self.bottomX=furnitureView.bottomX;
-      self.rightX=furnitureView.rightX;
-      self.topX=furnitureView.topX;
-      
+      self.imageButton = furnitureView.imageBtn;
+//      [self.imageButton setAdjustsImageWhenHighlighted:NO];
+      self.descLabel = furnitureView.descLabel;
+      self.bottomX = furnitureView.bottomX;
+      self.rightX = furnitureView.rightX;
+      self.topX = furnitureView.topX;
+    
+    self.closeButton = furnitureView.closeButton;
 
   }
   return self;

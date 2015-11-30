@@ -10,7 +10,7 @@
 
 @interface JYFurnitureView : UIView
 //自定义View中电器图片
-@property (weak, nonatomic) IBOutlet UIButton *imageBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *imageBtn;
 //自定义View中电器描述
 @property (weak, nonatomic) IBOutlet UILabel *descLabel;
 //底部的线
@@ -19,5 +19,9 @@
 @property (weak, nonatomic) IBOutlet UIView *rightX;
 //顶部的线
 @property (weak, nonatomic) IBOutlet UIView *topX;
+
+
+@property (weak, nonatomic) IBOutlet UIButton *closeButton;
+
 +(instancetype)furnitureViewXib;
 @end
