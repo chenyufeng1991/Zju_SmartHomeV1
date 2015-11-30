@@ -41,12 +41,19 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="k54-nG-dUu">
+                    <rect key="frame" x="83" y="15" width="20" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <state key="normal" title="Button" backgroundImage="close"/>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bottomX" destination="XfI-6w-bdF" id="1d1-dl-OAw"/>
+                <outlet property="closeButton" destination="k54-nG-dUu" id="WU8-jP-Fgh"/>
                 <outlet property="descLabel" destination="ps6-d8-fne" id="Yg8-1N-J0g"/>
                 <outlet property="imageBtn" destination="Ohc-LZ-nWL" id="rBF-pV-elj"/>
                 <outlet property="rightX" destination="ZcY-fl-fQt" id="8FA-Fq-rae"/>
@@ -56,6 +63,7 @@
         </view>
     </objects>
     <resources>
+        <image name="close" width="256" height="256"/>
         <image name="home_icon_yw_on" width="32" height="32"/>
     </resources>
 </document>

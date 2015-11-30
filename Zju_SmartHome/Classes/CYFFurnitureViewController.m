@@ -31,6 +31,12 @@
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
+NS_ENUM(NSInteger, ProviderEditingState)
+{
+  ProviderEditStateNormal,
+  ProviderEditStateDelete
+};
+
 @interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DLAddDeviceViewDelegate>
 
 //collectionView属性
@@ -67,7 +73,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *addFurnitureButton;
 
-
+@property (assign) enum ProviderEditingState currentEditState;
 
 
 @end
@@ -165,7 +171,11 @@
   
   [self getDataFromReote];
   
+  //长按cell的方法；
   [self addLongPressGestureToCell];
+  
+  //设置Navi的NaviBarItemButton；
+  [self setNaviBarItemButton];
   
 }
 
@@ -204,7 +214,7 @@
   
   JYFurniture *furniture=[furnitureSection.furnitureArray objectAtIndex:indexPath.row];
   
-//  [cell.imageButton setBackgroundImage:[UIImage imageNamed:furniture.imageStr] forState:UIControlStateNormal];
+  //  [cell.imageButton setBackgroundImage:[UIImage imageNamed:furniture.imageStr] forState:UIControlStateNormal];
   
   cell.imageButton.image = [UIImage imageNamed:furniture.imageStr];
   
@@ -214,6 +224,36 @@
   //在这里设置ScrollView的高度；
   self.mainScrollView.contentSize = CGSizeMake(UISCREEN_WIDTH, self.mainImageView.frame.size.height+self.collectionView.contentSize.height+self.addFurnitureButton.frame.size.height-64);
   self.collectionView.frame = CGRectMake(0, self.mainImageView.frame.size.height-64, UISCREEN_WIDTH, self.collectionView.contentSize.height);
+  
+  
+  
+  //设置close按钮
+  // 点击编辑按钮触发事件
+  if(self.currentEditState == ProviderEditStateNormal)
+  {
+    //正常情况下，所有删除按钮都隐藏；
+    cell.closeButton.hidden = YES;
+  }
+  else{
+    //编辑情况下：
+    JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
+    if (indexPath.row != section.furnitureArray.count - 1)
+    {
+      cell.closeButton.hidden = NO;
+    }
+    else
+    {
+      //最后一个是添加按钮，所以隐藏右上角的删除按钮；
+      cell.closeButton.hidden = YES;
+    }
+  }
+  
+  /*
+   UIButton *deviceImageButton = cell.imageButton;
+   [deviceImageButton addTarget:self action:@selector(deviceButtonPressed:) forControlEvents:UIControlEventTouchUpI
+   */
+  
+   [cell.closeButton addTarget:self action:@selector(deleteCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
   
   return cell;
@@ -269,36 +309,36 @@
     
     //        JYElectricalController *jyVc=[[JYElectricalController alloc]init];
     //        [self.navigationController pushViewController:jyVc animated:YES];
-      JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
-      JYFurniture *furniture=section.furnitureArray[indexPath.row];
-      if(furniture.registed==YES)
-      {
-          DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
-          
-          dlVc.logic_id=furniture.logic_id;
-          [self.navigationController pushViewController:dlVc animated:YES];
-      }
-      else
-      {
-          UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请您先注册电器" preferredStyle:UIAlertControllerStyleAlert];
-          [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-              
-          }]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+    JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
+    JYFurniture *furniture=section.furnitureArray[indexPath.row];
+    if(furniture.registed==YES)
+    {
+      DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
+      
+      dlVc.logic_id=furniture.logic_id;
+      [self.navigationController pushViewController:dlVc animated:YES];
+    }
+    else
+    {
+      UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请您先注册电器" preferredStyle:UIAlertControllerStyleAlert];
+      [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
-          //跳出填写MAC值的对话框；
-          DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
-          addDeviceView.delegate=self;
-          self.addDeviceView=addDeviceView;
-          addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-          [self.view addSubview:addDeviceView];
-          self.navigationItem.hidesBackButton=YES;
-          
-        }]];
-          
-          [self presentViewController:alertController animated:true completion:nil];
-
-      }
+      }]];
+      [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+        
+        //跳出填写MAC值的对话框；
+        DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+        addDeviceView.delegate=self;
+        self.addDeviceView=addDeviceView;
+        addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:addDeviceView];
+        self.navigationItem.hidesBackButton=YES;
+        
+      }]];
+      
+      [self presentViewController:alertController animated:true completion:nil];
+      
+    }
     
   }
   
@@ -334,7 +374,7 @@
   JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
   
   UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"请输入智能区域名称" preferredStyle:UIAlertControllerStyleAlert];
-    
+  
   [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
   //以下方法就可以实现在提示框中输入文本；
   [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
@@ -385,77 +425,79 @@
 //添加设备
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
 {
-
-    [HttpRequest getLogicIdfromMac:deviceMac success:^(AFHTTPRequestOperation *operation, id responseObject)
-    {
-        
-        //表示从网关返回逻辑ID成功；需要解析这个逻辑ID，并发送到服务器；
-        NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        
-        //这里需要进行XML解析；
-        LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
-        
-        //成功接收；
-        NSLog(@"返回的逻辑ID：%@",logicIdXMLParser.logicId);
-        NSLog(@"返回的设备类型：%@",logicIdXMLParser.deviceType);
-        
-        if([logicIdXMLParser.result isEqualToString:@"fail"])
+  
+  [HttpRequest getLogicIdfromMac:deviceMac success:^(AFHTTPRequestOperation *operation, id responseObject)
+   {
+     
+     //表示从网关返回逻辑ID成功；需要解析这个逻辑ID，并发送到服务器；
+     NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+     
+     //这里需要进行XML解析；
+     LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
+     
+     //成功接收；
+     NSLog(@"返回的逻辑ID：%@",logicIdXMLParser.logicId);
+     NSLog(@"返回的设备类型：%@",logicIdXMLParser.deviceType);
+     
+     if([logicIdXMLParser.result isEqualToString:@"fail"])
+     {
+       NSLog(@"注册电器失败");
+     }
+     else
+     {
+       //开始向服务器注册该电器；
+       [HttpRequest registerDeviceToServer:logicIdXMLParser.logicId deviceName:deviceName sectionName:self.area success:^(AFHTTPRequestOperation *operation, id responseObject) {
+         NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+         
+         NSLog(@"服务器返回：%@",result);
+         
+         
+         [self.addDeviceView removeFromSuperview];
+         
+         JYFurniture *furniture=[[JYFurniture alloc]init];
+         furniture.imageStr=@"家居";
+         furniture.descLabel=deviceName;
+         furniture.registed=YES;
+         furniture.logic_id=logicIdXMLParser.logicId;
+         
+         JYFurniture *temp=[self.section.furnitureArray lastObject];
+         [self.section.furnitureArray removeLastObject];
+         [self.section.furnitureArray addObject:furniture];
+         [self.section.furnitureArray addObject:temp];
+         
+         [self.collectionView reloadData];
+         
+       } failure:^(AFHTTPRequestOperation *operation, NSError *error)
         {
-            NSLog(@"注册电器失败");
-        }
-        else
-        {
-            //开始向服务器注册该电器；
-            [HttpRequest registerDeviceToServer:logicIdXMLParser.logicId deviceName:deviceName sectionName:self.area success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//                NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                
-                
-                [self.addDeviceView removeFromSuperview];
-                
-                JYFurniture *furniture=[[JYFurniture alloc]init];
-                furniture.imageStr=@"家居";
-                furniture.descLabel=deviceName;
-                furniture.registed=YES;
-                furniture.logic_id=logicIdXMLParser.logicId;
-                
-                JYFurniture *temp=[self.section.furnitureArray lastObject];
-                [self.section.furnitureArray removeLastObject];
-                [self.section.furnitureArray addObject:furniture];
-                [self.section.furnitureArray addObject:temp];
-                
-                [self.collectionView reloadData];
-                
-            } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-             {
-                 NSLog(@"设备注册到服务器失败:%@",error);
-             }];
-        }
-      
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-    {
-        
-        //从网关返回逻辑ID失败；
-        NSLog(@"从网关获取逻辑ID失败：%@",error);
-    }];
+          NSLog(@"设备注册到服务器失败:%@",error);
+        }];
+     }
+     
+     
+   } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+   {
+     
+     //从网关返回逻辑ID失败；
+     NSLog(@"从网关获取逻辑ID失败：%@",error);
+   }];
 }
 
 -(void)getDataFromReote
 {
-    [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
-      
-        //成功的回调；
-        //请求成功
-        JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
-        self.furnitureBackStatus=furnitureBackStatus;
-        
-        [self judge];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        //失败的回调；
-        NSLog(@"服务器寻找设备失败：%@",error);
-    }];
-
+  [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
+    
+    //成功的回调；
+    //请求成功
+    JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
+    self.furnitureBackStatus=furnitureBackStatus;
+    
+    [self judge];
+    
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    //失败的回调；
+    NSLog(@"服务器寻找设备失败：%@",error);
+  }];
+  
 }
 
 -(void)judge
@@ -586,7 +628,7 @@
 
 #pragma mark - 创建长按cell的手势
 - (void)addLongPressGestureToCell{
-
+  
   //创建长按手势监听
   UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
                                              initWithTarget:self
@@ -617,4 +659,62 @@
     NSLog(@"长按手势结束");
   }
 }
+
+#pragma mark - 设置导航栏的按钮
+- (void)setNaviBarItemButton{
+  
+  UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
+                                                                  style:UIBarButtonItemStyleDone
+                                                                 target:self
+                                                                 action:@selector(rightBtnClicked)];
+  rightButton.tintColor = [UIColor whiteColor];
+  
+  self.navigationItem.rightBarButtonItem = rightButton;
+  
+}
+
+#pragma mark - 点击右上角的编辑按钮
+- (void)rightBtnClicked
+{
+  //此时你要删除cell了；
+  if (self.currentEditState == ProviderEditStateNormal){
+    self.navigationItem.rightBarButtonItem.title = @"完成";
+    self.currentEditState = ProviderEditStateDelete;//两个状态切换；
+    
+    for(CYFCollectionViewCell *cell in self.collectionView.visibleCells)
+    {
+      
+      NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+      JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
+      
+      if (indexPath.row != (section.furnitureArray.count - 1)){
+        [cell.closeButton setHidden:NO];
+      }else{
+        [cell.closeButton setHidden:YES];
+        
+      }
+    }
+    
+  }else{
+    //这是正常情况下；
+    self.navigationItem.rightBarButtonItem.title = @"编辑";
+    self.currentEditState = ProviderEditStateNormal;
+    
+    [self.collectionView reloadData];
+  }
+  
+  NSLog(@"点击了编辑按钮");
+  
+}
+
+- (void)deleteCellButtonPressed:(id)sender{
+  UIView *v = [sender superview];//获取父类view
+  CYFCollectionViewCell *cell = (CYFCollectionViewCell *)[v superview];//获取cell
+  
+  NSIndexPath *indexpath = [self.collectionView indexPathForCell:cell];//获取cell对应的indexpath;
+  
+  NSLog(@"删除按钮，section:%ld ,   row: %ld",(long)indexpath.section,(long)indexpath.row);
+}
 @end
+
+
