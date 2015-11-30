@@ -15,7 +15,8 @@
 @property(nonatomic,copy)NSString *scene_name;
 //设备名称
 @property(nonatomic,copy)NSString *name;
-
+//设备类型
+@property(nonatomic,copy)NSString *deviceType;
 
 +(instancetype)dataWithDict:(NSDictionary *)dict;
 -(instancetype)initWithDict:(NSDictionary *)dict;

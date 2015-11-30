@@ -46,6 +46,8 @@
       else if([self.nodeName isEqualToString:@"message"])
       {
           self.result=str;
+          
+          NSLog(@",,,,,,,%@",str);
       }
           
   }

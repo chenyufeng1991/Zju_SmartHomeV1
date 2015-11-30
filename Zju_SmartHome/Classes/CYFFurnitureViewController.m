@@ -28,6 +28,7 @@
 #import "HttpRequest.h"
 #import "Constants.h"
 #import "LogicIdXMLParser.h"
+#import "UIKit/UIKit.h"
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -66,6 +67,8 @@ NS_ENUM(NSInteger, ProviderEditingState)
 @property(nonatomic,strong)JYFurnitureBackStatus *furnitureBackStatus;
 
 @property(nonatomic,strong)JYFurnitureSection *section;
+@property(nonatomic,assign)NSInteger row;
+@property(nonatomic,assign)NSInteger section1;
 
 
 
@@ -132,6 +135,8 @@ NS_ENUM(NSInteger, ProviderEditingState)
         furniture.descLabel=self.descArray[j];
         //设置电器是否注册过
         furniture.registed=NO;
+        //设置电器类型为空
+        furniture.deviceType=@"";
         
         //将电器添加到电器数组中
         [_furnitureArray addObject:furniture];
@@ -214,8 +219,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
   
   JYFurniture *furniture=[furnitureSection.furnitureArray objectAtIndex:indexPath.row];
   
-  //  [cell.imageButton setBackgroundImage:[UIImage imageNamed:furniture.imageStr] forState:UIControlStateNormal];
-  
   cell.imageButton.image = [UIImage imageNamed:furniture.imageStr];
   
   cell.descLabel.text=furniture.descLabel;
@@ -293,7 +296,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //item点击触发事件
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSLog(@"第%ld个section,点击图片%ld",indexPath.section,indexPath.row);
   JYFurnitureSection *furnitureSection=[self.furnitureSecArray objectAtIndex:indexPath.section];
   
   if(indexPath.row==furnitureSection.furnitureArray.count-1)
@@ -302,15 +304,18 @@ NS_ENUM(NSInteger, ProviderEditingState)
     
     JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
     self.section=section;
+    self.row=indexPath.row;
+    self.section1=indexPath.section;
     [self addNewFurniture];
   }
   else
   {
-    
-    //        JYElectricalController *jyVc=[[JYElectricalController alloc]init];
-    //        [self.navigationController pushViewController:jyVc animated:YES];
+    self.area=furnitureSection.sectionName;
     JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
     JYFurniture *furniture=section.furnitureArray[indexPath.row];
+    self.row= [indexPath row];
+
+    
     if(furniture.registed==YES)
     {
       DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
@@ -358,7 +363,9 @@ NS_ENUM(NSInteger, ProviderEditingState)
     //设置电器描述文字
     furniture.descLabel=self.descArray[i];
     //设置电器是否注册过
-    //furniture.registed=NO;
+    furniture.registed=NO;
+    //设置电器类型为空
+    furniture.deviceType=@"";
     
     //将电器添加到电器数组中
     [self.furnitureArray addObject:furniture];
@@ -425,7 +432,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //添加设备
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
 {
-  
+    NSLog(@"===== %@ %@",deviceName,deviceMac);
   [HttpRequest getLogicIdfromMac:deviceMac success:^(AFHTTPRequestOperation *operation, id responseObject)
    {
      
@@ -436,8 +443,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
      LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
      
      //成功接收；
-     NSLog(@"返回的逻辑ID：%@",logicIdXMLParser.logicId);
-     NSLog(@"返回的设备类型：%@",logicIdXMLParser.deviceType);
+       NSLog(@"8888888%@",logicIdXMLParser.result);
      
      if([logicIdXMLParser.result isEqualToString:@"fail"])
      {
@@ -446,24 +452,48 @@ NS_ENUM(NSInteger, ProviderEditingState)
      else
      {
        //开始向服务器注册该电器；
-       [HttpRequest registerDeviceToServer:logicIdXMLParser.logicId deviceName:deviceName sectionName:self.area success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-         
-         NSLog(@"服务器返回：%@",result);
-         
+         [HttpRequest registerDeviceToServer:logicIdXMLParser.logicId deviceName:deviceName sectionName:self.area type:logicIdXMLParser.deviceType success:^(AFHTTPRequestOperation *operation, id responseObject) {
          
          [self.addDeviceView removeFromSuperview];
-         
-         JYFurniture *furniture=[[JYFurniture alloc]init];
-         furniture.imageStr=@"家居";
-         furniture.descLabel=deviceName;
-         furniture.registed=YES;
-         furniture.logic_id=logicIdXMLParser.logicId;
-         
-         JYFurniture *temp=[self.section.furnitureArray lastObject];
-         [self.section.furnitureArray removeLastObject];
-         [self.section.furnitureArray addObject:furniture];
-         [self.section.furnitureArray addObject:temp];
+
+         if(self.row<=5)
+         {
+             JYFurnitureSection *section=self.furnitureSecArray[self.section1];
+             JYFurniture *furniture=section.furnitureArray[self.row];
+
+             furniture.imageStr=self.imageHighArray[self.row];
+             furniture.registed=YES;
+             furniture.logic_id=logicIdXMLParser.logicId;
+             furniture.deviceType=logicIdXMLParser.deviceType;
+             //设置电器描述文字
+             furniture.descLabel=deviceName;
+         }
+         else
+         {
+             JYFurniture *furniture=[[JYFurniture alloc]init];
+             furniture.descLabel=deviceName;
+             furniture.registed=YES;
+             furniture.logic_id=logicIdXMLParser.logicId;
+             furniture.deviceType=logicIdXMLParser.deviceType;
+             
+             if([furniture.deviceType isEqualToString:@"40"])
+             {
+                 furniture.imageStr=@"rgb_light_on";
+             }
+             else if([furniture.deviceType isEqualToString:@"41"])
+             {
+                 furniture.imageStr=@"yw_light_on";
+             }
+             else
+             {
+                 furniture.imageStr=@"办公室";
+             }
+             
+             JYFurniture *temp=[self.section.furnitureArray lastObject];
+             [self.section.furnitureArray removeLastObject];
+             [self.section.furnitureArray addObject:furniture];
+             [self.section.furnitureArray addObject:temp];
+         }
          
          [self.collectionView reloadData];
          
@@ -487,9 +517,15 @@ NS_ENUM(NSInteger, ProviderEditingState)
   [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
     
     //成功的回调；
+      NSLog(@"=====%@",responseObject);
     //请求成功
     JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
     self.furnitureBackStatus=furnitureBackStatus;
+      for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
+      {
+          JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
+          NSLog(@"%@   %@   %@   %@",back.logic_id,back.name,back.scene_name,back.deviceType);
+      }
     
     [self judge];
     
@@ -502,6 +538,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 -(void)judge
 {
+    NSLog(@"zheli ne ...");
   //遍历从服务器返回的电器的所属区域
   for(int i=0;i<self.furnitureBackStatus.furnitureArray.count;i++)
   {
@@ -528,6 +565,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
             furniture.imageStr=self.imageHighArray[k];
             furniture.registed=YES;
             furniture.logic_id=furnitureBack.logic_id;
+            furniture.deviceType=furnitureBack.deviceType;
             break;
           }
         }
@@ -535,10 +573,23 @@ NS_ENUM(NSInteger, ProviderEditingState)
         {
           //那就说明该电器不在默认电器里面，创建它
           JYFurniture *furniture=[[JYFurniture alloc]init];
-          furniture.imageStr=@"办公室";
+          //furniture.imageStr=@"办公室";
           furniture.descLabel=furnitureBack.name;
           furniture.registed=YES;
           furniture.logic_id=furnitureBack.logic_id;
+          furniture.deviceType=furnitureBack.deviceType;
+          if([furniture.deviceType isEqualToString:@"40"])
+            {
+                furniture.imageStr=@"rgb_light_on";
+            }
+            else if([furniture.deviceType isEqualToString:@"41"])
+            {
+                furniture.imageStr=@"yw_light_on";
+            }
+            else
+            {
+                furniture.imageStr=@"办公室";
+            }
           
           JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
           
@@ -558,6 +609,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
         
       }
     }
+      NSLog(@"hahahahahahaahhahahahahaah");
     //电器的所属区域不存在于已有头部电器数组
     if(j>=self.headerArray.count)
     {
@@ -574,16 +626,37 @@ NS_ENUM(NSInteger, ProviderEditingState)
         furniture.descLabel=self.descArray[i];
         //设置电器是否注册过
         furniture.registed=NO;
+        furniture.deviceType=@"";
         
         //将电器添加到电器数组中
         [self.furnitureArray addObject:furniture];
       }
+        NSLog(@"Kkkkkkkkkkkkkkkkkkkk");
+
       JYFurniture *furniture=[[JYFurniture alloc]init];
-      furniture.imageStr=@"单品";
+//      furniture.imageStr=@"单品";
       furniture.descLabel=furnitureBack.name;
       furniture.registed=YES;
       furniture.logic_id=furnitureBack.logic_id;
       
+      furniture.deviceType=furnitureBack.deviceType;
+        
+        NSLog(@"hhhhhhhhhhhhhhhhhhh");
+        NSLog(@"wokankanakanakna  %@",furniture.deviceType);
+      
+      if([furniture.deviceType isEqualToString:@"40"])
+        {
+            furniture.imageStr=@"rgb_light_on";
+        }
+      else if([furniture.deviceType isEqualToString:@"41"])
+        {
+            furniture.imageStr=@"yw_light_on";
+        }
+      else
+        {
+            furniture.imageStr=@"1";
+        }
+        NSLog(@"llllllllllllllllllllll");
       JYFurniture *temp=[[JYFurniture alloc]init];
       temp=[self.furnitureArray lastObject];
       [self.furnitureArray removeLastObject];
@@ -617,12 +690,14 @@ NS_ENUM(NSInteger, ProviderEditingState)
           furniture.imageStr=self.imageHighArray[k];
           furniture.registed=YES;
           furniture.logic_id=furnitureBack.logic_id;
+          furniture.deviceType=furnitureBack.deviceType;
           break;
         }
       }
     }
     
   }
+    NSLog(@"lallalalallalallalalalalalallalalla");
   [self.collectionView reloadData];
 }
 
@@ -662,6 +737,15 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 #pragma mark - 设置导航栏的按钮
 - (void)setNaviBarItemButton{
+    
+    UILabel *titleView=[[UILabel alloc]init];
+    [titleView setText:@"电器"];
+    titleView.frame=CGRectMake(0, 0, 100, 16);
+    titleView.font=[UIFont systemFontOfSize:16];
+    [titleView setTextColor:[UIColor whiteColor]];
+    titleView.textAlignment=NSTextAlignmentCenter;
+    self.navigationItem.titleView=titleView;
+    
   
   UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
                                                                   style:UIBarButtonItemStyleDone

@@ -50,6 +50,7 @@
 +(void)setupNavBarTheme
 {
     //1.去除apperance对象
+    
     UINavigationBar *navBar=[UINavigationBar appearance];
     navBar.tintColor = [UIColor whiteColor];
     [navBar setBarTintColor:[UIColor blackColor]];

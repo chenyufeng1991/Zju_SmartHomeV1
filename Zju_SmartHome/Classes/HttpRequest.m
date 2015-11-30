@@ -22,15 +22,6 @@
   [manager setSecurityPolicy:securityPolicy];
   manager.responseSerializer = [AFHTTPResponseSerializer serializer];
   
-  //    NSString *str = @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-  //    "<root>"
-  //    "<command_id>10001</command_id>"
-  //    "<command_type>execute</command_type>"
-  //    "<id>123</id>"
-  //    "<action>warmcold</action>"
-  //    "<value>80</value>"
-  //    "</root>";
-  
   
   NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
                    "<root>"
@@ -50,7 +41,7 @@
 }
 
 
-+ (void)registerDeviceToServer:(NSString*)logicId deviceName:(NSString*)deviceName sectionName:(NSString*)sectionName success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
++ (void)registerDeviceToServer:(NSString*)logicId deviceName:(NSString*)deviceName sectionName:(NSString*)sectionName type:(NSString*)type success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
   //1.创建请求管理对象
   AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
@@ -64,11 +55,17 @@
   //  params[@"equipment.name"] = deviceName;
   //  params[@"equipment.logic_id"] = logicId;
   //  params[@"equipment.scene_name"] = sectionName;
+    
+    NSLog(@"66666666 %@ %@ %@ %@",deviceName,logicId,sectionName,type);
   
   NSDictionary *params = @{@"is_app":@"1",
                            @"equipment.name":deviceName,
                            @"equipment.logic_id":logicId,
-                           @"equipment.scene_name" :sectionName};
+                           @"equipment.scene_name" :sectionName,
+                           @"equipment.type":type
+                           };
+
+    NSLog(@"我看看这个type有没有被注册呢%@",type);
   
   //4.发送请求
   [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/create"

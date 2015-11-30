@@ -20,6 +20,7 @@
         self.logic_id=dict[@"logic_id"];
         self.scene_name=dict[@"scene_name"];
         self.name=dict[@"name"];
+        self.deviceType=dict[@"type"];
     }
     return self;
 }

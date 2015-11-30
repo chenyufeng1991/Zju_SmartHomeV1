@@ -20,6 +20,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationBar.hidden=NO;
     self.view.backgroundColor=[UIColor whiteColor];
 
     JYRegisterXib *registerXib=[JYRegisterXib registerXib];
