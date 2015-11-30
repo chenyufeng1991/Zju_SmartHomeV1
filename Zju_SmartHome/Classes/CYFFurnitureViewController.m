@@ -165,6 +165,8 @@
   
   [self getDataFromReote];
   
+  [self addLongPressGestureToCell];
+  
 }
 
 //有多少个section；
@@ -283,8 +285,8 @@
               
           }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
-        //跳出填写MAC值的对话框；
-          
+        
+          //跳出填写MAC值的对话框；
           DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
           addDeviceView.delegate=self;
           self.addDeviceView=addDeviceView;
@@ -428,7 +430,7 @@
                  NSLog(@"设备注册到服务器失败:%@",error);
              }];
         }
-        
+      
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
@@ -441,6 +443,7 @@
 -(void)getDataFromReote
 {
     [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
+      
         //成功的回调；
         //请求成功
         JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
@@ -579,5 +582,39 @@
     
   }
   [self.collectionView reloadData];
+}
+
+#pragma mark - 创建长按cell的手势
+- (void)addLongPressGestureToCell{
+
+  //创建长按手势监听
+  UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc]
+                                             initWithTarget:self
+                                             action:@selector(myHandleTableviewCellLongPressed:)];
+  longPress.minimumPressDuration = 1.0;
+  //将长按手势添加到需要实现长按操作的视图里
+  [self.collectionView addGestureRecognizer:longPress];
+}
+
+- (void) myHandleTableviewCellLongPressed:(UILongPressGestureRecognizer *)gestureRecognizer {
+  
+  
+  CGPoint pointTouch = [gestureRecognizer locationInView:self.collectionView];
+  
+  if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+    NSLog(@"长按手势开始，可以在这里执行长按的操作");
+    
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:pointTouch];
+    if (indexPath == nil) {
+      NSLog(@"空");
+    }else{
+      
+      NSLog(@"Section = %ld,Row = %ld",(long)indexPath.section,(long)indexPath.row);
+      
+    }
+  }
+  if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+    NSLog(@"长按手势结束");
+  }
 }
 @end
