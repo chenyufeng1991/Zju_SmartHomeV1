@@ -23,8 +23,6 @@
 
 //内网IP地址前缀；
 @property(nonatomic,copy)NSString *globalInternalIP;
-//外网IP地址前缀；
-//@property(nonatomic,copy)NSString *externalIP;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;

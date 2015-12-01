@@ -9,9 +9,7 @@
 #import "HttpRequest.h"
 #import "AFNetworking.h"
 
-
-#import "InternalGateIPXMLParser.h"
-
+#import "AppDelegate.h"
 
 @implementation HttpRequest
 
@@ -37,14 +35,27 @@
   
   NSDictionary *parameters = @{@"test" : str};
   
+  AppDelegate *app = [[UIApplication sharedApplication] delegate];
   
-    //是外网；
+  if (app.isInternalNetworkGate) {
+    //内网；
+    NSString *url  = [[NSString alloc] initWithFormat:@"http://%@:8000/phone/getLogicIdfromMac.php",app.globalInternalIP];
+    
+    [manager POST:url
+       parameters:parameters
+          success:success
+          failure:failure];
+    NSLog(@"使用内网 向网关发送Mac值");
+  }else{
+    //外网；
     [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/getLogicIdfromMac.php"
        parameters:parameters
           success:success
           failure:failure];
-  
-  
+    
+    NSLog(@"使用外网 向网关发送Mac值");
+    
+  }
   
 }
 
@@ -63,8 +74,8 @@
   //  params[@"equipment.name"] = deviceName;
   //  params[@"equipment.logic_id"] = logicId;
   //  params[@"equipment.scene_name"] = sectionName;
-    
-    NSLog(@"66666666 %@ %@ %@ %@",deviceName,logicId,sectionName,type);
+  
+  NSLog(@"66666666 %@ %@ %@ %@",deviceName,logicId,sectionName,type);
   
   NSDictionary *params = @{@"is_app":@"1",
                            @"equipment.name":deviceName,
@@ -72,14 +83,31 @@
                            @"equipment.scene_name" :sectionName,
                            @"equipment.type":type
                            };
-
-    NSLog(@"我看看这个type有没有被注册呢%@",type);
   
-  //4.发送请求
+  NSLog(@"我看看这个type有没有被注册呢%@",type);
+  
+   AppDelegate *app = [[UIApplication sharedApplication] delegate];
+  
+  if (app.isInternalNetworkGate) {
+    
+    NSString *url = [[NSString alloc] initWithFormat:@"http://%@:8888/paladin/Equipment/create",app.globalInternalIP];
+    
+    //内网发送请求
+    [manager POST:url
+       parameters:params
+          success:success
+          failure:failure];
+    NSLog(@"使用内网 向服务器注册设备");
+  }else{
+  
+    //外网发送请求
   [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/create"
      parameters:params
         success:success
         failure:failure];
+    
+    NSLog(@"使用外网 向服务器注册设备");
+  }
 }
 
 
@@ -96,10 +124,26 @@
   params[@"is_app"]=@"1";
   
   //4.发送请求
-  [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/find"
-     parameters:params
-        success:success
-        failure:failure];
+  AppDelegate *app = [[UIApplication sharedApplication] delegate];
+  
+  if (app.isInternalNetworkGate) {
+    //内网；
+    NSString *url = [[NSString alloc] initWithFormat:@"http://%@:8888/paladin/Equipment/find",app.globalInternalIP];
+    
+    [manager POST:url
+       parameters:params
+          success:success
+          failure:failure];
+    NSLog(@"使用内网从服务器获取所有注册设备");
+  }else{
+    //外网；
+    [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/find"
+       parameters:params
+          success:success
+          failure:failure];
+  
+    NSLog(@"使用外网从服务器获取所有注册设备");
+  }
   
 }
 
@@ -125,11 +169,12 @@
   
   NSDictionary *params = @{@"test" : str};
   
-  //是外网；
+  //通过外网来获取内网的IP地址；
   [manager POST:@"http://test.ngrok.joyingtec.com:8000/ip.php"
      parameters:params
         success:success
         failure:failure];
+  NSLog(@"获取内网IP地址。。。");
   
 }
 
