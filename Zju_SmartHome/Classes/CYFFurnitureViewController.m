@@ -55,7 +55,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 //添加电器View
 @property(nonatomic,strong)DLAddDeviceView *addDeviceView;
-@property(nonatomic,copy)NSString *area;
 
 
 //头部数组
@@ -187,6 +186,23 @@ NS_ENUM(NSInteger, ProviderEditingState)
   
 }
 
+
+- (void)viewDidAppear:(BOOL)animated{
+  
+  [super viewDidAppear:animated];
+  
+  //扫描Mac值成功，传递过来Mac值，不为空，所以弹出增加设备的提示框；
+  if (self.macFromQRCatcher != nil) {
+    
+    [self addNewFurniture];
+    
+    NSLog(@"%@  ------------  %@",self.area,self.macFromQRCatcher);
+    
+    self.macFromQRCatcher = nil;
+    
+  }
+}
+
 //有多少个section；
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -314,6 +330,11 @@ NS_ENUM(NSInteger, ProviderEditingState)
       [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
       {
           NSLog(@"saoma mammamam");
+        
+        QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
+        qrCatcherVC.area = self.area;
+        [self.navigationController pushViewController:qrCatcherVC animated:YES];
+
       }]];
       [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
           
@@ -370,6 +391,10 @@ NS_ENUM(NSInteger, ProviderEditingState)
             [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
                                         {
                                             NSLog(@"saoma mammamam");
+                                          
+                                          QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
+                                          qrCatcherVC.area = self.area;
+                                          [self.navigationController pushViewController:qrCatcherVC animated:YES];
                                         }]];
             [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
                 
@@ -476,6 +501,9 @@ NS_ENUM(NSInteger, ProviderEditingState)
   //  [self.navigationController pushViewController:qrCatcherVC animated:YES];
   
   DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+  
+  addDeviceView.deviceMac.text = self.macFromQRCatcher;
+  
   addDeviceView.delegate=self;
   self.addDeviceView=addDeviceView;
   addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);

@@ -17,6 +17,9 @@
 #import "Masonry.h"
 //model
 
+#import "DLAddDeviceView.h"
+#import "CYFFurnitureViewController.h"
+
 
 #define MY_SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -32,6 +35,11 @@
 //AVFoundation
 @property (strong,nonatomic) AVCaptureSession *session;
 @property (strong,nonatomic) AVCaptureVideoPreviewLayer *previewLayer;
+
+//添加电器View
+@property(nonatomic,strong)DLAddDeviceView *addDeviceView;
+
+@property(nonatomic,assign)BOOL isScaned;
 
 @end
 
@@ -50,6 +58,11 @@
   self.mask = [CAShapeLayer layer];
   self.mask.fillRule = kCAFillRuleEvenOdd;
   self.blurView.layer.mask = self.mask;
+  
+  self.isScaned = false;
+  
+  NSLog(@"扫码界面的area:%@",self.area);
+
   
 }
 
@@ -169,6 +182,22 @@
       else
       {
         self.stringLabel.text = metadata.stringValue;
+        
+        //调用这里；
+        //不为空跳到转增加设备提示框；
+        if (![self.stringLabel.text isEqualToString:@""] && self.isScaned == false) {
+          
+          self.isScaned = true;
+          
+          //跳到CYFFurnitureViewController;
+          CYFFurnitureViewController *furi = [[CYFFurnitureViewController alloc] init];
+          furi.macFromQRCatcher = metadata.stringValue;
+          furi.area = self.area;
+          
+          [self.navigationController pushViewController:furi animated:true];
+          
+        }//if();
+        
       }
     }
   }

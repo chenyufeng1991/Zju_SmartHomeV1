@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface QRCatchViewController : UIViewController
-
+@property(nonatomic,copy)NSString *area;
 @end
