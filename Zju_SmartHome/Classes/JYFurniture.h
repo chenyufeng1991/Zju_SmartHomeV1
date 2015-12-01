@@ -24,7 +24,7 @@
 @property(nonatomic,copy)NSString *deviceType;
 
 //点击后进入的controller
-@property(nonatomic,weak)UIViewController *controller;
+@property(nonatomic,strong)UIViewController *controller;
 
 
 @end

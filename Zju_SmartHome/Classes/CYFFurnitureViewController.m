@@ -29,6 +29,8 @@
 #import "Constants.h"
 #import "LogicIdXMLParser.h"
 #import "UIKit/UIKit.h"
+#import "CYFYWControllerViewController.h"
+#import "JYOtherViewController.h"
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -137,6 +139,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
         furniture.registed=NO;
         //设置电器类型为空
         furniture.deviceType=@"";
+        furniture.controller=nil;
         
         //将电器添加到电器数组中
         [_furnitureArray addObject:furniture];
@@ -332,10 +335,28 @@ NS_ENUM(NSInteger, ProviderEditingState)
     
     if(furniture.registed==YES)
     {
-      DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
-      
-      dlVc.logic_id=furniture.logic_id;
-      [self.navigationController pushViewController:dlVc animated:YES];
+//      DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
+//      
+//      dlVc.logic_id=furniture.logic_id;
+//      [self.navigationController pushViewController:dlVc animated:YES];
+        if([furniture.deviceType isEqualToString:@"40"])
+        {
+            DLLampControlDinnerModeViewController *dlVc=(DLLampControlDinnerModeViewController *)furniture.controller;
+            dlVc.logic_id=furniture.logic_id;
+            [self.navigationController pushViewController:dlVc animated:dlVc];
+        }
+        else if([furniture.deviceType isEqualToString:@"41"])
+        {
+            CYFYWControllerViewController *cyfVc=(CYFYWControllerViewController *)furniture.controller;
+            cyfVc.logic_id=furniture.logic_id;
+            [self.navigationController pushViewController:cyfVc animated:cyfVc];
+        }
+        else
+        {
+            JYOtherViewController *jyVc=(JYOtherViewController *)furniture.controller;
+            jyVc.logic_id=furniture.logic_id;
+            [self.navigationController pushViewController:jyVc animated:jyVc];
+        }
     }
     else
     {
@@ -400,6 +421,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
     furniture.registed=NO;
     //设置电器类型为空
     furniture.deviceType=@"";
+    furniture.controller=nil;
     
     //将电器添加到电器数组中
     [self.furnitureArray addObject:furniture];
@@ -431,7 +453,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
                                 
                                 //此时更新界面；
                                 [self.collectionView reloadData];
-                                NSLog(@"更新界面后collectionView高度：%f",self.collectionView.frame.size.height);
                                 
                               }]];
   
@@ -466,7 +487,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //添加设备
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
 {
-    NSLog(@"===== %@ %@",deviceName,deviceMac);
   [HttpRequest getLogicIdfromMac:deviceMac success:^(AFHTTPRequestOperation *operation, id responseObject)
    {
      
@@ -477,7 +497,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
      LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
      
      //成功接收；
-       NSLog(@"8888888%@",logicIdXMLParser.result);
      
      if([logicIdXMLParser.result isEqualToString:@"fail"])
      {
@@ -499,8 +518,21 @@ NS_ENUM(NSInteger, ProviderEditingState)
              furniture.registed=YES;
              furniture.logic_id=logicIdXMLParser.logicId;
              furniture.deviceType=logicIdXMLParser.deviceType;
+             
+             if([furniture.deviceType isEqualToString:@"40"])
+             {
+                 furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+             }
+             else if([furniture.deviceType isEqualToString:@"41"])
+             {
+                 furniture.controller=[[CYFYWControllerViewController alloc]init];
+             }
+             else
+             {
+                 furniture.controller=[[JYOtherViewController alloc]init];
+             }
              //设置电器描述文字
-             furniture.descLabel=deviceName;
+             //furniture.descLabel=deviceName;
          }
          else
          {
@@ -513,14 +545,17 @@ NS_ENUM(NSInteger, ProviderEditingState)
              if([furniture.deviceType isEqualToString:@"40"])
              {
                  furniture.imageStr=@"rgb_light_on";
+                 furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
              }
              else if([furniture.deviceType isEqualToString:@"41"])
              {
                  furniture.imageStr=@"yw_light_on";
+                 furniture.controller=[[CYFYWControllerViewController alloc]init];
              }
              else
              {
                  furniture.imageStr=@"办公室";
+                 furniture.controller=[[JYOtherViewController alloc]init];
              }
              
              JYFurniture *temp=[self.section.furnitureArray lastObject];
@@ -600,6 +635,19 @@ NS_ENUM(NSInteger, ProviderEditingState)
             furniture.registed=YES;
             furniture.logic_id=furnitureBack.logic_id;
             furniture.deviceType=furnitureBack.deviceType;
+              
+            if([furniture.deviceType isEqualToString:@"40"])
+              {
+                  furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+              }
+              else if([furniture.deviceType isEqualToString:@"41"])
+              {
+                  furniture.controller=[[CYFYWControllerViewController alloc]init];
+              }
+              else
+              {
+                  furniture.controller=[[JYOtherViewController alloc]init];
+              }
             break;
           }
         }
@@ -615,14 +663,17 @@ NS_ENUM(NSInteger, ProviderEditingState)
           if([furniture.deviceType isEqualToString:@"40"])
             {
                 furniture.imageStr=@"rgb_light_on";
+                furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
             }
             else if([furniture.deviceType isEqualToString:@"41"])
             {
                 furniture.imageStr=@"yw_light_on";
+                furniture.controller=[[CYFYWControllerViewController alloc]init];
             }
             else
             {
                 furniture.imageStr=@"办公室";
+                furniture.controller=[[JYOtherViewController alloc]init];
             }
           
           JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
@@ -660,6 +711,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
         //设置电器是否注册过
         furniture.registed=NO;
         furniture.deviceType=@"";
+        furniture.controller=nil;
         
         //将电器添加到电器数组中
         [self.furnitureArray addObject:furniture];
@@ -676,14 +728,17 @@ NS_ENUM(NSInteger, ProviderEditingState)
       if([furniture.deviceType isEqualToString:@"40"])
         {
             furniture.imageStr=@"rgb_light_on";
+            furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
         }
-      else if([furniture.deviceType isEqualToString:@"41"])
+        else if([furniture.deviceType isEqualToString:@"41"])
         {
             furniture.imageStr=@"yw_light_on";
+            furniture.controller=[[CYFYWControllerViewController alloc]init];
         }
-      else
+        else
         {
-            furniture.imageStr=@"1";
+            furniture.imageStr=@"办公室";
+            furniture.controller=[[JYOtherViewController alloc]init];
         }
 
       JYFurniture *temp=[[JYFurniture alloc]init];
@@ -720,6 +775,18 @@ NS_ENUM(NSInteger, ProviderEditingState)
           furniture.registed=YES;
           furniture.logic_id=furnitureBack.logic_id;
           furniture.deviceType=furnitureBack.deviceType;
+          if([furniture.deviceType isEqualToString:@"40"])
+            {
+                furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+            }
+            else if([furniture.deviceType isEqualToString:@"41"])
+            {
+                furniture.controller=[[CYFYWControllerViewController alloc]init];
+            }
+            else
+            {
+                furniture.controller=[[JYOtherViewController alloc]init];
+            }
           break;
         }
       }
