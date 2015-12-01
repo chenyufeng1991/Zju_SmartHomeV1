@@ -374,11 +374,17 @@ NS_ENUM(NSInteger, ProviderEditingState)
             [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
                 
                 //[self addNewFurniture];
+                
                 //跳出填写MAC值的对话框；
                 DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
                 addDeviceView.delegate=self;
                 self.addDeviceView=addDeviceView;
                 addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                if(self.row<5)
+                {
+                    [addDeviceView.deviceName setText:self.descArray[self.row]];
+                    addDeviceView.deviceName.enabled=NO;
+                }
                 [self.view addSubview:addDeviceView];
                 self.navigationItem.hidesBackButton=YES;
                 
@@ -493,6 +499,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
      //表示从网关返回逻辑ID成功；需要解析这个逻辑ID，并发送到服务器；
      NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
      
+       NSLog(@"kankanfanhuishuju %@",result);
      //这里需要进行XML解析；
      LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
      
@@ -509,7 +516,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
          
          [self.addDeviceView removeFromSuperview];
 
-         if(self.row<=5)
+         if(self.row<5)
          {
              JYFurnitureSection *section=self.furnitureSecArray[self.section1];
              JYFurniture *furniture=section.furnitureArray[self.row];
@@ -541,6 +548,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
              furniture.registed=YES;
              furniture.logic_id=logicIdXMLParser.logicId;
              furniture.deviceType=logicIdXMLParser.deviceType;
+             NSLog(@"啦啦啦啦");
              
              if([furniture.deviceType isEqualToString:@"40"])
              {
@@ -907,11 +915,41 @@ NS_ENUM(NSInteger, ProviderEditingState)
     
   if(indexpath.row<=4)
   {
-      NSLog(@"no delete ");
+      
+      JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
+      JYFurniture *furniture=section.furnitureArray[indexpath.row];
+      furniture.registed=NO;
+      furniture.imageStr=self.imageArray[indexpath.row];
+      
+      NSLog(@"logicid  %@",furniture.logic_id);
+      
+      [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+          NSLog(@"===%@",string);
+          
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"删除设备失败");
+      }];
   }
     else
   {
       NSLog(@"keyi delete");
+      JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
+      JYFurniture *furniture=section.furnitureArray[indexpath.row];
+     
+      
+      NSLog(@"logicid  %@",furniture.logic_id);
+      
+      [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+          NSLog(@"===%@",string);
+          
+          [section.furnitureArray removeObject:furniture];
+          
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"删除设备失败");
+      }];
+      
   }
 }
 @end

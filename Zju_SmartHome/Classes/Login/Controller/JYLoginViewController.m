@@ -103,7 +103,6 @@
         {
             //移除遮盖
             [MBProgressHUD hideHUD];
-            NSLog(@"我看看登录成功返回的数据:%@",responseObject);
             DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
             CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
             JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];

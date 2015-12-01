@@ -84,7 +84,6 @@
                            @"equipment.type":type
                            };
   
-  NSLog(@"我看看这个type有没有被注册呢%@",type);
   
    AppDelegate *app = [[UIApplication sharedApplication] delegate];
   
@@ -176,6 +175,45 @@
         failure:failure];
   NSLog(@"获取内网IP地址。。。");
   
+}
+
+//删除电器网络请求方法
++ (void)deleteDeviceFromServer:(NSString*)logicId success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
+    
+    //1.创建请求管理对象
+    AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+    
+    //2.说明服务器返回的是json参数
+    manager.responseSerializer=[AFHTTPResponseSerializer serializer];
+    
+    NSLog(@"====PPPPP %@",logicId);
+    NSDictionary *params = @{@"is_app":@"1",
+                             @"equipment.logic_id":logicId
+                             };
+    
+    
+    AppDelegate *app = [[UIApplication sharedApplication] delegate];
+    
+    if (app.isInternalNetworkGate) {
+        
+        NSString *url = [[NSString alloc] initWithFormat:@"http://%@:8888/paladin/Equipment/delete",app.globalInternalIP];
+        
+        //内网发送请求
+        [manager POST:url
+           parameters:params
+              success:success
+              failure:failure];
+        NSLog(@"使用内网 向服务器注册设备");
+    }else{
+        
+        //外网发送请求
+        [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/delete"
+           parameters:params
+              success:success
+              failure:failure];
+        
+        NSLog(@"使用外网 向服务器注册设备");
+    }
 }
 
 @end
