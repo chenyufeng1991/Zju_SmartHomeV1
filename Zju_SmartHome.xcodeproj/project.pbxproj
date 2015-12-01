@@ -41,6 +41,7 @@
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
+		71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A7988D1C0D8C0B006F8D7B /* AllUtils.m */; settings = {ASSET_TAGS = (); }; };
 		9D1CB9D81C0B0F8600725A63 /* LogicIdXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */; };
 		9D1CB9DC1C0B0FA000725A63 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DB1C0B0FA000725A63 /* HttpRequest.m */; };
 		9D1CB9DF1C0B0FDC00725A63 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DE1C0B0FDC00725A63 /* Constants.m */; };
@@ -156,6 +157,8 @@
 		7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		7174E3A11BEFAEC500170AAA /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		71A7988C1C0D8C0B006F8D7B /* AllUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllUtils.h; sourceTree = "<group>"; };
+		71A7988D1C0D8C0B006F8D7B /* AllUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllUtils.m; sourceTree = "<group>"; };
 		88554DE0CE3743A8B110C726 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1CB9D61C0B0F8600725A63 /* LogicIdXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicIdXMLParser.h; sourceTree = "<group>"; };
 		9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicIdXMLParser.m; sourceTree = "<group>"; };
@@ -656,6 +659,8 @@
 			children = (
 				9D1CB9DD1C0B0FDC00725A63 /* Constants.h */,
 				9D1CB9DE1C0B0FDC00725A63 /* Constants.m */,
+				71A7988C1C0D8C0B006F8D7B /* AllUtils.h */,
+				71A7988D1C0D8C0B006F8D7B /* AllUtils.m */,
 				9D7D5A841BE4740100E1E1EF /* main.m */,
 				9D7D5A821BE4740100E1E1EF /* AppDelegate.h */,
 				9D7D5A831BE4740100E1E1EF /* AppDelegate.m */,
@@ -949,6 +954,7 @@
 				712C52441C08323B0014F9CB /* NSString+Tools.m in Sources */,
 				446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */,
 				9D564D5B1BFEAD630062700D /* JYMainView.m in Sources */,
+				71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */,
 				446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */,
 				446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */,
 				9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */,
