@@ -15,7 +15,7 @@
 
 @implementation HttpRequest
 
-+ (void)getLogicIdfromMac:(NSString*)macValue  isInternalIP:(NSString*)isInternalIP success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
++ (void)getLogicIdfromMac:(NSString*)macValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
   //增加这几行代码；
   AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
@@ -37,19 +37,13 @@
   
   NSDictionary *parameters = @{@"test" : str};
   
-  if (isInternalIP) {
-    //是内网；
-    
-    //    NSString IP =
-    
-    
-  }else{
+  
     //是外网；
     [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/getLogicIdfromMac.php"
        parameters:parameters
           success:success
           failure:failure];
-  }
+  
   
   
 }

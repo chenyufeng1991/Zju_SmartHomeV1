@@ -20,7 +20,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBar.hidden=NO;
     self.view.backgroundColor=[UIColor whiteColor];
 
     JYRegisterXib *registerXib=[JYRegisterXib registerXib];
@@ -59,6 +58,8 @@
              //移除遮盖
              [MBProgressHUD hideHUD];
              [MBProgressHUD showSuccess:@"注册成功"];
+             JYLoginViewController *jyVc=[[JYLoginViewController alloc]init];
+             self.view.window.rootViewController=jyVc;
            
          }
          else if ([responseObject[@"code"]isEqualToString:@"308"])

@@ -306,7 +306,21 @@ NS_ENUM(NSInteger, ProviderEditingState)
     self.section=section;
     self.row=indexPath.row;
     self.section1=indexPath.section;
-    [self addNewFurniture];
+      
+      UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请选择注册方式" preferredStyle:UIAlertControllerStyleAlert];
+      [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+      {
+          NSLog(@"saoma mammamam");
+      }]];
+      [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+          
+          [self addNewFurniture];
+          
+      }]];
+      
+      [self presentViewController:alertController animated:true completion:nil];
+    
+    //[self addNewFurniture];
   }
   else
   {
@@ -329,15 +343,35 @@ NS_ENUM(NSInteger, ProviderEditingState)
       [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
       }]];
-      [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+      [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+        {
+            UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请选择注册方式" preferredStyle:UIAlertControllerStyleAlert];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                                        {
+                                            NSLog(@"saoma mammamam");
+                                        }]];
+            [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+                
+                //[self addNewFurniture];
+                //跳出填写MAC值的对话框；
+                DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+                addDeviceView.delegate=self;
+                self.addDeviceView=addDeviceView;
+                addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                [self.view addSubview:addDeviceView];
+                self.navigationItem.hidesBackButton=YES;
+                
+            }]];
+            
+            [self presentViewController:alertController animated:true completion:nil];
         
-        //跳出填写MAC值的对话框；
-        DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
-        addDeviceView.delegate=self;
-        self.addDeviceView=addDeviceView;
-        addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:addDeviceView];
-        self.navigationItem.hidesBackButton=YES;
+//        //跳出填写MAC值的对话框；
+//        DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+//        addDeviceView.delegate=self;
+//        self.addDeviceView=addDeviceView;
+//        addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+//        [self.view addSubview:addDeviceView];
+//        self.navigationItem.hidesBackButton=YES;
         
       }]];
       
@@ -510,6 +544,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
      //从网关返回逻辑ID失败；
      NSLog(@"从网关获取逻辑ID失败：%@",error);
    }];
+    self.navigationItem.hidesBackButton=NO;
 }
 
 -(void)getDataFromReote
@@ -538,7 +573,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 -(void)judge
 {
-    NSLog(@"zheli ne ...");
   //遍历从服务器返回的电器的所属区域
   for(int i=0;i<self.furnitureBackStatus.furnitureArray.count;i++)
   {
@@ -609,7 +643,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
         
       }
     }
-      NSLog(@"hahahahahahaahhahahahahaah");
     //电器的所属区域不存在于已有头部电器数组
     if(j>=self.headerArray.count)
     {
@@ -631,7 +664,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
         //将电器添加到电器数组中
         [self.furnitureArray addObject:furniture];
       }
-        NSLog(@"Kkkkkkkkkkkkkkkkkkkk");
 
       JYFurniture *furniture=[[JYFurniture alloc]init];
 //      furniture.imageStr=@"单品";
@@ -641,9 +673,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
       
       furniture.deviceType=furnitureBack.deviceType;
         
-        NSLog(@"hhhhhhhhhhhhhhhhhhh");
-        NSLog(@"wokankanakanakna  %@",furniture.deviceType);
-      
       if([furniture.deviceType isEqualToString:@"40"])
         {
             furniture.imageStr=@"rgb_light_on";
@@ -656,7 +685,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
         {
             furniture.imageStr=@"1";
         }
-        NSLog(@"llllllllllllllllllllll");
+
       JYFurniture *temp=[[JYFurniture alloc]init];
       temp=[self.furnitureArray lastObject];
       [self.furnitureArray removeLastObject];
@@ -697,7 +726,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
     }
     
   }
-    NSLog(@"lallalalallalallalalalalalallalalla");
   [self.collectionView reloadData];
 }
 
@@ -770,12 +798,22 @@ NS_ENUM(NSInteger, ProviderEditingState)
       
       NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
       JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
+      JYFurniture *furniture=section.furnitureArray[indexPath.row];
       
-      if (indexPath.row != (section.furnitureArray.count - 1)){
-        [cell.closeButton setHidden:NO];
-      }else{
+      if (indexPath.row != (section.furnitureArray.count - 1))
+      {
+          if(furniture.registed==NO)
+          {
+              [cell.closeButton setHidden:YES];
+          }
+          else
+          {
+              [cell.closeButton setHidden:NO];
+          }
+      }
+      else
+      {
         [cell.closeButton setHidden:YES];
-        
       }
     }
     
@@ -791,13 +829,23 @@ NS_ENUM(NSInteger, ProviderEditingState)
   
 }
 
-- (void)deleteCellButtonPressed:(id)sender{
+- (void)deleteCellButtonPressed:(id)sender
+{
   UIView *v = [sender superview];//获取父类view
   CYFCollectionViewCell *cell = (CYFCollectionViewCell *)[v superview];//获取cell
   
   NSIndexPath *indexpath = [self.collectionView indexPathForCell:cell];//获取cell对应的indexpath;
   
   NSLog(@"删除按钮，section:%ld ,   row: %ld",(long)indexpath.section,(long)indexpath.row);
+    
+  if(indexpath.row<=4)
+  {
+      NSLog(@"no delete ");
+  }
+    else
+  {
+      NSLog(@"keyi delete");
+  }
 }
 @end
 

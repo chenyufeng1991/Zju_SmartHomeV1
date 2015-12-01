@@ -29,8 +29,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //self.navigationController.navigationBar.hidden=YES;
-    //self.navigationController.navigationBar.alpha=0.0;
     
     JYLoginXib *loginXib=[JYLoginXib loginXib];
     //设置代理
@@ -153,7 +151,10 @@
 -(void)registerGoGoGo
 {
     JYRegisterViewController *registerVc=[[JYRegisterViewController alloc]init];
-    //[self.navigationController pushViewController:registerVc animated:YES];
+    //JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:registerVc];
     self.view.window.rootViewController=registerVc;
+    //[self.navigationController pushViewController:navVc animated:YES];
+
+
 }
 @end
