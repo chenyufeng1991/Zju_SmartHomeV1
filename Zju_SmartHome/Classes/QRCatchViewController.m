@@ -140,7 +140,10 @@
   UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:pathFrame cornerRadius:width/2];
   
   CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-  shapeLayer.position = self.view.center;
+  
+//  shapeLayer.position = self.view.center;
+  shapeLayer.position = CGPointMake([[UIScreen mainScreen] bounds].size.width / 2, [[UIScreen mainScreen] bounds].size.height / 2);
+  
   shapeLayer.bounds = path.bounds;
   shapeLayer.path = [path CGPath];
   shapeLayer.strokeColor = [[UIColor colorWithRed:65/225.0 green:182/255.0 blue:251 alpha:1] CGColor];
