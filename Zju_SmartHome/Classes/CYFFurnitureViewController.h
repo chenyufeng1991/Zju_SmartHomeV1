@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JYFurnitureSection.h"
 
 @interface CYFFurnitureViewController : UIViewController
 
@@ -15,5 +16,9 @@
 
 
 @property(nonatomic,copy)NSString *area;
+
+@property(nonatomic,assign)NSInteger row;
+@property(nonatomic,assign)NSInteger section1;
+@property(nonatomic,strong)JYFurnitureSection *section;
 
 @end

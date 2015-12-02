@@ -67,9 +67,8 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 @property(nonatomic,strong)JYFurnitureBackStatus *furnitureBackStatus;
 
-@property(nonatomic,strong)JYFurnitureSection *section;
-@property(nonatomic,assign)NSInteger row;
-@property(nonatomic,assign)NSInteger section1;
+
+
 
 
 
@@ -78,7 +77,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 @property (weak, nonatomic) IBOutlet UIButton *addFurnitureButton;
 
 @property (assign) enum ProviderEditingState currentEditState;
-
 
 @end
 
@@ -323,7 +321,9 @@ NS_ENUM(NSInteger, ProviderEditingState)
     
     JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
     self.section=section;
+    
     self.row=indexPath.row;
+    
     self.section1=indexPath.section;
       
       UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请选择注册方式" preferredStyle:UIAlertControllerStyleAlert];
@@ -333,6 +333,11 @@ NS_ENUM(NSInteger, ProviderEditingState)
         
         QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
         qrCatcherVC.area = self.area;
+        qrCatcherVC.section1 = self.section1;
+        qrCatcherVC.row = self.row;
+        qrCatcherVC.section = self.section;
+        
+        
         [self.navigationController pushViewController:qrCatcherVC animated:YES];
 
       }]];
@@ -394,6 +399,9 @@ NS_ENUM(NSInteger, ProviderEditingState)
                                           
                                           QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
                                           qrCatcherVC.area = self.area;
+                                          qrCatcherVC.section1 = self.section1;
+                                          qrCatcherVC.row = self.row;
+                                           qrCatcherVC.section = self.section;
                                           [self.navigationController pushViewController:qrCatcherVC animated:YES];
                                         }]];
             [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
@@ -500,11 +508,26 @@ NS_ENUM(NSInteger, ProviderEditingState)
   //  QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
   //  [self.navigationController pushViewController:qrCatcherVC animated:YES];
   
+  
   DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
   
   addDeviceView.deviceMac.text = self.macFromQRCatcher;
   
+  if (![addDeviceView.deviceMac.text isEqualToString:@""])
+  {
+
+    if(self.row<5)
+    {
+        addDeviceView.deviceName.text = self.descArray[self.row];
+       addDeviceView.deviceName.enabled = false;
+    }
+  
+    
+  }
+
+  
   addDeviceView.delegate=self;
+  
   self.addDeviceView=addDeviceView;
   addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
   [self.view addSubview:addDeviceView];
@@ -545,8 +568,9 @@ NS_ENUM(NSInteger, ProviderEditingState)
          [self.addDeviceView removeFromSuperview];
 
          if(self.row<5)
-         {
-             JYFurnitureSection *section=self.furnitureSecArray[self.section1];
+          {
+            
+            JYFurnitureSection *section=self.furnitureSecArray[self.section1];
              JYFurniture *furniture=section.furnitureArray[self.row];
 
              furniture.imageStr=self.imageHighArray[self.row];
@@ -576,6 +600,8 @@ NS_ENUM(NSInteger, ProviderEditingState)
              furniture.registed=YES;
              furniture.logic_id=logicIdXMLParser.logicId;
              furniture.deviceType=logicIdXMLParser.deviceType;
+           
+           NSLog(@"%@ %@ ",deviceName,logicIdXMLParser.logicId);
              NSLog(@"啦啦啦啦");
              
              if([furniture.deviceType isEqualToString:@"40"])
@@ -593,12 +619,34 @@ NS_ENUM(NSInteger, ProviderEditingState)
                  furniture.imageStr=@"办公室";
                  furniture.controller=[[JYOtherViewController alloc]init];
              }
-             
+           
+            if(![self.addDeviceView.deviceMac.text isEqualToString:@""])
+            {
+              
+              
+              JYFurnitureSection *section=self.furnitureSecArray[self.section1];
+              JYFurniture *furniture1=section.furnitureArray[self.row];
+              
+              furniture1=furniture;
+              
+              
+              JYFurniture *temp=[section.furnitureArray lastObject];
+              [section.furnitureArray removeLastObject];
+              
+              [section.furnitureArray addObject:furniture1];
+              [section.furnitureArray addObject:temp];
+              
+              
+            }
+           else
+           {
              JYFurniture *temp=[self.section.furnitureArray lastObject];
              [self.section.furnitureArray removeLastObject];
              [self.section.furnitureArray addObject:furniture];
              [self.section.furnitureArray addObject:temp];
-         }
+
+           }
+          }
          
          [self.collectionView reloadData];
          
