@@ -17,7 +17,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-     
+  
+  
+  
 
 }
 
@@ -49,6 +51,8 @@
 //设置导航栏的主题
 +(void)setupNavBarTheme
 {
+  
+
     //1.去除apperance对象
     
     UINavigationBar *navBar=[UINavigationBar appearance];
@@ -76,7 +80,9 @@ forBarMetrics:UIBarMetricsDefault];
 +(void)setupBarButtonItemTheme
 {
     UIBarButtonItem *item=[UIBarButtonItem appearance];
-    
+  
+//  self.navigationController.navigationItem.hidesBackButton = true;
+  
     //设置文字属性
     NSMutableDictionary *textAttrs=[NSMutableDictionary dictionary];
     textAttrs[UITextAttributeTextColor]=[UIColor whiteColor];

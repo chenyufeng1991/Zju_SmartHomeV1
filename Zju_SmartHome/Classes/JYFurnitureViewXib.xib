@@ -41,11 +41,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="k54-nG-dUu">
-                    <rect key="frame" x="83" y="15" width="20" height="20"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="k54-nG-dUu">
+                    <rect key="frame" x="63" y="0.0" width="50" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <animations/>
-                    <state key="normal" title="Button" backgroundImage="close"/>
+                    <inset key="contentEdgeInsets" minX="15" minY="5" maxX="10" maxY="20"/>
+                    <state key="normal" title="Button" image="close"/>
                 </button>
             </subviews>
             <animations/>

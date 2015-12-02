@@ -31,6 +31,9 @@
 #import "UIKit/UIKit.h"
 #import "CYFYWControllerViewController.h"
 #import "JYOtherViewController.h"
+#import "MBProgressHUD+MJ.h"
+
+#import "CYFMainViewController.h"
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
@@ -40,7 +43,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
   ProviderEditStateDelete
 };
 
-@interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DLAddDeviceViewDelegate>
+@interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DLAddDeviceViewDelegate,UINavigationBarDelegate>
 
 //collectionView属性
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -161,6 +164,10 @@ NS_ENUM(NSInteger, ProviderEditingState)
 {
   [super viewDidLoad];
   
+  NSLog(@"222222222222222222222222");
+  
+  
+//  self.navigationItem.hidesBackButton = true;
   
   //进行CollectionView和Cell的绑定
   [self.collectionView registerClass:[CYFCollectionViewCell class]  forCellWithReuseIdentifier:@"CollectionCell"];
@@ -662,6 +669,10 @@ NS_ENUM(NSInteger, ProviderEditingState)
      
      //从网关返回逻辑ID失败；
      NSLog(@"从网关获取逻辑ID失败：%@",error);
+     [MBProgressHUD showError:@"获取逻辑ID失败，请检查网关"];
+     
+     
+     
    }];
     self.navigationItem.hidesBackButton=NO;
 }
@@ -930,13 +941,42 @@ NS_ENUM(NSInteger, ProviderEditingState)
                                                                   style:UIBarButtonItemStyleDone
                                                                  target:self
                                                                  action:@selector(rightBtnClicked)];
+  
+//  UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
+//                                                                  style:UIBarButtonItemStyleDone
+//                                                                 target:self
+//                                                                 action:@selector(leftBtnClicked)];
+
+  
   rightButton.tintColor = [UIColor whiteColor];
   
   self.navigationItem.rightBarButtonItem = rightButton;
+//   self.navigationItem.leftBarButtonItem = leftButton;
   
 }
 
+
+
 #pragma mark - 点击右上角的编辑按钮
+
+
+//- (void)leftBtnClicked{
+//
+//  NSLog(@"1111111111111111111111111111111");
+//  
+//  
+//  CATransition* transition = [CATransition animation];
+//  
+//  transition.type = kCATransitionFromRight;//可更改为其他方式
+////  transition.subtype = kCATransitionFromTop;//可更改为其他方式
+//  [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
+//  
+//  CYFMainViewController *main = [[CYFMainViewController alloc] init];
+//  [self.navigationController pushViewController:main animated:false];
+//  
+//}
+
+
 - (void)rightBtnClicked
 {
   //此时你要删除cell了；
@@ -1027,6 +1067,12 @@ NS_ENUM(NSInteger, ProviderEditingState)
       }];
       
   }
+}
+
+- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item{
+
+  NSLog(@"1111111111111111");
+  return true;
 }
 @end
 
