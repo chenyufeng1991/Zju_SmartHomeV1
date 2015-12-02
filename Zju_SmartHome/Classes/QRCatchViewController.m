@@ -62,6 +62,7 @@
   self.isScaned = false;
   
   NSLog(@"扫码界面的area:%@",self.area);
+  NSLog(@"传过来的Section：%ld，row=%ld",(long)self.section1,(long)self.row);
 
   
 }
@@ -193,6 +194,9 @@
           CYFFurnitureViewController *furi = [[CYFFurnitureViewController alloc] init];
           furi.macFromQRCatcher = metadata.stringValue;
           furi.area = self.area;
+          furi.section1 = self.section1;
+          furi.row = self.row;
+          furi.section = self.section;
           
           [self.navigationController pushViewController:furi animated:true];
           
