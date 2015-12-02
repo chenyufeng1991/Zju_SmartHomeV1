@@ -39,7 +39,10 @@
   
   if (app.isInternalNetworkGate) {
     //内网；
-    NSString *url  = [[NSString alloc] initWithFormat:@"http://%@:8000/phone/getLogicIdfromMac.php",app.globalInternalIP];
+    
+    NSLog(@"内网获取逻辑ID的IP：%@",[[NSString alloc] initWithFormat:@"http://%@/phone/getLogicIdfromMac.php",app.globalInternalIP]);
+    
+    NSString *url  = [[NSString alloc] initWithFormat:@"http://%@/phone/getLogicIdfromMac.php",app.globalInternalIP];
     
     [manager POST:url
        parameters:parameters
@@ -84,21 +87,6 @@
                            @"equipment.type":type
                            };
   
-  
-   AppDelegate *app = [[UIApplication sharedApplication] delegate];
-  
-  if (app.isInternalNetworkGate) {
-    
-    NSString *url = [[NSString alloc] initWithFormat:@"http://%@:8888/paladin/Equipment/create",app.globalInternalIP];
-    
-    //内网发送请求
-    [manager POST:url
-       parameters:params
-          success:success
-          failure:failure];
-    NSLog(@"使用内网 向服务器注册设备");
-  }else{
-  
     //外网发送请求
   [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/create"
      parameters:params
@@ -106,7 +94,6 @@
         failure:failure];
     
     NSLog(@"使用外网 向服务器注册设备");
-  }
 }
 
 
@@ -122,19 +109,7 @@
   NSMutableDictionary *params=[NSMutableDictionary dictionary];
   params[@"is_app"]=@"1";
   
-  //4.发送请求
-  AppDelegate *app = [[UIApplication sharedApplication] delegate];
-  
-  if (app.isInternalNetworkGate) {
-    //内网；
-    NSString *url = [[NSString alloc] initWithFormat:@"http://%@:8888/paladin/Equipment/find",app.globalInternalIP];
-    
-    [manager POST:url
-       parameters:params
-          success:success
-          failure:failure];
-    NSLog(@"使用内网从服务器获取所有注册设备");
-  }else{
+
     //外网；
     [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/find"
        parameters:params
@@ -142,7 +117,7 @@
           failure:failure];
   
     NSLog(@"使用外网从服务器获取所有注册设备");
-  }
+  
   
 }
 
@@ -190,22 +165,6 @@
     NSDictionary *params = @{@"is_app":@"1",
                              @"equipment.logic_id":logicId
                              };
-    
-    
-    AppDelegate *app = [[UIApplication sharedApplication] delegate];
-    
-    if (app.isInternalNetworkGate) {
-        
-        NSString *url = [[NSString alloc] initWithFormat:@"http://%@:8888/paladin/Equipment/delete",app.globalInternalIP];
-        
-        //内网发送请求
-        [manager POST:url
-           parameters:params
-              success:success
-              failure:failure];
-        NSLog(@"使用内网 向服务器注册设备");
-    }else{
-        
         //外网发送请求
         [manager POST:@"http://60.12.220.16:8888/paladin/Equipment/delete"
            parameters:params
@@ -213,7 +172,7 @@
               failure:failure];
         
         NSLog(@"使用外网 向服务器注册设备");
-    }
+  
 }
 
 @end

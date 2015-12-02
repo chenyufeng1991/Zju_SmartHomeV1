@@ -9,6 +9,8 @@
 #import "DLLampControlDinnerModeViewController.h"
 #import "AFNetworking.h"
 
+#import "AppDelegate.h"
+
 @interface DLLampControlDinnerModeViewController ()
 @property (weak, nonatomic) IBOutlet UIView *panelView;
 @property (weak, nonatomic) IBOutlet UILabel *rValue;
@@ -180,7 +182,17 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     [manager setSecurityPolicy:securityPolicy];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
+  
+  NSString *rValue1 = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+
+  
+  NSString *gVlaue1 = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue] ]];
+
+  
+  NSString *bValue1 = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue] ]];
+
+  
+  
     NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
                      "<root>"
                      "<command_id></command_id>"
@@ -188,20 +200,45 @@
                      "<id>%@</id>"
                      "<action>change_color</action>"
                      "<value>%@,%@,%@</value>"
-                     "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                     "</root>",  self.logic_id,rValue1,gVlaue1,bValue1];
     
     NSDictionary *parameters = @{@"test" : str};
+  
+  AppDelegate *app = [[UIApplication sharedApplication] delegate];
+  
+  if (app.isInternalNetworkGate) {
+    //内网
+    NSLog(@"内网实际操作IP：%@",[[NSString alloc] initWithFormat:@"%@/phone/color_light.php",app.globalInternalIP]);
     
+    [manager POST:[[NSString alloc] initWithFormat:@"http://%@/phone/color_light.php",app.globalInternalIP]
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation,id responseObject){
+            NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSLog(@"成功: %@", string);
+          }
+          failure:^(AFHTTPRequestOperation *operation,NSError *error){
+            NSLog(@"失败: %@", error);
+          }];
+    
+    
+  }else{
+  
+    //外网
     [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
        parameters:parameters
           success:^(AFHTTPRequestOperation *operation,id responseObject){
-              NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-              NSLog(@"成功: %@", string);
+            NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+            NSLog(@"成功: %@", string);
           }
           failure:^(AFHTTPRequestOperation *operation,NSError *error){
-              NSLog(@"失败: %@", error);
+            NSLog(@"失败: %@", error);
           }];
+  
+  }
+  
+  
     
+  
 }
 
 
