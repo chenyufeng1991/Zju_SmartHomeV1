@@ -54,7 +54,7 @@
     {
         self.loginXib.eyePicture.hidden=NO;
         [textField setText:@""];
-        textField.font=[UIFont systemFontOfSize:10];
+        //textField.font=[UIFont systemFontOfSize:10];
         textField.secureTextEntry=YES;
     }
 }
