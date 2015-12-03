@@ -19,9 +19,15 @@
 #import "RegViewController.h"
 #import "RESideMenu.h"
 #import "DLLeftSlideMenuViewController.h"
+
+#import "Reachability.h"
+
 @interface JYLoginViewController ()<LoginXibDelegate,UITextFieldDelegate>
 
 @property(nonatomic,strong)JYLoginXib *loginXib;
+
+@property(nonatomic,assign) BOOL isConnectNetworking;
+
 @end
 
 @implementation JYLoginViewController
@@ -38,8 +44,10 @@
     loginXib.password.delegate=self;
     loginXib.username.delegate=self;
     self.view=loginXib;
-    
-    
+  
+  self.isConnectNetworking = true;
+  
+  [self testConnection];
 }
 
 
@@ -66,8 +74,12 @@
 //代理登录方法
 -(void)loginGoGoGo:(NSString *)username and:(NSString *)password
 {
+  
+  
+  if (self.isConnectNetworking) {
+    //连接网络；
     
-//    //显示一个蒙板
+    //    //显示一个蒙板
     [MBProgressHUD showMessage:@"正在登录中..."];
   
     AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
@@ -139,6 +151,25 @@
 
     }];
     
+  }else{
+    //未连接网络；
+  
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未连接网络，请确定后再试"
+                                                   delegate:self
+                                          cancelButtonTitle:@"提示" otherButtonTitles:nil];
+    
+    
+    [alert show];
+
+    
+    
+  }
+  
+  
+  
+  
+  
+
    
 }
 
@@ -159,5 +190,50 @@
     //[self.navigationController pushViewController:navVc animated:YES];
 
 
+}
+
+#pragma mark - 判断是否联网
+-(BOOL)checkNetworkConnection
+{
+  struct sockaddr_in zeroAddress;
+  bzero(&zeroAddress, sizeof(zeroAddress));
+  zeroAddress.sin_len = sizeof(zeroAddress);
+  zeroAddress.sin_family = AF_INET;
+  
+  SCNetworkReachabilityRef defaultRouteReachability = SCNetworkReachabilityCreateWithAddress(NULL, (struct sockaddr *)&zeroAddress);
+  SCNetworkReachabilityFlags flags;
+  
+  BOOL didRetrieveFlags = SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags);
+  CFRelease(defaultRouteReachability);
+  
+  if (!didRetrieveFlags) {
+    printf("Error. Count not recover network reachability flags\n");
+    return NO;
+  }
+  
+  BOOL isReachable = flags & kSCNetworkFlagsReachable;
+  BOOL needsConnection = flags & kSCNetworkFlagsConnectionRequired;
+  return (isReachable && !needsConnection) ? YES : NO;
+}
+
+-(void)testConnection{
+  NSString *result;
+  if ([self checkNetworkConnection]) {
+    result = @"Connection Successed!!!";
+    
+    self.isConnectNetworking = true;
+    
+  }else {
+    result = @"连接网络失败，请确定打开网络后再试！";
+      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:result
+                                                 delegate:self
+                                        cancelButtonTitle:@"提示" otherButtonTitles:nil];
+
+    
+    [alert show];
+    
+    self.isConnectNetworking = false;
+  }
+  
 }
 @end
