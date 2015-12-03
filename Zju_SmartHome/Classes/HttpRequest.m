@@ -50,7 +50,7 @@
        parameters:parameters
           success:success
           failure:failure];
-    NSLog(@"使用内网 向网关发送Mac值");
+   // NSLog(@"使用内网 向网关发送Mac值");
   }else{
     //外网；
     //默认使用外网；
@@ -59,7 +59,7 @@
           success:success
           failure:failure];
     
-    NSLog(@"使用外网 向网关发送Mac值");
+   // NSLog(@"使用外网 向网关发送Mac值");
     
   }
   
@@ -95,7 +95,7 @@
         success:success
         failure:failure];
     
-    NSLog(@"使用外网 向服务器注册设备");
+   // NSLog(@"使用外网 向服务器注册设备");
 }
 
 
@@ -119,7 +119,7 @@
           success:success
           failure:failure];
   
-    NSLog(@"使用外网从服务器获取所有注册设备");
+   // NSLog(@"使用外网从服务器获取所有注册设备");
   
   
 }
@@ -151,7 +151,7 @@
      parameters:params
         success:success
         failure:failure];
-  NSLog(@"获取内网IP地址。。。");
+ // NSLog(@"获取内网IP地址。。。");
   
 }
 
@@ -164,7 +164,7 @@
     //2.说明服务器返回的是json参数
     manager.responseSerializer=[AFHTTPResponseSerializer serializer];
     
-    NSLog(@"====PPPPP %@",logicId);
+   // NSLog(@"====PPPPP %@",logicId);
     NSDictionary *params = @{@"is_app":@"1",
                              @"equipment.logic_id":logicId
                              };
@@ -174,7 +174,7 @@
               success:success
               failure:failure];
         
-        NSLog(@"使用外网 向服务器注册设备");
+      //  NSLog(@"使用外网 向服务器注册设备");
   
 }
 

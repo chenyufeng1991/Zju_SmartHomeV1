@@ -14,6 +14,7 @@
 #import "InternalGateIPXMLParser.h"
 #import "AppDelegate.h"
 #import "AllUtils.h"
+#import "MBProgressHUD+MJ.h"
 #import <CoreLocation/CoreLocation.h>
 @interface CYFMainViewController ()<JYMainViewDelegate,CLLocationManagerDelegate>
 
@@ -46,11 +47,11 @@
   //获取内网IP
   [HttpRequest getInternalNetworkGateIP:^(AFHTTPRequestOperation *operation, id responseObject) {
     NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-    NSLog(@"获取内网返回的数据：%@",result);
+    //NSLog(@"获取内网返回的数据：%@",result);
     
     //并直接在这里进行解析；
     InternalGateIPXMLParser *parser = [[InternalGateIPXMLParser alloc] initWithXMLString:result];
-    NSLog(@"解析返回：%@",parser.internalIP);
+   // NSLog(@"解析返回：%@",parser.internalIP);
     
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     app.globalInternalIP = parser.internalIP;
@@ -157,10 +158,26 @@
 }
 
 //代理方法
+//家居
 -(void)furnitureClick
 {
   CYFFurnitureViewController *jyVc=[[CYFFurnitureViewController alloc]init];
   [self.navigationController pushViewController:jyVc animated:YES];
+}
+//办公室
+-(void)officeClick
+{
+     [MBProgressHUD showError:@"办公室功能尚未开通"];
+}
+//单品
+-(void)productClick
+{
+    [MBProgressHUD showError:@"单品功能尚未开通"];
+}
+//自定义
+-(void)customClick
+{
+    [MBProgressHUD showError:@"自定义功能尚未开通"];
 }
 
 #pragma mark - CLLocationManangerDelegate

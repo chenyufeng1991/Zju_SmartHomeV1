@@ -30,6 +30,13 @@
 		446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */; };
 		61645BAC1C101BA5007462EC /* JYChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61645BAA1C101BA5007462EC /* JYChangePwdViewController.m */; };
 		61645BAD1C101BA5007462EC /* JYChangePwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61645BAB1C101BA5007462EC /* JYChangePwdViewController.xib */; };
+		61645BB71C10827E007462EC /* DLLampControlDinnerModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61645BAF1C10827E007462EC /* DLLampControlDinnerModeViewController.m */; };
+		61645BB81C10827E007462EC /* DLLampControlDinnerModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61645BB01C10827E007462EC /* DLLampControlDinnerModeViewController.xib */; };
+		61645BB91C10827E007462EC /* DLLampControllYWModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61645BB21C10827E007462EC /* DLLampControllYWModeViewController.m */; };
+		61645BBA1C10827E007462EC /* DLLampControllYWModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61645BB31C10827E007462EC /* DLLampControllYWModeViewController.xib */; };
+		61645BBB1C10827E007462EC /* DLLampControlRGBModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61645BB51C10827E007462EC /* DLLampControlRGBModeViewController.m */; };
+		61645BBC1C10827E007462EC /* DLLampControlRGBModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61645BB61C10827E007462EC /* DLLampControlRGBModeViewController.xib */; };
+		61645BBF1C108290007462EC /* ZQSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 61645BBE1C108290007462EC /* ZQSlider.m */; };
 		6181B1801C0D793E00567DE5 /* CYFYWControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6181B17E1C0D793E00567DE5 /* CYFYWControllerViewController.m */; };
 		6181B1811C0D793E00567DE5 /* CYFYWControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6181B17F1C0D793E00567DE5 /* CYFYWControllerViewController.xib */; };
 		6181B1851C0D7B7C00567DE5 /* JYOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6181B1831C0D7B7C00567DE5 /* JYOtherViewController.m */; };
@@ -45,7 +52,7 @@
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
 		71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A7988D1C0D8C0B006F8D7B /* AllUtils.m */; };
 		71DD8D671C0F1F3C000E1639 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DD8D661C0F1F3C000E1639 /* QuartzCore.framework */; };
-		71DD8E151C102812000E1639 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD8E141C102812000E1639 /* Reachability.m */; settings = {ASSET_TAGS = (); }; };
+		71DD8E151C102812000E1639 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD8E141C102812000E1639 /* Reachability.m */; };
 		9D1CB9D81C0B0F8600725A63 /* LogicIdXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */; };
 		9D1CB9DC1C0B0FA000725A63 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DB1C0B0FA000725A63 /* HttpRequest.m */; };
 		9D1CB9DF1C0B0FDC00725A63 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DE1C0B0FDC00725A63 /* Constants.m */; };
@@ -81,8 +88,6 @@
 		9DFF73751C087AA20061EFBF /* DLAddDeviceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF73741C087AA20061EFBF /* DLAddDeviceView.m */; };
 		9DFF73781C0932F80061EFBF /* JYFurnitureBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF73771C0932F80061EFBF /* JYFurnitureBack.m */; };
 		9DFF737B1C0936C40061EFBF /* JYFurnitureBackStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF737A1C0936C40061EFBF /* JYFurnitureBackStatus.m */; };
-		9DFF73801C09EA140061EFBF /* DLLampControlDinnerModeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DFF737E1C09EA140061EFBF /* DLLampControlDinnerModeViewController.m */; };
-		9DFF73811C09EA140061EFBF /* DLLampControlDinnerModeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DFF737F1C09EA140061EFBF /* DLLampControlDinnerModeViewController.xib */; };
 		EF249F846089741C690DEED3 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88554DE0CE3743A8B110C726 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -143,6 +148,17 @@
 		61645BA91C101BA5007462EC /* JYChangePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYChangePwdViewController.h; sourceTree = "<group>"; };
 		61645BAA1C101BA5007462EC /* JYChangePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYChangePwdViewController.m; sourceTree = "<group>"; };
 		61645BAB1C101BA5007462EC /* JYChangePwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYChangePwdViewController.xib; sourceTree = "<group>"; };
+		61645BAE1C10827E007462EC /* DLLampControlDinnerModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLampControlDinnerModeViewController.h; sourceTree = "<group>"; };
+		61645BAF1C10827E007462EC /* DLLampControlDinnerModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLampControlDinnerModeViewController.m; sourceTree = "<group>"; };
+		61645BB01C10827E007462EC /* DLLampControlDinnerModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLLampControlDinnerModeViewController.xib; sourceTree = "<group>"; };
+		61645BB11C10827E007462EC /* DLLampControllYWModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLampControllYWModeViewController.h; sourceTree = "<group>"; };
+		61645BB21C10827E007462EC /* DLLampControllYWModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLampControllYWModeViewController.m; sourceTree = "<group>"; };
+		61645BB31C10827E007462EC /* DLLampControllYWModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLLampControllYWModeViewController.xib; sourceTree = "<group>"; };
+		61645BB41C10827E007462EC /* DLLampControlRGBModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLampControlRGBModeViewController.h; sourceTree = "<group>"; };
+		61645BB51C10827E007462EC /* DLLampControlRGBModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLampControlRGBModeViewController.m; sourceTree = "<group>"; };
+		61645BB61C10827E007462EC /* DLLampControlRGBModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLLampControlRGBModeViewController.xib; sourceTree = "<group>"; };
+		61645BBD1C108290007462EC /* ZQSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQSlider.h; sourceTree = "<group>"; };
+		61645BBE1C108290007462EC /* ZQSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQSlider.m; sourceTree = "<group>"; };
 		6181B17D1C0D793E00567DE5 /* CYFYWControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFYWControllerViewController.h; sourceTree = "<group>"; };
 		6181B17E1C0D793E00567DE5 /* CYFYWControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFYWControllerViewController.m; sourceTree = "<group>"; };
 		6181B17F1C0D793E00567DE5 /* CYFYWControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYFYWControllerViewController.xib; sourceTree = "<group>"; };
@@ -234,9 +250,6 @@
 		9DFF73771C0932F80061EFBF /* JYFurnitureBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureBack.m; sourceTree = "<group>"; };
 		9DFF73791C0936C40061EFBF /* JYFurnitureBackStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYFurnitureBackStatus.h; sourceTree = "<group>"; };
 		9DFF737A1C0936C40061EFBF /* JYFurnitureBackStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYFurnitureBackStatus.m; sourceTree = "<group>"; };
-		9DFF737D1C09EA140061EFBF /* DLLampControlDinnerModeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLampControlDinnerModeViewController.h; sourceTree = "<group>"; };
-		9DFF737E1C09EA140061EFBF /* DLLampControlDinnerModeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLampControlDinnerModeViewController.m; sourceTree = "<group>"; };
-		9DFF737F1C09EA140061EFBF /* DLLampControlDinnerModeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DLLampControlDinnerModeViewController.xib; sourceTree = "<group>"; };
 		FFC4EA9F1F216133F840AA56 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -724,9 +737,17 @@
 		9DFF737C1C09E9F40061EFBF /* temp */ = {
 			isa = PBXGroup;
 			children = (
-				9DFF737D1C09EA140061EFBF /* DLLampControlDinnerModeViewController.h */,
-				9DFF737E1C09EA140061EFBF /* DLLampControlDinnerModeViewController.m */,
-				9DFF737F1C09EA140061EFBF /* DLLampControlDinnerModeViewController.xib */,
+				61645BAE1C10827E007462EC /* DLLampControlDinnerModeViewController.h */,
+				61645BAF1C10827E007462EC /* DLLampControlDinnerModeViewController.m */,
+				61645BB01C10827E007462EC /* DLLampControlDinnerModeViewController.xib */,
+				61645BB11C10827E007462EC /* DLLampControllYWModeViewController.h */,
+				61645BB21C10827E007462EC /* DLLampControllYWModeViewController.m */,
+				61645BB31C10827E007462EC /* DLLampControllYWModeViewController.xib */,
+				61645BB41C10827E007462EC /* DLLampControlRGBModeViewController.h */,
+				61645BB51C10827E007462EC /* DLLampControlRGBModeViewController.m */,
+				61645BB61C10827E007462EC /* DLLampControlRGBModeViewController.xib */,
+				61645BBD1C108290007462EC /* ZQSlider.h */,
+				61645BBE1C108290007462EC /* ZQSlider.m */,
 				6181B17D1C0D793E00567DE5 /* CYFYWControllerViewController.h */,
 				6181B17E1C0D793E00567DE5 /* CYFYWControllerViewController.m */,
 				6181B17F1C0D793E00567DE5 /* CYFYWControllerViewController.xib */,
@@ -864,18 +885,20 @@
 			files = (
 				446AF3011C001F060081C798 /* SMS_SDKLocalizable.strings in Resources */,
 				6181B1811C0D793E00567DE5 /* CYFYWControllerViewController.xib in Resources */,
-				9DFF73811C09EA140061EFBF /* DLLampControlDinnerModeViewController.xib in Resources */,
 				9D7D5A8C1BE4748200E1E1EF /* loginXib.xib in Resources */,
+				61645BBC1C10827E007462EC /* DLLampControlRGBModeViewController.xib in Resources */,
 				9D564D581BFEAD220062700D /* JYMainXib.xib in Resources */,
 				9D564DBF1BFF69A10062700D /* CYFFurnitureViewController.xib in Resources */,
 				9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */,
 				61645BAD1C101BA5007462EC /* JYChangePwdViewController.xib in Resources */,
+				61645BB81C10827E007462EC /* DLLampControlDinnerModeViewController.xib in Resources */,
 				9DFF73721C08781C0061EFBF /* DLAddDeviceViewXib.xib in Resources */,
 				446AF3321C003FB10081C798 /* country.plist in Resources */,
 				446AF3291C002FB70081C798 /* Localizable.strings in Resources */,
 				9DFF73601C07E4C80061EFBF /* JYFurnitureViewXib.xib in Resources */,
 				9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */,
 				9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */,
+				61645BBA1C10827E007462EC /* DLLampControllYWModeViewController.xib in Resources */,
 				7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */,
 				6181B1861C0D7B7C00567DE5 /* JYOtherViewController.xib in Resources */,
 				712C524D1C0832900014F9CB /* QRCatchViewController.xib in Resources */,
@@ -951,7 +974,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61645BBF1C108290007462EC /* ZQSlider.m in Sources */,
 				712C52601C0C29450014F9CB /* InternalGateIPXMLParser.m in Sources */,
+				61645BB71C10827E007462EC /* DLLampControlDinnerModeViewController.m in Sources */,
 				9D7D5A521BE472D300E1E1EF /* Zju_SmartHome.xcdatamodeld in Sources */,
 				9D7D5A8A1BE4744000E1E1EF /* JYLoginViewController.m in Sources */,
 				9D5FF5B41BEA2C2E004371E5 /* JYNavigationController.m in Sources */,
@@ -965,6 +990,7 @@
 				442E7EB41C07402300E3C84C /* RESideMenu.m in Sources */,
 				6181B1851C0D7B7C00567DE5 /* JYOtherViewController.m in Sources */,
 				9DFF73781C0932F80061EFBF /* JYFurnitureBack.m in Sources */,
+				61645BBB1C10827E007462EC /* DLLampControlRGBModeViewController.m in Sources */,
 				9DB7CC941BE8FD7C0044AA75 /* JYRegisterViewController.m in Sources */,
 				9D6568641BEB846F006D9507 /* JYLoginStatus.m in Sources */,
 				712C52431C08323B0014F9CB /* NSObject+Macro.m in Sources */,
@@ -985,6 +1011,7 @@
 				446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */,
 				446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */,
 				9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */,
+				61645BB91C10827E007462EC /* DLLampControllYWModeViewController.m in Sources */,
 				6181B1801C0D793E00567DE5 /* CYFYWControllerViewController.m in Sources */,
 				9D564DB71BFF688A0062700D /* CYFCollectionViewCell.m in Sources */,
 				9D564DC51C0007290062700D /* JYFurniture.m in Sources */,
@@ -994,7 +1021,6 @@
 				9D1CB9DC1C0B0FA000725A63 /* HttpRequest.m in Sources */,
 				446AF3141C00250A0081C798 /* VerifyViewController.m in Sources */,
 				712C524C1C0832900014F9CB /* QRCatchViewController.m in Sources */,
-				9DFF73801C09EA140061EFBF /* DLLampControlDinnerModeViewController.m in Sources */,
 				9D564D4F1BFEAB840062700D /* CYFMainViewController.m in Sources */,
 				9DFCF3971C05A208004F7124 /* JYFurnitureSection.m in Sources */,
 				7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */,

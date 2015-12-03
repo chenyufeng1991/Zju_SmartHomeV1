@@ -15,6 +15,8 @@
 #import "DLLeftSlideMenuViewController.h"
 #import "RESideMenu.h"
 #import "DLLampControlDinnerModeViewController.h"
+#import "DLLampControllYWModeViewController.h"
+#import "DLLampControlRGBModeViewController.h"
 #import "CYFFurnitureViewController.h"
 
 #define appKey @"c879b326344c"
@@ -57,7 +59,8 @@
    // JYLoginViewController *jyVc=[[JYLoginViewController alloc]init];
    // JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:jyVc];
     //self.window.rootViewController=navVc;
-        self.window.rootViewController=[[JYLoginViewController alloc]init];
+    self.window.rootViewController=[[JYLoginViewController alloc]init];
+    //self.window.rootViewController=[[DLLampControlRGBModeViewController alloc]init];
     //}
     application.statusBarStyle=UIStatusBarStyleLightContent;
     [self.window makeKeyAndVisible];

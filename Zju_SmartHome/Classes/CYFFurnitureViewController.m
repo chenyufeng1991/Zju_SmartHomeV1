@@ -32,7 +32,7 @@
 #import "CYFYWControllerViewController.h"
 #import "JYOtherViewController.h"
 #import "MBProgressHUD+MJ.h"
-
+#import "DLLampControllYWModeViewController.h"
 #import "CYFMainViewController.h"
 
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
@@ -307,7 +307,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //item点击触发事件
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-  NSLog(@"%ld %ld",indexPath.section,indexPath.row);
   JYFurnitureSection *furnitureSection=[self.furnitureSecArray objectAtIndex:indexPath.section];
   
   if(indexPath.row==furnitureSection.furnitureArray.count-1)
@@ -343,11 +342,11 @@ NS_ENUM(NSInteger, ProviderEditingState)
   }
   else
   {
-    NSLog(@"paopaopao");
     self.area=furnitureSection.sectionName;
     JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
     JYFurniture *furniture=section.furnitureArray[indexPath.row];
     self.row= [indexPath row];
+    self.section1=indexPath.section;
     
     
     if(furniture.registed==YES)
@@ -360,7 +359,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
       }
       else if([furniture.deviceType isEqualToString:@"41"])
       {
-        CYFYWControllerViewController *cyfVc=(CYFYWControllerViewController *)furniture.controller;
+        DLLampControllYWModeViewController *cyfVc=(DLLampControllYWModeViewController *)furniture.controller;
         cyfVc.logic_id=furniture.logic_id;
         [self.navigationController pushViewController:cyfVc animated:cyfVc];
       }
@@ -373,7 +372,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
     }
     else
     {
-      NSLog(@"请先注册电气");
       UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请您先注册电器" preferredStyle:UIAlertControllerStyleAlert];
       [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -531,7 +529,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //添加设备
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
 {
-  NSLog(@"add gogogog");
   [HttpRequest getLogicIdfromMac:deviceMac success:^(AFHTTPRequestOperation *operation, id responseObject)
    {
      
@@ -546,6 +543,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
      if([logicIdXMLParser.result isEqualToString:@"fail"])
      {
        NSLog(@"注册电器失败");
+        [MBProgressHUD showError:@"设备注册失败"];
      }
      else
      {
@@ -556,8 +554,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
          
          if(self.row<5)
          {
-           NSLog(@"小于5吗？");
-           
            JYFurnitureSection *section=self.furnitureSecArray[self.section1];
            JYFurniture *furniture=section.furnitureArray[self.row];
            
@@ -572,7 +568,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
            }
            else if([furniture.deviceType isEqualToString:@"41"])
            {
-             furniture.controller=[[CYFYWControllerViewController alloc]init];
+             furniture.controller=[[DLLampControllYWModeViewController alloc]init];
            }
            else
            {
@@ -597,7 +593,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
            else if([furniture.deviceType isEqualToString:@"41"])
            {
              furniture.imageStr=@"yw_light_on";
-             furniture.controller=[[CYFYWControllerViewController alloc]init];
+             furniture.controller=[[DLLampControllYWModeViewController alloc]init];
            }
            else
            {
@@ -637,7 +633,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
          
        } failure:^(AFHTTPRequestOperation *operation, NSError *error)
         {
-          NSLog(@"设备注册到服务器失败:%@",error);
          [MBProgressHUD showError:@"设备注册失败"];
         }];
      }
@@ -647,7 +642,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
    {
      
      //从网关返回逻辑ID失败；
-     NSLog(@"从网关获取逻辑ID失败：%@",error);
      [MBProgressHUD showError:@"获取逻辑ID失败，请检查网关"];
      
      
@@ -665,12 +659,17 @@ NS_ENUM(NSInteger, ProviderEditingState)
     //请求成功
     JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
     self.furnitureBackStatus=furnitureBackStatus;
+      for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
+      {
+          JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
+          NSLog(@"%@ %@",back.name,back.scene_name);
+      }
     
+      
     [self judge];
     
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     //失败的回调；
-    NSLog(@"服务器寻找设备失败：%@",error);
     [MBProgressHUD showError:@"服务器加载数据失败"];
   }];
   
@@ -712,7 +711,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
             }
             else if([furniture.deviceType isEqualToString:@"41"])
             {
-              furniture.controller=[[CYFYWControllerViewController alloc]init];
+              furniture.controller=[[DLLampControllYWModeViewController alloc]init];
             }
             else
             {
@@ -738,7 +737,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
           else if([furniture.deviceType isEqualToString:@"41"])
           {
             furniture.imageStr=@"yw_light_on";
-            furniture.controller=[[CYFYWControllerViewController alloc]init];
+            furniture.controller=[[DLLampControllYWModeViewController alloc]init];
           }
           else
           {
@@ -786,7 +785,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
         //将电器添加到电器数组中
         [self.furnitureArray addObject:furniture];
       }
-      
+        
       JYFurniture *furniture=[[JYFurniture alloc]init];
       //      furniture.imageStr=@"单品";
       furniture.descLabel=furnitureBack.name;
@@ -797,27 +796,56 @@ NS_ENUM(NSInteger, ProviderEditingState)
       
       if([furniture.deviceType isEqualToString:@"40"])
       {
-        furniture.imageStr=@"rgb_light_on";
+//        furniture.imageStr=@"rgb_light_on";
+          furniture.imageStr=@"单品";
         furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
       }
       else if([furniture.deviceType isEqualToString:@"41"])
       {
         furniture.imageStr=@"yw_light_on";
-        furniture.controller=[[CYFYWControllerViewController alloc]init];
+        furniture.controller=[[DLLampControllYWModeViewController alloc]init];
       }
       else
       {
         furniture.imageStr=@"办公室";
         furniture.controller=[[JYOtherViewController alloc]init];
       }
-      
-      JYFurniture *temp=[[JYFurniture alloc]init];
-      temp=[self.furnitureArray lastObject];
-      [self.furnitureArray removeLastObject];
-      
-      [self.furnitureArray addObject:furniture];
-      [self.furnitureArray addObject:temp];
-      
+      int m=0;
+      for(m=0;m<self.descArray.count;m++)
+      {
+            if([furniture.descLabel isEqualToString:self.descArray[m]])
+            {
+                break;
+            }
+      }
+     if(m>=self.descArray.count)
+     {
+         JYFurniture *temp=[[JYFurniture alloc]init];
+         temp=[self.furnitureArray lastObject];
+         [self.furnitureArray removeLastObject];
+         
+         [self.furnitureArray addObject:furniture];
+         [self.furnitureArray addObject:temp];
+         
+//         //初始化一个智能区域
+//         JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
+//         //设置智能区域的名称
+//         furnitureSection.sectionName=furnitureBack.scene_name;
+//         //设置智能区域的电器数组
+//         furnitureSection.furnitureArray=self.furnitureArray;
+//         //将智能区域添加到智能区域数组中
+//         [self.furnitureSecArray addObject:furnitureSection];
+//         [self.headerArray addObject:furnitureBack.scene_name];
+//         NSLog(@"我想看看这时候的区域是几个%lu",(unsigned long)self.furnitureSecArray.count);
+     }
+        NSLog(@"啦啦啦啦");
+//      JYFurniture *temp=[[JYFurniture alloc]init];
+//      temp=[self.furnitureArray lastObject];
+//      [self.furnitureArray removeLastObject];
+//      
+//      [self.furnitureArray addObject:furniture];
+//      [self.furnitureArray addObject:temp];
+//      
       //初始化一个智能区域
       JYFurnitureSection *furnitureSection=[[JYFurnitureSection alloc]init];
       //设置智能区域的名称
@@ -837,6 +865,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
         //如果从服务器返回的电器与已有电器描述一致
         if([furnitureBack.name isEqualToString:self.descArray[k]])
         {
+            NSLog(@"555577777");
           //那就从self.furnitureSecArray中找到它
           JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
           JYFurniture *furniture=[section.furnitureArray objectAtIndex:k];
@@ -851,7 +880,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
           }
           else if([furniture.deviceType isEqualToString:@"41"])
           {
-            furniture.controller=[[CYFYWControllerViewController alloc]init];
+            furniture.controller=[[DLLampControllYWModeViewController alloc]init];
           }
           else
           {
@@ -990,8 +1019,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
     [self.collectionView reloadData];
   }
   
-  NSLog(@"点击了编辑按钮");
-  
 }
 
 - (void)deleteCellButtonPressed:(id)sender
@@ -1001,31 +1028,27 @@ NS_ENUM(NSInteger, ProviderEditingState)
   
   NSIndexPath *indexpath = [self.collectionView indexPathForCell:cell];//获取cell对应的indexpath;
   
-  NSLog(@"删除按钮，section:%ld ,   row: %ld",(long)indexpath.section,(long)indexpath.row);
   
   if(indexpath.row<=4)
   {
-    NSLog(@"XIAOYUXIAOYU");
-    
     JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
     JYFurniture *furniture=section.furnitureArray[indexpath.row];
     furniture.registed=NO;
     furniture.imageStr=self.imageArray[indexpath.row];
     
-    NSLog(@"logicid  %@",furniture.logic_id);
+   
     
     [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
-      NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-      NSLog(@"===%@",string);
+
+     [MBProgressHUD showError:@"删除设备成功"];;
+        [self rightBtnClicked];
       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-      NSLog(@"删除设备失败");
       [MBProgressHUD showError:@"删除设备失败"];
     }];
   }
   else
   {
-    NSLog(@"SSSSSSSS");
     JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
     JYFurniture *furniture=section.furnitureArray[indexpath.row];
     
@@ -1033,9 +1056,11 @@ NS_ENUM(NSInteger, ProviderEditingState)
     [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
       
       [section.furnitureArray removeObject:furniture];
+      [MBProgressHUD showError:@"删除设备成功"];
+        [self rightBtnClicked];
       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-      NSLog(@"删除设备失败");
+
      [MBProgressHUD showError:@"删除设备失败"];
         
     }];

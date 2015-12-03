@@ -11,7 +11,10 @@
 @protocol JYMainViewDelegate <NSObject>
 
 @optional
+-(void)officeClick;
 -(void)furnitureClick;
+-(void)productClick;
+-(void)customClick;
 @end
 
 @interface JYMainView : UIView

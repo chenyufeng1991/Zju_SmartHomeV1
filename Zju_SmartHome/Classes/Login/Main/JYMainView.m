@@ -71,7 +71,10 @@
 
 - (IBAction)officeClick:(id)sender
 {
-    NSLog(@"办公室");
+   if([self.delegate respondsToSelector:@selector(officeClick)])
+   {
+       [self.delegate officeClick];
+   }
 }
 
 - (IBAction)furnitureClick:(id)sender
@@ -83,11 +86,17 @@
 }
 - (IBAction)productClick:(id)sender
 {
-     NSLog(@"单品");
+     if([self.delegate respondsToSelector:@selector(productClick)])
+     {
+         [self.delegate productClick];
+     }
 }
 - (IBAction)customClick:(id)sender
 {
-     NSLog(@"自定义");
+     if([self.delegate respondsToSelector:@selector(customClick)])
+     {
+         [self.delegate customClick];
+     }
 }
 
 
