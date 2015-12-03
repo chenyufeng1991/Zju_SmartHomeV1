@@ -16,7 +16,13 @@
 #import "AppDelegate.h"
 
 #import "AllUtils.h"
-@interface CYFMainViewController ()<JYMainViewDelegate>
+#import <CoreLocation/CoreLocation.h>
+@interface CYFMainViewController ()<JYMainViewDelegate,CLLocationManagerDelegate>
+
+
+@property (nonatomic, strong) CLLocationManager* locationManager;
+
+@property(nonatomic,strong) JYMainView *mainView;
 
 @end
 
@@ -30,10 +36,13 @@
   JYMainView *jyMainView=[JYMainView mainViewXib];
   //设置代理
   jyMainView.delegate=self;
+  self.mainView = jyMainView;
   self.view =jyMainView;
   
   //设置导航栏
   [self setupNavgationItem];
+  
+  [self testOpenLocationFunction];
   
   
   //获取内网IP
@@ -54,6 +63,48 @@
   
   
 }
+
+#pragma mark - 检测定位功能是否开启
+- (void)testOpenLocationFunction{
+
+  //检测定位功能是否开启
+  if([CLLocationManager locationServicesEnabled]){
+    
+    if(!_locationManager){
+      
+      self.locationManager = [[CLLocationManager alloc] init];
+      
+      if([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]){
+        [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager requestAlwaysAuthorization];
+        
+      }
+      
+      //设置代理
+      [self.locationManager setDelegate:self];
+      //设置定位精度
+      [self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+      //设置距离筛选
+      [self.locationManager setDistanceFilter:100];
+      //开始定位
+      [self.locationManager startUpdatingLocation];
+      //设置开始识别方向
+      [self.locationManager startUpdatingHeading];
+      
+    }
+    
+  }else{
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                         message:@"您没有开启定位功能"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"确定"
+                                               otherButtonTitles:nil, nil];
+    [alertView show];
+  }
+
+}
+
+
 
 
 #pragma mark - 弹出对话框让用户选择网络
@@ -112,6 +163,49 @@
 {
   CYFFurnitureViewController *jyVc=[[CYFFurnitureViewController alloc]init];
   [self.navigationController pushViewController:jyVc animated:YES];
+}
+
+#pragma mark - CLLocationManangerDelegate
+//定位成功以后调用
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+  
+  [self.locationManager stopUpdatingLocation];
+  CLLocation* location = locations.lastObject;
+  
+  [self reverseGeocoder:location];
+}
+
+
+#pragma mark Geocoder
+//反地理编码
+- (void)reverseGeocoder:(CLLocation *)currentLocation {
+  
+  CLGeocoder* geocoder = [[CLGeocoder alloc] init];
+  [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+    
+    if(error || placemarks.count == 0){
+      NSLog(@"error = %@",error);
+    }else{
+      
+      CLPlacemark* placemark = placemarks.firstObject;
+      NSLog(@"城市:%@",[[placemark addressDictionary] objectForKey:@"City"]);
+      NSLog(@"国家:%@",[[placemark addressDictionary] objectForKey:@"Country"]);
+      
+      NSString *city = [[placemark addressDictionary] objectForKey:@"City"];
+      NSString *country = [[placemark addressDictionary] objectForKey:@"Country"];
+      
+      
+      self.mainView.cityLabel.text = city;
+      self.mainView.countryLabel.text = country;
+      
+      
+//      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"你的位置" message:[[placemark addressDictionary] objectForKey:@"City"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+//      
+//      [alert show];
+      
+    }
+    
+  }];
 }
 
 @end
