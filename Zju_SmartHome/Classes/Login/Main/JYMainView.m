@@ -29,6 +29,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *custom;
 - (IBAction)customClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *customView;
+
+
+
+
 @end
 
 @implementation JYMainView
@@ -85,6 +89,7 @@
 {
      NSLog(@"自定义");
 }
+
 
 
 @end

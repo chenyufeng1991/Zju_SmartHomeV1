@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @protocol JYMainViewDelegate <NSObject>
+
 @optional
 -(void)furnitureClick;
 @end
@@ -16,4 +17,10 @@
 @interface JYMainView : UIView
 +(instancetype)mainViewXib;
 @property(nonatomic,weak)id<JYMainViewDelegate>delegate;
+
+//定位
+
+@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *countryLabel;
+
 @end
