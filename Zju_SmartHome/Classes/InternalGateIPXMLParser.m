@@ -44,7 +44,7 @@
       //获取内网IP；
       self.internalIP = str;
       //并将这个内网IP放到全局变量中
-      NSLog(@"目前的内网IP是：%@",str);
+//      NSLog(@"目前的内网IP是：%@",str);
     }
     
   

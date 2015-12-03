@@ -11,6 +11,10 @@
 #import "JYLoginViewController.h"
 #import "JYChangePwdViewController.h"
 
+
+#import "AppDelegate.h"
+#import "AllUtils.h"
+
 #define MAX_CENTER_X [[UIScreen mainScreen] bounds].size.width
 #define LINE_COLOR [UIColor colorWithRed:0.892 green:0.623 blue:0.473 alpha:0.5]
 
@@ -54,7 +58,7 @@
     CGFloat lineH = 1;
     
     //更换头像按钮
-    UIButton *btnChangePhoto = [self belowButtonsWithTitle:@"更换头像"];
+    UIButton *btnChangePhoto = [self belowButtonsWithTitle:@"切换网络"];
     CGFloat btnChangePhotoY = screen.size.height * 6 / 17;
     btnChangePhoto.frame = CGRectMake(belowBtnX, btnChangePhotoY, belowBtnW, belowBtnH);
     [self.view addSubview:btnChangePhoto];
@@ -130,7 +134,23 @@
 
 
 - (void)btnChangePhotoClick{
+  
+  NSLog(@"点击切换内外网按钮");
+  
+  AppDelegate *app = [[UIApplication sharedApplication] delegate];
+  
+  [AllUtils showPromptDialog:@"提示" andMessage:@"请选择网络环境" OKButton:@"外部网络" OKButtonAction:^(UIAlertAction *action) {
+    //外网；
+    app.isInternalNetworkGate = false;
+    NSLog(@"你选择了外网");
     
+  } cancelButton:@"内部网络" cancelButtonAction:^(UIAlertAction *action) {
+    
+    //内网；
+    app.isInternalNetworkGate = true;
+    NSLog(@"你选择了内网");
+    
+  } contextViewController:self];
 }
 
 - (void)btnCompleteProfileClick{
