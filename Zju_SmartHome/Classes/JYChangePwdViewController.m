@@ -8,9 +8,16 @@
 
 #import "JYChangePwdViewController.h"
 #import "RESideMenu.h"
+#import "MBProgressHUD+MJ.h"
+#import "AFNetworking.h"
 
-@interface JYChangePwdViewController ()
+@interface JYChangePwdViewController ()<UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UITextField *oldPwd;
 
+@property (weak, nonatomic) IBOutlet UITextField *password;
+
+@property (weak, nonatomic) IBOutlet UITextField *confirmNewPwd;
+- (IBAction)changePwd:(id)sender;
 @end
 
 @implementation JYChangePwdViewController
@@ -19,6 +26,10 @@
 {
     [super viewDidLoad];
     [self setNavigationBar];
+    
+    self.oldPwd.delegate=self;
+    self.password.delegate=self;
+    self.confirmNewPwd.delegate=self;
     
 }
 
@@ -44,6 +55,7 @@
 
 }
 
+
 - (void)leftBtnClicked{
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
@@ -55,5 +67,87 @@
         }
         
     }
+}
+
+//UITextField监听事件
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if([textField.text isEqualToString:@"请输入原密码"])
+    {
+        [textField setText:@""];
+        textField.secureTextEntry=YES;
+    }
+    else if([textField.text isEqualToString:@"请输入新密码"])
+    {
+        
+        [textField setText:@""];
+        textField.secureTextEntry=YES;
+    }
+    else if([textField.text isEqualToString:@"请确认新密码"])
+    {
+        [textField setText:@""];
+        textField.secureTextEntry=YES;
+    }
+}
+- (IBAction)changePwd:(id)sender
+{
+    //显示一个蒙板
+    [MBProgressHUD showMessage:@"正在修改密码..."];
+    
+    //1.创建请求管理对象
+    AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
+    
+    //2.说明服务器返回的是json参数
+    mgr.responseSerializer=[AFJSONResponseSerializer serializer];
+    
+    //3.封装请求参数
+    NSMutableDictionary *params=[NSMutableDictionary dictionary];
+    params[@"is_app"]=@"1";
+    params[@"old"]=self.oldPwd.text;
+    params[@"new1"]=self.password.text;
+    params[@"new2"]=self.confirmNewPwd.text;
+    NSLog(@"%@ %@ %@",params[@"old"],params[@"new1"],params[@"new2"]);
+    
+    //4.发送请求
+    [mgr POST:@"http://60.12.220.16:8888/paladin/User/password" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         NSLog(@"我看看返回的数据：%@",responseObject);
+         //请求成功
+         if([responseObject[@"code"] isEqualToString:@"0"])
+         {
+             //移除遮盖
+             [MBProgressHUD hideHUD];
+             [MBProgressHUD showSuccess:@"密码修改成功"];
+             
+         }
+         else if ([responseObject[@"code"]isEqualToString:@"310"])
+         {
+             //移除遮盖
+             [MBProgressHUD hideHUD];
+             [MBProgressHUD showError:@"原始密码不能为空"];
+         }
+         else if ([responseObject[@"code"]isEqualToString:@"311"])
+         {
+             //移除遮盖
+             [MBProgressHUD hideHUD];
+             [MBProgressHUD showError:@"原始密码错误"];
+             
+         }
+         else if ([responseObject[@"code"]isEqualToString:@"312"])
+         {
+             //移除遮盖
+             [MBProgressHUD hideHUD];
+             [MBProgressHUD showError:@"新密码两次输入不一致"];
+             
+         }
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"请求失败%@",error);
+         [MBProgressHUD hideHUD];
+         [MBProgressHUD showError:@"修改失败"];
+
+     }];
+
 }
 @end

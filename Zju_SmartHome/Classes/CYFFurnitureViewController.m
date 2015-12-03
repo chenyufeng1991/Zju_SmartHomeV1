@@ -395,9 +395,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
                                       
                                     }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
-          
-          
-          NSLog(@"saoma mammamam");
+        
           
           QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
           qrCatcherVC.area = self.area;

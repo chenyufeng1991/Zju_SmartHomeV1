@@ -135,6 +135,7 @@
 
     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
     {
+        [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"登录请求失败"];
 
     }];
