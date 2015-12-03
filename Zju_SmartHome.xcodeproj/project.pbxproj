@@ -45,6 +45,7 @@
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
 		71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A7988D1C0D8C0B006F8D7B /* AllUtils.m */; };
 		71DD8D671C0F1F3C000E1639 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DD8D661C0F1F3C000E1639 /* QuartzCore.framework */; };
+		71DD8E151C102812000E1639 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD8E141C102812000E1639 /* Reachability.m */; settings = {ASSET_TAGS = (); }; };
 		9D1CB9D81C0B0F8600725A63 /* LogicIdXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */; };
 		9D1CB9DC1C0B0FA000725A63 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DB1C0B0FA000725A63 /* HttpRequest.m */; };
 		9D1CB9DF1C0B0FDC00725A63 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DE1C0B0FDC00725A63 /* Constants.m */; };
@@ -166,6 +167,8 @@
 		71A7988C1C0D8C0B006F8D7B /* AllUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllUtils.h; sourceTree = "<group>"; };
 		71A7988D1C0D8C0B006F8D7B /* AllUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllUtils.m; sourceTree = "<group>"; };
 		71DD8D661C0F1F3C000E1639 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		71DD8E131C102812000E1639 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		71DD8E141C102812000E1639 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		88554DE0CE3743A8B110C726 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1CB9D61C0B0F8600725A63 /* LogicIdXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicIdXMLParser.h; sourceTree = "<group>"; };
 		9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicIdXMLParser.m; sourceTree = "<group>"; };
@@ -429,6 +432,15 @@
 			path = ../MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		71DD8E121C102801000E1639 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				71DD8E131C102812000E1639 /* Reachability.h */,
+				71DD8E141C102812000E1639 /* Reachability.m */,
+			);
+			name = Reachability;
+			sourceTree = "<group>";
+		};
 		9D1CB9D51C0B0F7100725A63 /* XMLParser */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +524,7 @@
 		9D6568441BEB7244006D9507 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				71DD8E121C102801000E1639 /* Reachability */,
 				7174E39D1BEFAEC500170AAA /* MBProgressHUD */,
 				446AF33F1C005BF10081C798 /* RESideMenu */,
 				446AF3151C0025330081C798 /* SMS_UILib */,
@@ -948,6 +961,7 @@
 				7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */,
 				9DFF737B1C0936C40061EFBF /* JYFurnitureBackStatus.m in Sources */,
 				9D7D5A8F1BE474BD00E1E1EF /* JYLoginXib.m in Sources */,
+				71DD8E151C102812000E1639 /* Reachability.m in Sources */,
 				442E7EB41C07402300E3C84C /* RESideMenu.m in Sources */,
 				6181B1851C0D7B7C00567DE5 /* JYOtherViewController.m in Sources */,
 				9DFF73781C0932F80061EFBF /* JYFurnitureBack.m in Sources */,
