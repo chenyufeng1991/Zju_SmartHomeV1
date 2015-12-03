@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="JYChangePwdViewController">
             <connections>
+                <outlet property="confirmNewPwd" destination="yUk-Sk-FbD" id="Ome-F2-odD"/>
+                <outlet property="oldPwd" destination="dcZ-W7-qyp" id="Ni5-8A-r1N"/>
+                <outlet property="password" destination="AHA-cY-BP4" id="yyD-BQ-WqG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -40,6 +43,7 @@
                     <rect key="frame" x="86" y="100" width="174" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
+                    <color key="tintColor" red="0.43239017499999999" green="0.89017506540000002" blue="0.5940896631" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits"/>
@@ -59,6 +63,7 @@
                     <rect key="frame" x="86" y="150" width="174" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
+                    <color key="tintColor" red="0.43239017499999999" green="0.89017506540000002" blue="0.5940896631" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits"/>
@@ -73,6 +78,7 @@
                     <rect key="frame" x="86" y="200" width="174" height="22"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
+                    <color key="tintColor" red="0.43239017504952004" green="0.89017506544502623" blue="0.59408966306974953" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits"/>
@@ -82,6 +88,17 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DR4-dd-NkT">
+                    <rect key="frame" x="70" y="250" width="180" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="btn_change"/>
+                    <state key="selected" backgroundImage="btn_change_pressed"/>
+                    <connections>
+                        <action selector="changePwd:" destination="-1" eventType="touchUpInside" id="rFh-qG-ffX"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -91,6 +108,8 @@
     </objects>
     <resources>
         <image name="bg" width="1080" height="1920"/>
+        <image name="btn_change" width="180" height="40"/>
+        <image name="btn_change_pressed" width="180" height="40"/>
         <image name="login_Lock" width="16" height="16"/>
     </resources>
 </document>

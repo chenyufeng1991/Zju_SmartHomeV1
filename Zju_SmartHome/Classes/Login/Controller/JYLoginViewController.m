@@ -129,67 +129,59 @@
     
     //4.发送请求
     [mgr POST:@"http://60.12.220.16:8888/paladin/Passport/dologin" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
-     {
-       //请求成功
-       JYLoginStatus *status=[JYLoginStatus statusWithDict:responseObject];
-       
-       JYUserData *data=status.data;
-       
-       //5.存储模型数据
-       //归档
-       //        NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
-       //        NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
-       //        [NSKeyedArchiver archiveRootObject:data toFile:file];
-       
-       if([status.code isEqualToString:@"0"])
-       {
-         //移除遮盖
-         [MBProgressHUD hideHUD];
-         DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
-         CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
-         
-         JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
-         RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navVc
-                                                                         leftMenuViewController:leftSlideMenuViewController
-                                                                        rightMenuViewController:nil];
-         JYNavigationController *navVc1=[[JYNavigationController alloc]initWithRootViewController:sideMenuViewController];
-         navVc1.navigationBar.hidden=YES;
-         self.view.window.rootViewController=navVc1;
-         //[self.navigationController pushViewController:navVc1 animated:YES];
-         
-       }
-       else if([status.code isEqualToString:@"330"])
-       {
-         [MBProgressHUD hideHUD];
-         [MBProgressHUD showError:@"用户名或者密码错误"];
-       }
-       else if([status.code isEqualToString:@"308"])
-       {
-         [MBProgressHUD hideHUD];
-         [MBProgressHUD showError:@"用户名活着邮箱重复"];
-         
-       }
-       else if([status.code isEqualToString:@"300"])
-       {
-         [MBProgressHUD hideHUD];
-         [MBProgressHUD showError:@"没有登录"];
-       }
-       
-     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
-     {
-       [MBProgressHUD showError:@"登录请求失败"];
-       
-     }];
-    
-  }else{
-    //未连接网络；
-    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未连接网络，请确定后再试"
-//                                                   delegate:self
-//                                          cancelButtonTitle:@"提示" otherButtonTitles:nil];
-//    
-//    
-//    [alert show];
+
+    {
+        //请求成功
+        JYLoginStatus *status=[JYLoginStatus statusWithDict:responseObject];
+        
+        JYUserData *data=status.data;
+        
+        //5.存储模型数据
+        //归档
+//        NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)lastObject];
+//        NSString *file=[doc stringByAppendingPathComponent:@"account.data"];
+//        [NSKeyedArchiver archiveRootObject:data toFile:file];
+        
+        if([status.code isEqualToString:@"0"])
+        {
+            //移除遮盖
+            [MBProgressHUD hideHUD];
+            DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
+            CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
+            
+            JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
+            RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navVc
+                                                                            leftMenuViewController:leftSlideMenuViewController
+                                                                           rightMenuViewController:nil];
+            JYNavigationController *navVc1=[[JYNavigationController alloc]initWithRootViewController:sideMenuViewController];
+            navVc1.navigationBar.hidden=YES;
+            self.view.window.rootViewController=navVc1;
+            //[self.navigationController pushViewController:navVc1 animated:YES];
+
+        }
+        else if([status.code isEqualToString:@"330"])
+        {
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"用户名或者密码错误"];
+        }
+        else if([status.code isEqualToString:@"308"])
+        {
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"用户名活着邮箱重复"];
+          
+        }
+        else if([status.code isEqualToString:@"300"])
+        {
+            [MBProgressHUD hideHUD];
+            [MBProgressHUD showError:@"没有登录"];
+        }
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+    {
+        [MBProgressHUD hideHUD];
+        [MBProgressHUD showError:@"登录请求失败"];
+
+    }];
     
     
     

@@ -105,12 +105,11 @@
                     <animations/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RLU-tL-ALw">
-                    <rect key="frame" x="13" y="31" width="22" height="22"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RLU-tL-ALw">
+                    <rect key="frame" x="8" y="29" width="28" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <state key="normal" title="&lt;">
+                    <state key="normal" image="ct_icon_leftbutton">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -141,6 +140,7 @@
     <resources>
         <image name="bg" width="1080" height="1920"/>
         <image name="btn_register" width="180" height="40"/>
+        <image name="ct_icon_leftbutton" width="40" height="40"/>
         <image name="login_Lock" width="16" height="16"/>
         <image name="login_Profile" width="16" height="16"/>
         <image name="login_unBrowse" width="16" height="16"/>

@@ -10,11 +10,9 @@
 #import "JYMainView.h"
 #import "CYFFurnitureViewController.h"
 #import "RESideMenu.h"
-
 #import "HttpRequest.h"
 #import "InternalGateIPXMLParser.h"
 #import "AppDelegate.h"
-
 #import "AllUtils.h"
 #import <CoreLocation/CoreLocation.h>
 @interface CYFMainViewController ()<JYMainViewDelegate,CLLocationManagerDelegate>
