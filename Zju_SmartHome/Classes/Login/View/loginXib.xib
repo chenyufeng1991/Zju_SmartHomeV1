@@ -122,11 +122,11 @@
                     <animations/>
                     <state key="normal" backgroundImage="login_icon_tw"/>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OmY-Jd-DfN">
-                    <rect key="frame" x="85" y="381" width="46" height="10"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OmY-Jd-DfN">
+                    <rect key="frame" x="80" y="381" width="60" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="忘记密码">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -134,13 +134,16 @@
                         <action selector="forgetPassword" destination="Rbk-AV-LKf" eventType="touchUpInside" id="ukS-Cc-LWj"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jrD-jy-P5V">
-                    <rect key="frame" x="189" y="381" width="46" height="10"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="jrD-jy-P5V">
+                    <rect key="frame" x="184" y="381" width="60" height="15"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <state key="normal" title="立即注册">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected">
+                        <color key="titleColor" red="0.43239017499999999" green="0.89017506540000002" blue="0.5940896631" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="register" destination="Rbk-AV-LKf" eventType="touchUpInside" id="hLK-Uw-bzV"/>

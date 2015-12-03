@@ -111,7 +111,6 @@
     //4.发送请求
     [mgr POST:@"http://60.12.220.16:8888/paladin/User/password" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
-         NSLog(@"我看看返回的数据：%@",responseObject);
          //请求成功
          if([responseObject[@"code"] isEqualToString:@"0"])
          {
@@ -143,7 +142,6 @@
          
      } failure:^(AFHTTPRequestOperation *operation, NSError *error)
      {
-         NSLog(@"请求失败%@",error);
          [MBProgressHUD hideHUD];
          [MBProgressHUD showError:@"修改失败"];
 
