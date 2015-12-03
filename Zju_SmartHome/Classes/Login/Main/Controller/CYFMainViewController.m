@@ -63,15 +63,18 @@
   
   AppDelegate *app = [[UIApplication sharedApplication] delegate];
   
-  [AllUtils showPromptDialog:@"提示" andMessage:@"请选择网络环境" OKButton:@"内部网络" OKButtonAction:^(UIAlertAction *action) {
-    //内网；
-    app.isInternalNetworkGate = true;
-    NSLog(@"你选择了内网");
-    
-  } cancelButton:@"外部网络" cancelButtonAction:^(UIAlertAction *action) {
-    //外网；
+  [AllUtils showPromptDialog:@"提示" andMessage:@"请选择网络环境" OKButton:@"外部网络" OKButtonAction:^(UIAlertAction *action) {
+      //外网；
     app.isInternalNetworkGate = false;
     NSLog(@"你选择了外网");
+
+  } cancelButton:@"内部网络" cancelButtonAction:^(UIAlertAction *action) {
+      
+     //内网；
+    app.isInternalNetworkGate = true;
+    NSLog(@"你选择了内网");
+
+    
     
   } contextViewController:self];
   

@@ -167,7 +167,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
   NSLog(@"222222222222222222222222");
   
   
-//  self.navigationItem.hidesBackButton = true;
+  //  self.navigationItem.hidesBackButton = true;
   
   //进行CollectionView和Cell的绑定
   [self.collectionView registerClass:[CYFCollectionViewCell class]  forCellWithReuseIdentifier:@"CollectionCell"];
@@ -280,7 +280,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
    [deviceImageButton addTarget:self action:@selector(deviceButtonPressed:) forControlEvents:UIControlEventTouchUpI
    */
   
-   [cell.closeButton addTarget:self action:@selector(deleteCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+  [cell.closeButton addTarget:self action:@selector(deleteCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
   
   return cell;
@@ -332,29 +332,27 @@ NS_ENUM(NSInteger, ProviderEditingState)
     self.row=indexPath.row;
     
     self.section1=indexPath.section;
+    
+    UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请选择注册方式" preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+      [self addNewFurniture];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
       
-      UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请选择注册方式" preferredStyle:UIAlertControllerStyleAlert];
-      [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-      {
-          NSLog(@"saoma mammamam");
-        
-        QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
-        qrCatcherVC.area = self.area;
-        qrCatcherVC.section1 = self.section1;
-        qrCatcherVC.row = self.row;
-        qrCatcherVC.section = self.section;
-        
-        
-        [self.navigationController pushViewController:qrCatcherVC animated:YES];
-
-      }]];
-      [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
-          
-          [self addNewFurniture];
-          
-      }]];
+      NSLog(@"saoma mammamam");
       
-      [self presentViewController:alertController animated:true completion:nil];
+      QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
+      qrCatcherVC.area = self.area;
+      qrCatcherVC.section1 = self.section1;
+      qrCatcherVC.row = self.row;
+      qrCatcherVC.section = self.section;
+      
+      
+      [self.navigationController pushViewController:qrCatcherVC animated:YES];
+      
+    }]];
+    
+    [self presentViewController:alertController animated:true completion:nil];
     
     //[self addNewFurniture];
   }
@@ -364,32 +362,32 @@ NS_ENUM(NSInteger, ProviderEditingState)
     JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
     JYFurniture *furniture=section.furnitureArray[indexPath.row];
     self.row= [indexPath row];
-
+    
     
     if(furniture.registed==YES)
     {
-//      DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
-//      
-//      dlVc.logic_id=furniture.logic_id;
-//      [self.navigationController pushViewController:dlVc animated:YES];
-        if([furniture.deviceType isEqualToString:@"40"])
-        {
-            DLLampControlDinnerModeViewController *dlVc=(DLLampControlDinnerModeViewController *)furniture.controller;
-            dlVc.logic_id=furniture.logic_id;
-            [self.navigationController pushViewController:dlVc animated:dlVc];
-        }
-        else if([furniture.deviceType isEqualToString:@"41"])
-        {
-            CYFYWControllerViewController *cyfVc=(CYFYWControllerViewController *)furniture.controller;
-            cyfVc.logic_id=furniture.logic_id;
-            [self.navigationController pushViewController:cyfVc animated:cyfVc];
-        }
-        else
-        {
-            JYOtherViewController *jyVc=(JYOtherViewController *)furniture.controller;
-            jyVc.logic_id=furniture.logic_id;
-            [self.navigationController pushViewController:jyVc animated:jyVc];
-        }
+      //      DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
+      //
+      //      dlVc.logic_id=furniture.logic_id;
+      //      [self.navigationController pushViewController:dlVc animated:YES];
+      if([furniture.deviceType isEqualToString:@"40"])
+      {
+        DLLampControlDinnerModeViewController *dlVc=(DLLampControlDinnerModeViewController *)furniture.controller;
+        dlVc.logic_id=furniture.logic_id;
+        [self.navigationController pushViewController:dlVc animated:dlVc];
+      }
+      else if([furniture.deviceType isEqualToString:@"41"])
+      {
+        CYFYWControllerViewController *cyfVc=(CYFYWControllerViewController *)furniture.controller;
+        cyfVc.logic_id=furniture.logic_id;
+        [self.navigationController pushViewController:cyfVc animated:cyfVc];
+      }
+      else
+      {
+        JYOtherViewController *jyVc=(JYOtherViewController *)furniture.controller;
+        jyVc.logic_id=furniture.logic_id;
+        [self.navigationController pushViewController:jyVc animated:jyVc];
+      }
     }
     else
     {
@@ -397,48 +395,49 @@ NS_ENUM(NSInteger, ProviderEditingState)
       [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
       }]];
-      [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-        {
-            UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请选择注册方式" preferredStyle:UIAlertControllerStyleAlert];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
-                                        {
-                                            NSLog(@"saoma mammamam");
-                                          
-                                          QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
-                                          qrCatcherVC.area = self.area;
-                                          qrCatcherVC.section1 = self.section1;
-                                          qrCatcherVC.row = self.row;
-                                           qrCatcherVC.section = self.section;
-                                          [self.navigationController pushViewController:qrCatcherVC animated:YES];
-                                        }]];
-            [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
-                
-                //[self addNewFurniture];
-                
-                //跳出填写MAC值的对话框；
-                DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
-                addDeviceView.delegate=self;
-                self.addDeviceView=addDeviceView;
-                addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-                if(self.row<5)
-                {
-                    [addDeviceView.deviceName setText:self.descArray[self.row]];
-                    addDeviceView.deviceName.enabled=NO;
-                }
-                [self.view addSubview:addDeviceView];
-                self.navigationItem.hidesBackButton=YES;
-                
-            }]];
-            
-            [self presentViewController:alertController animated:true completion:nil];
+      [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+        UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请选择注册方式" preferredStyle:UIAlertControllerStyleAlert];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"手动输入" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action)
+                                    {     //[self addNewFurniture];
+                                      
+                                      //跳出填写MAC值的对话框；
+                                      DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+                                      addDeviceView.delegate=self;
+                                      self.addDeviceView=addDeviceView;
+                                      addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+                                      if(self.row<5)
+                                      {
+                                        [addDeviceView.deviceName setText:self.descArray[self.row]];
+                                        addDeviceView.deviceName.enabled=NO;
+                                      }
+                                      [self.view addSubview:addDeviceView];
+                                      self.navigationItem.hidesBackButton=YES;
+                                      
+                                    }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
+          
+          
+          NSLog(@"saoma mammamam");
+          
+          QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
+          qrCatcherVC.area = self.area;
+          qrCatcherVC.section1 = self.section1;
+          qrCatcherVC.row = self.row;
+          qrCatcherVC.section = self.section;
+          [self.navigationController pushViewController:qrCatcherVC animated:YES];
+          
+        }]];//手动输入；
         
-//        //跳出填写MAC值的对话框；
-//        DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
-//        addDeviceView.delegate=self;
-//        self.addDeviceView=addDeviceView;
-//        addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-//        [self.view addSubview:addDeviceView];
-//        self.navigationItem.hidesBackButton=YES;
+        
+        [self presentViewController:alertController animated:true completion:nil];
+        
+        //        //跳出填写MAC值的对话框；
+        //        DLAddDeviceView *addDeviceView=[DLAddDeviceView addDeviceView];
+        //        addDeviceView.delegate=self;
+        //        self.addDeviceView=addDeviceView;
+        //        addDeviceView.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        //        [self.view addSubview:addDeviceView];
+        //        self.navigationItem.hidesBackButton=YES;
         
       }]];
       
@@ -522,16 +521,16 @@ NS_ENUM(NSInteger, ProviderEditingState)
   
   if (![addDeviceView.deviceMac.text isEqualToString:@""])
   {
-
+    
     if(self.row<5)
     {
-        addDeviceView.deviceName.text = self.descArray[self.row];
-       addDeviceView.deviceName.enabled = false;
+      addDeviceView.deviceName.text = self.descArray[self.row];
+      addDeviceView.deviceName.enabled = false;
     }
-  
+    
     
   }
-
+  
   
   addDeviceView.delegate=self;
   
@@ -557,7 +556,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
      //表示从网关返回逻辑ID成功；需要解析这个逻辑ID，并发送到服务器；
      NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
      
-       NSLog(@"kankanfanhuishuju %@",result);
+     NSLog(@"kankanfanhuishuju %@",result);
      //这里需要进行XML解析；
      LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
      
@@ -570,90 +569,90 @@ NS_ENUM(NSInteger, ProviderEditingState)
      else
      {
        //开始向服务器注册该电器；
-         [HttpRequest registerDeviceToServer:logicIdXMLParser.logicId deviceName:deviceName sectionName:self.area type:logicIdXMLParser.deviceType success:^(AFHTTPRequestOperation *operation, id responseObject) {
+       [HttpRequest registerDeviceToServer:logicIdXMLParser.logicId deviceName:deviceName sectionName:self.area type:logicIdXMLParser.deviceType success:^(AFHTTPRequestOperation *operation, id responseObject) {
          
          [self.addDeviceView removeFromSuperview];
-
+         
          if(self.row<5)
-          {
-            
-            JYFurnitureSection *section=self.furnitureSecArray[self.section1];
-             JYFurniture *furniture=section.furnitureArray[self.row];
-
-             furniture.imageStr=self.imageHighArray[self.row];
-             furniture.registed=YES;
-             furniture.logic_id=logicIdXMLParser.logicId;
-             furniture.deviceType=logicIdXMLParser.deviceType;
-             
-             if([furniture.deviceType isEqualToString:@"40"])
-             {
-                 furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
-             }
-             else if([furniture.deviceType isEqualToString:@"41"])
-             {
-                 furniture.controller=[[CYFYWControllerViewController alloc]init];
-             }
-             else
-             {
-                 furniture.controller=[[JYOtherViewController alloc]init];
-             }
-             //设置电器描述文字
-             //furniture.descLabel=deviceName;
+         {
+           
+           JYFurnitureSection *section=self.furnitureSecArray[self.section1];
+           JYFurniture *furniture=section.furnitureArray[self.row];
+           
+           furniture.imageStr=self.imageHighArray[self.row];
+           furniture.registed=YES;
+           furniture.logic_id=logicIdXMLParser.logicId;
+           furniture.deviceType=logicIdXMLParser.deviceType;
+           
+           if([furniture.deviceType isEqualToString:@"40"])
+           {
+             furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+           }
+           else if([furniture.deviceType isEqualToString:@"41"])
+           {
+             furniture.controller=[[CYFYWControllerViewController alloc]init];
+           }
+           else
+           {
+             furniture.controller=[[JYOtherViewController alloc]init];
+           }
+           //设置电器描述文字
+           //furniture.descLabel=deviceName;
          }
          else
          {
-             JYFurniture *furniture=[[JYFurniture alloc]init];
-             furniture.descLabel=deviceName;
-             furniture.registed=YES;
-             furniture.logic_id=logicIdXMLParser.logicId;
-             furniture.deviceType=logicIdXMLParser.deviceType;
+           JYFurniture *furniture=[[JYFurniture alloc]init];
+           furniture.descLabel=deviceName;
+           furniture.registed=YES;
+           furniture.logic_id=logicIdXMLParser.logicId;
+           furniture.deviceType=logicIdXMLParser.deviceType;
            
            NSLog(@"%@ %@ ",deviceName,logicIdXMLParser.logicId);
-             NSLog(@"啦啦啦啦");
-             
-             if([furniture.deviceType isEqualToString:@"40"])
-             {
-                 furniture.imageStr=@"rgb_light_on";
-                 furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
-             }
-             else if([furniture.deviceType isEqualToString:@"41"])
-             {
-                 furniture.imageStr=@"yw_light_on";
-                 furniture.controller=[[CYFYWControllerViewController alloc]init];
-             }
-             else
-             {
-                 furniture.imageStr=@"办公室";
-                 furniture.controller=[[JYOtherViewController alloc]init];
-             }
+           NSLog(@"啦啦啦啦");
            
-            if(![self.addDeviceView.deviceMac.text isEqualToString:@""])
-            {
-              
-              
-              JYFurnitureSection *section=self.furnitureSecArray[self.section1];
-              JYFurniture *furniture1=section.furnitureArray[self.row];
-              
-              furniture1=furniture;
-              
-              
-              JYFurniture *temp=[section.furnitureArray lastObject];
-              [section.furnitureArray removeLastObject];
-              
-              [section.furnitureArray addObject:furniture1];
-              [section.furnitureArray addObject:temp];
-              
-              
-            }
+           if([furniture.deviceType isEqualToString:@"40"])
+           {
+             furniture.imageStr=@"rgb_light_on";
+             furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+           }
+           else if([furniture.deviceType isEqualToString:@"41"])
+           {
+             furniture.imageStr=@"yw_light_on";
+             furniture.controller=[[CYFYWControllerViewController alloc]init];
+           }
+           else
+           {
+             furniture.imageStr=@"办公室";
+             furniture.controller=[[JYOtherViewController alloc]init];
+           }
+           
+           if(![self.addDeviceView.deviceMac.text isEqualToString:@""])
+           {
+             
+             
+             JYFurnitureSection *section=self.furnitureSecArray[self.section1];
+             JYFurniture *furniture1=section.furnitureArray[self.row];
+             
+             furniture1=furniture;
+             
+             
+             JYFurniture *temp=[section.furnitureArray lastObject];
+             [section.furnitureArray removeLastObject];
+             
+             [section.furnitureArray addObject:furniture1];
+             [section.furnitureArray addObject:temp];
+             
+             
+           }
            else
            {
              JYFurniture *temp=[self.section.furnitureArray lastObject];
              [self.section.furnitureArray removeLastObject];
              [self.section.furnitureArray addObject:furniture];
              [self.section.furnitureArray addObject:temp];
-
+             
            }
-          }
+         }
          
          [self.collectionView reloadData];
          
@@ -674,7 +673,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
      
      
    }];
-    self.navigationItem.hidesBackButton=NO;
+  self.navigationItem.hidesBackButton=NO;
 }
 
 -(void)getDataFromReote
@@ -682,15 +681,15 @@ NS_ENUM(NSInteger, ProviderEditingState)
   [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
     
     //成功的回调；
-      NSLog(@"=====%@",responseObject);
+    NSLog(@"=====%@",responseObject);
     //请求成功
     JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
     self.furnitureBackStatus=furnitureBackStatus;
-      for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
-      {
-          JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
-          NSLog(@"%@   %@   %@   %@",back.logic_id,back.name,back.scene_name,back.deviceType);
-      }
+    for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
+    {
+      JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
+      NSLog(@"%@   %@   %@   %@",back.logic_id,back.name,back.scene_name,back.deviceType);
+    }
     
     [self judge];
     
@@ -730,19 +729,19 @@ NS_ENUM(NSInteger, ProviderEditingState)
             furniture.registed=YES;
             furniture.logic_id=furnitureBack.logic_id;
             furniture.deviceType=furnitureBack.deviceType;
-              
+            
             if([furniture.deviceType isEqualToString:@"40"])
-              {
-                  furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
-              }
-              else if([furniture.deviceType isEqualToString:@"41"])
-              {
-                  furniture.controller=[[CYFYWControllerViewController alloc]init];
-              }
-              else
-              {
-                  furniture.controller=[[JYOtherViewController alloc]init];
-              }
+            {
+              furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+            }
+            else if([furniture.deviceType isEqualToString:@"41"])
+            {
+              furniture.controller=[[CYFYWControllerViewController alloc]init];
+            }
+            else
+            {
+              furniture.controller=[[JYOtherViewController alloc]init];
+            }
             break;
           }
         }
@@ -756,20 +755,20 @@ NS_ENUM(NSInteger, ProviderEditingState)
           furniture.logic_id=furnitureBack.logic_id;
           furniture.deviceType=furnitureBack.deviceType;
           if([furniture.deviceType isEqualToString:@"40"])
-            {
-                furniture.imageStr=@"rgb_light_on";
-                furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
-            }
-            else if([furniture.deviceType isEqualToString:@"41"])
-            {
-                furniture.imageStr=@"yw_light_on";
-                furniture.controller=[[CYFYWControllerViewController alloc]init];
-            }
-            else
-            {
-                furniture.imageStr=@"办公室";
-                furniture.controller=[[JYOtherViewController alloc]init];
-            }
+          {
+            furniture.imageStr=@"rgb_light_on";
+            furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+          }
+          else if([furniture.deviceType isEqualToString:@"41"])
+          {
+            furniture.imageStr=@"yw_light_on";
+            furniture.controller=[[CYFYWControllerViewController alloc]init];
+          }
+          else
+          {
+            furniture.imageStr=@"办公室";
+            furniture.controller=[[JYOtherViewController alloc]init];
+          }
           
           JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
           
@@ -811,31 +810,31 @@ NS_ENUM(NSInteger, ProviderEditingState)
         //将电器添加到电器数组中
         [self.furnitureArray addObject:furniture];
       }
-
+      
       JYFurniture *furniture=[[JYFurniture alloc]init];
-//      furniture.imageStr=@"单品";
+      //      furniture.imageStr=@"单品";
       furniture.descLabel=furnitureBack.name;
       furniture.registed=YES;
       furniture.logic_id=furnitureBack.logic_id;
       
       furniture.deviceType=furnitureBack.deviceType;
-        
+      
       if([furniture.deviceType isEqualToString:@"40"])
-        {
-            furniture.imageStr=@"rgb_light_on";
-            furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
-        }
-        else if([furniture.deviceType isEqualToString:@"41"])
-        {
-            furniture.imageStr=@"yw_light_on";
-            furniture.controller=[[CYFYWControllerViewController alloc]init];
-        }
-        else
-        {
-            furniture.imageStr=@"办公室";
-            furniture.controller=[[JYOtherViewController alloc]init];
-        }
-
+      {
+        furniture.imageStr=@"rgb_light_on";
+        furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+      }
+      else if([furniture.deviceType isEqualToString:@"41"])
+      {
+        furniture.imageStr=@"yw_light_on";
+        furniture.controller=[[CYFYWControllerViewController alloc]init];
+      }
+      else
+      {
+        furniture.imageStr=@"办公室";
+        furniture.controller=[[JYOtherViewController alloc]init];
+      }
+      
       JYFurniture *temp=[[JYFurniture alloc]init];
       temp=[self.furnitureArray lastObject];
       [self.furnitureArray removeLastObject];
@@ -871,17 +870,17 @@ NS_ENUM(NSInteger, ProviderEditingState)
           furniture.logic_id=furnitureBack.logic_id;
           furniture.deviceType=furnitureBack.deviceType;
           if([furniture.deviceType isEqualToString:@"40"])
-            {
-                furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
-            }
-            else if([furniture.deviceType isEqualToString:@"41"])
-            {
-                furniture.controller=[[CYFYWControllerViewController alloc]init];
-            }
-            else
-            {
-                furniture.controller=[[JYOtherViewController alloc]init];
-            }
+          {
+            furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+          }
+          else if([furniture.deviceType isEqualToString:@"41"])
+          {
+            furniture.controller=[[CYFYWControllerViewController alloc]init];
+          }
+          else
+          {
+            furniture.controller=[[JYOtherViewController alloc]init];
+          }
           break;
         }
       }
@@ -927,31 +926,31 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 #pragma mark - 设置导航栏的按钮
 - (void)setNaviBarItemButton{
-    
-    UILabel *titleView=[[UILabel alloc]init];
-    [titleView setText:@"电器"];
-    titleView.frame=CGRectMake(0, 0, 100, 16);
-    titleView.font=[UIFont systemFontOfSize:16];
-    [titleView setTextColor:[UIColor whiteColor]];
-    titleView.textAlignment=NSTextAlignmentCenter;
-    self.navigationItem.titleView=titleView;
-    
+  
+  UILabel *titleView=[[UILabel alloc]init];
+  [titleView setText:@"电器"];
+  titleView.frame=CGRectMake(0, 0, 100, 16);
+  titleView.font=[UIFont systemFontOfSize:16];
+  [titleView setTextColor:[UIColor whiteColor]];
+  titleView.textAlignment=NSTextAlignmentCenter;
+  self.navigationItem.titleView=titleView;
+  
   
   UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
                                                                   style:UIBarButtonItemStyleDone
                                                                  target:self
                                                                  action:@selector(rightBtnClicked)];
   
-//  UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
-//                                                                  style:UIBarButtonItemStyleDone
-//                                                                 target:self
-//                                                                 action:@selector(leftBtnClicked)];
-
+  UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
+                                                                 style:UIBarButtonItemStyleDone
+                                                                target:self
+                                                                action:@selector(leftBtnClicked)];
+  
   
   rightButton.tintColor = [UIColor whiteColor];
   
   self.navigationItem.rightBarButtonItem = rightButton;
-//   self.navigationItem.leftBarButtonItem = leftButton;
+  self.navigationItem.leftBarButtonItem = leftButton;
   
 }
 
@@ -960,21 +959,18 @@ NS_ENUM(NSInteger, ProviderEditingState)
 #pragma mark - 点击右上角的编辑按钮
 
 
-//- (void)leftBtnClicked{
-//
-//  NSLog(@"1111111111111111111111111111111");
-//  
-//  
-//  CATransition* transition = [CATransition animation];
-//  
-//  transition.type = kCATransitionFromRight;//可更改为其他方式
-////  transition.subtype = kCATransitionFromTop;//可更改为其他方式
-//  [self.navigationController.view.layer addAnimation:transition forKey:kCATransition];
-//  
-//  CYFMainViewController *main = [[CYFMainViewController alloc] init];
-//  [self.navigationController pushViewController:main animated:false];
-//  
-//}
+- (void)leftBtnClicked{
+  
+  for (UIViewController *controller in self.navigationController.viewControllers) {
+    
+    if ([controller isKindOfClass:[CYFMainViewController class]]) {
+      
+      [self.navigationController popToViewController:controller animated:YES];
+      
+    }
+    
+  }
+}
 
 
 - (void)rightBtnClicked
@@ -993,14 +989,14 @@ NS_ENUM(NSInteger, ProviderEditingState)
       
       if (indexPath.row != (section.furnitureArray.count - 1))
       {
-          if(furniture.registed==NO)
-          {
-              [cell.closeButton setHidden:YES];
-          }
-          else
-          {
-              [cell.closeButton setHidden:NO];
-          }
+        if(furniture.registed==NO)
+        {
+          [cell.closeButton setHidden:YES];
+        }
+        else
+        {
+          [cell.closeButton setHidden:NO];
+        }
       }
       else
       {
@@ -1028,52 +1024,47 @@ NS_ENUM(NSInteger, ProviderEditingState)
   NSIndexPath *indexpath = [self.collectionView indexPathForCell:cell];//获取cell对应的indexpath;
   
   NSLog(@"删除按钮，section:%ld ,   row: %ld",(long)indexpath.section,(long)indexpath.row);
-    
+  
   if(indexpath.row<=4)
   {
+    
+    JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
+    JYFurniture *furniture=section.furnitureArray[indexpath.row];
+    furniture.registed=NO;
+    furniture.imageStr=self.imageArray[indexpath.row];
+    
+    NSLog(@"logicid  %@",furniture.logic_id);
+    
+    [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
+      NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+      NSLog(@"===%@",string);
       
-      JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
-      JYFurniture *furniture=section.furnitureArray[indexpath.row];
-      furniture.registed=NO;
-      furniture.imageStr=self.imageArray[indexpath.row];
-      
-      NSLog(@"logicid  %@",furniture.logic_id);
-      
-      [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-          NSLog(@"===%@",string);
-          
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          NSLog(@"删除设备失败");
-      }];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      NSLog(@"删除设备失败");
+    }];
   }
-    else
+  else
   {
-      NSLog(@"keyi delete");
-      JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
-      JYFurniture *furniture=section.furnitureArray[indexpath.row];
-     
+    NSLog(@"keyi delete");
+    JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
+    JYFurniture *furniture=section.furnitureArray[indexpath.row];
+    
+    
+    NSLog(@"logicid  %@",furniture.logic_id);
+    
+    [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
+      NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
+      NSLog(@"===%@",string);
       
-      NSLog(@"logicid  %@",furniture.logic_id);
+      [section.furnitureArray removeObject:furniture];
       
-      [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
-          NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-          NSLog(@"===%@",string);
-          
-          [section.furnitureArray removeObject:furniture];
-          
-      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-          NSLog(@"删除设备失败");
-      }];
-      
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+      NSLog(@"删除设备失败");
+    }];
+    
   }
 }
 
-- (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item{
-
-  NSLog(@"1111111111111111");
-  return true;
-}
 @end
 
 
