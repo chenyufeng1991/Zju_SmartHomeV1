@@ -11,6 +11,8 @@
 
 #import "AppDelegate.h"
 
+#import "MBProgressHUD+MJ.h"
+
 @implementation HttpRequest
 
 + (void)getLogicIdfromMac:(NSString*)macValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
@@ -79,7 +81,6 @@
   //  params[@"equipment.logic_id"] = logicId;
   //  params[@"equipment.scene_name"] = sectionName;
   
-  NSLog(@"66666666 %@ %@ %@ %@",deviceName,logicId,sectionName,type);
   
   NSDictionary *params = @{@"is_app":@"1",
                            @"equipment.name":deviceName,
@@ -100,6 +101,7 @@
 
 + (void)findAllDeviceFromServer :(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
+//  [MBProgressHUD showMessage:@"正在加载..."];
   //1.创建请求管理对象
   AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
   

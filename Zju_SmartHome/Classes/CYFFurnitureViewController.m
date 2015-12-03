@@ -307,6 +307,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //item点击触发事件
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+  NSLog(@"%ld %ld",indexPath.section,indexPath.row);
   JYFurnitureSection *furnitureSection=[self.furnitureSecArray objectAtIndex:indexPath.section];
   
   if(indexPath.row==furnitureSection.furnitureArray.count-1)
@@ -342,6 +343,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
   }
   else
   {
+    NSLog(@"paopaopao");
     self.area=furnitureSection.sectionName;
     JYFurnitureSection *section=self.furnitureSecArray[indexPath.section];
     JYFurniture *furniture=section.furnitureArray[indexPath.row];
@@ -371,6 +373,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
     }
     else
     {
+      NSLog(@"请先注册电气");
       UIAlertController *alertController=[UIAlertController alertControllerWithTitle:@"提示 " message:@"请您先注册电器" preferredStyle:UIAlertControllerStyleAlert];
       [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         
@@ -528,13 +531,13 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //添加设备
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac
 {
+  NSLog(@"add gogogog");
   [HttpRequest getLogicIdfromMac:deviceMac success:^(AFHTTPRequestOperation *operation, id responseObject)
    {
      
      //表示从网关返回逻辑ID成功；需要解析这个逻辑ID，并发送到服务器；
      NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
      
-     NSLog(@"kankanfanhuishuju %@",result);
      //这里需要进行XML解析；
      LogicIdXMLParser *logicIdXMLParser = [[LogicIdXMLParser alloc] initWithXMLString:result];
      
@@ -553,6 +556,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
          
          if(self.row<5)
          {
+           NSLog(@"小于5吗？");
            
            JYFurnitureSection *section=self.furnitureSecArray[self.section1];
            JYFurniture *furniture=section.furnitureArray[self.row];
@@ -657,6 +661,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
   [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
     
     //成功的回调；
+//    [MBProgressHUD hideHUD];
     //请求成功
     JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
     self.furnitureBackStatus=furnitureBackStatus;
@@ -1000,6 +1005,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
   
   if(indexpath.row<=4)
   {
+    NSLog(@"XIAOYUXIAOYU");
     
     JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
     JYFurniture *furniture=section.furnitureArray[indexpath.row];
@@ -1019,12 +1025,12 @@ NS_ENUM(NSInteger, ProviderEditingState)
   }
   else
   {
+    NSLog(@"SSSSSSSS");
     JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
     JYFurniture *furniture=section.furnitureArray[indexpath.row];
     
     
     [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
-      NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
       
       [section.furnitureArray removeObject:furniture];
       

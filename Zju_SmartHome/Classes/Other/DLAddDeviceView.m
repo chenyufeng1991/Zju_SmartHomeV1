@@ -42,4 +42,10 @@
         [self.delegate addDeviceGoGoGo:self.deviceName.text and:self.deviceMac.text];
     }
 }
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+  
+  [self.deviceName resignFirstResponder];
+  [self.deviceMac resignFirstResponder];
+}
 @end
