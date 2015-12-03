@@ -51,6 +51,7 @@
     NSLog(@"使用内网 向网关发送Mac值");
   }else{
     //外网；
+    //默认使用外网；
     [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/getLogicIdfromMac.php"
        parameters:parameters
           success:success
