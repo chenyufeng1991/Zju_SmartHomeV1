@@ -93,7 +93,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Tl4-CX-Sn8">
                             <rect key="frame" x="10" y="155" width="230" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <state key="normal" backgroundImage="adddevice_btn_upress"/>
+                            <state key="normal" backgroundImage="popup_btn_press"/>
                             <state key="highlighted" backgroundImage="adddevice_btn_press"/>
                             <connections>
                                 <action selector="addDevice:" destination="0xN-mA-bbb" eventType="touchUpInside" id="KjI-9U-jXv"/>
@@ -125,6 +125,6 @@
         <image name="adddevice_btn-delete-press-0" width="41" height="41"/>
         <image name="adddevice_btn-delete-unpress" width="41" height="41"/>
         <image name="adddevice_btn_press" width="230" height="40"/>
-        <image name="adddevice_btn_upress" width="230" height="40"/>
+        <image name="popup_btn_press" width="230" height="40"/>
     </resources>
 </document>

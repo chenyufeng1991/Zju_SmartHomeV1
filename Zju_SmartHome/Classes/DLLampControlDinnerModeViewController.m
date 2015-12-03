@@ -8,7 +8,7 @@
 
 #import "DLLampControlDinnerModeViewController.h"
 #import "AFNetworking.h"
-
+#import "CYFFurnitureViewController.h"
 #import "AppDelegate.h"
 
 @interface DLLampControlDinnerModeViewController ()
@@ -29,7 +29,13 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"00000 %@",self.logic_id);
+    UIButton *leftButton=[[UIButton alloc]init];
+    [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
+    leftButton.frame=CGRectMake(0, 0, 25, 25);
+    [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftItem;
     
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
@@ -323,5 +329,17 @@
 }
 
 //****************************************结束
+- (void)leftBtnClicked{
+    
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        
+        if ([controller isKindOfClass:[CYFFurnitureViewController class]]) {
+            
+            [self.navigationController popToViewController:controller animated:YES];
+            
+        }
+        
+    }
+}
 
 @end

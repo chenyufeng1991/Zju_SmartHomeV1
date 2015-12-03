@@ -164,11 +164,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 {
   [super viewDidLoad];
   
-  NSLog(@"222222222222222222222222");
-  
-  
-  //  self.navigationItem.hidesBackButton = true;
-  
   //进行CollectionView和Cell的绑定
   [self.collectionView registerClass:[CYFCollectionViewCell class]  forCellWithReuseIdentifier:@"CollectionCell"];
   self.collectionView.backgroundColor = [UIColor whiteColor];
@@ -200,9 +195,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
   if (self.macFromQRCatcher != nil) {
     
     [self addNewFurniture];
-    
-    NSLog(@"%@  ------------  %@",self.area,self.macFromQRCatcher);
-    
     self.macFromQRCatcher = nil;
     
   }
@@ -275,11 +267,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
     }
   }
   
-  /*
-   UIButton *deviceImageButton = cell.imageButton;
-   [deviceImageButton addTarget:self action:@selector(deviceButtonPressed:) forControlEvents:UIControlEventTouchUpI
-   */
-  
   [cell.closeButton addTarget:self action:@selector(deleteCellButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
   
   
@@ -339,8 +326,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"扫码" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action){
       
-      NSLog(@"saoma mammamam");
-      
       QRCatchViewController *qrCatcherVC=[[QRCatchViewController alloc]init];
       qrCatcherVC.area = self.area;
       qrCatcherVC.section1 = self.section1;
@@ -354,7 +339,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
     
     [self presentViewController:alertController animated:true completion:nil];
     
-    //[self addNewFurniture];
   }
   else
   {
@@ -366,10 +350,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
     
     if(furniture.registed==YES)
     {
-      //      DLLampControlDinnerModeViewController *dlVc=[[DLLampControlDinnerModeViewController alloc]init];
-      //
-      //      dlVc.logic_id=furniture.logic_id;
-      //      [self.navigationController pushViewController:dlVc animated:YES];
       if([furniture.deviceType isEqualToString:@"40"])
       {
         DLLampControlDinnerModeViewController *dlVc=(DLLampControlDinnerModeViewController *)furniture.controller;
@@ -544,7 +524,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
 -(void)cancelAddDevice
 {
   [self.addDeviceView removeFromSuperview];
-  self.navigationItem.hidesBackButton=NO;
+  //self.navigationItem.hidesBackButton=YES;
 }
 
 //添加设备
@@ -607,9 +587,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
            furniture.logic_id=logicIdXMLParser.logicId;
            furniture.deviceType=logicIdXMLParser.deviceType;
            
-           NSLog(@"%@ %@ ",deviceName,logicIdXMLParser.logicId);
-           NSLog(@"啦啦啦啦");
-           
            if([furniture.deviceType isEqualToString:@"40"])
            {
              furniture.imageStr=@"rgb_light_on";
@@ -659,6 +636,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
        } failure:^(AFHTTPRequestOperation *operation, NSError *error)
         {
           NSLog(@"设备注册到服务器失败:%@",error);
+         [MBProgressHUD showError:@"设备注册失败"];
         }];
      }
      
@@ -673,7 +651,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
      
      
    }];
-  self.navigationItem.hidesBackButton=NO;
+  //self.navigationItem.hidesBackButton=YES;
 }
 
 -(void)getDataFromReote
@@ -681,21 +659,16 @@ NS_ENUM(NSInteger, ProviderEditingState)
   [HttpRequest findAllDeviceFromServer:^(AFHTTPRequestOperation *operation, id responseObject) {
     
     //成功的回调；
-    NSLog(@"=====%@",responseObject);
     //请求成功
     JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
     self.furnitureBackStatus=furnitureBackStatus;
-    for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
-    {
-      JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
-      NSLog(@"%@   %@   %@   %@",back.logic_id,back.name,back.scene_name,back.deviceType);
-    }
     
     [self judge];
     
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     //失败的回调；
     NSLog(@"服务器寻找设备失败：%@",error);
+    [MBProgressHUD showError:@"服务器加载数据失败"];
   }];
   
 }
@@ -928,7 +901,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
 - (void)setNaviBarItemButton{
   
   UILabel *titleView=[[UILabel alloc]init];
-  [titleView setText:@"电器"];
+  [titleView setText:@"家居"];
   titleView.frame=CGRectMake(0, 0, 100, 16);
   titleView.font=[UIFont systemFontOfSize:16];
   [titleView setTextColor:[UIColor whiteColor]];
@@ -936,21 +909,23 @@ NS_ENUM(NSInteger, ProviderEditingState)
   self.navigationItem.titleView=titleView;
   
   
-  UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"编辑"
+  UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"删除"
                                                                   style:UIBarButtonItemStyleDone
                                                                  target:self
                                                                  action:@selector(rightBtnClicked)];
   
-  UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
-                                                                 style:UIBarButtonItemStyleDone
-                                                                target:self
-                                                                action:@selector(leftBtnClicked)];
-  
+    UIButton *leftButton=[[UIButton alloc]init];
+    [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
+    leftButton.frame=CGRectMake(0, 0, 25, 25);
+    [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    
   
   rightButton.tintColor = [UIColor whiteColor];
   
   self.navigationItem.rightBarButtonItem = rightButton;
-  self.navigationItem.leftBarButtonItem = leftButton;
+  self.navigationItem.leftBarButtonItem = leftItem;
   
 }
 
@@ -1006,7 +981,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
     
   }else{
     //这是正常情况下；
-    self.navigationItem.rightBarButtonItem.title = @"编辑";
+    self.navigationItem.rightBarButtonItem.title = @"删除";
     self.currentEditState = ProviderEditStateNormal;
     
     [self.collectionView reloadData];
@@ -1041,25 +1016,24 @@ NS_ENUM(NSInteger, ProviderEditingState)
       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
       NSLog(@"删除设备失败");
+      [MBProgressHUD showError:@"删除设备失败"];
     }];
   }
   else
   {
-    NSLog(@"keyi delete");
     JYFurnitureSection *section=self.furnitureSecArray[indexpath.section];
     JYFurniture *furniture=section.furnitureArray[indexpath.row];
     
     
-    NSLog(@"logicid  %@",furniture.logic_id);
-    
     [HttpRequest deleteDeviceFromServer:furniture.logic_id success:^(AFHTTPRequestOperation *operation, id responseObject) {
       NSString *string=[[NSString alloc]initWithData:responseObject encoding:NSUTF8StringEncoding];
-      NSLog(@"===%@",string);
       
       [section.furnitureArray removeObject:furniture];
       
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
       NSLog(@"删除设备失败");
+     [MBProgressHUD showError:@"删除设备失败"];
+        
     }];
     
   }
