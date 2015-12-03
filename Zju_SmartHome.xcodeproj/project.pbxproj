@@ -28,6 +28,8 @@
 		446AF3461C005BF10081C798 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3411C005BF10081C798 /* RECommonFunctions.m */; };
 		446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF3451C005BF10081C798 /* UIViewController+RESideMenu.m */; };
 		446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */; };
+		61645BAC1C101BA5007462EC /* JYChangePwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 61645BAA1C101BA5007462EC /* JYChangePwdViewController.m */; };
+		61645BAD1C101BA5007462EC /* JYChangePwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61645BAB1C101BA5007462EC /* JYChangePwdViewController.xib */; };
 		6181B1801C0D793E00567DE5 /* CYFYWControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6181B17E1C0D793E00567DE5 /* CYFYWControllerViewController.m */; };
 		6181B1811C0D793E00567DE5 /* CYFYWControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6181B17F1C0D793E00567DE5 /* CYFYWControllerViewController.xib */; };
 		6181B1851C0D7B7C00567DE5 /* JYOtherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6181B1831C0D7B7C00567DE5 /* JYOtherViewController.m */; };
@@ -41,7 +43,7 @@
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
-		71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A7988D1C0D8C0B006F8D7B /* AllUtils.m */; settings = {ASSET_TAGS = (); }; };
+		71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A7988D1C0D8C0B006F8D7B /* AllUtils.m */; };
 		71DD8D671C0F1F3C000E1639 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DD8D661C0F1F3C000E1639 /* QuartzCore.framework */; };
 		9D1CB9D81C0B0F8600725A63 /* LogicIdXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */; };
 		9D1CB9DC1C0B0FA000725A63 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DB1C0B0FA000725A63 /* HttpRequest.m */; };
@@ -137,6 +139,9 @@
 		446AF3491C005F180081C798 /* DLLeftSlideMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLLeftSlideMenuViewController.h; sourceTree = "<group>"; };
 		446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLLeftSlideMenuViewController.m; sourceTree = "<group>"; };
 		5C2168D92BC3D6A7F5365A43 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		61645BA91C101BA5007462EC /* JYChangePwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JYChangePwdViewController.h; sourceTree = "<group>"; };
+		61645BAA1C101BA5007462EC /* JYChangePwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JYChangePwdViewController.m; sourceTree = "<group>"; };
+		61645BAB1C101BA5007462EC /* JYChangePwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JYChangePwdViewController.xib; sourceTree = "<group>"; };
 		6181B17D1C0D793E00567DE5 /* CYFYWControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFYWControllerViewController.h; sourceTree = "<group>"; };
 		6181B17E1C0D793E00567DE5 /* CYFYWControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFYWControllerViewController.m; sourceTree = "<group>"; };
 		6181B17F1C0D793E00567DE5 /* CYFYWControllerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYFYWControllerViewController.xib; sourceTree = "<group>"; };
@@ -346,6 +351,9 @@
 			children = (
 				446AF3491C005F180081C798 /* DLLeftSlideMenuViewController.h */,
 				446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */,
+				61645BA91C101BA5007462EC /* JYChangePwdViewController.h */,
+				61645BAA1C101BA5007462EC /* JYChangePwdViewController.m */,
+				61645BAB1C101BA5007462EC /* JYChangePwdViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -848,6 +856,7 @@
 				9D564D581BFEAD220062700D /* JYMainXib.xib in Resources */,
 				9D564DBF1BFF69A10062700D /* CYFFurnitureViewController.xib in Resources */,
 				9D7D5A571BE472D300E1E1EF /* LaunchScreen.storyboard in Resources */,
+				61645BAD1C101BA5007462EC /* JYChangePwdViewController.xib in Resources */,
 				9DFF73721C08781C0061EFBF /* DLAddDeviceViewXib.xib in Resources */,
 				446AF3321C003FB10081C798 /* country.plist in Resources */,
 				446AF3291C002FB70081C798 /* Localizable.strings in Resources */,
@@ -967,6 +976,7 @@
 				9D564DC51C0007290062700D /* JYFurniture.m in Sources */,
 				9D7D5A861BE4740100E1E1EF /* AppDelegate.m in Sources */,
 				9D564DC21BFFF6E50062700D /* JYElectricalController.m in Sources */,
+				61645BAC1C101BA5007462EC /* JYChangePwdViewController.m in Sources */,
 				9D1CB9DC1C0B0FA000725A63 /* HttpRequest.m in Sources */,
 				446AF3141C00250A0081C798 /* VerifyViewController.m in Sources */,
 				712C524C1C0832900014F9CB /* QRCatchViewController.m in Sources */,

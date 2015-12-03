@@ -54,9 +54,9 @@
 //    else//还未登录过
     //{
     
-    //JYLoginViewController *jyVc=[[JYLoginViewController alloc]init];
+   // JYLoginViewController *jyVc=[[JYLoginViewController alloc]init];
    // JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:jyVc];
-   // self.window.rootViewController=navVc;
+    //self.window.rootViewController=navVc;
         self.window.rootViewController=[[JYLoginViewController alloc]init];
     //}
     application.statusBarStyle=UIStatusBarStyleLightContent;

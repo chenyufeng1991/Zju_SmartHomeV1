@@ -9,6 +9,7 @@
 #import "DLLeftSlideMenuViewController.h"
 #import "MBProgressHUD+MJ.h"
 #import "JYLoginViewController.h"
+#import "JYChangePwdViewController.h"
 
 #define MAX_CENTER_X [[UIScreen mainScreen] bounds].size.width
 #define LINE_COLOR [UIColor colorWithRed:0.892 green:0.623 blue:0.473 alpha:0.5]
@@ -136,8 +137,10 @@
     
 }
 
-- (void)btnModifyPassWordClick{
-    
+- (void)btnModifyPassWordClick
+{
+    JYChangePwdViewController *changePwd=[[JYChangePwdViewController alloc]init];
+    [self.navigationController pushViewController:changePwd animated:YES];
 }
 
 - (void)btnModifyEmailClick{

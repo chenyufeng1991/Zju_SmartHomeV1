@@ -105,11 +105,15 @@
             [MBProgressHUD hideHUD];
             DLLeftSlideMenuViewController *leftSlideMenuViewController = [[DLLeftSlideMenuViewController alloc] init];
             CYFMainViewController *cyfVc=[[CYFMainViewController alloc]init];
+            
             JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:cyfVc];
             RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navVc
                                                                             leftMenuViewController:leftSlideMenuViewController
                                                                            rightMenuViewController:nil];
-            self.view.window.rootViewController=sideMenuViewController;
+            JYNavigationController *navVc1=[[JYNavigationController alloc]initWithRootViewController:sideMenuViewController];
+            navVc1.navigationBar.hidden=YES;
+            self.view.window.rootViewController=navVc1;
+            //[self.navigationController pushViewController:navVc1 animated:YES];
 
         }
         else if([status.code isEqualToString:@"330"])
