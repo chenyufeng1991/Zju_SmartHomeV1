@@ -9,6 +9,8 @@
 #import "DLLampControlReadingModeViewController.h"
 #import "ZQSlider.h"
 #import "AFNetworking.h"
+#import "DLLampControlDinnerModeViewController.h"
+#import "DLLampControlSleepModeViewController.h"
 @interface DLLampControlReadingModeViewController ()
 @property (nonatomic, weak) UISlider *slider;
 @property (nonatomic, weak) UIImageView *imgView;
@@ -17,6 +19,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *gValue;
 @property (weak, nonatomic) IBOutlet UILabel *bValue;
 @property (weak, nonatomic) IBOutlet UIView *colorPreview;
+
+@property (weak, nonatomic) IBOutlet UIButton *leftFront;
+
+@property (weak, nonatomic) IBOutlet UIButton *rightNext;
 @end
 
 @implementation DLLampControlReadingModeViewController
@@ -27,6 +33,25 @@
     [super viewDidLoad];
     
     //    NSLog(@"00000 %@",self.logic_id);
+    
+    UIButton *leftButton=[[UIButton alloc]init];
+    [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
+    leftButton.frame=CGRectMake(0, 0, 25, 25);
+    [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    UILabel *titleView=[[UILabel alloc]init];
+    [titleView setText:@"RGB灯"];
+    titleView.frame=CGRectMake(0, 0, 100, 16);
+    titleView.font=[UIFont systemFontOfSize:16];
+    [titleView setTextColor:[UIColor whiteColor]];
+    titleView.textAlignment=NSTextAlignmentCenter;
+    self.navigationItem.titleView=titleView;
+    
+    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
@@ -268,7 +293,7 @@
                                                  "<id>%@</id>"
                                                  "<action>change_color</action>"
                                                  "<value>%@,%@,%@</value>"
-                                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                                                 "</root>",  self.logic_id,r,g,b];
                 
                                 NSDictionary *parameters = @{@"test" : str};
                 
@@ -369,4 +394,40 @@
 }
 
 //****************************************结束
+
+- (void)leftBtnClicked{
+    
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        
+        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]]) {
+            
+            [self.navigationController popToViewController:controller animated:YES];
+            
+        }
+        
+    }
+}
+
+-(void)leftGo
+{
+    for (UIViewController *controller in self.navigationController.viewControllers)
+    {
+        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]])
+        {
+            
+            DLLampControlDinnerModeViewController *vc=[[DLLampControlDinnerModeViewController alloc]init];
+            vc=(DLLampControlDinnerModeViewController *)controller;
+            vc.logic_id=self.logic_id;
+            [self.navigationController popToViewController:vc animated:YES];
+            
+        }
+        
+    }
+}
+-(void)rightGo
+{
+    DLLampControlSleepModeViewController *vc=[[DLLampControlSleepModeViewController alloc]init];
+    vc.logic_id=self.logic_id;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end

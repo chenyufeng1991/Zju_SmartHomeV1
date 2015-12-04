@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "ZQSlider.h"
 #import "CYFFurnitureViewController.h"
-#import "DLLampControlRGBModeViewController.h"
+#import "DLLampControlReadingModeViewController.h"
 
 @interface DLLampControlDinnerModeViewController ()
 @property (weak, nonatomic) IBOutlet UIView *panelView;
@@ -46,7 +46,8 @@
    // self.rightNext.enabled=NO;
     
     [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
-    self.modeSelect.enabled=NO;
+   // self.modeSelect.enabled=NO;
+    [self.modeSelect setAdjustsImageWhenHighlighted:NO];
     
 //    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
@@ -60,6 +61,13 @@
     [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
+    UILabel *titleView=[[UILabel alloc]init];
+    [titleView setText:@"RGB灯"];
+    titleView.frame=CGRectMake(0, 0, 100, 16);
+    titleView.font=[UIFont systemFontOfSize:16];
+    [titleView setTextColor:[UIColor whiteColor]];
+    titleView.textAlignment=NSTextAlignmentCenter;
+    self.navigationItem.titleView=titleView;
     
     
     UIImageView *imgView = [[UIImageView alloc]init];
@@ -428,7 +436,7 @@
 
 -(void)rightGo
 {
-    DLLampControlRGBModeViewController *vc=[[DLLampControlRGBModeViewController alloc]init];
+    DLLampControlReadingModeViewController *vc=[[DLLampControlReadingModeViewController alloc]init];
     vc.logic_id=self.logic_id;
     [self.navigationController pushViewController:vc animated:YES];
 }

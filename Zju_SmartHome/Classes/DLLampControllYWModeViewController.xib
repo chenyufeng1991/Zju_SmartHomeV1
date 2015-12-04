@@ -110,43 +110,43 @@
                     <color key="backgroundColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <view contentMode="scaleToFill" id="7XE-6J-O7y" userLabel="panel">
-                    <rect key="frame" x="19" y="235" width="282" height="282"/>
+                    <rect key="frame" x="19" y="235" width="282" height="288"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="phH-eX-Nb3" userLabel="model">
-                            <rect key="frame" x="247" y="0.0" width="35" height="35"/>
+                            <rect key="frame" x="247" y="0.0" width="35" height="35.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" backgroundImage="ct_icon_model_unpress"/>
                             <state key="highlighted" backgroundImage="ct_icon_model_press"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="4d6-qr-TjB" userLabel="color">
-                            <rect key="frame" x="0.0" y="264" width="35" height="35"/>
+                            <rect key="frame" x="0.0" y="265.5" width="35" height="35.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" backgroundImage="ct_icon_color_unpress"/>
                             <state key="highlighted" backgroundImage="ct_icon_color_press"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jot-7t-BPA" userLabel="music">
-                            <rect key="frame" x="247" y="264" width="35" height="35"/>
+                            <rect key="frame" x="247" y="265.5" width="35" height="35.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" backgroundImage="ct_icon_music_unpress"/>
                             <state key="highlighted" backgroundImage="ct_icon_music_press"/>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" id="Aeh-CA-5MC">
-                            <rect key="frame" x="35" y="35" width="212" height="212"/>
+                            <rect key="frame" x="35" y="35.5" width="212" height="216.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="yy1-LT-Jlx" userLabel="play">
-                            <rect key="frame" x="111" y="111" width="60" height="60"/>
+                            <rect key="frame" x="111" y="113" width="60" height="61.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" backgroundImage="ct_icon_buttonbreak-off"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5fI-hY-NTU" userLabel="bright">
-                            <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                            <rect key="frame" x="0.0" y="0.0" width="35" height="35.5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" backgroundImage="temperture"/>
