@@ -198,6 +198,12 @@
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
         self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
         self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+        
+        NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+        NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
+        
+        NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
+        
         self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         //!!!:ATTENTIOIN
 //        viewColorPickerPositionIndicator.center = touchLocation;
@@ -221,7 +227,7 @@
                                  "<id>%@</id>"
                                  "<action>change_color</action>"
                                  "<value>%@,%@,%@</value>"
-                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                                 "</root>",  self.logic_id,r,g,b];
                 
                 NSDictionary *parameters = @{@"test" : str};
                 
@@ -263,6 +269,14 @@
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
         self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
         self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+        
+        NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+        NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
+        
+        NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
+        
+        NSLog(@"哈哈哈哈哈%@ %@ %@",r,g,b);
+        
         self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         //!!!:ATTENTIOIN
         //        viewColorPickerPositionIndicator.center = touchLocation;
@@ -290,7 +304,7 @@
                                                  "<id>%@</id>"
                                                  "<action>change_color</action>"
                                                  "<value>%@,%@,%@</value>"
-                                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                                                 "</root>",  self.logic_id,r,g,b];
                 
                                 NSDictionary *parameters = @{@"test" : str};
                 
