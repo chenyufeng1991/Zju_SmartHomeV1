@@ -15,6 +15,7 @@
 
 @implementation HttpRequest
 
+#pragma mark - 从网关获取逻辑ID的方法
 + (void)getLogicIdfromMac:(NSString*)macValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
   //增加这几行代码；
@@ -65,7 +66,7 @@
   
 }
 
-
+#pragma mark - 把设备注册到服务器的方法
 + (void)registerDeviceToServer:(NSString*)logicId deviceName:(NSString*)deviceName sectionName:(NSString*)sectionName type:(NSString*)type success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
   //1.创建请求管理对象
@@ -99,6 +100,7 @@
 }
 
 
+#pragma mark - 从服务器获取所有设备的方法
 + (void)findAllDeviceFromServer :(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
 //  [MBProgressHUD showMessage:@"正在加载..."];
@@ -124,7 +126,7 @@
   
 }
 
-
+#pragma mark - 获取内网地址的方法
 + (void)getInternalNetworkGateIP:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
   
   //增加这几行代码；
@@ -155,6 +157,7 @@
   
 }
 
+#pragma mark - 删除电器网络请求方法
 //删除电器网络请求方法
 + (void)deleteDeviceFromServer:(NSString*)logicId success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
     
@@ -177,5 +180,68 @@
       //  NSLog(@"使用外网 向服务器注册设备");
   
 }
+
+#pragma mark - 向服务器发送YW灯冷暖的方法
++ (void)sendYWWarmColdToServer:(NSString *)logicId warmcoldValue:(NSString*)warmcoldValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
+
+  //增加这几行代码；
+  AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+  [securityPolicy setAllowInvalidCertificates:YES];
+  
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  [manager setSecurityPolicy:securityPolicy];
+  manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+  
+  NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<root>"
+                   "<command_id>10001</command_id>"
+                   "<command_type>execute</command_type>"
+                   "<id>%@</id>"
+                   "<action>warmcold</action>"
+                   "<value>%@</value>"
+                   "</root>",logicId,warmcoldValue];
+  
+  
+  NSDictionary *parameters = @{@"test" : str};
+  
+  [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
+     parameters:parameters
+        success:success
+        failure:failure];
+}
+
+
+#pragma mark - 向服务器发送YW灯亮度的方法
++ (void)sendYWBrightnessToServer:(NSString *)logicId brightnessValue:(NSString*)brightnessValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
+  
+  //增加这几行代码；
+  AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+  [securityPolicy setAllowInvalidCertificates:YES];
+  
+  AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+  [manager setSecurityPolicy:securityPolicy];
+  manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+  
+  NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                   "<root>"
+                   "<command_id>10001</command_id>"
+                   "<command_type>execute</command_type>"
+                   "<id>%@</id>"
+                   "<action>brightness</action>"
+                   "<value>%@</value>"
+                   "</root>",logicId,brightnessValue];
+  
+  
+  NSDictionary *parameters = @{@"test" : str};
+  
+  [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
+     parameters:parameters
+        success:success
+        failure:failure];
+}
+
+
+
+
 
 @end

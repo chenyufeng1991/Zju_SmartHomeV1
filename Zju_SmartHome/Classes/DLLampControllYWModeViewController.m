@@ -9,6 +9,9 @@
 #import "DLLampControllYWModeViewController.h"
 #import "ZQSlider.h"
 #import "CYFFurnitureViewController.h"
+#import "HttpRequest.h"
+
+
 @interface DLLampControllYWModeViewController ()
 @property (nonatomic, weak) UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIView *panelView;
@@ -126,7 +129,18 @@
 -(void)sliderValueChanged{
     self.LDValue.text = [NSString stringWithFormat:@"%d", (int)self.slider.value ];
     //在这里把亮暗值   (int)self.slider.value   传给服务器
+  
+
+  [HttpRequest sendYWBrightnessToServer:self.logic_id brightnessValue:[NSString stringWithFormat:@"%d", (int)self.slider.value ] success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
+    NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+    NSLog(@"YW亮暗返回成功：%@",result);
+
+    
+  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+    NSLog(@"YW亮暗返回失败：%@",error);
+  }];
+  
     
 }
 
@@ -234,7 +248,15 @@
         
         self.CWValue.text = [NSString stringWithFormat:@"%d", cwValue];
         //在这里把cwValuevalue值传给服务器
-
+      
+      [HttpRequest sendYWWarmColdToServer:self.logic_id warmcoldValue:[NSString stringWithFormat:@"%d", cwValue] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"YW冷暖返回成功：%@",result);
+        
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+         NSLog(@"YW冷暖返回失败：%@",error);
+      }];
 
         
     }
@@ -306,6 +328,17 @@
             if ((j = arc4random() % 2)) {
                 //在这里把cwValuevalue值传给服务器
 
+
+              [HttpRequest sendYWWarmColdToServer:self.logic_id warmcoldValue:[NSString stringWithFormat:@"%d", cwValue] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                
+                NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                NSLog(@"YW冷暖返回成功：%@",result);
+                
+              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                NSLog(@"YW冷暖返回失败：%@",error);
+              }];
+              
+              
 
             }
         }
