@@ -106,7 +106,7 @@
 {
   
   
-  if (self.isConnectNetworking) {
+//  if (self.isConnectNetworking) {
     //连接网络；
     
     //    //显示一个蒙板
@@ -185,7 +185,7 @@
     
     
     
-  }
+//  }
   
 }
 

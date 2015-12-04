@@ -38,7 +38,9 @@
     [super viewDidLoad];
     
     NSLog(@"8888 %@",self.logic_id);
-    
+  
+  self.title = @"YW灯";
+  
     self.leftFront.enabled=NO;
     self.rightNext.enabled=NO;
     self.rgbAdjust.enabled=NO;
