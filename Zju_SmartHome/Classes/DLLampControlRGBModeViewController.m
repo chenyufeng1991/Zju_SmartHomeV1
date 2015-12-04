@@ -8,6 +8,7 @@
 
 #import "DLLampControlRGBModeViewController.h"
 #import "ZQSlider.h"
+#import "AFNetworking.h"
 #import "DLLampControlDinnerModeViewController.h"
 @interface DLLampControlRGBModeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *rValue;
@@ -29,10 +30,12 @@
 {
     [super viewDidLoad];
     NSLog(@"====%@",self.logic_id);
-    self.leftFront.enabled=NO;
-    self.rightNext.enabled=NO;
+//    self.leftFront.enabled=NO;
+//    self.rightNext.enabled=NO;
     
     [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
+    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIButton *leftButton=[[UIButton alloc]init];
     [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
@@ -204,35 +207,34 @@
         //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
         
         
-                //            //增加这几行代码；
-                //            AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                //            [securityPolicy setAllowInvalidCertificates:YES];
-                //
-                //            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                //            [manager setSecurityPolicy:securityPolicy];
-                //            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                //
-                //            NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                //                             "<root>"
-                //                             "<command_id></command_id>"
-                //                             "<command_type>execute</command_type>"
-                //                             "<id>%@</id>"
-                //                             "<action>change_color</action>"
-                //                             "<value>%@,%@,%@</value>"
-                //                             "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-                //
-                //            NSDictionary *parameters = @{@"test" : str};
-                //
-                //            [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                //               parameters:parameters
-                //                  success:^(AFHTTPRequestOperation *operation,id responseObject){
-                //                      NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                //                      NSLog(@"成功: %@", string);
-                //                  }
-                //                  failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                //                      NSLog(@"失败: %@", error);
-                //                  }];
-                NSLog(@"nihao");
+                            //增加这几行代码；
+                            AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                            [securityPolicy setAllowInvalidCertificates:YES];
+                
+                            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                            [manager setSecurityPolicy:securityPolicy];
+                            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                
+                            NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                             "<root>"
+                                             "<command_id></command_id>"
+                                             "<command_type>execute</command_type>"
+                                             "<id>%@</id>"
+                                             "<action>change_color</action>"
+                                             "<value>%@,%@,%@</value>"
+                                             "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                
+                            NSDictionary *parameters = @{@"test" : str};
+                
+                            [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                               parameters:parameters
+                                  success:^(AFHTTPRequestOperation *operation,id responseObject){
+                                      NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                      NSLog(@"成功: %@", string);
+                                  }
+                                  failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                                      NSLog(@"失败: %@", error);
+                                  }];
     }
 }
 
@@ -273,35 +275,34 @@
         if ((i = arc4random() % 2)) {
             if ((j = arc4random() % 2)) {
                 //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
-                //            //增加这几行代码；
-                //            AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                //            [securityPolicy setAllowInvalidCertificates:YES];
-                //
-                //            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                //            [manager setSecurityPolicy:securityPolicy];
-                //            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                //
-                //            NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                //                             "<root>"
-                //                             "<command_id></command_id>"
-                //                             "<command_type>execute</command_type>"
-                //                             "<id>%@</id>"
-                //                             "<action>change_color</action>"
-                //                             "<value>%@,%@,%@</value>"
-                //                             "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-                //
-                //            NSDictionary *parameters = @{@"test" : str};
-                //
-                //            [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                //               parameters:parameters
-                //                  success:^(AFHTTPRequestOperation *operation,id responseObject){
-                //                      NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                //                      NSLog(@"成功: %@", string);
-                //                  }
-                //                  failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                //                      NSLog(@"失败: %@", error);
-                //                  }];
-                NSLog(@"nihao");
+                            //增加这几行代码；
+                            AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                            [securityPolicy setAllowInvalidCertificates:YES];
+                
+                            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                            [manager setSecurityPolicy:securityPolicy];
+                            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                
+                            NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                             "<root>"
+                                             "<command_id></command_id>"
+                                             "<command_type>execute</command_type>"
+                                             "<id>%@</id>"
+                                             "<action>change_color</action>"
+                                             "<value>%@,%@,%@</value>"
+                                             "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                
+                            NSDictionary *parameters = @{@"test" : str};
+                
+                            [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                               parameters:parameters
+                                  success:^(AFHTTPRequestOperation *operation,id responseObject){
+                                      NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                      NSLog(@"成功: %@", string);
+                                  }
+                                  failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                                      NSLog(@"失败: %@", error);
+                                  }];
             }
         }
     }
@@ -404,9 +405,26 @@
 
 -(void)modeSelected
 {
-     self.leftFront.enabled=YES;
+    self.leftFront.enabled=YES;
     self.rightNext.enabled=YES;
     [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+}
+-(void)leftGo
+{
+
+    for (UIViewController *controller in self.navigationController.viewControllers)
+    {
+        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]])
+        {
+            
+            DLLampControlDinnerModeViewController *vc=[[DLLampControlDinnerModeViewController alloc]init];
+            vc=(DLLampControlDinnerModeViewController *)controller;
+            vc.logic_id=self.logic_id;
+            [self.navigationController popToViewController:vc animated:YES];
+            
+        }
+        
+    }
 }
 
 @end

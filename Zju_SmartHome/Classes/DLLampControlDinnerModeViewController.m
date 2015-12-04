@@ -41,8 +41,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.leftFront.enabled=NO;
-    self.rightNext.enabled=NO;
+   // self.rightNext.enabled=NO;
+    
+    [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+   // self.modeSelect.enabled=NO;
     
     [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
@@ -200,36 +204,36 @@
         viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
     viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         
-////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
+//在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
         
-//                //增加这几行代码
-//                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-//                [securityPolicy setAllowInvalidCertificates:YES];
-//                
-//                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-//                [manager setSecurityPolicy:securityPolicy];
-//                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-//                
-//                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-//                                 "<root>"
-//                                 "<command_id></command_id>"
-//                                 "<command_type>execute</command_type>"
-//                                 "<id>%@</id>"
-//                                 "<action>change_color</action>"
-//                                 "<value>%@,%@,%@</value>"
-//                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-//                
-//                NSDictionary *parameters = @{@"test" : str};
-//                
-//                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-//                   parameters:parameters
-//                      success:^(AFHTTPRequestOperation *operation,id responseObject){
-//                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-//                          NSLog(@"成功: %@", string);
-//                      }
-//                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
-//                          NSLog(@"失败: %@", error);
-//                      }];
+                //增加这几行代码
+                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                [securityPolicy setAllowInvalidCertificates:YES];
+                
+                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                [manager setSecurityPolicy:securityPolicy];
+                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                
+                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                 "<root>"
+                                 "<command_id></command_id>"
+                                 "<command_type>execute</command_type>"
+                                 "<id>%@</id>"
+                                 "<action>change_color</action>"
+                                 "<value>%@,%@,%@</value>"
+                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                
+                NSDictionary *parameters = @{@"test" : str};
+                
+                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                   parameters:parameters
+                      success:^(AFHTTPRequestOperation *operation,id responseObject){
+                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                          NSLog(@"成功: %@", string);
+                      }
+                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                          NSLog(@"失败: %@", error);
+                      }];
     }
 }
 
@@ -270,34 +274,34 @@
         if ((i = arc4random() % 2)) {
             if ((j = arc4random() % 2)) {
                 ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
-                //                //增加这几行代码
-                //                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                //                [securityPolicy setAllowInvalidCertificates:YES];
-                //
-                //                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                //                [manager setSecurityPolicy:securityPolicy];
-                //                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                //
-                //                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                //                                 "<root>"
-                //                                 "<command_id></command_id>"
-                //                                 "<command_type>execute</command_type>"
-                //                                 "<id>%@</id>"
-                //                                 "<action>change_color</action>"
-                //                                 "<value>%@,%@,%@</value>"
-                //                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-                //
-                //                NSDictionary *parameters = @{@"test" : str};
-                //
-                //                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                //                   parameters:parameters
-                //                      success:^(AFHTTPRequestOperation *operation,id responseObject){
-                //                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                //                          NSLog(@"成功: %@", string);
-                //                      }
-                //                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                //                          NSLog(@"失败: %@", error);
-                //                      }];
+                                //增加这几行代码
+                                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                                [securityPolicy setAllowInvalidCertificates:YES];
+                
+                                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                                [manager setSecurityPolicy:securityPolicy];
+                                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                
+                                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                                 "<root>"
+                                                 "<command_id></command_id>"
+                                                 "<command_type>execute</command_type>"
+                                                 "<id>%@</id>"
+                                                 "<action>change_color</action>"
+                                                 "<value>%@,%@,%@</value>"
+                                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                
+                                NSDictionary *parameters = @{@"test" : str};
+                
+                                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                                   parameters:parameters
+                                      success:^(AFHTTPRequestOperation *operation,id responseObject){
+                                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                          NSLog(@"成功: %@", string);
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                                          NSLog(@"失败: %@", error);
+                                      }];
             }
         }
     }

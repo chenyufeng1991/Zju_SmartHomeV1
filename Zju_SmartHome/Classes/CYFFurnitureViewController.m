@@ -662,9 +662,8 @@ NS_ENUM(NSInteger, ProviderEditingState)
       for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
       {
           JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
-          NSLog(@"%@ %@",back.name,back.scene_name);
+          NSLog(@"111%@ 222%@",back.name,back.scene_name);
       }
-    
       
     [self judge];
     
@@ -838,7 +837,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //         [self.headerArray addObject:furnitureBack.scene_name];
 //         NSLog(@"我想看看这时候的区域是几个%lu",(unsigned long)self.furnitureSecArray.count);
      }
-        NSLog(@"啦啦啦啦");
 //      JYFurniture *temp=[[JYFurniture alloc]init];
 //      temp=[self.furnitureArray lastObject];
 //      [self.furnitureArray removeLastObject];
@@ -865,7 +863,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
         //如果从服务器返回的电器与已有电器描述一致
         if([furnitureBack.name isEqualToString:self.descArray[k]])
         {
-            NSLog(@"555577777");
           //那就从self.furnitureSecArray中找到它
           JYFurnitureSection *section=[self.furnitureSecArray objectAtIndex:j];
           JYFurniture *furniture=[section.furnitureArray objectAtIndex:k];

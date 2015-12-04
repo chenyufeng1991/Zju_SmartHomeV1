@@ -265,10 +265,7 @@
         viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         
         
-        /**
-         *  以下判断代码真的是丧心病狂，63这个值真是可怜，代码不忍直视，为什么写了很多无意思的数值，只是想让YW灯的冷暖值
-         *  从零取到一百，生生的把它凑成了一百
-         */
+       
         int cwValue = (int)(touchLocation.y / 2.5) - 2;
         if (fabsf(([[UIScreen mainScreen] bounds].size.height - 480)) < 1) {
             // 4 & 4s
