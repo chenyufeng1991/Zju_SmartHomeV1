@@ -23,6 +23,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftFront;
 
 @property (weak, nonatomic) IBOutlet UIButton *rightNext;
+
+@property (weak, nonatomic) IBOutlet UIButton *modeSelect;
+
 @end
 
 @implementation DLLampControlReadingModeViewController
@@ -51,6 +54,8 @@
     
     [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
+    [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+    [self.modeSelect setAdjustsImageWhenHighlighted:NO];
     
     
     UIImageView *imgView = [[UIImageView alloc]init];
