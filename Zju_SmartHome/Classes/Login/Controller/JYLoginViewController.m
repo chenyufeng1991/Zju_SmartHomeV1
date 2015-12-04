@@ -26,17 +26,6 @@
 
 @property(nonatomic,strong)JYLoginXib *loginXib;
 
-@property(nonatomic,assign) BOOL isConnectNetworking;
-
-
-@property(nonatomic,assign) BOOL isFirstShowAlertDialog;
-
-
-
-@property (nonatomic) Reachability *hostReachability;
-@property (nonatomic) Reachability *internetReachability;
-@property (nonatomic) Reachability *wifiReachability;
-
 @end
 
 @implementation JYLoginViewController
@@ -55,28 +44,6 @@
   loginXib.username.delegate=self;
   self.view=loginXib;
   
-  
-  
-  //下面是与网络判断有关的；
-  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-  
-  NSString *remoteHostName = @"http://www.baidu.com";
-  
-  self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
-  [self.hostReachability startNotifier];
-  [self updateInterfaceWithReachability:self.hostReachability];
-  
-  self.internetReachability = [Reachability reachabilityForInternetConnection];
-  [self.internetReachability startNotifier];
-  [self updateInterfaceWithReachability:self.internetReachability];
-  
-  self.wifiReachability = [Reachability reachabilityForLocalWiFi];
-  [self.wifiReachability startNotifier];
-  [self updateInterfaceWithReachability:self.wifiReachability];
-  
-  
-  self.isConnectNetworking = false;
-  self.isFirstShowAlertDialog = true;
   
 }
 
@@ -105,8 +72,6 @@
 -(void)loginGoGoGo:(NSString *)username and:(NSString *)password
 {
   
-  
-//  if (self.isConnectNetworking) {
     //连接网络；
     
     //    //显示一个蒙板
@@ -182,10 +147,6 @@
         [MBProgressHUD showError:@"登录请求失败"];
 
     }];
-    
-    
-    
-//  }
   
 }
 
@@ -206,107 +167,6 @@
   //[self.navigationController pushViewController:navVc animated:YES];
   
   
-}
-
-#pragma mark - 判断是否联网
-
-- (void) reachabilityChanged:(NSNotification *)note
-{
-  Reachability* curReach = [note object];
-//  NSParameterAssert([curReach isKindOfClass:[Reachability class]]);
-  [self updateInterfaceWithReachability:curReach];
-}
-
-
-- (void)updateInterfaceWithReachability:(Reachability *)reachability
-{
-  if (reachability == self.hostReachability)
-  {
-    [self configureTextField: reachability];
-    
-    
-  }
-  
-  if (reachability == self.internetReachability)
-  {
-    [self configureTextField: reachability];
-  }
-  
-  if (reachability == self.wifiReachability)
-  {
-    [self configureTextField:reachability];
-  }
-}
-
-
-- (void)configureTextField:(Reachability *)reachability
-{
-  NetworkStatus netStatus = [reachability currentReachabilityStatus];
-  BOOL connectionRequired = [reachability connectionRequired];
-  
-  switch (netStatus)
-  {
-    case NotReachable:
-    {
-      
-      NSLog(@"网络不可用");
-      self.isConnectNetworking = false;
-      
-      connectionRequired = NO;
-      
-       NSLog(@"布尔值1：%d",self.isFirstShowAlertDialog);
-      
-      if (!self.isFirstShowAlertDialog) {
-
-         NSLog(@"布尔值2：%d",self.isFirstShowAlertDialog);
-        
-           UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"未连接网络，请确定后再试"
-                                                     delegate:self
-                                            cancelButtonTitle:@"提示" otherButtonTitles:nil];
-      
-      
-      [alert show];
-
-        self.isFirstShowAlertDialog = !self.isFirstShowAlertDialog;
-         NSLog(@"布尔值3：%d",self.isFirstShowAlertDialog);
-      }
-    
-      break;
-    }
-      
-    case ReachableViaWWAN:
-    {
-      NSLog(@"连接WWAN");
-      self.isConnectNetworking = true;
-      
-      
-      if (!self.isFirstShowAlertDialog) {
-        self.isFirstShowAlertDialog = !self.isFirstShowAlertDialog;
-      }
-      
-      break;
-    }
-    case ReachableViaWiFi:
-    {
-      
-      NSLog(@"当前连接了WiFi");
-      self.isConnectNetworking = true;
-      
-      
-      if (!self.isFirstShowAlertDialog) {
-        self.isFirstShowAlertDialog = !self.isFirstShowAlertDialog;
-      }
-      
-      break;
-    }
-  }//switch；
-  
-}
-
-
-- (void)dealloc
-{
-  [[NSNotificationCenter defaultCenter] removeObserver:self name:kReachabilityChangedNotification object:nil];
 }
 
 
