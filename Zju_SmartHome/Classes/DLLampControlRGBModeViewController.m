@@ -9,7 +9,7 @@
 #import "DLLampControlRGBModeViewController.h"
 #import "ZQSlider.h"
 #import "AFNetworking.h"
-#import "DLLampControlDinnerModeViewController.h"
+#import "DLLampControlSleepModeViewController.h"
 @interface DLLampControlRGBModeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *rValue;
 @property (weak, nonatomic) IBOutlet UILabel *gValue;
@@ -29,11 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"====%@",self.logic_id);
-//    self.leftFront.enabled=NO;
-//    self.rightNext.enabled=NO;
+
     
-    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
+//    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -44,6 +42,13 @@
     [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
+    UILabel *titleView=[[UILabel alloc]init];
+    [titleView setText:@"RGB灯"];
+    titleView.frame=CGRectMake(0, 0, 100, 16);
+    titleView.font=[UIFont systemFontOfSize:16];
+    [titleView setTextColor:[UIColor whiteColor]];
+    titleView.textAlignment=NSTextAlignmentCenter;
+    self.navigationItem.titleView=titleView;
     
     
     UIImageView *imgView = [[UIImageView alloc]init];
@@ -408,7 +413,7 @@
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
         
-        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]]) {
+        if ([controller isKindOfClass:[DLLampControlSleepModeViewController class]]) {
             
             [self.navigationController popToViewController:controller animated:YES];
             
@@ -417,22 +422,22 @@
     }
 }
 
--(void)modeSelected
-{
-    self.leftFront.enabled=YES;
-    self.rightNext.enabled=YES;
-    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
-}
+//-(void)modeSelected
+//{
+//    self.leftFront.enabled=YES;
+//    self.rightNext.enabled=YES;
+//    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+//}
 -(void)leftGo
 {
 
     for (UIViewController *controller in self.navigationController.viewControllers)
     {
-        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]])
+        if ([controller isKindOfClass:[DLLampControlSleepModeViewController class]])
         {
             
-            DLLampControlDinnerModeViewController *vc=[[DLLampControlDinnerModeViewController alloc]init];
-            vc=(DLLampControlDinnerModeViewController *)controller;
+            DLLampControlSleepModeViewController *vc=[[DLLampControlSleepModeViewController alloc]init];
+            vc=(DLLampControlSleepModeViewController *)controller;
             vc.logic_id=self.logic_id;
             [self.navigationController popToViewController:vc animated:YES];
             

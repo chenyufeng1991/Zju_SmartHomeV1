@@ -9,8 +9,10 @@
                 <outlet property="bValue" destination="zKu-5I-OXs" id="gY7-JC-wA8"/>
                 <outlet property="colorPreview" destination="SgZ-dt-DUB" id="jem-ht-az2"/>
                 <outlet property="gValue" destination="XsZ-Ub-SIT" id="C8Y-1O-PFS"/>
+                <outlet property="leftFront" destination="stU-um-fky" id="xcA-Sp-wTy"/>
                 <outlet property="panelView" destination="UI9-Kg-H4s" id="Dy0-Yu-l4y"/>
                 <outlet property="rValue" destination="vK1-Rs-ToO" id="7Mw-ob-e5q"/>
+                <outlet property="rightNext" destination="gYh-I8-Lsm" id="SAE-AE-vcD"/>
                 <outlet property="view" destination="ggg-vb-Fio" id="wim-Iz-Slm"/>
             </connections>
         </placeholder>
@@ -19,12 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="JGn-iO-NWy" userLabel="back">
-                    <rect key="frame" x="0.0" y="16" width="30" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <state key="normal" backgroundImage="ct_icon_leftbutton"/>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h5t-LP-14i" userLabel="switch">
                     <rect key="frame" x="280" y="11" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -158,14 +154,14 @@
                             <state key="normal" backgroundImage="temperture"/>
                             <state key="highlighted" backgroundImage="temperature_highlight"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8NH-vP-aeY" userLabel="model">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="8NH-vP-aeY" userLabel="model">
                             <rect key="frame" x="247" y="0.0" width="35" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
-                            <state key="normal" backgroundImage="ct_icon_model_unpress"/>
+                            <state key="normal" backgroundImage="ct_icon_model_press"/>
                             <state key="highlighted" backgroundImage="ct_icon_model_press"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bF8-A9-tMa" userLabel="color">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bF8-A9-tMa" userLabel="color">
                             <rect key="frame" x="0.0" y="264" width="35" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
@@ -207,7 +203,6 @@
         <image name="ct_icon_color_press" width="40" height="40"/>
         <image name="ct_icon_leftbutton" width="40" height="40"/>
         <image name="ct_icon_model_press" width="40" height="40"/>
-        <image name="ct_icon_model_unpress" width="40" height="40"/>
         <image name="ct_icon_music_press" width="40" height="40"/>
         <image name="ct_icon_music_unpress" width="40" height="40"/>
         <image name="ct_icon_rightbutton" width="40" height="40"/>

@@ -7,7 +7,10 @@
 //
 
 #import "DLLampControlSleepModeViewController.h"
+#import "DLLampControlReadingModeViewController.h"
+#import "DLLampControlRGBModeViewController.h"
 #import "ZQSlider.h"
+#import "AFNetworking.h"
 @interface DLLampControlSleepModeViewController ()
 @property (nonatomic, weak) UISlider *slider;
 @property (nonatomic, weak) UIImageView *imgView;
@@ -16,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *gValue;
 @property (weak, nonatomic) IBOutlet UILabel *bValue;
 @property (weak, nonatomic) IBOutlet UIView *colorPreview;
+
+@property (weak, nonatomic) IBOutlet UIButton *leftFront;
+@property (weak, nonatomic) IBOutlet UIButton *rightNext;
 @end
 
 @implementation DLLampControlSleepModeViewController
@@ -26,6 +32,26 @@
     [super viewDidLoad];
     
 //    NSLog(@"00000 %@",self.logic_id);
+    
+    UIButton *leftButton=[[UIButton alloc]init];
+    [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
+    leftButton.frame=CGRectMake(0, 0, 25, 25);
+    [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem = leftItem;
+    UILabel *titleView=[[UILabel alloc]init];
+    [titleView setText:@"RGB灯"];
+    titleView.frame=CGRectMake(0, 0, 100, 16);
+    titleView.font=[UIFont systemFontOfSize:16];
+    [titleView setTextColor:[UIColor whiteColor]];
+    titleView.textAlignment=NSTextAlignmentCenter;
+    self.navigationItem.titleView=titleView;
+    
+    
+    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
+    [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
@@ -163,42 +189,47 @@
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
         self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
         self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+        NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+        NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
+        
+        NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
+        
         self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         //!!!:ATTENTIOIN
         //        viewColorPickerPositionIndicator.center = touchLocation;
         viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
         viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         
-        ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
+        //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
         
-        //                //增加这几行代码
-        //                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-        //                [securityPolicy setAllowInvalidCertificates:YES];
-        //
-        //                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        //                [manager setSecurityPolicy:securityPolicy];
-        //                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        //
-        //                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-        //                                 "<root>"
-        //                                 "<command_id></command_id>"
-        //                                 "<command_type>execute</command_type>"
-        //                                 "<id>%@</id>"
-        //                                 "<action>change_color</action>"
-        //                                 "<value>%@,%@,%@</value>"
-        //                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-        //
-        //                NSDictionary *parameters = @{@"test" : str};
-        //
-        //                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-        //                   parameters:parameters
-        //                      success:^(AFHTTPRequestOperation *operation,id responseObject){
-        //                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        //                          NSLog(@"成功: %@", string);
-        //                      }
-        //                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
-        //                          NSLog(@"失败: %@", error);
-        //                      }];
+                        //增加这几行代码
+                        AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                        [securityPolicy setAllowInvalidCertificates:YES];
+        
+                        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                        [manager setSecurityPolicy:securityPolicy];
+                        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+                        NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                         "<root>"
+                                         "<command_id></command_id>"
+                                         "<command_type>execute</command_type>"
+                                         "<id>%@</id>"
+                                         "<action>change_color</action>"
+                                         "<value>%@,%@,%@</value>"
+                                         "</root>",  self.logic_id,r,g,b];
+        
+                        NSDictionary *parameters = @{@"test" : str};
+        
+                        [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                           parameters:parameters
+                              success:^(AFHTTPRequestOperation *operation,id responseObject){
+                                  NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                  NSLog(@"成功: %@", string);
+                              }
+                              failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                                  NSLog(@"失败: %@", error);
+                              }];
     }
 }
 
@@ -228,6 +259,11 @@
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
         self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
         self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+        NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+        NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
+        
+        NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
+        
         self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         //!!!:ATTENTIOIN
         //        viewColorPickerPositionIndicator.center = touchLocation;
@@ -239,35 +275,35 @@
         if ((i = arc4random() % 2)) {
             if ((j = arc4random() % 2)) {
                 if ((k = arc4random() % 2)) {
-                ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
-                //                //增加这几行代码
-                //                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                //                [securityPolicy setAllowInvalidCertificates:YES];
-                //
-                //                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                //                [manager setSecurityPolicy:securityPolicy];
-                //                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                //
-                //                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                //                                 "<root>"
-                //                                 "<command_id></command_id>"
-                //                                 "<command_type>execute</command_type>"
-                //                                 "<id>%@</id>"
-                //                                 "<action>change_color</action>"
-                //                                 "<value>%@,%@,%@</value>"
-                //                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-                //
-                //                NSDictionary *parameters = @{@"test" : str};
-                //
-                //                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                //                   parameters:parameters
-                //                      success:^(AFHTTPRequestOperation *operation,id responseObject){
-                //                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                //                          NSLog(@"成功: %@", string);
-                //                      }
-                //                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                //                          NSLog(@"失败: %@", error);
-                //                      }];
+                //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
+                                //增加这几行代码
+                                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                                [securityPolicy setAllowInvalidCertificates:YES];
+                
+                                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                                [manager setSecurityPolicy:securityPolicy];
+                                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                
+                                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                                 "<root>"
+                                                 "<command_id></command_id>"
+                                                 "<command_type>execute</command_type>"
+                                                 "<id>%@</id>"
+                                                 "<action>change_color</action>"
+                                                 "<value>%@,%@,%@</value>"
+                                                 "</root>",  self.logic_id,r,g,b];
+                
+                                NSDictionary *parameters = @{@"test" : str};
+                
+                                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                                   parameters:parameters
+                                      success:^(AFHTTPRequestOperation *operation,id responseObject){
+                                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                          NSLog(@"成功: %@", string);
+                                      }
+                                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                                          NSLog(@"失败: %@", error);
+                                      }];
                 }
             }
         }
@@ -356,4 +392,40 @@
 }
 
 //****************************************结束
+
+- (void)leftBtnClicked{
+    
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        
+        if ([controller isKindOfClass:[DLLampControlReadingModeViewController class]]) {
+            
+            [self.navigationController popToViewController:controller animated:YES];
+            
+        }
+        
+    }
+}
+
+-(void)leftGo
+{
+    for (UIViewController *controller in self.navigationController.viewControllers)
+    {
+        if ([controller isKindOfClass:[DLLampControlReadingModeViewController class]])
+        {
+            
+            DLLampControlReadingModeViewController *vc=[[DLLampControlReadingModeViewController alloc]init];
+            vc=(DLLampControlReadingModeViewController *)controller;
+            vc.logic_id=self.logic_id;
+            [self.navigationController popToViewController:vc animated:YES];
+            
+        }
+        
+    }
+}
+-(void)rightGo
+{
+    DLLampControlRGBModeViewController *vc=[[DLLampControlRGBModeViewController alloc]init];
+    vc.logic_id=self.logic_id;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end
