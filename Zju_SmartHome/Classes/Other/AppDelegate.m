@@ -18,7 +18,7 @@
 #import "DLLampControllYWModeViewController.h"
 #import "DLLampControlRGBModeViewController.h"
 #import "CYFFurnitureViewController.h"
-
+#import "DLLampControlGuestModeViewController.h"
 #define appKey @"c879b326344c"
 #define appSecret @"82810facbfba262d63c14ed5dcc5998c"
 @interface AppDelegate ()
@@ -60,7 +60,7 @@
    // JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:jyVc];
     //self.window.rootViewController=navVc;
     self.window.rootViewController=[[JYLoginViewController alloc]init];
-    //self.window.rootViewController=[[DLLampControlRGBModeViewController alloc]init];
+    //self.window.rootViewController=[[DLLampControlGuestModeViewController alloc]init];
     //}
     application.statusBarStyle=UIStatusBarStyleLightContent;
     [self.window makeKeyAndVisible];
