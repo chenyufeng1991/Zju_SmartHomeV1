@@ -1,50 +1,31 @@
 //
-//  DLLampControlRGBModeViewController.m
+//  DLLampControlSleepModeViewController.m
 //  Zju_SmartHome
 //
-//  Created by TooWalker on 15/12/2.
+//  Created by TooWalker on 15/12/4.
 //  Copyright © 2015年 GJY. All rights reserved.
 //
 
-#import "DLLampControlRGBModeViewController.h"
+#import "DLLampControlSleepModeViewController.h"
 #import "ZQSlider.h"
-#import "AFNetworking.h"
-#import "DLLampControlDinnerModeViewController.h"
-@interface DLLampControlRGBModeViewController ()
+@interface DLLampControlSleepModeViewController ()
+@property (nonatomic, weak) UISlider *slider;
+@property (nonatomic, weak) UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UIView *panelView;
 @property (weak, nonatomic) IBOutlet UILabel *rValue;
 @property (weak, nonatomic) IBOutlet UILabel *gValue;
 @property (weak, nonatomic) IBOutlet UILabel *bValue;
-@property (weak, nonatomic) IBOutlet UIView *panelView;
 @property (weak, nonatomic) IBOutlet UIView *colorPreview;
-
-@property (nonatomic, weak) UIImageView *imgView;
-@property (nonatomic, assign) CGPoint *touchPoint;
-@property (nonatomic, weak) UISlider *slider;
-
-
 @end
 
-@implementation DLLampControlRGBModeViewController
+@implementation DLLampControlSleepModeViewController
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"====%@",self.logic_id);
-//    self.leftFront.enabled=NO;
-//    self.rightNext.enabled=NO;
     
-    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
-    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIButton *leftButton=[[UIButton alloc]init];
-    [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
-    leftButton.frame=CGRectMake(0, 0, 25, 25);
-    [leftButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
-    [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
-    self.navigationItem.leftBarButtonItem = leftItem;
-    
+//    NSLog(@"00000 %@",self.logic_id);
     
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
@@ -69,17 +50,9 @@
     self.slider = slider;
     [slider addTarget:self action:@selector(sliderValueChanged) forControlEvents:UIControlEventValueChanged];
     
-    if (fabsf(([[UIScreen mainScreen] bounds].size.height - 480)) < 1) {
-        // 4 & 4s
-        //        imgView.image = [UIImage imageNamed:@"circle_5"];
-        //        viewColorPickerPositionIndicator.frame = CGRectMake(70, 70, 16, 16);
-        //        viewColorPickerPositionIndicator.layer.cornerRadius = 8;
-        //        viewColorPickerPositionIndicator.layer.borderWidth = 2;
-        //        btnPlay.frame = CGRectMake(111, 111, 60, 60);
-    }
     if (fabsf(([[UIScreen mainScreen] bounds].size.height - 568)) < 1){
         // 5 & 5s & 5c
-        imgView.image = [UIImage imageNamed:@"RGBCircle_5"];
+        imgView.image = [UIImage imageNamed:@"sleeping_5"];
         viewColorPickerPositionIndicator.frame = CGRectMake(70, 70, 16, 16);
         viewColorPickerPositionIndicator.layer.cornerRadius = 8;
         viewColorPickerPositionIndicator.layer.borderWidth = 2;
@@ -88,7 +61,7 @@
         
     }else if (fabsf(([[UIScreen mainScreen] bounds].size.height - 667)) < 1) {
         // 6 & 6s
-        imgView.image = [UIImage imageNamed:@"RGBCircle_6"];
+        imgView.image = [UIImage imageNamed:@"sleeping_6"];
         viewColorPickerPositionIndicator.frame = CGRectMake(75, 75, 20, 20);
         viewColorPickerPositionIndicator.layer.cornerRadius = 10;
         viewColorPickerPositionIndicator.layer.borderWidth = 2;
@@ -97,7 +70,7 @@
         
     }else if (fabsf(([[UIScreen mainScreen] bounds].size.height - 736)) < 1){
         // 6p & 6sp
-        imgView.image = [UIImage imageNamed:@"RGBCircle_6p"];
+        imgView.image = [UIImage imageNamed:@"sleeping_6p"];
         viewColorPickerPositionIndicator.frame = CGRectMake(80, 80, 24, 24);
         viewColorPickerPositionIndicator.layer.cornerRadius = 12;
         viewColorPickerPositionIndicator.layer.borderWidth = 2;
@@ -106,18 +79,14 @@
         
     }
     
-    if (fabsf(([[UIScreen mainScreen] bounds].size.height - 480)) < 1) {
-        //4 & 4s 的时候特判
-        //        imgView.frame = CGRectMake(30.0f, 30.0f, imgView.image.size.width, imgView.image.size.height);
-    }else {
-        imgView.frame = CGRectMake(35.0f, 35.0f, imgView.image.size.width, imgView.image.size.height);
-    }
+    imgView.frame = CGRectMake(35.0f, 35.0f, imgView.image.size.width, imgView.image.size.height);
+    
     
     imgView.userInteractionEnabled = YES;
     _imgView = imgView;
     
-    viewColorPickerPositionIndicator.backgroundColor = [UIColor colorWithRed:0.588 green:0.882 blue:0.380 alpha:1.000];
-    
+//    viewColorPickerPositionIndicator.backgroundColor = [UIColor colorWithRed:0.678 green:0.169 blue:0.710 alpha:1.000];
+    viewColorPickerPositionIndicator.backgroundColor = [UIColor clearColor];
     [btnPlay setBackgroundImage:[UIImage imageNamed:@"ct_icon_buttonbreak-off"] forState:UIControlStateNormal];
     
     [self.panelView addSubview:imgView];
@@ -130,6 +99,7 @@
     //    NSLog(@"%d", self.slider.value);
     
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -156,7 +126,6 @@
     if (pointInRound) {
         hitView = imgView;
     }
-    //    NSLog(@"%@", hitView);
     return hitView;
 }
 
@@ -178,12 +147,10 @@
  *  开始点击的方法
  */
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-
     UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
     UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
     UITouch *touch = touches.anyObject;
-    //!!!:ATTENTION
-    //    CGPoint touchLocation = [touch locationInView:self.window];
+    
     CGPoint touchLocation = [touch locationInView:self.imgView];
     UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
     const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
@@ -192,9 +159,7 @@
                            bigRadius:colorImageView.frame.size.width * 0.48
                          smallRadius:colorImageView.frame.size.width * 0.41        //0.39
                          targetPoint:touchLocation]) {
-        //        NSLog(@"R = %d, G = %d, B = %d", (int)(components[0] * 255),
-        //              (int)(components[1] * 255),
-        //              (int)(components[2] * 255));
+        
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
         self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
         self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
@@ -202,52 +167,55 @@
         //!!!:ATTENTIOIN
         //        viewColorPickerPositionIndicator.center = touchLocation;
         viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
-        //        viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:viewColorPickerPositionIndicator.center];
         viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
-        //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
         
+        ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
         
-                            //增加这几行代码；
-                            AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                            [securityPolicy setAllowInvalidCertificates:YES];
-                
-                            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                            [manager setSecurityPolicy:securityPolicy];
-                            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                
-                            NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                                             "<root>"
-                                             "<command_id></command_id>"
-                                             "<command_type>execute</command_type>"
-                                             "<id>%@</id>"
-                                             "<action>change_color</action>"
-                                             "<value>%@,%@,%@</value>"
-                                             "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-                
-                            NSDictionary *parameters = @{@"test" : str};
-                
-                            [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                               parameters:parameters
-                                  success:^(AFHTTPRequestOperation *operation,id responseObject){
-                                      NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                                      NSLog(@"成功: %@", string);
-                                  }
-                                  failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                                      NSLog(@"失败: %@", error);
-                                  }];
+        //                //增加这几行代码
+        //                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+        //                [securityPolicy setAllowInvalidCertificates:YES];
+        //
+        //                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        //                [manager setSecurityPolicy:securityPolicy];
+        //                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        //
+        //                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+        //                                 "<root>"
+        //                                 "<command_id></command_id>"
+        //                                 "<command_type>execute</command_type>"
+        //                                 "<id>%@</id>"
+        //                                 "<action>change_color</action>"
+        //                                 "<value>%@,%@,%@</value>"
+        //                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+        //
+        //                NSDictionary *parameters = @{@"test" : str};
+        //
+        //                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+        //                   parameters:parameters
+        //                      success:^(AFHTTPRequestOperation *operation,id responseObject){
+        //                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        //                          NSLog(@"成功: %@", string);
+        //                      }
+        //                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
+        //                          NSLog(@"失败: %@", error);
+        //                      }];
     }
 }
+
+
+
 
 /**
  *  手指在屏幕上移动的方法
  */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
     UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
     UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
     UITouch *touch = touches.anyObject;
     //!!!:ATTENTION
-    //    CGPoint touchLocation = [touch locationInView:self.window];
+    
     CGPoint touchLocation = [touch locationInView:self.imgView];
     UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
     const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
@@ -256,7 +224,7 @@
                            bigRadius:colorImageView.frame.size.width * 0.48
                          smallRadius:colorImageView.frame.size.width * 0.41        //0.39
                          targetPoint:touchLocation]) {
-
+        
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
         self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
         self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
@@ -264,51 +232,48 @@
         //!!!:ATTENTIOIN
         //        viewColorPickerPositionIndicator.center = touchLocation;
         viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
-        //        viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:viewColorPickerPositionIndicator.center];
         viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
-        
-        
-        
         
         
         int i, j, k;
         if ((i = arc4random() % 2)) {
             if ((j = arc4random() % 2)) {
                 if ((k = arc4random() % 2)) {
-                //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
-                            //增加这几行代码；
-                            AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                            [securityPolicy setAllowInvalidCertificates:YES];
-                
-                            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                            [manager setSecurityPolicy:securityPolicy];
-                            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                
-                            NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                                             "<root>"
-                                             "<command_id></command_id>"
-                                             "<command_type>execute</command_type>"
-                                             "<id>%@</id>"
-                                             "<action>change_color</action>"
-                                             "<value>%@,%@,%@</value>"
-                                             "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
-                
-                            NSDictionary *parameters = @{@"test" : str};
-                
-                            [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                               parameters:parameters
-                                  success:^(AFHTTPRequestOperation *operation,id responseObject){
-                                      NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                                      NSLog(@"成功: %@", string);
-                                  }
-                                  failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                                      NSLog(@"失败: %@", error);
-                                  }];
+                ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
+                //                //增加这几行代码
+                //                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                //                [securityPolicy setAllowInvalidCertificates:YES];
+                //
+                //                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                //                [manager setSecurityPolicy:securityPolicy];
+                //                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                //
+                //                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                //                                 "<root>"
+                //                                 "<command_id></command_id>"
+                //                                 "<command_type>execute</command_type>"
+                //                                 "<id>%@</id>"
+                //                                 "<action>change_color</action>"
+                //                                 "<value>%@,%@,%@</value>"
+                //                                 "</root>",  self.logic_id,self.rValue.text,self.gValue.text,self.bValue.text];
+                //
+                //                NSDictionary *parameters = @{@"test" : str};
+                //
+                //                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                //                   parameters:parameters
+                //                      success:^(AFHTTPRequestOperation *operation,id responseObject){
+                //                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                //                          NSLog(@"成功: %@", string);
+                //                      }
+                //                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                //                          NSLog(@"失败: %@", error);
+                //                      }];
                 }
             }
         }
     }
 }
+
 
 //*****************************获取屏幕点触位置的RGB值的方法************************************//
 - (UIColor *) getPixelColorAtLocation:(CGPoint)point {
@@ -391,42 +356,4 @@
 }
 
 //****************************************结束
-
-- (void)leftBtnClicked{
-    
-    for (UIViewController *controller in self.navigationController.viewControllers) {
-        
-        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]]) {
-            
-            [self.navigationController popToViewController:controller animated:YES];
-            
-        }
-        
-    }
-}
-
--(void)modeSelected
-{
-    self.leftFront.enabled=YES;
-    self.rightNext.enabled=YES;
-    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
-}
--(void)leftGo
-{
-
-    for (UIViewController *controller in self.navigationController.viewControllers)
-    {
-        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]])
-        {
-            
-            DLLampControlDinnerModeViewController *vc=[[DLLampControlDinnerModeViewController alloc]init];
-            vc=(DLLampControlDinnerModeViewController *)controller;
-            vc.logic_id=self.logic_id;
-            [self.navigationController popToViewController:vc animated:YES];
-            
-        }
-        
-    }
-}
-
 @end

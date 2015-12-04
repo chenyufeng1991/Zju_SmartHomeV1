@@ -46,9 +46,9 @@
    // self.rightNext.enabled=NO;
     
     [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
-   // self.modeSelect.enabled=NO;
+    self.modeSelect.enabled=NO;
     
-    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
+//    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
     
@@ -110,7 +110,7 @@
         viewColorPickerPositionIndicator.layer.cornerRadius = 12;
         viewColorPickerPositionIndicator.layer.borderWidth = 2;
         btnPlay.frame = CGRectMake(150, 150, 60, 60);
-        slider.frame = CGRectMake(65, 340, 240, 10);
+        slider.frame = CGRectMake(85, 340, 200, 10);
         
     }
 
@@ -270,9 +270,10 @@
         viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
         
         
-        int i, j;
+        int i, j, k;
         if ((i = arc4random() % 2)) {
             if ((j = arc4random() % 2)) {
+                if ((k = arc4random() % 2)) {
                 ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
                                 //增加这几行代码
                                 AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
@@ -302,6 +303,7 @@
                                       failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                           NSLog(@"失败: %@", error);
                                       }];
+                }
             }
         }
     }

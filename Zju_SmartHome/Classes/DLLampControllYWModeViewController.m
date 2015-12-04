@@ -103,7 +103,7 @@
         viewColorPickerPositionIndicator.layer.cornerRadius = 12;
         viewColorPickerPositionIndicator.layer.borderWidth = 2;
         btnPlay.frame = CGRectMake(150, 150, 60, 60);
-        slider.frame = CGRectMake(65, 340, 240, 10);
+        slider.frame = CGRectMake(85, 340, 200, 10);
         
     }
 
