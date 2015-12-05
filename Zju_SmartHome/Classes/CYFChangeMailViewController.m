@@ -77,24 +77,26 @@
   if([textField.text isEqualToString:@"请输入原邮箱"])
   {
     [textField setText:@""];
-    textField.secureTextEntry=YES;
+//    textField.secureTextEntry=false;
   }
   else if([textField.text isEqualToString:@"请输入新邮箱"])
   {
     
     [textField setText:@""];
-    textField.secureTextEntry=YES;
+//    textField.secureTextEntry=YES;
   }
   else if([textField.text isEqualToString:@"请确认新邮箱"])
   {
     [textField setText:@""];
-    textField.secureTextEntry=YES;
+//    textField.secureTextEntry=YES;
   }
 }
 
 
-- (IBAction)changePwd:(id)sender
+- (IBAction)changeMail:(id)sender
 {
+  
+  NSLog(@"changeMail");
   //显示一个蒙板
   [MBProgressHUD showMessage:@"正在修改邮箱..."];
   
@@ -115,9 +117,19 @@
   //4.发送请求
   [mgr POST:@"http://60.12.220.16:8888/paladin/User/email" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
    {
+     
+//     NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+     NSLog(@"服务器返回responseObject:%@",responseObject);
+
+     
+     NSLog(@"code:%@",responseObject[@"code"]);
+     
+     
      //请求成功
      if([responseObject[@"code"] isEqualToString:@"0"])
      {
+       
+       
        //移除遮盖
        [MBProgressHUD hideHUD];
        [MBProgressHUD showSuccess:@"邮箱修改成功"];
@@ -144,7 +156,8 @@
        
      }
      
-   } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+   }
+    failure:^(AFHTTPRequestOperation *operation, NSError *error)
    {
      [MBProgressHUD hideHUD];
      [MBProgressHUD showError:@"修改失败"];

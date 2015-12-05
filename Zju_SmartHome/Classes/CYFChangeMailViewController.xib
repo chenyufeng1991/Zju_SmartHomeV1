@@ -6,9 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CYFChangeMailViewController">
             <connections>
-                <outlet property="confirmNewMail" destination="MdI-j9-r35" id="1at-Pz-5PP"/>
-                <outlet property="mail" destination="Pw1-kw-9KB" id="ULg-tq-bW6"/>
-                <outlet property="oldMail" destination="gBd-Ks-CY6" id="SeJ-FN-2Tl"/>
+                <outlet property="confirmNewMail" destination="MdI-j9-r35" id="wzf-i5-SYz"/>
+                <outlet property="mail" destination="Pw1-kw-9KB" id="h06-ML-l4l"/>
+                <outlet property="oldMail" destination="gBd-Ks-CY6" id="J1w-rt-hYy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,7 +34,7 @@
                     <animations/>
                     <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_Lock" id="fly-Ok-97O">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_Mail" id="fly-Ok-97O">
                     <rect key="frame" x="60" y="102" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
@@ -54,7 +54,7 @@
                     <animations/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_Lock" id="qH6-N5-Xgy">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_Mail" id="qH6-N5-Xgy">
                     <rect key="frame" x="60" y="150" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
@@ -83,7 +83,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_Lock" id="9aZ-N1-aNl">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="register_Mail" id="9aZ-N1-aNl">
                     <rect key="frame" x="60" y="202" width="16" height="16"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
@@ -96,7 +96,7 @@
                     <state key="normal" backgroundImage="btn_change"/>
                     <state key="selected" backgroundImage="btn_change_pressed"/>
                     <connections>
-                        <action selector="changePwd:" destination="-1" eventType="touchUpInside" id="5ZN-bn-o25"/>
+                        <action selector="changeMail:" destination="-1" eventType="touchUpInside" id="Wba-O6-L63"/>
                     </connections>
                 </button>
             </subviews>
@@ -110,6 +110,6 @@
         <image name="bg" width="1080" height="1920"/>
         <image name="btn_change" width="180" height="40"/>
         <image name="btn_change_pressed" width="180" height="40"/>
-        <image name="login_Lock" width="16" height="16"/>
+        <image name="register_Mail" width="16" height="16"/>
     </resources>
 </document>
