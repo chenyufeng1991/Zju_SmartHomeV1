@@ -42,13 +42,14 @@
     if(self.password.secureTextEntry)
     {
         self.password.secureTextEntry=NO;
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
+        [self.eyePicture setImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
+        [self.eyePicture setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
         
     }
     else
     {
         self.password.secureTextEntry=YES;
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
+        [self.eyePicture setImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
     }
 }
 

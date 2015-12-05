@@ -161,10 +161,10 @@
 //代理注册方法
 -(void)registerGoGoGo
 {
+  
   JYRegisterViewController *registerVc=[[JYRegisterViewController alloc]init];
-  //JYNavigationController *navVc=[[JYNavigationController alloc]initWithRootViewController:registerVc];
   self.view.window.rootViewController=registerVc;
-  //[self.navigationController pushViewController:navVc animated:YES];
+ 
   
   
 }

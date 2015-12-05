@@ -43,12 +43,12 @@
     if(self.password.secureTextEntry)
     {
         
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
+        [self.eyePicture setImage:[UIImage imageNamed:@"login_Browse"] forState:UIControlStateNormal];
         self.password.secureTextEntry=NO;
     }
     else
     {
-        [self.eyePicture setBackgroundImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
+       [self.eyePicture setImage:[UIImage imageNamed:@"login_unBrowse"] forState:UIControlStateNormal];
         self.password.secureTextEntry=YES;
     }
 }

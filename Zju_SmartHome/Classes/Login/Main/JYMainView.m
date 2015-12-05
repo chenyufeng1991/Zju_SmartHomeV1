@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *office;
 - (IBAction)officeClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIView *officeView;
+//@property (weak, nonatomic) IBOutlet UILabel *officeLabel;
 
 //家居
 @property (weak, nonatomic) IBOutlet UIButton *furniture;
@@ -47,6 +48,7 @@
     mainViewXib.officeView.layer.cornerRadius=3;
     mainViewXib.officeView.layer.masksToBounds=YES;
     [mainViewXib.office setAdjustsImageWhenHighlighted:NO];
+    
     
     mainViewXib.furniture.layer.cornerRadius=3;
     mainViewXib.furniture.layer.masksToBounds=YES;
@@ -98,7 +100,6 @@
          [self.delegate customClick];
      }
 }
-
 
 
 @end

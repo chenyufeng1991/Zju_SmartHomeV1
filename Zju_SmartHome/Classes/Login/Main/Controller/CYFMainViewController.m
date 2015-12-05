@@ -33,6 +33,25 @@
   
   //设置显示的view
   JYMainView *jyMainView=[JYMainView mainViewXib];
+    
+  jyMainView.officeLabel.userInteractionEnabled=YES;
+  UITapGestureRecognizer *officeTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(officeLabelTap)];
+  [jyMainView.officeLabel addGestureRecognizer:officeTap];
+    
+  jyMainView.furnitureLabel.userInteractionEnabled=YES;
+  UITapGestureRecognizer *furnitureTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(furnitureTap)];
+  [jyMainView.furnitureLabel addGestureRecognizer:furnitureTap];
+    
+  jyMainView.productLabel.userInteractionEnabled=YES;
+  UITapGestureRecognizer *productTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productTap)];
+  [jyMainView.productLabel addGestureRecognizer:productTap];
+    
+  jyMainView.customLabel.userInteractionEnabled=YES;
+  UITapGestureRecognizer *customTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(customTap)];
+  [jyMainView.customLabel addGestureRecognizer:customTap];
+
+    
+    
   //设置代理
   jyMainView.delegate=self;
   self.mainView = jyMainView;
@@ -223,4 +242,21 @@
   }];
 }
 
+-(void)officeLabelTap
+{
+    [MBProgressHUD showError:@"办公室功能尚未开通"];
+}
+-(void)furnitureTap
+{
+    CYFFurnitureViewController *jyVc=[[CYFFurnitureViewController alloc]init];
+    [self.navigationController pushViewController:jyVc animated:YES];
+}
+-(void)productTap
+{
+    [MBProgressHUD showError:@"单品功能尚未开通"];
+}
+-(void)customTap
+{
+    [MBProgressHUD showError:@"自定义功能尚未开通"];
+}
 @end
