@@ -58,7 +58,7 @@
     CGFloat lineW = userPhoto.frame.size.width + 20;
     CGFloat lineH = 1;
     
-    //更换头像按钮
+    //切换网络按钮
     UIButton *btnChangePhoto = [self belowButtonsWithTitle:@"切换网络"];
     CGFloat btnChangePhotoY = screen.size.height * 6 / 17;
     btnChangePhoto.frame = CGRectMake(belowBtnX, btnChangePhotoY, belowBtnW, belowBtnH);
@@ -71,8 +71,8 @@
     line1.backgroundColor = LINE_COLOR;
     [self.view addSubview:line1];
     
-    //完善资料按钮
-    UIButton *btnCompleteProfile = [self belowButtonsWithTitle:@"完善资料"];
+    //修改头像按钮
+    UIButton *btnCompleteProfile = [self belowButtonsWithTitle:@"修改头像"];
     CGFloat btnCompleteProfileY = screen.size.height * 8 / 17;
     btnCompleteProfile.frame = CGRectMake(belowBtnX, btnCompleteProfileY, belowBtnW, belowBtnH);
     [self.view addSubview:btnCompleteProfile];

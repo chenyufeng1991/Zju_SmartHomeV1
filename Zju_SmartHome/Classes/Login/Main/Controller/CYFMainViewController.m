@@ -56,6 +56,8 @@
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     app.globalInternalIP = parser.internalIP;
     
+//    NSLog(@"现在全局的IP是：%@",app.globalInternalIP);
+    
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"获取内网返回数据失败：%@",error);
   }];
