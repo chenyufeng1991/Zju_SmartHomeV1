@@ -23,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftFront;
 
 @property (weak, nonatomic) IBOutlet UIButton *rightNext;
+
+@property (weak, nonatomic) IBOutlet UIButton *modeSelect;
+
+@property(nonatomic,assign)int tag;
 @end
 
 @implementation DLLampControlGuestModeViewController
@@ -31,8 +35,6 @@
 {
     [super viewDidLoad];
     
-    //    NSLog(@"00000 %@",self.logic_id);
-    
     UIButton *leftButton=[[UIButton alloc]init];
     [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
     leftButton.frame=CGRectMake(0, 0, 25, 25);
@@ -40,6 +42,7 @@
     [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
+    
     UILabel *titleView=[[UILabel alloc]init];
     [titleView setText:@"RGB灯"];
     titleView.frame=CGRectMake(0, 0, 100, 16);
@@ -48,9 +51,22 @@
     titleView.textAlignment=NSTextAlignmentCenter;
     self.navigationItem.titleView=titleView;
     
+    UIButton *rightButton=[[UIButton alloc]init];
+    [rightButton setImage:[UIImage imageNamed:@"ct_icon_switch"] forState:UIControlStateNormal];
+    rightButton.frame=CGRectMake(0, 0, 30, 30);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(-4, 6, 4, -10)];
+    [rightButton addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem=rightItem;
+
+    
 //    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
     self.leftFront.enabled=NO;
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
+    [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+    [self.modeSelect setAdjustsImageWhenHighlighted:NO];
     
     
     UIImageView *imgView = [[UIImageView alloc]init];
@@ -423,7 +439,7 @@
 }
 
 //****************************************结束
-
+//向左切换模式
 - (void)leftBtnClicked{
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
@@ -437,10 +453,32 @@
     }
 }
 
+//向右切换模式
 -(void)rightGo
 {
     DLLampControlDinnerModeViewController *vc=[[DLLampControlDinnerModeViewController alloc]init];
     vc.logic_id=self.logic_id;
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+//电器开关按钮
+-(void)rightBtnClicked
+{
+    NSLog(@"开关按钮点击事件");
+}
+
+-(void)modeSelected
+{
+    if(self.tag==0)
+    {
+        self.rightNext.enabled=NO;
+        self.tag++;
+    }
+    else if(self.tag==1)
+    {
+        self.rightNext.enabled=YES;
+        self.tag--;
+    }
+    
 }
 @end

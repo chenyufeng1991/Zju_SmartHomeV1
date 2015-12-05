@@ -22,7 +22,7 @@
 @property (nonatomic, assign) CGPoint *touchPoint;
 @property (nonatomic, weak) UISlider *slider;
 
-
+@property(nonatomic,assign)int tag;
 @end
 
 @implementation DLLampControlRGBModeViewController
@@ -30,11 +30,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    
-//    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *leftButton=[[UIButton alloc]init];
     [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
@@ -50,6 +48,15 @@
     [titleView setTextColor:[UIColor whiteColor]];
     titleView.textAlignment=NSTextAlignmentCenter;
     self.navigationItem.titleView=titleView;
+    UIButton *rightButton=[[UIButton alloc]init];
+    [rightButton setImage:[UIImage imageNamed:@"ct_icon_switch"] forState:UIControlStateNormal];
+    rightButton.frame=CGRectMake(0, 0, 30, 30);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(-4, 6, 4, -10)];
+    [rightButton addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem=rightItem;
+    
+
     
     
     UIImageView *imgView = [[UIImageView alloc]init];
@@ -450,12 +457,19 @@
     }
 }
 
-//-(void)modeSelected
-//{
-//    self.leftFront.enabled=YES;
-//    self.rightNext.enabled=YES;
-//    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
-//}
+-(void)modeSelected
+{
+    if(self.tag==0)
+    {
+        self.leftFront.enabled=NO;
+        self.tag++;
+    }
+    else
+    {
+        self.leftFront.enabled=YES;
+        self.tag--;
+    }
+}
 -(void)leftGo
 {
 
@@ -472,6 +486,11 @@
         }
         
     }
+}
+//电器开关按钮
+-(void)rightBtnClicked
+{
+    NSLog(@"开关按钮点击事件");
 }
 
 @end

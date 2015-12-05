@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DLLampControlGuestModeViewController">
@@ -10,6 +10,7 @@
                 <outlet property="colorPreview" destination="UCx-Mu-O3G" id="WuH-nj-eIj"/>
                 <outlet property="gValue" destination="jEM-lX-Ry0" id="lfn-7l-V7W"/>
                 <outlet property="leftFront" destination="Jvd-tc-Usr" id="E17-n1-ygu"/>
+                <outlet property="modeSelect" destination="6Ws-nK-IkP" id="z9C-4v-isS"/>
                 <outlet property="panelView" destination="8Vw-jV-i7v" id="ts1-Wf-Ih3"/>
                 <outlet property="rValue" destination="ziX-jT-Vwb" id="W7V-Vp-Q3y"/>
                 <outlet property="rightNext" destination="IP3-5f-Q1S" id="HCK-yQ-Xvw"/>
@@ -49,7 +50,7 @@
                                         <fragment content="会客模式">
                                             <attributes>
                                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <font key="NSFont" size="17" name=".PingFangSC-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="17"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -148,7 +149,7 @@
                             <state key="normal" backgroundImage="temperture"/>
                             <state key="highlighted" backgroundImage="temperature_highlight"/>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="6Ws-nK-IkP" userLabel="model">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Ws-nK-IkP" userLabel="model">
                             <rect key="frame" x="247" y="0.0" width="35" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>

@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *rgbAdjust;
 //模式选择
 @property (weak, nonatomic) IBOutlet UIButton *modeSelect;
-
+@property(nonatomic,assign)int tag;
 @end
 
 @implementation DLLampControlDinnerModeViewController
@@ -43,15 +43,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    //self.leftFront.enabled=NO;
-   // self.rightNext.enabled=NO;
     
     [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
-   // self.modeSelect.enabled=NO;
-    [self.modeSelect setAdjustsImageWhenHighlighted:NO];
-    
-//    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
+   [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
     [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
@@ -74,10 +68,9 @@
     self.navigationItem.titleView=titleView;
     
     UIButton *rightButton=[[UIButton alloc]init];
-    rightButton.backgroundColor=[UIColor orangeColor];
     [rightButton setImage:[UIImage imageNamed:@"ct_icon_switch"] forState:UIControlStateNormal];
-    rightButton.frame=CGRectMake(0, 0, 25, 25);
-    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    rightButton.frame=CGRectMake(0, 0, 30, 30);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(-4, 6, 4, -10)];
     [rightButton addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem=rightItem;
@@ -469,17 +462,28 @@
 
 -(void)modeSelected
 {
-   // self.leftFront.enabled=YES;
-    self.rightNext.enabled=YES;
-    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+    if(self.tag==0)
+    {
+        self.leftFront.enabled=NO;
+        self.rightNext.enabled=NO;
+        self.tag++;
+    }
+    else
+    {
+        self.leftFront.enabled=YES;
+        self.rightNext.enabled=YES;
+        self.tag--;
+    }
 }
 
+//向右切换模式
 -(void)rightGo
 {
     DLLampControlReadingModeViewController *vc=[[DLLampControlReadingModeViewController alloc]init];
     vc.logic_id=self.logic_id;
     [self.navigationController pushViewController:vc animated:YES];
 }
+//向左切换模式
 -(void)leftGo
 {
     for (UIViewController *controller in self.navigationController.viewControllers)
@@ -496,5 +500,11 @@
         
     }
 }
+//电器开关按钮
+-(void)rightBtnClicked
+{
+    NSLog(@"开关按钮点击事件");
+}
+
 
 @end

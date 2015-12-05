@@ -30,6 +30,7 @@
 //音乐播放
 @property (weak, nonatomic) IBOutlet UIButton *musicOpen;
 
+@property(nonatomic,assign)int tag;
 @end
 
 @implementation DLLampControllYWModeViewController
@@ -468,9 +469,18 @@
 
 -(void)modeSelected
 {
-    self.leftFront.enabled=YES;
-    self.rightNext.enabled=YES;
-    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+    if(self.tag==0)
+    {
+        self.leftFront.enabled=NO;
+        self.rightNext.enabled=NO;
+        self.tag++;
+    }
+    else
+    {
+        self.leftFront.enabled=YES;
+        self.rightNext.enabled=YES;
+        self.tag--;
+    }
 }
 
 -(void)rightGo
