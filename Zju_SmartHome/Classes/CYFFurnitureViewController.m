@@ -23,7 +23,7 @@
 #import "JYFurnitureBack.h"
 #import "AFNetworking.h"
 #import "JYFurnitureBackStatus.h"
-#import "DLLampControlDinnerModeViewController.h"
+#import "DLLampControlGuestModeViewController.h"
 
 #import "HttpRequest.h"
 #import "Constants.h"
@@ -353,7 +353,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
     {
       if([furniture.deviceType isEqualToString:@"40"])
       {
-        DLLampControlDinnerModeViewController *dlVc=(DLLampControlDinnerModeViewController *)furniture.controller;
+        DLLampControlGuestModeViewController *dlVc=(DLLampControlGuestModeViewController *)furniture.controller;
         dlVc.logic_id=furniture.logic_id;
         [self.navigationController pushViewController:dlVc animated:dlVc];
       }
@@ -564,7 +564,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
            
            if([furniture.deviceType isEqualToString:@"40"])
            {
-             furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+             furniture.controller=[[DLLampControlGuestModeViewController alloc]init];
            }
            else if([furniture.deviceType isEqualToString:@"41"])
            {
@@ -588,7 +588,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
            if([furniture.deviceType isEqualToString:@"40"])
            {
              furniture.imageStr=@"rgb_light_on";
-             furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+             furniture.controller=[[DLLampControlGuestModeViewController alloc]init];
            }
            else if([furniture.deviceType isEqualToString:@"41"])
            {
@@ -706,7 +706,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
             
             if([furniture.deviceType isEqualToString:@"40"])
             {
-              furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+              furniture.controller=[[DLLampControlGuestModeViewController alloc]init];
             }
             else if([furniture.deviceType isEqualToString:@"41"])
             {
@@ -731,7 +731,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
           if([furniture.deviceType isEqualToString:@"40"])
           {
             furniture.imageStr=@"rgb_light_on";
-            furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+            furniture.controller=[[DLLampControlGuestModeViewController alloc]init];
           }
           else if([furniture.deviceType isEqualToString:@"41"])
           {
@@ -797,7 +797,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
       {
 //        furniture.imageStr=@"rgb_light_on";
           furniture.imageStr=@"单品";
-        furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+        furniture.controller=[[DLLampControlGuestModeViewController alloc]init];
       }
       else if([furniture.deviceType isEqualToString:@"41"])
       {
@@ -873,7 +873,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
           furniture.deviceType=furnitureBack.deviceType;
           if([furniture.deviceType isEqualToString:@"40"])
           {
-            furniture.controller=[[DLLampControlDinnerModeViewController alloc]init];
+            furniture.controller=[[DLLampControlGuestModeViewController alloc]init];
           }
           else if([furniture.deviceType isEqualToString:@"41"])
           {

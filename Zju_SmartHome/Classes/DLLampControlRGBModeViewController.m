@@ -9,6 +9,7 @@
 #import "DLLampControlRGBModeViewController.h"
 #import "ZQSlider.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 #import "DLLampControlSleepModeViewController.h"
 @interface DLLampControlRGBModeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *rValue;
@@ -256,6 +257,7 @@
                                   }
                                   failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                       NSLog(@"失败: %@", error);
+                                      [MBProgressHUD showError:@"请检查网关"];
                                   }];
     }
     }
@@ -344,6 +346,7 @@
                                   }
                                   failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                       NSLog(@"失败: %@", error);
+                                      [MBProgressHUD showError:@"请检查网关"];
                                   }];
                 }
             }

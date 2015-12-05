@@ -11,6 +11,7 @@
 #import "DLLampControlRGBModeViewController.h"
 #import "ZQSlider.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 @interface DLLampControlSleepModeViewController ()
 @property (nonatomic, weak) UISlider *slider;
 @property (nonatomic, weak) UIImageView *imgView;
@@ -241,6 +242,7 @@
                               }
                               failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                   NSLog(@"失败: %@", error);
+                                  [MBProgressHUD showError:@"请检查网关"];
                               }];
     }
     }
@@ -328,6 +330,7 @@
                                       }
                                       failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                           NSLog(@"失败: %@", error);
+                                          [MBProgressHUD showError:@"请检查网关"];
                                       }];
                 }
             }

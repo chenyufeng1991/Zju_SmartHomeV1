@@ -24,12 +24,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uYf-2C-eOj" userLabel="switch">
-                    <rect key="frame" x="280" y="11" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <state key="normal" backgroundImage="ct_icon_switch"/>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H7t-bb-scF" userLabel="right">
                     <rect key="frame" x="253" y="112" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -209,7 +203,6 @@
         <image name="ct_icon_music_press" width="40" height="40"/>
         <image name="ct_icon_music_unpress" width="40" height="40"/>
         <image name="ct_icon_rightbutton" width="40" height="40"/>
-        <image name="ct_icon_switch" width="40" height="40"/>
         <image name="temperature_highlight" width="40" height="40"/>
         <image name="temperture" width="40" height="40"/>
         <image name="烛光" width="164" height="108"/>

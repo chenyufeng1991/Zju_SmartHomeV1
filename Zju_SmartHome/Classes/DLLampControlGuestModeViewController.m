@@ -9,8 +9,9 @@
 #import "DLLampControlGuestModeViewController.h"
 #import "ZQSlider.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 #import "DLLampControlDinnerModeViewController.h"
-#import "DLLampControlSleepModeViewController.h"
+#import "CYFFurnitureViewController.h"
 @interface DLLampControlGuestModeViewController ()
 @property (nonatomic, weak) UISlider *slider;
 @property (nonatomic, weak) UIImageView *imgView;
@@ -47,7 +48,8 @@
     titleView.textAlignment=NSTextAlignmentCenter;
     self.navigationItem.titleView=titleView;
     
-    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
+//    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
+    self.leftFront.enabled=NO;
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -241,6 +243,7 @@
                   }
                   failure:^(AFHTTPRequestOperation *operation,NSError *error){
                       NSLog(@"失败: %@", error);
+                      [MBProgressHUD showError:@"请检查网关"];
                   }];
         }
     }
@@ -328,6 +331,7 @@
                               }
                               failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                   NSLog(@"失败: %@", error);
+                                  [MBProgressHUD showError:@"请检查网关"];
                               }];
                     }
                 }
@@ -420,39 +424,23 @@
 
 //****************************************结束
 
-//- (void)leftBtnClicked{
-//    
-//    for (UIViewController *controller in self.navigationController.viewControllers) {
-//        
-//        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]]) {
-//            
-//            [self.navigationController popToViewController:controller animated:YES];
-//            
-//        }
-//        
-//    }
-//}
-//
-//-(void)leftGo
-//{
-//    for (UIViewController *controller in self.navigationController.viewControllers)
-//    {
-//        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]])
-//        {
-//            
-//            DLLampControlDinnerModeViewController *vc=[[DLLampControlDinnerModeViewController alloc]init];
-//            vc=(DLLampControlDinnerModeViewController *)controller;
-//            vc.logic_id=self.logic_id;
-//            [self.navigationController popToViewController:vc animated:YES];
-//            
-//        }
-//        
-//    }
-//}
-//-(void)rightGo
-//{
-//    DLLampControlSleepModeViewController *vc=[[DLLampControlSleepModeViewController alloc]init];
-//    vc.logic_id=self.logic_id;
-//    [self.navigationController pushViewController:vc animated:YES];
-//}
+- (void)leftBtnClicked{
+    
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        
+        if ([controller isKindOfClass:[CYFFurnitureViewController class]]) {
+            
+            [self.navigationController popToViewController:controller animated:YES];
+            
+        }
+        
+    }
+}
+
+-(void)rightGo
+{
+    DLLampControlDinnerModeViewController *vc=[[DLLampControlDinnerModeViewController alloc]init];
+    vc.logic_id=self.logic_id;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end

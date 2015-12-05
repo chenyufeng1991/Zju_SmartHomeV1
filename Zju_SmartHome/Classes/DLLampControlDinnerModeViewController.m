@@ -11,6 +11,7 @@
 #import "ZQSlider.h"
 #import "MBProgressHUD+MJ.h"
 #import "CYFFurnitureViewController.h"
+#import "DLLampControlGuestModeViewController.h"
 #import "DLLampControlReadingModeViewController.h"
 
 @interface DLLampControlDinnerModeViewController ()
@@ -43,7 +44,7 @@
 {
     [super viewDidLoad];
 
-    self.leftFront.enabled=NO;
+    //self.leftFront.enabled=NO;
    // self.rightNext.enabled=NO;
     
     [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
@@ -52,6 +53,7 @@
     
 //    [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
+    [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -62,6 +64,7 @@
     [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
+    
     UILabel *titleView=[[UILabel alloc]init];
     [titleView setText:@"RGB灯"];
     titleView.frame=CGRectMake(0, 0, 100, 16);
@@ -69,6 +72,15 @@
     [titleView setTextColor:[UIColor whiteColor]];
     titleView.textAlignment=NSTextAlignmentCenter;
     self.navigationItem.titleView=titleView;
+    
+    UIButton *rightButton=[[UIButton alloc]init];
+    rightButton.backgroundColor=[UIColor orangeColor];
+    [rightButton setImage:[UIImage imageNamed:@"ct_icon_switch"] forState:UIControlStateNormal];
+    rightButton.frame=CGRectMake(0, 0, 25, 25);
+    [rightButton setImageEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 0)];
+    [rightButton addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    self.navigationItem.rightBarButtonItem=rightItem;
     
     
     UIImageView *imgView = [[UIImageView alloc]init];
@@ -446,7 +458,7 @@
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
         
-        if ([controller isKindOfClass:[CYFFurnitureViewController class]]) {
+        if ([controller isKindOfClass:[DLLampControlGuestModeViewController class]]) {
             
             [self.navigationController popToViewController:controller animated:YES];
             
@@ -467,6 +479,22 @@
     DLLampControlReadingModeViewController *vc=[[DLLampControlReadingModeViewController alloc]init];
     vc.logic_id=self.logic_id;
     [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)leftGo
+{
+    for (UIViewController *controller in self.navigationController.viewControllers)
+    {
+        if ([controller isKindOfClass:[DLLampControlGuestModeViewController class]])
+        {
+            
+            DLLampControlGuestModeViewController *vc=[[DLLampControlGuestModeViewController alloc]init];
+            vc=(DLLampControlGuestModeViewController *)controller;
+            vc.logic_id=self.logic_id;
+            [self.navigationController popToViewController:vc animated:YES];
+            
+        }
+        
+    }
 }
 
 @end
