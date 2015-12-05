@@ -10,6 +10,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "JYLoginViewController.h"
 #import "JYChangePwdViewController.h"
+#import "CYFChangeMailViewController.h"
 
 
 #import "AppDelegate.h"
@@ -164,7 +165,12 @@
 }
 
 - (void)btnModifyEmailClick{
-    
+  
+  
+  CYFChangeMailViewController *changeMail = [[CYFChangeMailViewController alloc] init];
+  [self.navigationController pushViewController:changeMail animated:true];
+  
+  
 }
 
 - (void)btnAccountLogoutClick

@@ -51,6 +51,8 @@
 		712C524C1C0832900014F9CB /* QRCatchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C524A1C0832900014F9CB /* QRCatchViewController.m */; };
 		712C524D1C0832900014F9CB /* QRCatchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 712C524B1C0832900014F9CB /* QRCatchViewController.xib */; };
 		712C52601C0C29450014F9CB /* InternalGateIPXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 712C525F1C0C29450014F9CB /* InternalGateIPXMLParser.m */; };
+		714854F01C127C300001347F /* CYFChangeMailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 714854EE1C127C300001347F /* CYFChangeMailViewController.m */; settings = {ASSET_TAGS = (); }; };
+		714854F11C127C300001347F /* CYFChangeMailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 714854EF1C127C300001347F /* CYFChangeMailViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		7174E3A31BEFAEC500170AAA /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */; };
 		7174E3A41BEFAEC500170AAA /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */; };
 		7174E3A51BEFAEC500170AAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7174E3A21BEFAEC500170AAA /* MBProgressHUD.m */; };
@@ -187,6 +189,9 @@
 		712C524B1C0832900014F9CB /* QRCatchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QRCatchViewController.xib; sourceTree = "<group>"; };
 		712C525E1C0C29450014F9CB /* InternalGateIPXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternalGateIPXMLParser.h; sourceTree = "<group>"; };
 		712C525F1C0C29450014F9CB /* InternalGateIPXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternalGateIPXMLParser.m; sourceTree = "<group>"; };
+		714854ED1C127C300001347F /* CYFChangeMailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFChangeMailViewController.h; sourceTree = "<group>"; };
+		714854EE1C127C300001347F /* CYFChangeMailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFChangeMailViewController.m; sourceTree = "<group>"; };
+		714854EF1C127C300001347F /* CYFChangeMailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CYFChangeMailViewController.xib; sourceTree = "<group>"; };
 		7174E39E1BEFAEC500170AAA /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
 		7174E39F1BEFAEC500170AAA /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
 		7174E3A01BEFAEC500170AAA /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -373,6 +378,8 @@
 		446AF3371C0056120081C798 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				61645BAB1C101BA5007462EC /* JYChangePwdViewController.xib */,
+				714854EF1C127C300001347F /* CYFChangeMailViewController.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -384,7 +391,8 @@
 				446AF34A1C005F180081C798 /* DLLeftSlideMenuViewController.m */,
 				61645BA91C101BA5007462EC /* JYChangePwdViewController.h */,
 				61645BAA1C101BA5007462EC /* JYChangePwdViewController.m */,
-				61645BAB1C101BA5007462EC /* JYChangePwdViewController.xib */,
+				714854ED1C127C300001347F /* CYFChangeMailViewController.h */,
+				714854EE1C127C300001347F /* CYFChangeMailViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -923,6 +931,7 @@
 				9DFF73601C07E4C80061EFBF /* JYFurnitureViewXib.xib in Resources */,
 				9D5292131C118F5800205CFD /* DLLampControlGuestModeViewController.xib in Resources */,
 				9D7D5A541BE472D300E1E1EF /* Assets.xcassets in Resources */,
+				714854F11C127C300001347F /* CYFChangeMailViewController.xib in Resources */,
 				9D5FF5AB1BE9930B004371E5 /* JYRegister.xib in Resources */,
 				61645BBA1C10827E007462EC /* DLLampControllYWModeViewController.xib in Resources */,
 				61963F401C112F0100030299 /* DLLampControlReadingModeViewController.xib in Resources */,
@@ -1036,6 +1045,7 @@
 				712C52441C08323B0014F9CB /* NSString+Tools.m in Sources */,
 				446AF3481C005BF10081C798 /* UIViewController+RESideMenu.m in Sources */,
 				9D564D5B1BFEAD630062700D /* JYMainView.m in Sources */,
+				714854F01C127C300001347F /* CYFChangeMailViewController.m in Sources */,
 				71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */,
 				446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */,
 				446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */,
