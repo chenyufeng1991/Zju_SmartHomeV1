@@ -22,6 +22,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <animations/>
                 </imageView>
+                <view alpha="0.5" contentMode="scaleToFill" id="Wqt-I8-7Gk">
+                    <rect key="frame" x="-140" y="-16" width="600" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
                 <view alpha="0.60000002384185791" contentMode="scaleToFill" id="EKX-zR-mns">
                     <rect key="frame" x="50" y="90" width="220" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
@@ -93,12 +99,6 @@
                         <action selector="changePwd:" destination="-1" eventType="touchUpInside" id="5ZN-bn-o25"/>
                     </connections>
                 </button>
-                <view alpha="0.5" contentMode="scaleToFill" id="Wqt-I8-7Gk">
-                    <rect key="frame" x="-140" y="-16" width="600" height="600"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                    <animations/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
