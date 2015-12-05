@@ -9,6 +9,7 @@
 #import "DLLampControlReadingModeViewController.h"
 #import "ZQSlider.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD+MJ.h"
 #import "DLLampControlDinnerModeViewController.h"
 #import "DLLampControlSleepModeViewController.h"
 @interface DLLampControlReadingModeViewController ()
@@ -152,7 +153,7 @@
     NSLog(@"%@", NSStringFromCGRect(imgView.frame));
     BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
                                            bigRadius:imgView.frame.size.width * 0.48
-                                         smallRadius:imgView.frame.size.width * 0.41
+                                         smallRadius:imgView.frame.size.width * 0.38
                                          targetPoint:point];
     
     if (pointInRound) {
@@ -179,6 +180,18 @@
  *  开始点击的方法
  */
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = touches.anyObject;
+    
+    CGPoint touchLocation = [touch locationInView:self.imgView];
+    UIView *hitView = nil;
+    
+    UIImageView *imgView = (UIImageView *)[self.view viewWithTag:10086];
+    //  NSLog(@"%@", NSStringFromCGRect(imgView.frame));
+    BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
+                                           bigRadius:imgView.frame.size.width * 0.48
+                                         smallRadius:imgView.frame.size.width * 0.38
+                                         targetPoint:touchLocation];
+    if (pointInRound) {
     UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
     UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
     UITouch *touch = touches.anyObject;
@@ -189,7 +202,7 @@
     
     if ([self touchPointInsideCircle:CGPointMake(colorImageView.frame.size.width / 2, colorImageView.frame.size.height / 2)
                            bigRadius:colorImageView.frame.size.width * 0.48
-                         smallRadius:colorImageView.frame.size.width * 0.41        //0.39
+                         smallRadius:colorImageView.frame.size.width * 0.38        //0.39
                          targetPoint:touchLocation]) {
         
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
@@ -235,7 +248,10 @@
                               }
                               failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                   NSLog(@"失败: %@", error);
+                                  [MBProgressHUD showError:@"请检查网关"];
+
                               }];
+    }
     }
 }
 
@@ -247,7 +263,18 @@
  */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    UITouch *touch = touches.anyObject;
     
+    CGPoint touchLocation = [touch locationInView:self.imgView];
+    UIView *hitView = nil;
+    
+    UIImageView *imgView = (UIImageView *)[self.view viewWithTag:10086];
+    //  NSLog(@"%@", NSStringFromCGRect(imgView.frame));
+    BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
+                                           bigRadius:imgView.frame.size.width * 0.48
+                                         smallRadius:imgView.frame.size.width * 0.38
+                                         targetPoint:touchLocation];
+    if (pointInRound) {
     UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
     UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
     UITouch *touch = touches.anyObject;
@@ -259,7 +286,7 @@
     
     if ([self touchPointInsideCircle:CGPointMake(colorImageView.frame.size.width / 2, colorImageView.frame.size.height / 2)
                            bigRadius:colorImageView.frame.size.width * 0.48
-                         smallRadius:colorImageView.frame.size.width * 0.41        //0.39
+                         smallRadius:colorImageView.frame.size.width * 0.38        //0.39
                          targetPoint:touchLocation]) {
         
         self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
@@ -310,10 +337,13 @@
                                       }
                                       failure:^(AFHTTPRequestOperation *operation,NSError *error){
                                           NSLog(@"失败: %@", error);
+                                          [MBProgressHUD showError:@"请检查网关"];
+
                                       }];
                 }
             }
         }
+    }
     }
 }
 

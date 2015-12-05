@@ -9,6 +9,7 @@
 #import "DLLampControlDinnerModeViewController.h"
 #import "AFNetworking.h"
 #import "ZQSlider.h"
+#import "MBProgressHUD+MJ.h"
 #import "CYFFurnitureViewController.h"
 #import "DLLampControlReadingModeViewController.h"
 
@@ -163,7 +164,7 @@
     NSLog(@"%@", NSStringFromCGRect(imgView.frame));
     BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
                                         bigRadius:imgView.frame.size.width * 0.48
-                                         smallRadius:imgView.frame.size.width * 0.41
+                                         smallRadius:imgView.frame.size.width * 0.38
                                          targetPoint:point];
     
     if (pointInRound) {
@@ -190,64 +191,78 @@
  *  开始点击的方法
  */
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
-    UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
     UITouch *touch = touches.anyObject;
-
-    CGPoint touchLocation = [touch locationInView:self.imgView];
-    UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
-    const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
     
-    if ([self touchPointInsideCircle:CGPointMake(colorImageView.frame.size.width / 2, colorImageView.frame.size.height / 2)
-                           bigRadius:colorImageView.frame.size.width * 0.48
-                         smallRadius:colorImageView.frame.size.width * 0.41        //0.39
-                         targetPoint:touchLocation]) {
+    CGPoint touchLocation = [touch locationInView:self.imgView];
+    UIView *hitView = nil;
+    
+    UIImageView *imgView = (UIImageView *)[self.view viewWithTag:10086];
+    //  NSLog(@"%@", NSStringFromCGRect(imgView.frame));
+    BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
+                                           bigRadius:imgView.frame.size.width * 0.48
+                                         smallRadius:imgView.frame.size.width * 0.38
+                                         targetPoint:touchLocation];
+    if (pointInRound) {
+        UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
+        UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
+        UITouch *touch = touches.anyObject;
 
-        self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
-        self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
-        self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+        CGPoint touchLocation = [touch locationInView:self.imgView];
+        UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
+        const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
         
-        NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
-        NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
-        
-        NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
-        
-        self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
-        //!!!:ATTENTIOIN
-//        viewColorPickerPositionIndicator.center = touchLocation;
-        viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
-    viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
-        
-//在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
-        
-                //增加这几行代码
-                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                [securityPolicy setAllowInvalidCertificates:YES];
-                
-                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                [manager setSecurityPolicy:securityPolicy];
-                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                
-                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                                 "<root>"
-                                 "<command_id></command_id>"
-                                 "<command_type>execute</command_type>"
-                                 "<id>%@</id>"
-                                 "<action>change_color</action>"
-                                 "<value>%@,%@,%@</value>"
-                                 "</root>",  self.logic_id,r,g,b];
-                
-                NSDictionary *parameters = @{@"test" : str};
-                
-                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                   parameters:parameters
-                      success:^(AFHTTPRequestOperation *operation,id responseObject){
-                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                          NSLog(@"成功: %@", string);
-                      }
-                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                          NSLog(@"失败: %@", error);
-                      }];
+        if ([self touchPointInsideCircle:CGPointMake(colorImageView.frame.size.width / 2, colorImageView.frame.size.height / 2)
+                               bigRadius:colorImageView.frame.size.width * 0.48
+                             smallRadius:colorImageView.frame.size.width * 0.38        //0.39
+                             targetPoint:touchLocation]) {
+
+            self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
+            self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
+            self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+            
+            NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+            NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
+            
+            NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
+            
+            self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
+            //!!!:ATTENTIOIN
+    //        viewColorPickerPositionIndicator.center = touchLocation;
+            viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
+        viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
+            
+    //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
+            
+                    //增加这几行代码
+                    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                    [securityPolicy setAllowInvalidCertificates:YES];
+                    
+                    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                    [manager setSecurityPolicy:securityPolicy];
+                    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                    
+                    NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                     "<root>"
+                                     "<command_id></command_id>"
+                                     "<command_type>execute</command_type>"
+                                     "<id>%@</id>"
+                                     "<action>change_color</action>"
+                                     "<value>%@,%@,%@</value>"
+                                     "</root>",  self.logic_id,r,g,b];
+                    
+                    NSDictionary *parameters = @{@"test" : str};
+                    
+                    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                       parameters:parameters
+                          success:^(AFHTTPRequestOperation *operation,id responseObject){
+                              NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                              NSLog(@"成功: %@", string);
+                          }
+                          failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                              NSLog(@"失败: %@", error);
+                              [MBProgressHUD showError:@"请检查网关"];
+                          }];
+        }
     }
 }
 
@@ -259,72 +274,85 @@
  */
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
-    UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
-    UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
     UITouch *touch = touches.anyObject;
-    //!!!:ATTENTION
     
     CGPoint touchLocation = [touch locationInView:self.imgView];
-    UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
-    const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
+    UIView *hitView = nil;
     
-    if ([self touchPointInsideCircle:CGPointMake(colorImageView.frame.size.width / 2, colorImageView.frame.size.height / 2)
-                           bigRadius:colorImageView.frame.size.width * 0.48
-                         smallRadius:colorImageView.frame.size.width * 0.41        //0.39
-                         targetPoint:touchLocation]) {
+    UIImageView *imgView = (UIImageView *)[self.view viewWithTag:10086];
+    //  NSLog(@"%@", NSStringFromCGRect(imgView.frame));
+    BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
+                                           bigRadius:imgView.frame.size.width * 0.48
+                                         smallRadius:imgView.frame.size.width * 0.38
+                                         targetPoint:touchLocation];
+    if (pointInRound) {
+        UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
+        UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
+        UITouch *touch = touches.anyObject;
+        //!!!:ATTENTION
         
-        self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
-        self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
-        self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+        CGPoint touchLocation = [touch locationInView:self.imgView];
+        UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
+        const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
         
-        NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
-        NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
-        
-        NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
-        
-        NSLog(@"哈哈哈哈哈%@ %@ %@",r,g,b);
-        
-        self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
-        //!!!:ATTENTIOIN
-        //        viewColorPickerPositionIndicator.center = touchLocation;
-        viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
-        viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
-        
-        
-        int i, j, k;
-        if ((i = arc4random() % 2)) {
-            if ((j = arc4random() % 2)) {
-                if ((k = arc4random() % 2)) {
-                ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
-                                //增加这几行代码
-                                AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
-                                [securityPolicy setAllowInvalidCertificates:YES];
-                
-                                AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-                                [manager setSecurityPolicy:securityPolicy];
-                                manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-                
-                                NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
-                                                 "<root>"
-                                                 "<command_id></command_id>"
-                                                 "<command_type>execute</command_type>"
-                                                 "<id>%@</id>"
-                                                 "<action>change_color</action>"
-                                                 "<value>%@,%@,%@</value>"
-                                                 "</root>",  self.logic_id,r,g,b];
-                
-                                NSDictionary *parameters = @{@"test" : str};
-                
-                                [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
-                                   parameters:parameters
-                                      success:^(AFHTTPRequestOperation *operation,id responseObject){
-                                          NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                                          NSLog(@"成功: %@", string);
-                                      }
-                                      failure:^(AFHTTPRequestOperation *operation,NSError *error){
-                                          NSLog(@"失败: %@", error);
-                                      }];
+        if ([self touchPointInsideCircle:CGPointMake(colorImageView.frame.size.width / 2, colorImageView.frame.size.height / 2)
+                               bigRadius:colorImageView.frame.size.width * 0.48
+                             smallRadius:colorImageView.frame.size.width * 0.38        //0.39
+                             targetPoint:touchLocation]) {
+            
+            self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
+            self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
+            self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+            
+            NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+            NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
+            
+            NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
+            
+           // NSLog(@"哈哈哈哈哈%@ %@ %@",r,g,b);
+            
+            self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
+            //!!!:ATTENTIOIN
+            //        viewColorPickerPositionIndicator.center = touchLocation;
+            viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
+            viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
+            
+            
+            int i, j, k;
+            if ((i = arc4random() % 2)) {
+                if ((j = arc4random() % 2)) {
+                    if ((k = arc4random() % 2)) {
+                    ////在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
+                                    //增加这几行代码
+                                    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+                                    [securityPolicy setAllowInvalidCertificates:YES];
+                    
+                                    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+                                    [manager setSecurityPolicy:securityPolicy];
+                                    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+                    
+                                    NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                                                     "<root>"
+                                                     "<command_id></command_id>"
+                                                     "<command_type>execute</command_type>"
+                                                     "<id>%@</id>"
+                                                     "<action>change_color</action>"
+                                                     "<value>%@,%@,%@</value>"
+                                                     "</root>",  self.logic_id,r,g,b];
+                    
+                                    NSDictionary *parameters = @{@"test" : str};
+                    
+                                    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+                                       parameters:parameters
+                                          success:^(AFHTTPRequestOperation *operation,id responseObject){
+                                              NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                              NSLog(@"成功: %@", string);
+                                          }
+                                          failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                                              NSLog(@"失败: %@", error);
+                                              [MBProgressHUD showError:@"请检查网关"];
+                                          }];
+                    }
                 }
             }
         }
