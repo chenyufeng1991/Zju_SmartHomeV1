@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CYFFurnitureViewController">
             <connections>
+                <outlet property="addArea" destination="gZL-qr-1XX" id="zJj-js-9ce"/>
                 <outlet property="addFurnitureButton" destination="gZL-qr-1XX" id="CGj-Zs-uLU"/>
                 <outlet property="collectionView" destination="qGv-Ad-PnH" id="naF-CJ-JCz"/>
                 <outlet property="mainImageView" destination="KcQ-Kv-HPo" id="5Eo-JF-7eE"/>

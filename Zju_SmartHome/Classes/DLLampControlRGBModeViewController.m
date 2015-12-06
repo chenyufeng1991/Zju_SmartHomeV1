@@ -30,8 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.tag=1;
     [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
-    [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
     [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *leftButton=[[UIButton alloc]init];
@@ -463,13 +463,13 @@
     {
         self.leftFront.enabled=NO;
         self.tag++;
-        [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
+        [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
     }
     else
     {
         self.leftFront.enabled=YES;
         self.tag--;
-        [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+        [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
     }
 }
 -(void)leftGo

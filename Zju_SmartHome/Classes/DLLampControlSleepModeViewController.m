@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.tag=1;
     UIButton *leftButton=[[UIButton alloc]init];
     [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
     leftButton.frame=CGRectMake(0, 0, 25, 25);
@@ -60,7 +60,6 @@
     [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
      [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
     
     UIImageView *imgView = [[UIImageView alloc]init];
@@ -480,7 +479,7 @@
         self.leftFront.enabled=NO;
         self.rightNext.enabled=NO;
         self.tag++;
-        [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
+       [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
     }
     else
     {
@@ -488,7 +487,7 @@
         self.rightNext.enabled=YES;
         self.tag--;
         
-        [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+       [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
     }
 }
 

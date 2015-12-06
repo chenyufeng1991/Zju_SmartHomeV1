@@ -34,7 +34,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "DLLampControllYWModeViewController.h"
 #import "CYFMainViewController.h"
-
+#import "JYUpdateFurnitureName.h"
 #define UISCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
 
 NS_ENUM(NSInteger, ProviderEditingState)
@@ -43,7 +43,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
   ProviderEditStateDelete
 };
 
-@interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DLAddDeviceViewDelegate,UINavigationBarDelegate>
+@interface CYFFurnitureViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DLAddDeviceViewDelegate,UINavigationBarDelegate,JYUpdateFurnitureNameDelegate>
 
 //collectionView属性
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -52,12 +52,14 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 //智能区域数组
 @property(nonatomic,strong)NSMutableArray *furnitureSecArray;
-//@property(nonatomic,strong)NSMutableArray *furnitureSecArrayCopy;
+
 //某一区域电器数组
 @property(nonatomic,strong)NSMutableArray *furnitureArray;
 
 //添加电器View
 @property(nonatomic,strong)DLAddDeviceView *addDeviceView;
+//更改电器名称View
+@property(nonatomic,strong)JYUpdateFurnitureName *updateFurniture;
 
 
 //头部数组
@@ -71,16 +73,18 @@ NS_ENUM(NSInteger, ProviderEditingState)
 @property(nonatomic,strong)JYFurnitureBackStatus *furnitureBackStatus;
 
 
-
-
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *mainImageView;
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *addFurnitureButton;
 
 @property (assign) enum ProviderEditingState currentEditState;
 
+//添加区域按钮
+@property (weak, nonatomic) IBOutlet UIButton *addArea;
+@property(nonatomic,assign)int tag;
+
+@property(nonatomic,assign)NSInteger updateSecion;
+@property(nonatomic,assign)NSInteger updateRow;
 @end
 
 @implementation CYFFurnitureViewController
@@ -659,11 +663,11 @@ NS_ENUM(NSInteger, ProviderEditingState)
     //请求成功
     JYFurnitureBackStatus *furnitureBackStatus=[JYFurnitureBackStatus statusWithDict:responseObject];
     self.furnitureBackStatus=furnitureBackStatus;
-      for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
-      {
-          JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
-          NSLog(@"111%@ 222%@",back.name,back.scene_name);
-      }
+//      for (int i=0; i<self.furnitureBackStatus.furnitureArray.count; i++)
+//      {
+//          JYFurnitureBack *back=self.furnitureBackStatus.furnitureArray[i];
+//          NSLog(@"%@ %@",back.name,back.scene_name);
+//      }
       
     [self judge];
     
@@ -904,27 +908,93 @@ NS_ENUM(NSInteger, ProviderEditingState)
   [self.collectionView addGestureRecognizer:longPress];
 }
 
-- (void) myHandleTableviewCellLongPressed:(UILongPressGestureRecognizer *)gestureRecognizer {
-  
-  
+- (void) myHandleTableviewCellLongPressed:(UILongPressGestureRecognizer *)gestureRecognizer
+{
   CGPoint pointTouch = [gestureRecognizer locationInView:self.collectionView];
   
-  if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+  if (gestureRecognizer.state == UIGestureRecognizerStateBegan)
+  {
     NSLog(@"长按手势开始，可以在这里执行长按的操作");
     
     NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:pointTouch];
-    if (indexPath == nil) {
-      NSLog(@"空");
-    }else{
       
-      NSLog(@"Section = %ld,Row = %ld",(long)indexPath.section,(long)indexPath.row);
+    NSLog(@"Section = %ld,Row = %ld",(long)indexPath.section,(long)indexPath.row);
+      self.updateSecion=indexPath.section;
+      self.updateRow=indexPath.row;
       
-    }
+      JYUpdateFurnitureName *updateFurniture=[JYUpdateFurnitureName updateFurnitureNameView];
+      updateFurniture.delegate=self;
+      updateFurniture.frame=CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+      self.updateFurniture=updateFurniture;
+      [self.view addSubview:self.updateFurniture];
+      
   }
-  if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+  if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
+  {
     NSLog(@"长按手势结束");
   }
 }
+
+//更改电器名称代理方法
+-(void)updateGoGoGo:(NSString *)furnitureName
+{
+    
+    NSLog(@"%ld %ld",self.updateSecion,self.updateRow);
+    JYFurnitureSection *section=self.furnitureSecArray[self.updateSecion];
+    JYFurniture *furniture=section.furnitureArray[self.updateRow];
+    NSLog(@"==%@ %@",furniture.logic_id,furniture.descLabel);
+    
+    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+    [securityPolicy setAllowInvalidCertificates:YES];
+    
+    //1.创建请求管理对象
+    AFHTTPRequestOperationManager *mgr=[AFHTTPRequestOperationManager manager];
+    [mgr setSecurityPolicy:securityPolicy];
+    //2.说明服务器返回的是json参数
+    mgr.responseSerializer=[AFJSONResponseSerializer serializer];
+    
+    //3.封装请求参数
+    NSMutableDictionary *params=[NSMutableDictionary dictionary];
+    params[@"is_app"]=@"1";
+    params[@"equipment.logic_id"]=furniture.logic_id;
+    params[@"equipment.name"]=furniture.descLabel;
+   // params[@"equipment.scene_name"]=section.sectionName;
+    
+    
+    //4.发送请求
+    [mgr POST:@"http://60.12.220.16:8888/paladin/Equipment/update" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
+     
+     {
+         NSLog(@"ahhahahah%@",responseObject);
+         if([responseObject[@"code"]isEqualToString:@"0"])
+         {
+             
+         }
+         else if([responseObject[@"code"]isEqualToString:@"301"])
+         {
+             NSLog(@"却少参数");
+         }
+         else if([responseObject[@"code"]isEqualToString:@"307"])
+         {
+             NSLog(@"修改电器不存在");
+         }
+         
+         
+     } failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         [MBProgressHUD hideHUD];
+         [MBProgressHUD showError:@"修改电器名称失败"];
+         
+     }];
+
+
+}
+//取消更改电器名称
+-(void)cancelUpdate
+{
+    [self.updateFurniture removeFromSuperview];
+}
+
 
 #pragma mark - 设置导航栏的按钮
 - (void)setNaviBarItemButton{
@@ -979,8 +1049,19 @@ NS_ENUM(NSInteger, ProviderEditingState)
 
 - (void)rightBtnClicked
 {
+    if(self.tag==0)
+    {
+        self.tag++;
+        self.addArea.enabled=NO;
+    }
+    else
+    {
+        self.tag--;
+        self.addArea.enabled=YES;
+    }
   //此时你要删除cell了；
-  if (self.currentEditState == ProviderEditStateNormal){
+  if (self.currentEditState == ProviderEditStateNormal)
+  {
     self.navigationItem.rightBarButtonItem.title = @"完成";
     self.currentEditState = ProviderEditStateDelete;//两个状态切换；
     
@@ -1008,18 +1089,20 @@ NS_ENUM(NSInteger, ProviderEditingState)
       }
     }
     
-  }else{
+  }
+  else
+  {
     //这是正常情况下；
     self.navigationItem.rightBarButtonItem.title = @"删除";
     self.currentEditState = ProviderEditStateNormal;
     
     [self.collectionView reloadData];
   }
-  
 }
 
 - (void)deleteCellButtonPressed:(id)sender
 {
+    self.addArea.enabled=YES;
   UIView *v = [sender superview];//获取父类view
   CYFCollectionViewCell *cell = (CYFCollectionViewCell *)[v superview];//获取cell
   

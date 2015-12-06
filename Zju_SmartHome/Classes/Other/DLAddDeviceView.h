@@ -14,6 +14,7 @@
 -(void)addDeviceGoGoGo:(NSString *)deviceName and:(NSString *)deviceMac;
 -(void)cancelAddDevice;
 @end
+
 @interface DLAddDeviceView : UIView
 //设备名称
 @property (weak, nonatomic) IBOutlet UITextField *deviceName;
