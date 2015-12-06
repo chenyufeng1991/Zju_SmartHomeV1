@@ -153,7 +153,7 @@
                             <rect key="frame" x="247" y="0.0" width="35" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <animations/>
-                            <state key="normal" backgroundImage="ct_icon_model_press"/>
+                            <state key="normal" backgroundImage="ct_icon_model_unpress"/>
                             <state key="highlighted" backgroundImage="ct_icon_model_press"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bF8-A9-tMa" userLabel="color">
@@ -198,6 +198,7 @@
         <image name="ct_icon_color_press" width="40" height="40"/>
         <image name="ct_icon_leftbutton" width="40" height="40"/>
         <image name="ct_icon_model_press" width="40" height="40"/>
+        <image name="ct_icon_model_unpress" width="40" height="40"/>
         <image name="ct_icon_music_press" width="40" height="40"/>
         <image name="ct_icon_music_unpress" width="40" height="40"/>
         <image name="ct_icon_rightbutton" width="40" height="40"/>

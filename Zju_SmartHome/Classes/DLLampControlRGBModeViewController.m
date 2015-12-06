@@ -463,11 +463,13 @@
     {
         self.leftFront.enabled=NO;
         self.tag++;
+        [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
     }
     else
     {
         self.leftFront.enabled=YES;
         self.tag--;
+        [self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
     }
 }
 -(void)leftGo
