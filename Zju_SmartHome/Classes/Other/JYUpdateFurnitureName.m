@@ -15,6 +15,7 @@
 - (IBAction)okUpdate:(id)sender;
 
 - (IBAction)cancel:(id)sender;
+
 @end
 @implementation JYUpdateFurnitureName
 

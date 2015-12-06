@@ -18,6 +18,7 @@
 @interface JYUpdateFurnitureName : UIView
 //更改的电器名称
 @property (weak, nonatomic) IBOutlet UITextField *furnitureName;
+@property (weak, nonatomic) IBOutlet UIButton *okUPdate;
 +(instancetype)updateFurnitureNameView;
 @property(nonatomic,weak)id<JYUpdateFurnitureNameDelegate>delegate;
 @end

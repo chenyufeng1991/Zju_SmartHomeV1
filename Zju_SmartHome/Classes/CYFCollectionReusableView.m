@@ -24,6 +24,7 @@
       UIView *topView=[[UIView alloc]init];
       topView.backgroundColor=[UIColor grayColor];
       self.topView=topView;
+      //[self.topView setBackgroundColor:[UIColor colorWithRed:212 green:255 blue:100 alpha:1.0]];
       
       
       UIView *view=[[UIView alloc]init];
