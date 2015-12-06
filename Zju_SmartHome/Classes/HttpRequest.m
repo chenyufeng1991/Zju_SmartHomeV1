@@ -197,7 +197,7 @@
                    "<command_id>10001</command_id>"
                    "<command_type>execute</command_type>"
                    "<id>%@</id>"
-                   "<action>warmcold</action>"
+                   "<action>change_color</action>"
                    "<value>%@</value>"
                    "</root>",logicId,warmcoldValue];
   
@@ -227,7 +227,7 @@
                    "<command_id>10001</command_id>"
                    "<command_type>execute</command_type>"
                    "<id>%@</id>"
-                   "<action>brightness</action>"
+                   "<action>change_bright</action>"
                    "<value>%@</value>"
                    "</root>",logicId,brightnessValue];
   
