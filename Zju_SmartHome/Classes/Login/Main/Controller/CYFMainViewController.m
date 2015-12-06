@@ -26,6 +26,8 @@
 
 @property(nonatomic,strong) JYMainView *mainView;
 
+@property (nonatomic,strong) UIButton *leftBtn;
+
 @end
 
 @implementation CYFMainViewController
@@ -130,12 +132,7 @@
 
 
 
-#pragma mark - 弹出对话框让用户选择网络
-- (void)viewDidAppear:(BOOL)animated{
 
-  [super viewDidAppear:animated];
-  
-}
 
 
 //设置导航栏
@@ -149,15 +146,14 @@
   titleView.textAlignment=NSTextAlignmentCenter;
   self.navigationItem.titleView=titleView;
   
-  UIButton *leftBtn=[[UIButton alloc]init];
+  self.leftBtn=[[UIButton alloc]init];
   
   //设置用户头像；
   
-  
-  [leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
-  leftBtn.frame=CGRectMake(0, 0, 28, 28);
-  [leftBtn addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
-  UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+  [self.leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
+  self.leftBtn.frame=CGRectMake(0, 0, 28, 28);
+  [self.leftBtn addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
   self.navigationItem.leftBarButtonItem=leftItem;
 }
 
@@ -250,4 +246,45 @@
 {
     [MBProgressHUD showError:@"自定义功能尚未开通"];
 }
+
+#pragma mark - 系统事件回调
+- (void)viewDidAppear:(BOOL)animated{
+  
+  [super viewDidAppear:animated];
+  
+  NSLog(@"viewDidAppear");
+  
+  //重新设置头像；
+  
+  [self.leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
+  
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+
+  [super viewDidDisappear:animated];
+  NSLog(@"viewDidDisappear");
+}
+
+
+- (void)viewWillAppear:(BOOL)animated{
+
+
+  [super viewWillAppear:animated];
+  
+  NSLog(@"viewWillAppear");
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+
+  [super viewWillDisappear:animated];
+  NSLog(@"viewWillDisappear");
+}
+
+
 @end
+
+
+
+
+
