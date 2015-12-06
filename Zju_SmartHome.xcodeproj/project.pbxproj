@@ -69,6 +69,7 @@
 		71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A7988D1C0D8C0B006F8D7B /* AllUtils.m */; };
 		71DD8D671C0F1F3C000E1639 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71DD8D661C0F1F3C000E1639 /* QuartzCore.framework */; };
 		71DD8E151C102812000E1639 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 71DD8E141C102812000E1639 /* Reachability.m */; };
+		71E7A2EF1C1489B40091B86A /* CYFImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71E7A2EE1C1489B40091B86A /* CYFImageStore.m */; settings = {ASSET_TAGS = (); }; };
 		9D1CB9D81C0B0F8600725A63 /* LogicIdXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */; };
 		9D1CB9DC1C0B0FA000725A63 /* HttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DB1C0B0FA000725A63 /* HttpRequest.m */; };
 		9D1CB9DF1C0B0FDC00725A63 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D1CB9DE1C0B0FDC00725A63 /* Constants.m */; };
@@ -227,6 +228,8 @@
 		71DD8D661C0F1F3C000E1639 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		71DD8E131C102812000E1639 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		71DD8E141C102812000E1639 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		71E7A2ED1C1489B40091B86A /* CYFImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYFImageStore.h; sourceTree = "<group>"; };
+		71E7A2EE1C1489B40091B86A /* CYFImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYFImageStore.m; sourceTree = "<group>"; };
 		88554DE0CE3743A8B110C726 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D1CB9D61C0B0F8600725A63 /* LogicIdXMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicIdXMLParser.h; sourceTree = "<group>"; };
 		9D1CB9D71C0B0F8600725A63 /* LogicIdXMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogicIdXMLParser.m; sourceTree = "<group>"; };
@@ -425,6 +428,8 @@
 		446AF3391C0056340081C798 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				71E7A2ED1C1489B40091B86A /* CYFImageStore.h */,
+				71E7A2EE1C1489B40091B86A /* CYFImageStore.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1111,6 +1116,7 @@
 				610879321C145F8F00890CC1 /* JYUpdateFurnitureName.m in Sources */,
 				714854F01C127C300001347F /* CYFChangeMailViewController.m in Sources */,
 				71A7988E1C0D8C0B006F8D7B /* AllUtils.m in Sources */,
+				71E7A2EF1C1489B40091B86A /* CYFImageStore.m in Sources */,
 				446AF3241C0025C90081C798 /* SectionsViewController.m in Sources */,
 				446AF34B1C005F180081C798 /* DLLeftSlideMenuViewController.m in Sources */,
 				9D564DBE1BFF69A10062700D /* CYFFurnitureViewController.m in Sources */,

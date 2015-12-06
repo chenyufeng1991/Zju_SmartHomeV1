@@ -16,8 +16,19 @@
 #import "AppDelegate.h"
 #import "AllUtils.h"
 
+#import "CYFImageStore.h"
+
 #define MAX_CENTER_X [[UIScreen mainScreen] bounds].size.width
 #define LINE_COLOR [UIColor colorWithRed:0.892 green:0.623 blue:0.473 alpha:0.5]
+
+@interface DLLeftSlideMenuViewController ()
+<UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIPopoverControllerDelegate>
+
+@property (strong, nonatomic) UIPopoverController *imagePickerPopover;
+@property (strong, nonatomic) UIImageView *userPhoto;
+
+@end
+
 
 @implementation DLLeftSlideMenuViewController
 -(void)viewDidLoad{
@@ -28,11 +39,11 @@
 
     
     //头像图片
-    UIImageView *userPhoto = [[UIImageView alloc]init];
-    userPhoto.image = [UIImage imageNamed:@"UserPhoto.jpg"];
-    userPhoto.frame = CGRectMake(0, 0, 80, 80);
-    userPhoto.center = CGPointMake((MAX_CENTER_X - centerX) * 3 / 5 , 80);
-    [self.view addSubview:userPhoto];
+    self.userPhoto = [[UIImageView alloc]init];
+    self.userPhoto.image = [UIImage imageNamed:@"UserPhoto.jpg"];
+    self.userPhoto.frame = CGRectMake(0, 0, 80, 80);
+    self.userPhoto.center = CGPointMake((MAX_CENTER_X - centerX) * 3 / 5 , 80);
+    [self.view addSubview:self.userPhoto];
     
     //头像下的名字
     UILabel *lblName = [[UILabel alloc]init];
@@ -40,9 +51,9 @@
     lblName.font = [UIFont systemFontOfSize:12 weight:UIFontWeightUltraLight];
     lblName.textAlignment = NSTextAlignmentCenter;
     lblName.textColor = [UIColor whiteColor];
-    CGFloat lblNameX = CGRectGetMinX(userPhoto.frame);
-    CGFloat lblNameY = CGRectGetMaxY(userPhoto.frame) + 10;
-    CGFloat lblNameW = userPhoto.frame.size.width;
+    CGFloat lblNameX = CGRectGetMinX(self.userPhoto.frame);
+    CGFloat lblNameY = CGRectGetMaxY(self.userPhoto.frame) + 10;
+    CGFloat lblNameW = self.userPhoto.frame.size.width;
     CGFloat lblNameH = 20;
     lblName.frame = CGRectMake(lblNameX, lblNameY, lblNameW, lblNameH);
     [self.view addSubview:lblName];
@@ -50,12 +61,12 @@
     /**
      *  先统一设置frame的一些值
      */
-    CGFloat belowBtnX = CGRectGetMinX(userPhoto.frame);
-    CGFloat belowBtnW = userPhoto.frame.size.width;
+    CGFloat belowBtnX = CGRectGetMinX(self.userPhoto.frame);
+    CGFloat belowBtnW = self.userPhoto.frame.size.width;
     CGFloat belowBtnH = 30;
     
-    CGFloat lineX = CGRectGetMinX(userPhoto.frame) - 10;
-    CGFloat lineW = userPhoto.frame.size.width + 20;
+    CGFloat lineX = CGRectGetMinX(self.userPhoto.frame) - 10;
+    CGFloat lineW = self.userPhoto.frame.size.width + 20;
     CGFloat lineH = 1;
     
     //切换网络按钮
@@ -76,7 +87,7 @@
     CGFloat btnCompleteProfileY = screen.size.height * 8 / 17;
     btnCompleteProfile.frame = CGRectMake(belowBtnX, btnCompleteProfileY, belowBtnW, belowBtnH);
     [self.view addSubview:btnCompleteProfile];
-    [btnCompleteProfile addTarget:self action:@selector(btnCompleteProfileClick) forControlEvents:UIControlEventTouchUpInside];
+  [btnCompleteProfile addTarget:self action:@selector(btnCompleteProfileClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *line2 = [[UIView alloc]init];
     CGFloat line2Y = CGRectGetMaxY(btnCompleteProfile.frame) + 10;
@@ -154,9 +165,7 @@
   } contextViewController:self];
 }
 
-- (void)btnCompleteProfileClick{
-    
-}
+
 
 - (void)btnModifyPassWordClick
 {
@@ -204,4 +213,81 @@
         
     }
 }
+
+
+#pragma mark - 从相册中取出图片
+
+- (void)btnCompleteProfileClick:(id)sender{
+  if ([self.imagePickerPopover isPopoverVisible]) {
+    [self.imagePickerPopover dismissPopoverAnimated:YES];
+    self.imagePickerPopover = nil;
+    return;
+  }
+  
+  UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+  imagePicker.editing = YES;
+  
+  //如果设备支持相机，就使用拍照技术
+  //否则让用户从照片库中选择照片
+  if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+  {
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+  }
+  else{
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+  }
+  
+  imagePicker.delegate = self;
+  
+  //允许编辑图片
+  imagePicker.allowsEditing = YES;
+  
+  //创建UIPopoverController对象前先检查当前设备是不是ipad
+  if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+    self.imagePickerPopover = [[UIPopoverController alloc] initWithContentViewController:imagePicker];
+    self.imagePickerPopover.delegate = self;
+    [self.imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                    permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                    animated:YES];
+  }
+  else
+  {
+    [self presentViewController:imagePicker animated:YES completion:nil];
+  }
+
+}
+
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+  //通过info字典获取选择的照片
+  UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+  
+  //以itemKey为键，将照片存入ImageStore对象中
+  [[CYFImageStore sharedStore] setImage:image forKey:@"CYFStore"];
+  
+  //将照片放入UIImageView对象
+  self.userPhoto.image = image;
+  
+  //判断UIPopoverController对象是否存在
+  if (self.imagePickerPopover) {
+    [self.imagePickerPopover dismissPopoverAnimated:YES];
+    self.imagePickerPopover = nil;
+  }
+  else
+  {
+    //关闭以模态形式显示的UIImagePickerController
+    [self dismissViewControllerAnimated:YES completion:nil];
+  }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  
+  
+  UIImage *image = [[CYFImageStore sharedStore] imageForKey:@"CYFStore"];
+  self.userPhoto.image = image;
+}
+
 @end
