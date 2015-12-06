@@ -148,10 +148,28 @@
   
   self.leftBtn=[[UIButton alloc]init];
   
-  //设置用户头像；
+  /*
+   [view.layer setCornerRadius:CGRectGetHeight([view bounds]) / 2];
+   view.layer.masksToBounds = YES;
+   
+   
+   view.layer.borderWidth = 5;
+   view.layer.borderColor = [[UIColor whiteColor] CGColor];
+   view.layer.contents = (id)[[UIImage imageNamed:@"backgroundImage.png"] CGImage];
+   
+   */
+  //设置用户头像,同时要使这个按钮为圆形；
+  
+  
+  //以下三行代码是设置该按钮为圆形的代码；
+  self.leftBtn.frame=CGRectMake(0, 0, 28, 28);
+  [self.leftBtn.layer setCornerRadius:CGRectGetHeight([self.leftBtn bounds]) / 2];
+  self.leftBtn.layer.masksToBounds = true;
   
   [self.leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
-  self.leftBtn.frame=CGRectMake(0, 0, 28, 28);
+  
+  
+  
   [self.leftBtn addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:self.leftBtn];
   self.navigationItem.leftBarButtonItem=leftItem;
