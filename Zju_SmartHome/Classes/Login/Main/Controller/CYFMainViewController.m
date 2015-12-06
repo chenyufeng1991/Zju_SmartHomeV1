@@ -16,6 +16,9 @@
 #import "AllUtils.h"
 #import "MBProgressHUD+MJ.h"
 #import <CoreLocation/CoreLocation.h>
+
+#import "CYFImageStore.h"
+
 @interface CYFMainViewController ()<JYMainViewDelegate,CLLocationManagerDelegate>
 
 
@@ -132,24 +135,6 @@
 
   [super viewDidAppear:animated];
   
-//  AppDelegate *app = [[UIApplication sharedApplication] delegate];
-//  
-//  [AllUtils showPromptDialog:@"提示" andMessage:@"请选择网络环境" OKButton:@"外部网络" OKButtonAction:^(UIAlertAction *action) {
-//      //外网；
-//    app.isInternalNetworkGate = false;
-//    NSLog(@"你选择了外网");
-//
-//  } cancelButton:@"内部网络" cancelButtonAction:^(UIAlertAction *action) {
-//      
-//     //内网；
-//    app.isInternalNetworkGate = true;
-//    NSLog(@"你选择了内网");
-//
-//    
-//    
-//  } contextViewController:self];
-  
-  
 }
 
 
@@ -165,7 +150,11 @@
   self.navigationItem.titleView=titleView;
   
   UIButton *leftBtn=[[UIButton alloc]init];
-  [leftBtn setBackgroundImage:[UIImage imageNamed:@"UserPhoto"] forState:UIControlStateNormal];
+  
+  //设置用户头像；
+  
+  
+  [leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
   leftBtn.frame=CGRectMake(0, 0, 28, 28);
   [leftBtn addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
   UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftBtn];
