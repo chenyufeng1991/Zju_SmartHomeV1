@@ -28,6 +28,8 @@
 
 @property (nonatomic,strong) UIButton *leftBtn;
 
+
+
 @end
 
 @implementation CYFMainViewController
@@ -36,27 +38,29 @@
 {
   [super viewDidLoad];
   
+  
+  
   //设置显示的view
   JYMainView *jyMainView=[JYMainView mainViewXib];
-    
+  
   jyMainView.officeLabel.userInteractionEnabled=YES;
   UITapGestureRecognizer *officeTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(officeLabelTap)];
   [jyMainView.officeLabel addGestureRecognizer:officeTap];
-    
+  
   jyMainView.furnitureLabel.userInteractionEnabled=YES;
   UITapGestureRecognizer *furnitureTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(furnitureTap)];
   [jyMainView.furnitureLabel addGestureRecognizer:furnitureTap];
-    
+  
   jyMainView.productLabel.userInteractionEnabled=YES;
   UITapGestureRecognizer *productTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(productTap)];
   [jyMainView.productLabel addGestureRecognizer:productTap];
-    
+  
   jyMainView.customLabel.userInteractionEnabled=YES;
   UITapGestureRecognizer *customTap=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(customTap)];
   [jyMainView.customLabel addGestureRecognizer:customTap];
-
-    
-    
+  
+  
+  
   //设置代理
   jyMainView.delegate=self;
   self.mainView = jyMainView;
@@ -75,12 +79,12 @@
     
     //并直接在这里进行解析；
     InternalGateIPXMLParser *parser = [[InternalGateIPXMLParser alloc] initWithXMLString:result];
-   // NSLog(@"解析返回：%@",parser.internalIP);
+    // NSLog(@"解析返回：%@",parser.internalIP);
     
     AppDelegate *app = [[UIApplication sharedApplication] delegate];
     app.globalInternalIP = parser.internalIP;
     
-//    NSLog(@"现在全局的IP是：%@",app.globalInternalIP);
+    //    NSLog(@"现在全局的IP是：%@",app.globalInternalIP);
     
   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
     NSLog(@"获取内网返回数据失败：%@",error);
@@ -91,7 +95,7 @@
 
 #pragma mark - 检测定位功能是否开启
 - (void)testOpenLocationFunction{
-
+  
   //检测定位功能是否开启
   if([CLLocationManager locationServicesEnabled]){
     
@@ -126,7 +130,7 @@
                                                otherButtonTitles:nil, nil];
     [alertView show];
   }
-
+  
 }
 
 
@@ -166,8 +170,25 @@
   [self.leftBtn.layer setCornerRadius:CGRectGetHeight([self.leftBtn bounds]) / 2];
   self.leftBtn.layer.masksToBounds = true;
   
-  [self.leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
   
+  
+  
+  //  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  //
+  //  NSString *isFirstInstall = [defaults valueForKey:@"isFirstInstall"];
+  //  NSLog(@"是否已经安装：%@",isFirstInstall);
+  //
+  //  if (isFirstInstall  == nil) {
+  //    //第一次安装；
+  //    [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"UserPhoto"] forState:UIControlStateNormal];
+  //    NSLog(@"第一次安装");
+  //
+  //  }else{
+  //
+  //    //已经安装；
+  //    [self.leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
+  //    NSLog(@"不是第一次安装");
+  //  }
   
   
   [self.leftBtn addTarget:self action:@selector(presentLeftMenuViewController:) forControlEvents:UIControlEventTouchUpInside];
@@ -191,17 +212,17 @@
 //办公室
 -(void)officeClick
 {
-     [MBProgressHUD showError:@"办公室功能尚未开通"];
+  [MBProgressHUD showError:@"办公室功能尚未开通"];
 }
 //单品
 -(void)productClick
 {
-    [MBProgressHUD showError:@"单品功能尚未开通"];
+  [MBProgressHUD showError:@"单品功能尚未开通"];
 }
 //自定义
 -(void)customClick
 {
-    [MBProgressHUD showError:@"自定义功能尚未开通"];
+  [MBProgressHUD showError:@"自定义功能尚未开通"];
 }
 
 #pragma mark - CLLocationManangerDelegate
@@ -238,9 +259,9 @@
       self.mainView.countryLabel.text = country;
       
       
-//      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"你的位置" message:[[placemark addressDictionary] objectForKey:@"City"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
-//      
-//      [alert show];
+      //      UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"你的位置" message:[[placemark addressDictionary] objectForKey:@"City"] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+      //
+      //      [alert show];
       
     }
     
@@ -249,20 +270,20 @@
 
 -(void)officeLabelTap
 {
-    [MBProgressHUD showError:@"办公室功能尚未开通"];
+  [MBProgressHUD showError:@"办公室功能尚未开通"];
 }
 -(void)furnitureTap
 {
-    CYFFurnitureViewController *jyVc=[[CYFFurnitureViewController alloc]init];
-    [self.navigationController pushViewController:jyVc animated:YES];
+  CYFFurnitureViewController *jyVc=[[CYFFurnitureViewController alloc]init];
+  [self.navigationController pushViewController:jyVc animated:YES];
 }
 -(void)productTap
 {
-    [MBProgressHUD showError:@"单品功能尚未开通"];
+  [MBProgressHUD showError:@"单品功能尚未开通"];
 }
 -(void)customTap
 {
-    [MBProgressHUD showError:@"自定义功能尚未开通"];
+  [MBProgressHUD showError:@"自定义功能尚未开通"];
 }
 
 #pragma mark - 系统事件回调
@@ -270,33 +291,30 @@
   
   [super viewDidAppear:animated];
   
-  NSLog(@"viewDidAppear");
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *isFirstInstall = [defaults valueForKey:@"isFirstInstall"];
+  NSString *isSettedPhoto = [defaults valueForKey:@"isSettedPhoto"];
+  
+
+  NSLog(@"是否已经安装：%@",isFirstInstall);
   
   //重新设置头像；
+  if (isFirstInstall  == nil || isSettedPhoto == nil) {
+    //第一次安装；
+    [self.leftBtn setBackgroundImage:[UIImage imageNamed:@"UserPhoto"] forState:UIControlStateNormal];
+    [defaults setValue:@"installed" forKey:@"isFirstInstall"];
+    NSLog(@"第一次安装");
+    
+  }else{
+    
+    //已经安装；
+    [self.leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
+    NSLog(@"不是第一次安装");
+  }
   
-  [self.leftBtn setBackgroundImage:[[CYFImageStore sharedStore] imageForKey:@"CYFStore"] forState:UIControlStateNormal];
   
-}
-
-- (void)viewDidDisappear:(BOOL)animated{
-
-  [super viewDidDisappear:animated];
-  NSLog(@"viewDidDisappear");
-}
-
-
-- (void)viewWillAppear:(BOOL)animated{
-
-
-  [super viewWillAppear:animated];
   
-  NSLog(@"viewWillAppear");
-}
-
-- (void)viewWillDisappear:(BOOL)animated{
-
-  [super viewWillDisappear:animated];
-  NSLog(@"viewWillDisappear");
+  
 }
 
 

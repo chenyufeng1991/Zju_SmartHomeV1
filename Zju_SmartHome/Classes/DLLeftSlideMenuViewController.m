@@ -31,6 +31,7 @@
 
 
 @implementation DLLeftSlideMenuViewController
+
 -(void)viewDidLoad{
   [super viewDidLoad];
   CGRect screen = [[UIScreen mainScreen] bounds];
@@ -287,6 +288,12 @@
   //将照片放入UIImageView对象
   self.userPhoto.image = image;
   
+  
+  //判断是否已经设置头像；
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  [defaults setValue:@"isSettedPhoto" forKey:@"isSettedPhoto"];
+  
+
   //判断UIPopoverController对象是否存在
   if (self.imagePickerPopover) {
     [self.imagePickerPopover dismissPopoverAnimated:YES];
@@ -304,8 +311,34 @@
   [super viewWillAppear:animated];
   
   
-  UIImage *image = [[CYFImageStore sharedStore] imageForKey:@"CYFStore"];
-  self.userPhoto.image = image;
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  NSString *isFirstInstall = [defaults valueForKey:@"isFirstInstall"];
+  NSString *isSettedPhoto = [defaults valueForKey:@"isSettedPhoto"];
+  
+  NSLog(@"是否已经安装：%@",isFirstInstall);
+  
+  //重新设置头像；
+  if (isFirstInstall  == nil || isSettedPhoto == nil) {
+    //第一次安装；
+   
+    UIImage *image = [UIImage imageNamed:@"UserPhoto"];
+    self.userPhoto.image = image;
+    
+    
+  }else{
+    
+    UIImage *image = [[CYFImageStore sharedStore] imageForKey:@"CYFStore"];
+    self.userPhoto.image = image;
+    
+  }
+  
+  
 }
 
 @end
+
+
+
+
+
+
