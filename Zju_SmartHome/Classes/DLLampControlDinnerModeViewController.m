@@ -14,7 +14,7 @@
 #import "CYFFurnitureViewController.h"
 #import "DLLampControlGuestModeViewController.h"
 #import "DLLampControlReadingModeViewController.h"
-
+#import "AppDelegate.h"
 
 @interface DLLampControlDinnerModeViewController ()
 @property (weak, nonatomic) IBOutlet UIView *panelView;
@@ -640,14 +640,14 @@
                          "<command_id>1</command_id>"
                          "<command_type>execute</command_type>"
                          "<id>%@</id>"
-                         "<action>open</action>"
-                         "<value>%@</value>"
-                         "</root>",self.logic_id,[NSString stringWithFormat:@"%d", 100]];
+                         "<action>change_bright</action>"
+                         "<value>100</value>"
+                         "</root>",self.logic_id];
         
         
         NSDictionary *parameters = @{@"test" : str};
         
-        [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+        [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
            parameters:parameters
               success:^(AFHTTPRequestOperation *operation,id responseObject)
          {
@@ -676,14 +676,14 @@
                          "<command_id>1</command_id>"
                          "<command_type>execute</command_type>"
                          "<id>%@</id>"
-                         "<action>open</action>"
-                         "<value>%@</value>"
-                         "</root>",self.logic_id,[NSString stringWithFormat:@"%d",0]];
+                         "<action>change_bright</action>"
+                         "<value>0</value>"
+                         "</root>",self.logic_id];
         
         
         NSDictionary *parameters = @{@"test" : str};
         
-        [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+        [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
            parameters:parameters
               success:^(AFHTTPRequestOperation *operation,id responseObject)
          {
