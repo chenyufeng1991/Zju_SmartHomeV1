@@ -22,6 +22,7 @@
 //从服务器获得所有的注册设备；
 + (void)findAllDeviceFromServer :(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure;
 
+//从网关获取内网IP；
 + (void)getInternalNetworkGateIP:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure;
 
 //删除设备
@@ -33,5 +34,10 @@
 //YW灯亮度
 + (void)sendYWBrightnessToServer:(NSString *)logicId brightnessValue:(NSString*)brightnessValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure;
 
+//RGB亮度
++ (void)sendRGBBrightnessToServer:(NSString *)logicId brightnessValue:(NSString*)brightnessValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure;
+
+//RGB三种颜色
++ (void)sendRGBColorToServer:(NSString *)logicId redValue:(NSString*)redValue greenValue:(NSString*)greenValue blueValue:(NSString*)blueValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure;
 
 @end
