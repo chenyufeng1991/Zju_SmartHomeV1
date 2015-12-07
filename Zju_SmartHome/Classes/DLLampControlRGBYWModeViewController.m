@@ -39,17 +39,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+  
+//   self.tag=1;
+  
     NSLog(@"8888 %@",self.logic_id);
     
     self.title = @"YW灯";
     
-    self.leftFront.enabled=NO;
+//    self.leftFront.enabled=NO;
     self.rightNext.enabled = false;
-    self.rgbAdjust.enabled=NO;
-    
+//    self.rgbAdjust.enabled=NO;
+  
     [self.modeSelect setAdjustsImageWhenHighlighted:YES];
     [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
+   [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
     
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
     [self.leftFront addTarget:self action:@selector(leftGo) forControlEvents:UIControlEventTouchUpInside];
@@ -471,18 +474,18 @@
 
 -(void)modeSelected
 {
-    if(self.tag==0)
-    {
-        self.leftFront.enabled=NO;
-        self.rightNext.enabled = false;
-        self.tag++;
-    }
-    else
-    {
-        self.leftFront.enabled=YES;
-        self.rightNext.enabled = false;
-        self.tag--;
-    }
+  if(self.tag==0)
+  {
+    self.leftFront.enabled=NO;
+    self.tag++;
+    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
+  }
+  else
+  {
+    self.leftFront.enabled=YES;
+    self.tag--;
+    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
+  }
 }
 
 -(void)rightGo
