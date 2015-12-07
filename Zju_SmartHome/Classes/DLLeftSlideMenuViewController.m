@@ -17,6 +17,7 @@
 #import "AllUtils.h"
 
 #import "CYFImageStore.h"
+#import "MBProgressHUD+MJ.h"
 
 #define MAX_CENTER_X [[UIScreen mainScreen] bounds].size.width
 #define LINE_COLOR [UIColor colorWithRed:0.892 green:0.623 blue:0.473 alpha:0.5]
@@ -173,12 +174,17 @@
   [AllUtils showPromptDialog:@"提示" andMessage:@"请选择网络环境" OKButton:@"外部网络" OKButtonAction:^(UIAlertAction *action) {
     //外网；
     app.isInternalNetworkGate = false;
+    
+    [MBProgressHUD showSuccess:@"您选择了外网"];
+    
     NSLog(@"你选择了外网");
     
   } cancelButton:@"内部网络" cancelButtonAction:^(UIAlertAction *action) {
     
     //内网；
     app.isInternalNetworkGate = true;
+    [MBProgressHUD showSuccess:@"您选择了内网"];
+    
     NSLog(@"你选择了内网");
     
   } contextViewController:self];
