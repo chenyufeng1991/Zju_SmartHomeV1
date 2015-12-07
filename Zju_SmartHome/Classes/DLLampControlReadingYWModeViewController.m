@@ -12,6 +12,11 @@
 #import "HttpRequest.h"
 
 
+
+#import "DLLampControlSleepYWModeViewController.h"
+#import "DLLampControlDinnerYWModeViewController.h"
+
+
 @interface DLLampControlReadingYWModeViewController ()
 @property (nonatomic, weak) UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIView *panelView;
@@ -485,10 +490,32 @@
 
 -(void)rightGo
 {
-    NSLog(@"right");
+
+  DLLampControlSleepYWModeViewController *sleep = [[DLLampControlSleepYWModeViewController alloc] init];
+  sleep.logic_id = self.logic_id;
+  [self.navigationController pushViewController:sleep animated:true];
+  
+  
 }
 -(void)leftGo
 {
-    NSLog(@"leftGo");
+
+  for (UIViewController *controller in self.navigationController.viewControllers)
+  {
+    if ([controller isKindOfClass:[DLLampControlDinnerYWModeViewController class]])
+    {
+      
+      DLLampControlDinnerYWModeViewController *vc=[[DLLampControlDinnerYWModeViewController alloc]init];
+      vc=(DLLampControlDinnerYWModeViewController *)controller;
+      vc.logic_id=self.logic_id;
+      [self.navigationController popToViewController:vc animated:YES];
+      
+    }
+    
+  }
+  
+  
+
+  
 }
 @end

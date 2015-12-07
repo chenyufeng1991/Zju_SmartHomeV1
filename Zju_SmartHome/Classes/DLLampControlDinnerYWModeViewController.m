@@ -11,6 +11,9 @@
 #import "CYFFurnitureViewController.h"
 #import "HttpRequest.h"
 
+#import "DLLampControlReadingYWModeViewController.h"
+#import "DLLampControllYWModeViewController.h"
+
 @interface DLLampControlDinnerYWModeViewController ()
 @property (nonatomic, weak) UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIView *panelView;
@@ -483,10 +486,33 @@
 
 -(void)rightGo
 {
-    NSLog(@"right");
+
+  DLLampControlReadingYWModeViewController *reading = [[DLLampControlReadingYWModeViewController alloc] init];
+  reading.logic_id = self.logic_id;
+  [self.navigationController pushViewController:reading animated:true];
+  
+  
 }
 -(void)leftGo
 {
-    NSLog(@"leftGo");
+
+  for (UIViewController *controller in self.navigationController.viewControllers)
+  {
+    if ([controller isKindOfClass:[DLLampControllYWModeViewController class]])
+    {
+      
+      DLLampControllYWModeViewController *vc=[[DLLampControllYWModeViewController alloc]init];
+      vc=(DLLampControllYWModeViewController *)controller;
+      vc.logic_id=self.logic_id;
+      [self.navigationController popToViewController:vc animated:YES];
+      
+    }
+    
+  }
+  
+  
+
+  
+  
 }
 @end

@@ -11,6 +11,8 @@
 #import "CYFFurnitureViewController.h"
 #import "HttpRequest.h"
 
+#import "DLLampControlDinnerYWModeViewController.h"
+
 
 @interface DLLampControllYWModeViewController ()
 @property (nonatomic, weak) UIImageView *imgView;
@@ -485,10 +487,31 @@
 
 -(void)rightGo
 {
-    NSLog(@"right");
+
+  DLLampControlDinnerYWModeViewController *dinner = [[DLLampControlDinnerYWModeViewController alloc] init];
+  dinner.logic_id = self.logic_id;
+  [self.navigationController pushViewController:dinner animated:true];
+  
 }
 -(void)leftGo
 {
     NSLog(@"leftGo");
 }
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

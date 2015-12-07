@@ -12,6 +12,8 @@
 #import "HttpRequest.h"
 
 
+#import "DLLampControlSleepYWModeViewController.h"
+
 @interface DLLampControlRGBYWModeViewController ()
 @property (nonatomic, weak) UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UIView *panelView;
@@ -489,6 +491,20 @@
 }
 -(void)leftGo
 {
-    NSLog(@"leftGo");
+
+  for (UIViewController *controller in self.navigationController.viewControllers)
+  {
+    if ([controller isKindOfClass:[DLLampControlSleepYWModeViewController class]])
+    {
+      
+      DLLampControlSleepYWModeViewController *vc=[[DLLampControlSleepYWModeViewController alloc]init];
+      vc=(DLLampControlSleepYWModeViewController *)controller;
+      vc.logic_id=self.logic_id;
+      [self.navigationController popToViewController:vc animated:YES];
+      
+    }
+    
+  }
+  
 }
 @end
