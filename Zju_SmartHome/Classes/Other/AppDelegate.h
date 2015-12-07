@@ -27,8 +27,8 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
-
-
+//用户名
+@property(nonatomic,copy)NSString *username;
 
 @end
 

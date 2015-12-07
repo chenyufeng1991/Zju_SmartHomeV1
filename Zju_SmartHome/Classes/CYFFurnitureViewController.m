@@ -998,7 +998,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
         params[@"is_app"]=@"1";
         params[@"equipment.logic_id"]=furniture.logic_id;
         params[@"equipment.name"]=furnitureName;
-        // params[@"equipment.scene_name"]=section.sectionName;
+        params[@"equipment.scene_name"]=section.sectionName;
         
         NSLog(@"%@ %@ %@",furniture.logic_id,furniture.descLabel,section.sectionName);
         //4.发送请求
@@ -1014,6 +1014,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
                  //修改本地电器名称,刷新CollectionView
                  furniture.descLabel=furnitureName;
                  [self.collectionView reloadData];
+                  [self.updateFurniture removeFromSuperview];
                  
              }
              else if([responseObject[@"code"]isEqualToString:@"301"])
