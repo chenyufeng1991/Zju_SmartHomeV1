@@ -15,6 +15,7 @@
 
 #import "DLLampControlSleepYWModeViewController.h"
 #import "DLLampControlDinnerYWModeViewController.h"
+#import "MBProgressHUD+MJ.h"
 
 
 @interface DLLampControlReadingYWModeViewController ()
@@ -36,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *musicOpen;
 
 @property(nonatomic,assign)int tag;
+@property(nonatomic,assign)int switchTag;
 @end
 
 @implementation DLLampControlReadingYWModeViewController
@@ -67,7 +69,17 @@
     [leftButton addTarget:self action:@selector(leftBtnClicked) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftItem;
-    
+  
+  
+  UIButton *rightButton=[[UIButton alloc]init];
+  [rightButton setImage:[UIImage imageNamed:@"ct_icon_switch"] forState:UIControlStateNormal];
+  rightButton.frame=CGRectMake(0, 0, 30, 30);
+  [rightButton setImageEdgeInsets:UIEdgeInsetsMake(-4, 6, 4, -10)];
+  [rightButton addTarget:self action:@selector(rightBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+  UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+  self.navigationItem.rightBarButtonItem=rightItem;
+
+  
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
     UIView *viewColorPickerPositionIndicator = [[UIView alloc]init];
@@ -523,4 +535,85 @@
 
   
 }
+
+//电器开关按钮
+-(void)rightBtnClicked
+{
+  NSLog(@"开关按钮点击事件");
+  //说明灯是关着的
+  if(self.switchTag==0)
+  {
+    self.switchTag++;
+    //增加这几行代码；
+    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+    [securityPolicy setAllowInvalidCertificates:YES];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setSecurityPolicy:securityPolicy];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                     "<root>"
+                     "<command_id>1</command_id>"
+                     "<command_type>execute</command_type>"
+                     "<id>%@</id>"
+                     "<action>open</action>"
+                     "<value>%@</value>"
+                     "</root>",self.logic_id,[NSString stringWithFormat:@"%d", 100]];
+    
+    
+    NSDictionary *parameters = @{@"test" : str};
+    
+    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation,id responseObject)
+     {
+       NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+       NSLog(@"成功: %@", string);
+     }
+          failure:^(AFHTTPRequestOperation *operation,NSError *error){
+            NSLog(@"失败: %@", error);
+            [MBProgressHUD showError:@"请检查网关"];
+          }];
+    
+  }
+  else if (self.switchTag==1)
+  {
+    self.switchTag--;
+    //增加这几行代码；
+    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+    [securityPolicy setAllowInvalidCertificates:YES];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setSecurityPolicy:securityPolicy];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                     "<root>"
+                     "<command_id>1</command_id>"
+                     "<command_type>execute</command_type>"
+                     "<id>%@</id>"
+                     "<action>open</action>"
+                     "<value>%@</value>"
+                     "</root>",self.logic_id,[NSString stringWithFormat:@"%d",0]];
+    
+    
+    NSDictionary *parameters = @{@"test" : str};
+    
+    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation,id responseObject)
+     {
+       NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+       NSLog(@"成功: %@", string);
+     }
+          failure:^(AFHTTPRequestOperation *operation,NSError *error){
+            NSLog(@"失败: %@", error);
+            [MBProgressHUD showError:@"请检查网关"];
+          }];
+    
+  }
+  
+}
+
 @end
