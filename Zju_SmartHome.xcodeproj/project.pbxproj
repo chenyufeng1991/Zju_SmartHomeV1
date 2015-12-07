@@ -476,12 +476,12 @@
 				6108791B1C145DDF00890CC1 /* DLLampControlReadingYWModeViewController.h */,
 				6108791C1C145DDF00890CC1 /* DLLampControlReadingYWModeViewController.m */,
 				6108791D1C145DDF00890CC1 /* DLLampControlReadingYWModeViewController.xib */,
-				6108791E1C145DDF00890CC1 /* DLLampControlRGBYWModeViewController.h */,
-				6108791F1C145DDF00890CC1 /* DLLampControlRGBYWModeViewController.m */,
-				610879201C145DDF00890CC1 /* DLLampControlRGBYWModeViewController.xib */,
 				610879211C145DDF00890CC1 /* DLLampControlSleepYWModeViewController.h */,
 				610879221C145DDF00890CC1 /* DLLampControlSleepYWModeViewController.m */,
 				610879231C145DDF00890CC1 /* DLLampControlSleepYWModeViewController.xib */,
+				6108791E1C145DDF00890CC1 /* DLLampControlRGBYWModeViewController.h */,
+				6108791F1C145DDF00890CC1 /* DLLampControlRGBYWModeViewController.m */,
+				610879201C145DDF00890CC1 /* DLLampControlRGBYWModeViewController.xib */,
 			);
 			name = YW;
 			sourceTree = "<group>";

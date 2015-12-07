@@ -965,8 +965,6 @@ NS_ENUM(NSInteger, ProviderEditingState)
           [self.view addSubview:self.updateFurniture];
       }
       
-      
-      
   }
   if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
   {
@@ -999,10 +997,10 @@ NS_ENUM(NSInteger, ProviderEditingState)
         NSMutableDictionary *params=[NSMutableDictionary dictionary];
         params[@"is_app"]=@"1";
         params[@"equipment.logic_id"]=furniture.logic_id;
-        params[@"equipment.name"]=furniture.descLabel;
+        params[@"equipment.name"]=furnitureName;
         // params[@"equipment.scene_name"]=section.sectionName;
         
-        NSLog(@"呵呵哈%@ %@ %@",furniture.logic_id,furniture.descLabel,section.sectionName);
+        NSLog(@"%@ %@ %@",furniture.logic_id,furniture.descLabel,section.sectionName);
         //4.发送请求
         [mgr POST:@"http://60.12.220.16:8888/paladin/Equipment/update" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject)
          
@@ -1013,6 +1011,10 @@ NS_ENUM(NSInteger, ProviderEditingState)
              {
                  [MBProgressHUD hideHUD];
                  [MBProgressHUD showSuccess:@"修改成功"];
+                 //修改本地电器名称,刷新CollectionView
+                 furniture.descLabel=furnitureName;
+                 [self.collectionView reloadData];
+                 
              }
              else if([responseObject[@"code"]isEqualToString:@"301"])
              {
