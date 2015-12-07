@@ -975,7 +975,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
 //更改电器名称代理方法
 -(void)updateGoGoGo:(NSString *)furnitureName
 {
-    if(self.row<5)
+    if(self.updateRow<5)
     {
         [MBProgressHUD showSuccess:@"默认电器不做修改"];
     }
