@@ -45,7 +45,7 @@
     self.title = @"YW灯";
     
     self.leftFront.enabled=NO;
-    self.rightNext.enabled=NO;
+    self.rightNext.enabled = false;
     self.rgbAdjust.enabled=NO;
     
     [self.modeSelect setAdjustsImageWhenHighlighted:YES];
@@ -474,13 +474,13 @@
     if(self.tag==0)
     {
         self.leftFront.enabled=NO;
-        self.rightNext.enabled=NO;
+        self.rightNext.enabled = false;
         self.tag++;
     }
     else
     {
         self.leftFront.enabled=YES;
-        self.rightNext.enabled=YES;
+        self.rightNext.enabled = false;
         self.tag--;
     }
 }
