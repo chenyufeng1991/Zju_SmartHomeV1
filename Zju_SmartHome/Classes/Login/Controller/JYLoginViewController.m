@@ -19,7 +19,7 @@
 #import "RegViewController.h"
 #import "RESideMenu.h"
 #import "DLLeftSlideMenuViewController.h"
-
+#import "AppDelegate.h"
 #import "Reachability.h"
 
 @interface JYLoginViewController ()<LoginXibDelegate,UITextFieldDelegate>
@@ -100,6 +100,9 @@
         JYLoginStatus *status=[JYLoginStatus statusWithDict:responseObject];
         
         JYUserData *data=status.data;
+        
+        AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
+        appDelegate.username=data.account;
         
         //5.存储模型数据
         //归档

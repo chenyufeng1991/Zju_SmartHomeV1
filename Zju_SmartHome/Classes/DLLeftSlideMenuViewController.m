@@ -67,7 +67,9 @@
   
   //头像下的名字
   UILabel *lblName = [[UILabel alloc]init];
-  lblName.text = @"Paul Walker";
+  AppDelegate *appDelegate=(AppDelegate *)[[UIApplication sharedApplication]delegate];
+    lblName.text=appDelegate.username;
+  //lblName.text = @"Paul Walker";
   lblName.font = [UIFont systemFontOfSize:12 weight:UIFontWeightUltraLight];
   lblName.textAlignment = NSTextAlignmentCenter;
   lblName.textColor = [UIColor whiteColor];
