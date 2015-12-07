@@ -567,7 +567,7 @@
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
         
-        if ([controller isKindOfClass:[DLLampControlGuestModeViewController class]]) {
+        if ([controller isKindOfClass:[CYFFurnitureViewController class]]) {
             
             [self.navigationController popToViewController:controller animated:YES];
             

@@ -12,6 +12,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "DLLampControlDinnerModeViewController.h"
 #import "DLLampControlSleepModeViewController.h"
+#import "CYFFurnitureViewController.h"
 @interface DLLampControlReadingModeViewController ()
 @property (nonatomic, weak) UISlider *slider;
 @property (nonatomic, weak) UIImageView *imgView;
@@ -553,7 +554,7 @@
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
         
-        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]]) {
+        if ([controller isKindOfClass:[CYFFurnitureViewController class]]) {
             
             [self.navigationController popToViewController:controller animated:YES];
             

@@ -11,6 +11,7 @@
 #import "AFNetworking.h"
 #import "MBProgressHUD+MJ.h"
 #import "DLLampControlSleepModeViewController.h"
+#import "CYFFurnitureViewController.h"
 @interface DLLampControlRGBModeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *rValue;
 @property (weak, nonatomic) IBOutlet UILabel *gValue;
@@ -562,7 +563,7 @@
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
         
-        if ([controller isKindOfClass:[DLLampControlSleepModeViewController class]]) {
+        if ([controller isKindOfClass:[CYFFurnitureViewController class]]) {
             
             [self.navigationController popToViewController:controller animated:YES];
             
