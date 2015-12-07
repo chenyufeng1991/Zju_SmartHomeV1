@@ -386,15 +386,103 @@
         }}
 }
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+  UITouch *touch = touches.anyObject;
+  
+  CGPoint touchLocation = [touch locationInView:self.imgView];
+  UIView *hitView = nil;
+  
+  UIImageView *imgView = (UIImageView *)[self.view viewWithTag:10086];
+  //  NSLog(@"%@", NSStringFromCGRect(imgView.frame));
+  BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
+                                         bigRadius:imgView.frame.size.width * 0.48
+                                       smallRadius:imgView.frame.size.width * 0.38
+                                       targetPoint:touchLocation];
+  if (pointInRound) {
+    
+    //    UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
+    UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
+    //    UITouch *touch = touches.anyObject;
+    //
+    //    CGPoint touchLocation = [touch locationInView:self.imgView];
+    UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
+    const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
+    
+    if ([self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
+                           bigRadius:imgView.frame.size.width * 0.48
+                         smallRadius:imgView.frame.size.width * 0.38        //0.39
+                         targetPoint:touchLocation]) {
+      
+      //!!!:ATTENTIOIN
+      //        viewColorPickerPositionIndicator.center = touchLocation;
+      viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
+      viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
+      
+      /**
+       *  以下判断代码真的是丧心病狂，63这个值真是可怜，代码不忍直视，为什么写了很多无意思的数值，只是想让YW灯的冷暖值
+       *  从零取到一百，生生的把它凑成了一百
+       */
+      int cwValue = (int)(touchLocation.y / 2.5) - 2;
+      if (fabsf(([[UIScreen mainScreen] bounds].size.height - 480)) < 1) {
+        // 4 & 4s
+        if (cwValue < 63) {
+          cwValue = cwValue + 1;
+        }else{
+          cwValue = (float)(cwValue) / 81 * 100;
+        }
+      }
+      if (fabsf(([[UIScreen mainScreen] bounds].size.height - 568)) < 1){
+        // 5 & 5s & 5c
+        if (cwValue < 63) {
+          cwValue = cwValue + 1;
+        }else{
+          cwValue = (float)(cwValue) / 81 * 100;
+        }
+        
+      }else if (fabsf(([[UIScreen mainScreen] bounds].size.height - 667)) < 1) {
+        // 6 & 6s
+        if (cwValue < 63) {
+          cwValue = cwValue;
+        }else{
+          cwValue += 1;
+        }
+        
+      }else if (fabsf(([[UIScreen mainScreen] bounds].size.height - 736)) < 1){
+        // 6p & 6sp
+        
+        if (cwValue < 63) {
+          cwValue = cwValue;
+        }else{
+          cwValue = (float)(cwValue) / 111 * 100;
+        }
+      }
+      
+      self.CWValue.text = [NSString stringWithFormat:@"%d", cwValue];
+      //在这里把cwValuevalue值传给服务器
+      
+      [HttpRequest sendYWWarmColdToServer:self.logic_id warmcoldValue:[NSString stringWithFormat:@"%d", cwValue] success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"YW冷暖返回成功：%@",result);
+        
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"YW冷暖返回失败：%@",error);
+      }];
+      
+    }
+  }
+}
+
 
 //*****************************获取屏幕点触位置的RGB值的方法************************************//
 - (UIColor *) getPixelColorAtLocation:(CGPoint)point {
     UIColor* color = nil;
-    
+  
     UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
-    
+  
     CGImageRef inImage = colorImageView.image.CGImage;
-    
+  
     CGContextRef cgctx = [self createARGBBitmapContextFromImage:inImage];
     if (cgctx == NULL) {
         return nil;
@@ -553,9 +641,9 @@
                      "<command_id>1</command_id>"
                      "<command_type>execute</command_type>"
                      "<id>%@</id>"
-                     "<action>open</action>"
-                     "<value>%@</value>"
-                     "</root>",self.logic_id,[NSString stringWithFormat:@"%d", 100]];
+                     "<action>change_bright</action>"
+                     "<value>100</value>"
+                     "</root>",self.logic_id];
     
     
     NSDictionary *parameters = @{@"test" : str};
@@ -589,9 +677,9 @@
                      "<command_id>1</command_id>"
                      "<command_type>execute</command_type>"
                      "<id>%@</id>"
-                     "<action>open</action>"
-                     "<value>%@</value>"
-                     "</root>",self.logic_id,[NSString stringWithFormat:@"%d",0]];
+                     "<action>change_bright</action>"
+                     "<value>0</value>"
+                     "</root>",self.logic_id];
     
     
     NSDictionary *parameters = @{@"test" : str};

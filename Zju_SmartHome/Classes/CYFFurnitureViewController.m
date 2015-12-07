@@ -942,7 +942,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
           
       }
       //如果row<5，说明是默认电器，不允许修改
-      else if(self.row<5)
+      else if(self.updateRow<5)
       {
           if(furniture1.registed==YES)
           {
