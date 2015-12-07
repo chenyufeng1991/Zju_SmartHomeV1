@@ -12,6 +12,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "DLLampControlDinnerModeViewController.h"
 #import "DLLampControlSleepModeViewController.h"
+#import "CYFFurnitureViewController.h"
 @interface DLLampControlReadingModeViewController ()
 @property (nonatomic, weak) UISlider *slider;
 @property (nonatomic, weak) UIImageView *imgView;
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *modeSelect;
 
 @property(nonatomic,assign)int tag;
+@property(nonatomic,assign)int switchTag;
 @end
 
 @implementation DLLampControlReadingModeViewController
@@ -36,7 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.tag=1;
+    //self.tag=1;
     
     UIButton *leftButton=[[UIButton alloc]init];
     [leftButton setImage:[UIImage imageNamed:@"ct_icon_leftbutton"] forState:UIControlStateNormal];
@@ -64,7 +66,7 @@
     [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
     
      [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
-    
+    [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
     
     UIImageView *imgView = [[UIImageView alloc]init];
     imgView.tag = 10086;
@@ -135,9 +137,41 @@
     [self.panelView addSubview:slider];
 }
 
--(void)sliderValueChanged{
+//控制RGB灯亮度方法
+-(void)sliderValueChanged
+{
     //    NSLog(@"%d", self.slider.value);
+    //增加这几行代码；
+    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+    [securityPolicy setAllowInvalidCertificates:YES];
     
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    [manager setSecurityPolicy:securityPolicy];
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                     "<root>"
+                     "<command_id>1</command_id>"
+                     "<command_type>execute</command_type>"
+                     "<id>%@</id>"
+                     "<action>change_bright</action>"
+                     "<value>%@</value>"
+                     "</root>",self.logic_id,[NSString stringWithFormat:@"%f", self.slider.value]];
+    
+    
+    NSDictionary *parameters = @{@"test" : str};
+    
+    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
+       parameters:parameters
+          success:^(AFHTTPRequestOperation *operation,id responseObject)
+     {
+         NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+         NSLog(@"成功: %@", string);
+     }
+          failure:^(AFHTTPRequestOperation *operation,NSError *error){
+              NSLog(@"失败: %@", error);
+              [MBProgressHUD showError:@"请检查网关"];
+          }];
 }
 
 
@@ -353,6 +387,85 @@
     }
     }
 }
+-(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"滑动结束");
+    UITouch *touch = touches.anyObject;
+    
+    CGPoint touchLocation = [touch locationInView:self.imgView];
+    UIView *hitView = nil;
+    
+    UIImageView *imgView = (UIImageView *)[self.view viewWithTag:10086];
+    //  NSLog(@"%@", NSStringFromCGRect(imgView.frame));
+    BOOL pointInRound = [self touchPointInsideCircle:CGPointMake(imgView.frame.size.width / 2, imgView.frame.size.height / 2)
+                                           bigRadius:imgView.frame.size.width * 0.48
+                                         smallRadius:imgView.frame.size.width * 0.38
+                                         targetPoint:touchLocation];
+    if (pointInRound) {
+        UIImageView *colorImageView = (UIImageView *)[self.view viewWithTag:10086];
+        UIView *viewColorPickerPositionIndicator = (UIView *)[self.view viewWithTag:10087];
+        UITouch *touch = touches.anyObject;
+        
+        CGPoint touchLocation = [touch locationInView:self.imgView];
+        UIColor *positionColor = [self getPixelColorAtLocation:touchLocation];
+        const CGFloat *components = CGColorGetComponents(positionColor.CGColor);
+        
+        if ([self touchPointInsideCircle:CGPointMake(colorImageView.frame.size.width / 2, colorImageView.frame.size.height / 2)
+                               bigRadius:colorImageView.frame.size.width * 0.48
+                             smallRadius:colorImageView.frame.size.width * 0.38        //0.39
+                             targetPoint:touchLocation]) {
+            
+            self.rValue.text = [NSString stringWithFormat:@"%d", (int)(components[0] * 255)];
+            self.gValue.text = [NSString stringWithFormat:@"%d", (int)(components[1] * 255)];
+            self.bValue.text = [NSString stringWithFormat:@"%d", (int)(components[2] * 255)];
+            NSString *r = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.rValue.text intValue]]];
+            NSString *g = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.gValue.text intValue]]];
+            
+            NSString *b = [NSString stringWithFormat:@"%@",[[NSString alloc] initWithFormat:@"%1x",[self.bValue.text intValue]]];
+            
+            self.colorPreview.backgroundColor = [self getPixelColorAtLocation:touchLocation];
+            //!!!:ATTENTIOIN
+            //        viewColorPickerPositionIndicator.center = touchLocation;
+            viewColorPickerPositionIndicator.center = CGPointMake(touchLocation.x + 35, touchLocation.y + 35);
+            viewColorPickerPositionIndicator.backgroundColor = [self getPixelColorAtLocation:touchLocation];
+            
+            //在这里把rgb（self.rValue.text, self.gValue.text, self.bValue.text）值传给服务器
+            
+            //增加这几行代码
+            AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+            [securityPolicy setAllowInvalidCertificates:YES];
+            
+            AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+            [manager setSecurityPolicy:securityPolicy];
+            manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+            
+            NSString *str = [[NSString alloc] initWithFormat:@"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                             "<root>"
+                             "<command_id></command_id>"
+                             "<command_type>execute</command_type>"
+                             "<id>%@</id>"
+                             "<action>change_color</action>"
+                             "<value>%@,%@,%@</value>"
+                             "</root>",  self.logic_id,r,g,b];
+            NSLog(@"-----%@ %@ %@",r,g,b);
+            
+            NSDictionary *parameters = @{@"test" : str};
+            
+            [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+               parameters:parameters
+                  success:^(AFHTTPRequestOperation *operation,id responseObject){
+                      NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                      NSLog(@"成功: %@", string);
+                  }
+                  failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                      NSLog(@"失败: %@", error);
+                      [MBProgressHUD showError:@"请检查网关"];
+                  }];
+        }
+    }
+    
+}
+
 
 
 //*****************************获取屏幕点触位置的RGB值的方法************************************//
@@ -441,7 +554,7 @@
     
     for (UIViewController *controller in self.navigationController.viewControllers) {
         
-        if ([controller isKindOfClass:[DLLampControlDinnerModeViewController class]]) {
+        if ([controller isKindOfClass:[CYFFurnitureViewController class]]) {
             
             [self.navigationController popToViewController:controller animated:YES];
             
@@ -474,11 +587,7 @@
     vc.logic_id=self.logic_id;
     [self.navigationController pushViewController:vc animated:YES];
 }
-//电器开关按钮
--(void)rightBtnClicked
-{
-    NSLog(@"开关按钮点击事件");
-}
+
 
 -(void)modeSelected
 {
@@ -496,5 +605,85 @@
         self.tag--;
         [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
     }
+}
+
+//电器开关按钮
+-(void)rightBtnClicked
+{
+    NSLog(@"开关按钮点击事件");
+    //说明灯是关着的
+    if(self.switchTag==0)
+    {
+        self.switchTag++;
+        //增加这几行代码；
+        AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+        [securityPolicy setAllowInvalidCertificates:YES];
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager setSecurityPolicy:securityPolicy];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+        NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                         "<root>"
+                         "<command_id>1</command_id>"
+                         "<command_type>execute</command_type>"
+                         "<id>%@</id>"
+                         "<action>open</action>"
+                         "<value>%@</value>"
+                         "</root>",self.logic_id,[NSString stringWithFormat:@"%d", 100]];
+        
+        
+        NSDictionary *parameters = @{@"test" : str};
+        
+        [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+           parameters:parameters
+              success:^(AFHTTPRequestOperation *operation,id responseObject)
+         {
+             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+             NSLog(@"成功: %@", string);
+         }
+              failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                  NSLog(@"失败: %@", error);
+                  [MBProgressHUD showError:@"请检查网关"];
+              }];
+        
+    }
+    else if (self.switchTag==1)
+    {
+        self.switchTag--;
+        //增加这几行代码；
+        AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+        [securityPolicy setAllowInvalidCertificates:YES];
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        [manager setSecurityPolicy:securityPolicy];
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        
+        NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+                         "<root>"
+                         "<command_id>1</command_id>"
+                         "<command_type>execute</command_type>"
+                         "<id>%@</id>"
+                         "<action>open</action>"
+                         "<value>%@</value>"
+                         "</root>",self.logic_id,[NSString stringWithFormat:@"%d",0]];
+        
+        
+        NSDictionary *parameters = @{@"test" : str};
+        
+        [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/color_light.php"
+           parameters:parameters
+              success:^(AFHTTPRequestOperation *operation,id responseObject)
+         {
+             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+             NSLog(@"成功: %@", string);
+         }
+              failure:^(AFHTTPRequestOperation *operation,NSError *error){
+                  NSLog(@"失败: %@", error);
+                  [MBProgressHUD showError:@"请检查网关"];
+              }];
+        
+    }
+    
 }
 @end
