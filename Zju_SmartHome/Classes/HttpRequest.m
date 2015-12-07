@@ -240,6 +240,35 @@
         failure:failure];
 }
 
+//向服务器发送RGB灯亮度的方法
+//+ (void)sendRGBBrightnessToServer:(NSString *)logicId brightnessValue:(NSString*)brightnessValue success:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success failure:(void(^)(AFHTTPRequestOperation * operation, NSError * error))failure{
+//    
+//    //增加这几行代码；
+//    AFSecurityPolicy *securityPolicy = [[AFSecurityPolicy alloc] init];
+//    [securityPolicy setAllowInvalidCertificates:YES];
+//    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    [manager setSecurityPolicy:securityPolicy];
+//    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//    
+//    NSString *str = [[NSString alloc] initWithFormat: @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
+//                     "<root>"
+//                     "<command_id>1</command_id>"
+//                     "<command_type>execute</command_type>"
+//                     "<id>%@</id>"
+//                     "<action>change_bright</action>"
+//                     "<value>%@</value>"
+//                     "</root>",logicId,brightnessValue];
+//    
+//    
+//    NSDictionary *parameters = @{@"test" : str};
+//    
+//    [manager POST:@"http://test.ngrok.joyingtec.com:8000/phone/yw_light.php"
+//       parameters:parameters
+//          success:success
+//          failure:failure];
+//}
+
 
 
 
