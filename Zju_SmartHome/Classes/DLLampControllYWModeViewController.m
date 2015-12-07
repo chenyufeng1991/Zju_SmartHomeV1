@@ -46,7 +46,7 @@
   
   NSLog(@"8888 %@",self.logic_id);
   
-  self.title = @"YW灯";
+
   
   self.leftFront.enabled = false;
   self.rightNext.enabled = false;
@@ -75,6 +75,14 @@
   UIBarButtonItem *rightItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
   self.navigationItem.rightBarButtonItem=rightItem;
   
+  
+  UILabel *titleView=[[UILabel alloc]init];
+  [titleView setText:@"YW灯"];
+  titleView.frame=CGRectMake(0, 0, 100, 16);
+  titleView.font=[UIFont systemFontOfSize:16];
+  [titleView setTextColor:[UIColor whiteColor]];
+  titleView.textAlignment=NSTextAlignmentCenter;
+  self.navigationItem.titleView=titleView;
   
   UIImageView *imgView = [[UIImageView alloc]init];
   imgView.tag = 10086;
