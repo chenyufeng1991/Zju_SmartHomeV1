@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *modeSelect;
 
 @property(nonatomic,assign)int tag;
+@property(nonatomic,assign)int switchTag;
 @end
 
 @implementation DLLampControlGuestModeViewController
@@ -469,6 +470,16 @@
 -(void)rightBtnClicked
 {
     NSLog(@"开关按钮点击事件");
+    //说明灯是关着的
+    if(self.switchTag==0)
+    {
+        self.switchTag++;
+    }
+    else if (self.switchTag==1)
+    {
+        self.switchTag--;
+    }
+    
 }
 
 -(void)modeSelected
