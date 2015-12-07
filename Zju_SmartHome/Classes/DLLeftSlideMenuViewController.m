@@ -254,13 +254,16 @@
   
   //如果设备支持相机，就使用拍照技术
   //否则让用户从照片库中选择照片
-  if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-  {
-    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-  }
-  else{
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-  }
+//  if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+//  {
+//    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//  }
+//  else{
+//
+//  }
+  
+  
+  imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
   
   imagePicker.delegate = self;
   
