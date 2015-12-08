@@ -153,18 +153,20 @@
 -(void)sliderValueChanged
 {
   NSLog(@"%f", self.slider.value);
-  
-  [HttpRequest sendRGBBrightnessToServer:self.logic_id brightnessValue:[NSString stringWithFormat:@"%f", self.slider.value]
-                                 success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                                   
-                                   NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                                   NSLog(@"成功: %@", string);
-                                 }
-                                 failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                   NSLog(@"失败: %@", error);
-                                   [MBProgressHUD showError:@"请检查网关"];
-                                 }];
-  
+    int value = (int)self.slider.value;
+    if (value % 5 == 0) {
+
+        [HttpRequest sendRGBBrightnessToServer:self.logic_id brightnessValue:[NSString stringWithFormat:@"%f", self.slider.value]
+                                       success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                                           
+                                           NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                                           NSLog(@"成功: %@", string);
+                                       }
+                                       failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                                           NSLog(@"失败: %@", error);
+                                           [MBProgressHUD showError:@"请检查网关"];
+                                       }];
+    }
 }
 
 /**

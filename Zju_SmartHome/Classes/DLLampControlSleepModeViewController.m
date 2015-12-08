@@ -142,7 +142,8 @@
 -(void)sliderValueChanged
 {
   NSLog(@"%f", self.slider.value);
-  
+    int value = (int)self.slider.value;
+    if (value % 5 == 0) {
   [HttpRequest sendRGBBrightnessToServer:self.logic_id brightnessValue:[NSString stringWithFormat:@"%f", self.slider.value]
                                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                    
@@ -156,6 +157,7 @@
                                    [MBProgressHUD showError:@"请检查网关"];
                                    
                                  }];
+    }
   
 }
 
