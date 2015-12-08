@@ -742,6 +742,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
           furniture.registed=YES;
           furniture.logic_id=furnitureBack.logic_id;
           furniture.deviceType=furnitureBack.deviceType;
+            
           if([furniture.deviceType isEqualToString:@"40"])
           {
             furniture.imageStr=@"rgb_light_on";
@@ -754,7 +755,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
           }
           else
           {
-            furniture.imageStr=@"办公室";
+            furniture.imageStr=@"单品";
             furniture.controller=[[JYOtherViewController alloc]init];
           }
           
@@ -810,7 +811,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
       if([furniture.deviceType isEqualToString:@"40"])
       {
 //        furniture.imageStr=@"rgb_light_on";
-          furniture.imageStr=@"单品";
+          furniture.imageStr=@"rgb_light_on";
         furniture.controller=[[DLLampControlGuestModeViewController alloc]init];
       }
       else if([furniture.deviceType isEqualToString:@"41"])
@@ -820,7 +821,7 @@ NS_ENUM(NSInteger, ProviderEditingState)
       }
       else
       {
-        furniture.imageStr=@"办公室";
+        furniture.imageStr=@"单品";
         furniture.controller=[[JYOtherViewController alloc]init];
       }
       int m=0;
