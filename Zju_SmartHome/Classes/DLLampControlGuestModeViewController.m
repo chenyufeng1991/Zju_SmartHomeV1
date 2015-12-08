@@ -68,15 +68,15 @@
   
   
   //一开始进入会客模式,RGB灯亮,不能调控模式
-  self.tag=1;
+  //self.tag=1;
   self.leftFront.enabled=NO;
-  self.rightNext.enabled=NO;
+  //self.rightNext.enabled=NO;
   //self.modeSelect.enabled=NO;
   [self.rightNext addTarget:self action:@selector(rightGo) forControlEvents:UIControlEventTouchUpInside];
   
   [self.modeSelect addTarget:self action:@selector(modeSelected) forControlEvents:UIControlEventTouchUpInside];
   //[self.modeSelect setImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
-  [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_unpress"] forState:UIControlStateNormal];
+  [self.modeSelect setBackgroundImage:[UIImage imageNamed:@"ct_icon_model_press"] forState:UIControlStateNormal];
   //[self.modeSelect setAdjustsImageWhenHighlighted:NO];
   
   
