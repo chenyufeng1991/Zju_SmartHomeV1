@@ -286,7 +286,7 @@
       
       self.CWValue.text = [NSString stringWithFormat:@"%d", cwValue];
       //在这里把cwValuevalue值传给服务器
-      
+      cwValue = 100 - cwValue;
       [HttpRequest sendYWWarmColdToServer:self.logic_id warmcoldValue:[NSString stringWithFormat:@"%d", cwValue] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -377,7 +377,7 @@
         if ((j = arc4random() % 2)) {
           //在这里把cwValuevalue值传给服务器
           
-          
+          cwValue = 100 - cwValue;
           [HttpRequest sendYWWarmColdToServer:self.logic_id warmcoldValue:[NSString stringWithFormat:@"%d", cwValue] success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -468,7 +468,7 @@
       
       self.CWValue.text = [NSString stringWithFormat:@"%d", cwValue];
       //在这里把cwValuevalue值传给服务器
-      
+      cwValue = 100 - cwValue;
       [HttpRequest sendYWWarmColdToServer:self.logic_id warmcoldValue:[NSString stringWithFormat:@"%d", cwValue] success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
