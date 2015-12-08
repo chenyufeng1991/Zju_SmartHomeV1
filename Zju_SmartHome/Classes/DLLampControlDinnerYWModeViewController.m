@@ -156,7 +156,8 @@
   self.LDValue.text = [NSString stringWithFormat:@"%d", (int)self.slider.value ];
   //在这里把亮暗值   (int)self.slider.value   传给服务器
   
-  
+    int value = (int)self.slider.value;
+    if (value % 5 == 0) {
   [HttpRequest sendYWBrightnessToServer:self.logic_id brightnessValue:[NSString stringWithFormat:@"%d", (int)self.slider.value ] success:^(AFHTTPRequestOperation *operation, id responseObject) {
     
     NSString *result = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
@@ -167,7 +168,7 @@
     NSLog(@"YW亮暗返回失败：%@",error);
   }];
   
-  
+    }
 }
 
 - (void)didReceiveMemoryWarning {
