@@ -194,14 +194,33 @@
           self.isScaned = true;
           
           //跳到CYFFurnitureViewController;
-          CYFFurnitureViewController *furi = [[CYFFurnitureViewController alloc] init];
-          furi.macFromQRCatcher = metadata.stringValue;
-          furi.area = self.area;
-          furi.section1 = self.section1;
-          furi.row = self.row;
-          furi.section = self.section;
-          
-          [self.navigationController pushViewController:furi animated:true];
+//          CYFFurnitureViewController *furi = [[CYFFurnitureViewController alloc] init];
+//          furi.macFromQRCatcher = metadata.stringValue;
+//          furi.area = self.area;
+//          furi.section1 = self.section1;
+//          furi.row = self.row;
+//          furi.section = self.section;
+//          
+//          [self.navigationController pushViewController:furi animated:true];
+
+          for (UIViewController *controller in self.navigationController.viewControllers) {
+            
+            if ([controller isKindOfClass:[CYFFurnitureViewController class]])
+            {
+              
+              CYFFurnitureViewController *vc=[[CYFFurnitureViewController alloc]init];
+              vc=(CYFFurnitureViewController *)controller;
+              
+              vc.macFromQRCatcher=metadata.stringValue;
+              vc.area=self.area;
+              vc.section1=self.section1;
+              vc.row=self.row;
+              vc.section=self.section;
+              [self.navigationController popToViewController:controller animated:YES];
+              
+            }
+            
+          }
           
         }//if();
         
